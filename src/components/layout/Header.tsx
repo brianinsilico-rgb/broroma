@@ -71,12 +71,14 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <>
-          {/* Backdrop - covers entire screen for tap-to-close */}
+          {/* Backdrop - tap anywhere on the darkened page area to close */}
           <div 
-            className="fixed inset-0 bg-black/50 md:hidden z-40"
+            className="fixed inset-0 top-20 bg-black/50 md:hidden z-40 cursor-pointer"
             onClick={() => setMobileMenuOpen(false)}
-            onTouchStart={() => setMobileMenuOpen(false)}
-            aria-hidden="true"
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              setMobileMenuOpen(false);
+            }}
           />
           
           {/* Menu Panel */}
