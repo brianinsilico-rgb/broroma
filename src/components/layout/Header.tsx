@@ -71,18 +71,18 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <>
-          {/* Backdrop - tap anywhere on the darkened page area to close */}
+          {/* Backdrop - covers full viewport, tap/click to close */}
           <div 
-            className="fixed inset-0 top-20 bg-black/50 md:hidden z-40 cursor-pointer"
+            className="fixed inset-0 bg-black/50 md:hidden z-40 cursor-pointer"
             onClick={() => setMobileMenuOpen(false)}
-            onTouchEnd={(e) => {
-              e.preventDefault();
-              setMobileMenuOpen(false);
-            }}
+            aria-label="Close menu"
           />
           
-          {/* Menu Panel */}
-          <div className="fixed left-0 right-0 top-20 bg-white md:hidden z-50 shadow-elevated border-b border-gray-100">
+          {/* Menu Panel - stops propagation so clicks inside don't close */}
+          <div 
+            className="fixed left-0 right-0 top-20 bg-white md:hidden z-50 shadow-elevated border-b border-gray-100"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="container-custom py-6">
               <div className="flex flex-col gap-4">
                 {navigation.map((item) => (
