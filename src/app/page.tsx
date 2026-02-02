@@ -1,92 +1,97 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-
-const services = [
-  {
-    title: "Import Services",
-    description: "Seamless import of high-quality industrial pipes from certified manufacturers worldwide.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-      </svg>
-    ),
-  },
-  {
-    title: "Export Services",
-    description: "Efficient export solutions to deliver your pipe products to markets around the globe.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-      </svg>
-    ),
-  },
-  {
-    title: "Quality Assurance",
-    description: "Rigorous inspection and certification processes ensuring every product meets international standards.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Logistics Support",
-    description: "End-to-end logistics management including shipping, customs clearance, and delivery coordination.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-      </svg>
-    ),
-  },
-];
-
-const stats = [
-  { value: "25+", label: "Years of Excellence" },
-  { value: "50+", label: "Countries Served" },
-  { value: "1000+", label: "Projects Completed" },
-  { value: "99%", label: "Client Satisfaction" },
-];
-
-const trustIndicators = [
-  {
-    title: "ISO 9001:2015 Certified",
-    description: "Quality management systems meeting international standards",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Global Reach",
-    description: "Established partnerships with suppliers and buyers in over 50 countries",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Premium Quality",
-    description: "Only source from certified mills with proven track records",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Reliable Delivery",
-    description: "On-time delivery guarantee with real-time shipment tracking",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      title: t.home.services.import.title,
+      description: t.home.services.import.description,
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      ),
+    },
+    {
+      title: t.home.services.export.title,
+      description: t.home.services.export.description,
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      ),
+    },
+    {
+      title: t.home.services.quality.title,
+      description: t.home.services.quality.description,
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      ),
+    },
+    {
+      title: t.home.services.logistics.title,
+      description: t.home.services.logistics.description,
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+      ),
+    },
+  ];
+
+  const stats = [
+    { value: "25+", label: t.home.stats.years },
+    { value: "50+", label: t.home.stats.countries },
+    { value: "1000+", label: t.home.stats.projects },
+    { value: "99%", label: t.home.stats.satisfaction },
+  ];
+
+  const trustIndicators = [
+    {
+      title: t.home.whyUs.iso.title,
+      description: t.home.whyUs.iso.description,
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+        </svg>
+      ),
+    },
+    {
+      title: t.home.whyUs.global.title,
+      description: t.home.whyUs.global.description,
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+    {
+      title: t.home.whyUs.quality.title,
+      description: t.home.whyUs.quality.description,
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+      ),
+    },
+    {
+      title: t.home.whyUs.delivery.title,
+      description: t.home.whyUs.delivery.description,
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -103,25 +108,24 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
-                  Trusted Global Partner Since 1998
+                  {t.home.hero.badge}
                 </span>
                 <h1 className="text-white mb-6 text-balance">
-                  Your Gateway to
-                  <span className="text-accent-400"> Premium Industrial Pipes</span>
+                  {t.home.hero.title}
+                  <span className="text-accent-400"> {t.home.hero.titleHighlight}</span>
                 </h1>
                 <p className="text-xl text-navy-200 mb-8 max-w-lg leading-relaxed">
-                  Connecting manufacturers and buyers worldwide with reliable import and export 
-                  solutions for steel, carbon, and specialty pipes.
+                  {t.home.hero.description}
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link href="/contact" className="btn-primary">
-                    Request a Quote
+                    {t.home.hero.cta}
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
                   <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900">
-                    Explore Products
+                    {t.home.hero.exploreProducts}
                   </Link>
                 </div>
               </div>
@@ -147,7 +151,7 @@ export default function Home() {
                       </div>
                       <div>
                         <p className="text-3xl font-bold text-navy-900">25+</p>
-                        <p className="text-gray-500 text-sm">Years in Business</p>
+                        <p className="text-gray-500 text-sm">{t.home.stats.years}</p>
                       </div>
                     </div>
                   </div>
@@ -177,22 +181,18 @@ export default function Home() {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">About Broroma</span>
+              <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.home.about.label}</span>
               <h2 className="text-navy-900 mt-2 mb-6">
-                Building Lasting Partnerships in Global Pipe Trade
+                {t.home.about.title}
               </h2>
               <p className="text-gray-600 mb-6 text-lg">
-                For over two decades, Broroma has been at the forefront of the industrial pipe 
-                trade industry. We specialize in connecting quality manufacturers with businesses 
-                worldwide, ensuring seamless transactions and reliable supply chains.
+                {t.home.about.description1}
               </p>
               <p className="text-gray-600 mb-8">
-                Our deep industry expertise, combined with our commitment to quality and customer 
-                service, has made us the preferred partner for companies seeking dependable pipe 
-                sourcing and distribution solutions.
+                {t.home.about.description2}
               </p>
               <Link href="/about" className="btn-secondary">
-                Learn More About Us
+                {t.home.about.cta}
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -246,13 +246,12 @@ export default function Home() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">Our Services</span>
+            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.home.services.label}</span>
             <h2 className="text-navy-900 mt-2 mb-4">
-              Comprehensive Solutions for Your Business
+              {t.home.services.title}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              From sourcing to delivery, we provide end-to-end services to streamline your 
-              industrial pipe procurement and distribution needs.
+              {t.home.services.description}
             </p>
           </div>
 
@@ -270,7 +269,7 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <Link href="/services" className="btn-outline">
-              View All Services
+              {t.home.services.viewAll}
             </Link>
           </div>
         </div>
@@ -287,13 +286,12 @@ export default function Home() {
         
         <div className="container-custom relative">
           <div className="text-center mb-16">
-            <span className="text-accent-400 font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
+            <span className="text-accent-400 font-semibold text-sm uppercase tracking-wider">{t.home.whyUs.label}</span>
             <h2 className="text-white mt-2 mb-4">
-              The Broroma Advantage
+              {t.home.whyUs.title}
             </h2>
             <p className="text-navy-200 max-w-2xl mx-auto text-lg">
-              We combine industry expertise with uncompromising commitment to quality, 
-              making us your ideal partner for all industrial pipe needs.
+              {t.home.whyUs.description}
             </p>
           </div>
 
@@ -316,21 +314,20 @@ export default function Home() {
         <div className="container-custom">
           <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 md:p-16 text-center border border-gray-200">
             <h2 className="text-navy-900 mb-4">
-              Ready to Streamline Your Pipe Supply Chain?
+              {t.home.cta.title}
             </h2>
             <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-              Get in touch with our team to discuss your requirements. We&apos;ll provide 
-              customized solutions tailored to your specific needs.
+              {t.home.cta.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="btn-primary">
-                Contact Us Today
+                {t.home.cta.contact}
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
               <Link href="/products" className="btn-outline">
-                Browse Products
+                {t.home.cta.browse}
               </Link>
             </div>
           </div>

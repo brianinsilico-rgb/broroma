@@ -2,55 +2,58 @@
 
 import { useState } from "react";
 import Image from "next/image";
-
-const inquiryTypes = [
-  "General Inquiry",
-  "Product Quote Request",
-  "Import Services",
-  "Export Services",
-  "Technical Support",
-  "Partnership Opportunity",
-  "Other",
-];
-
-const contactInfo = [
-  {
-    title: "Address",
-    content: "1234 Industrial Boulevard\nHouston, TX 77001\nUnited States",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Phone",
-    content: "+1 (713) 555-0192\n+1 (713) 555-0193",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Email",
-    content: "info@broroma.com\nsales@broroma.com",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-  },
-];
-
-const businessHours = [
-  { day: "Monday - Friday", hours: "8:00 AM - 6:00 PM CST" },
-  { day: "Saturday", hours: "9:00 AM - 1:00 PM CST" },
-  { day: "Sunday", hours: "Closed" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
+  
+  const inquiryTypes = [
+    t.contact.inquiryTypes.general,
+    t.contact.inquiryTypes.quote,
+    t.contact.inquiryTypes.import,
+    t.contact.inquiryTypes.export,
+    t.contact.inquiryTypes.technical,
+    t.contact.inquiryTypes.partnership,
+    t.contact.inquiryTypes.other,
+  ];
+
+  const contactInfo = [
+    {
+      title: t.contact.info.address,
+      content: "1234 Industrial Boulevard\nHouston, TX 77001\nUnited States",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+    },
+    {
+      title: t.contact.info.phone,
+      content: "+1 (713) 555-0192\n+1 (713) 555-0193",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+      ),
+    },
+    {
+      title: t.contact.info.email,
+      content: "info@broroma.com\nsales@broroma.com",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+    },
+  ];
+
+  const businessHours = [
+    { day: t.contact.hours.weekdays, hours: t.contact.hours.weekdaysTime },
+    { day: t.contact.hours.saturday, hours: t.contact.hours.saturdayTime },
+    { day: t.contact.hours.sunday, hours: t.contact.hours.sundayTime },
+  ];
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -86,14 +89,13 @@ export default function ContactPage() {
         <div className="container-custom">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
-              Contact Us
+              {t.contact.hero.label}
             </span>
             <h1 className="text-white mb-6">
-              Let&apos;s Start a Conversation
+              {t.contact.hero.title}
             </h1>
             <p className="text-xl text-navy-200 leading-relaxed">
-              Have questions about our products or services? Our team is ready to help 
-              you find the right solution for your industrial pipe needs.
+              {t.contact.hero.description}
             </p>
           </div>
         </div>
@@ -106,7 +108,7 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className="card">
-                <h2 className="text-2xl font-semibold text-navy-900 mb-6">Send Us a Message</h2>
+                <h2 className="text-2xl font-semibold text-navy-900 mb-6">{t.contact.form.title}</h2>
                 
                 {isSubmitted ? (
                   <div className="text-center py-12">
@@ -115,9 +117,9 @@ export default function ContactPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-navy-900 mb-2">Thank You!</h3>
+                    <h3 className="text-xl font-semibold text-navy-900 mb-2">{t.contact.form.success.title}</h3>
                     <p className="text-gray-600 mb-6">
-                      Your message has been sent successfully. Our team will get back to you within 24 hours.
+                      {t.contact.form.success.message}
                     </p>
                     <button
                       onClick={() => {
@@ -126,14 +128,14 @@ export default function ContactPage() {
                       }}
                       className="btn-secondary"
                     >
-                      Send Another Message
+                      {t.contact.form.success.another}
                     </button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="name" className="label-text">Full Name *</label>
+                        <label htmlFor="name" className="label-text">{t.contact.form.name} *</label>
                         <input
                           type="text"
                           id="name"
@@ -142,11 +144,11 @@ export default function ContactPage() {
                           onChange={handleChange}
                           required
                           className="input-field"
-                          placeholder="John Smith"
+                          placeholder={t.contact.form.namePlaceholder}
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="label-text">Email Address *</label>
+                        <label htmlFor="email" className="label-text">{t.contact.form.email} *</label>
                         <input
                           type="email"
                           id="email"
@@ -155,14 +157,14 @@ export default function ContactPage() {
                           onChange={handleChange}
                           required
                           className="input-field"
-                          placeholder="john@company.com"
+                          placeholder={t.contact.form.emailPlaceholder}
                         />
                       </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="company" className="label-text">Company Name</label>
+                        <label htmlFor="company" className="label-text">{t.contact.form.company}</label>
                         <input
                           type="text"
                           id="company"
@@ -170,11 +172,11 @@ export default function ContactPage() {
                           value={formData.company}
                           onChange={handleChange}
                           className="input-field"
-                          placeholder="Your Company Inc."
+                          placeholder={t.contact.form.companyPlaceholder}
                         />
                       </div>
                       <div>
-                        <label htmlFor="inquiryType" className="label-text">Inquiry Type *</label>
+                        <label htmlFor="inquiryType" className="label-text">{t.contact.form.inquiryType} *</label>
                         <select
                           id="inquiryType"
                           name="inquiryType"
@@ -183,7 +185,7 @@ export default function ContactPage() {
                           required
                           className="input-field"
                         >
-                          <option value="">Select an option</option>
+                          <option value="">{t.contact.form.selectOption}</option>
                           {inquiryTypes.map((type) => (
                             <option key={type} value={type}>{type}</option>
                           ))}
@@ -192,7 +194,7 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="label-text">Message *</label>
+                      <label htmlFor="message" className="label-text">{t.contact.form.message} *</label>
                       <textarea
                         id="message"
                         name="message"
@@ -201,7 +203,7 @@ export default function ContactPage() {
                         required
                         rows={6}
                         className="input-field resize-none"
-                        placeholder="Please describe your requirements, including product specifications, quantities, and delivery timeline..."
+                        placeholder={t.contact.form.messagePlaceholder}
                       />
                     </div>
 
@@ -217,18 +219,18 @@ export default function ContactPage() {
                               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                             </svg>
-                            Sending...
+                            {t.contact.form.sending}
                           </>
                         ) : (
                           <>
-                            Send Message
+                            {t.contact.form.submit}
                             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                             </svg>
                           </>
                         )}
                       </button>
-                      <p className="text-sm text-gray-500">* Required fields</p>
+                      <p className="text-sm text-gray-500">* {t.contact.form.required}</p>
                     </div>
                   </form>
                 )}
@@ -239,7 +241,7 @@ export default function ContactPage() {
             <div className="lg:col-span-1 space-y-6">
               {/* Contact Details */}
               <div className="card">
-                <h3 className="text-lg font-semibold text-navy-900 mb-6">Contact Information</h3>
+                <h3 className="text-lg font-semibold text-navy-900 mb-6">{t.contact.info.title}</h3>
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex gap-4">
@@ -257,7 +259,7 @@ export default function ContactPage() {
 
               {/* Business Hours */}
               <div className="card">
-                <h3 className="text-lg font-semibold text-navy-900 mb-4">Business Hours</h3>
+                <h3 className="text-lg font-semibold text-navy-900 mb-4">{t.contact.hours.title}</h3>
                 <div className="space-y-3">
                   {businessHours.map((item, index) => (
                     <div key={index} className="flex justify-between text-sm">
@@ -277,13 +279,12 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-semibold text-white">Quick Response</p>
-                    <p className="text-navy-300 text-sm">Within 24 hours</p>
+                    <p className="font-semibold text-white">{t.contact.quickResponse.title}</p>
+                    <p className="text-navy-300 text-sm">{t.contact.quickResponse.subtitle}</p>
                   </div>
                 </div>
                 <p className="text-navy-200 text-sm">
-                  We prioritize responding to all inquiries promptly. Urgent requests 
-                  are typically addressed within 2-4 hours during business hours.
+                  {t.contact.quickResponse.description}
                 </p>
               </div>
             </div>
@@ -295,10 +296,10 @@ export default function ContactPage() {
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">Location</span>
-            <h2 className="text-navy-900 mt-2 mb-4">Find Us</h2>
+            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.contact.location.label}</span>
+            <h2 className="text-navy-900 mt-2 mb-4">{t.contact.location.title}</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Visit our headquarters in Houston, the heart of the American energy industry.
+              {t.contact.location.description}
             </p>
           </div>
 
@@ -320,7 +321,7 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold text-navy-900 mb-2">Broroma Headquarters</h3>
+                  <h3 className="text-lg font-semibold text-navy-900 mb-2">{t.contact.location.headquarters}</h3>
                   <p className="text-gray-600 text-sm mb-4">
                     1234 Industrial Boulevard<br />
                     Houston, TX 77001, United States
@@ -331,7 +332,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-accent-500 hover:text-accent-600 font-medium text-sm transition-colors"
                   >
-                    Get Directions
+                    {t.contact.location.getDirections}
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
@@ -347,15 +348,15 @@ export default function ContactPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">Global Presence</span>
-            <h2 className="text-navy-900 mt-2 mb-4">Our Offices</h2>
+            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.contact.offices.label}</span>
+            <h2 className="text-navy-900 mt-2 mb-4">{t.contact.offices.title}</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { city: "Houston, USA", address: "1234 Industrial Blvd", type: "Headquarters", phone: "+1 (713) 555-0192" },
-              { city: "Singapore", address: "88 Market Street", type: "Asia Pacific", phone: "+65 6555 0192" },
-              { city: "Rotterdam, Netherlands", address: "Havenstraat 45", type: "Europe", phone: "+31 10 555 0192" },
+              { city: "Houston, USA", address: "1234 Industrial Blvd", type: t.contact.offices.headquarters, phone: "+1 (713) 555-0192" },
+              { city: "Singapore", address: "88 Market Street", type: t.contact.offices.asiaPacific, phone: "+65 6555 0192" },
+              { city: "Rotterdam, Netherlands", address: "Havenstraat 45", type: t.contact.offices.europe, phone: "+31 10 555 0192" },
             ].map((office, index) => (
               <div key={index} className="card text-center">
                 <div className="w-12 h-12 bg-navy-50 rounded-xl flex items-center justify-center mx-auto mb-4">

@@ -1,0 +1,447 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "services": "Services",
+    "contact": "Contact",
+    "getQuote": "Get a Quote"
+  },
+  "home": {
+    "hero": {
+      "badge": "Trusted Global Partner Since 1998",
+      "title": "Your Gateway to",
+      "titleHighlight": "Premium Industrial Pipes",
+      "description": "Connecting manufacturers and buyers worldwide with reliable import and export solutions for steel, carbon, and specialty pipes.",
+      "cta": "Request a Quote",
+      "exploreProducts": "Explore Products"
+    },
+    "stats": {
+      "years": "Years of Excellence",
+      "countries": "Countries Served",
+      "projects": "Projects Completed",
+      "satisfaction": "Client Satisfaction"
+    },
+    "about": {
+      "label": "About Broroma",
+      "title": "Building Lasting Partnerships in Global Pipe Trade",
+      "description1": "For over two decades, Broroma has been at the forefront of the industrial pipe trade industry. We specialize in connecting quality manufacturers with businesses worldwide, ensuring seamless transactions and reliable supply chains.",
+      "description2": "Our deep industry expertise, combined with our commitment to quality and customer service, has made us the preferred partner for companies seeking dependable pipe sourcing and distribution solutions.",
+      "cta": "Learn More About Us"
+    },
+    "services": {
+      "label": "Our Services",
+      "title": "Comprehensive Solutions for Your Business",
+      "description": "From sourcing to delivery, we provide end-to-end services to streamline your industrial pipe procurement and distribution needs.",
+      "viewAll": "View All Services",
+      "import": {
+        "title": "Import Services",
+        "description": "Seamless import of high-quality industrial pipes from certified manufacturers worldwide."
+      },
+      "export": {
+        "title": "Export Services",
+        "description": "Efficient export solutions to deliver your pipe products to markets around the globe."
+      },
+      "quality": {
+        "title": "Quality Assurance",
+        "description": "Rigorous inspection and certification processes ensuring every product meets international standards."
+      },
+      "logistics": {
+        "title": "Logistics Support",
+        "description": "End-to-end logistics management including shipping, customs clearance, and delivery coordination."
+      }
+    },
+    "whyUs": {
+      "label": "Why Choose Us",
+      "title": "The Broroma Advantage",
+      "description": "We combine industry expertise with uncompromising commitment to quality, making us your ideal partner for all industrial pipe needs.",
+      "iso": {
+        "title": "ISO 9001:2015 Certified",
+        "description": "Quality management systems meeting international standards"
+      },
+      "global": {
+        "title": "Global Reach",
+        "description": "Established partnerships with suppliers and buyers in over 50 countries"
+      },
+      "quality": {
+        "title": "Premium Quality",
+        "description": "Only source from certified mills with proven track records"
+      },
+      "delivery": {
+        "title": "Reliable Delivery",
+        "description": "On-time delivery guarantee with real-time shipment tracking"
+      }
+    },
+    "cta": {
+      "title": "Ready to Streamline Your Pipe Supply Chain?",
+      "description": "Get in touch with our team to discuss your requirements. We'll provide customized solutions tailored to your specific needs.",
+      "contact": "Contact Us Today",
+      "browse": "Browse Products"
+    }
+  },
+  "about": {
+    "hero": {
+      "label": "About Broroma",
+      "title": "Building Trust Through Excellence",
+      "description": "For over 25 years, Broroma has been a cornerstone of the global industrial pipe trade, connecting quality manufacturers with businesses worldwide."
+    },
+    "story": {
+      "label": "Our Story",
+      "title": "From Humble Beginnings to Global Leadership",
+      "p1": "Founded in 1998 by a team of industry veterans, Broroma began as a small trading company with a simple mission: to bridge the gap between quality pipe manufacturers and businesses in need of reliable supply.",
+      "p2": "What started in a modest office in Houston has grown into a global operation spanning five continents. Our success is built on unwavering commitment to quality, transparency, and customer satisfaction.",
+      "p3": "Today, we serve over 500 clients worldwide, from small construction firms to major oil and gas corporations. Our network includes certified suppliers across Asia, Europe, and the Americas, ensuring we can meet any specification or volume requirement.",
+      "yearsLabel": "Years of Excellence"
+    },
+    "mission": {
+      "label": "Our Mission",
+      "title": "Empowering Industries Through Reliable Supply",
+      "description": "Our mission is to be the most trusted partner in the global pipe trade industry, delivering unmatched quality, reliability, and value to our clients while fostering sustainable practices and long-term partnerships."
+    },
+    "journey": {
+      "label": "Our Journey",
+      "title": "Key Milestones"
+    },
+    "values": {
+      "label": "Our Values",
+      "title": "What We Stand For",
+      "description": "Our core values guide every decision we make and every relationship we build.",
+      "integrity": {
+        "title": "Integrity",
+        "description": "We conduct business with the highest ethical standards, building trust through transparency and honesty."
+      },
+      "quality": {
+        "title": "Quality",
+        "description": "We never compromise on quality, ensuring every product meets the strictest international standards."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We continuously improve our processes and embrace new technologies to better serve our clients."
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "We view every client relationship as a long-term partnership, invested in mutual success."
+      }
+    },
+    "team": {
+      "label": "Our Leadership",
+      "title": "Meet the Team",
+      "description": "Our experienced leadership team brings decades of industry expertise to guide Broroma's continued growth and success."
+    },
+    "certifications": {
+      "label": "Certifications",
+      "title": "Industry Certifications",
+      "description": "Our commitment to quality is backed by internationally recognized certifications and standards compliance."
+    },
+    "cta": {
+      "title": "Ready to Work With Us?",
+      "description": "Join hundreds of satisfied clients who trust Broroma for their industrial pipe sourcing needs.",
+      "button": "Get in Touch"
+    }
+  },
+  "products": {
+    "hero": {
+      "label": "Our Products",
+      "title": "Industrial Pipe Solutions",
+      "description": "Comprehensive range of high-quality pipes for every industrial application, sourced from certified manufacturers worldwide."
+    },
+    "features": {
+      "mtc": {
+        "title": "Mill Test Certificates",
+        "description": "All products come with complete documentation"
+      },
+      "custom": {
+        "title": "Custom Specifications",
+        "description": "We source pipes to your exact requirements"
+      },
+      "quality": {
+        "title": "Quality Guaranteed",
+        "description": "Rigorous inspection at every stage"
+      },
+      "global": {
+        "title": "Global Sourcing",
+        "description": "Access to certified mills worldwide"
+      }
+    },
+    "categories": {
+      "label": "Product Categories",
+      "title": "Explore Our Range",
+      "description": "From standard specifications to custom requirements, we offer a comprehensive selection of pipes to meet your project needs.",
+      "viewProducts": "View Products",
+      "specifications": "Specifications:",
+      "applications": "Applications:"
+    },
+    "customSourcing": {
+      "label": "Custom Sourcing",
+      "title": "Can't Find What You Need?",
+      "description": "Our global network of certified suppliers means we can source virtually any pipe specification. Whether you need uncommon grades, custom dimensions, or specialized coatings, our team will find the right solution.",
+      "features": [
+        "Custom sizes and wall thicknesses",
+        "Specialized grades and alloys",
+        "Special coatings and treatments",
+        "Small batch or bulk orders"
+      ],
+      "cta": "Request Custom Quote"
+    },
+    "cta": {
+      "title": "Need Help Selecting the Right Pipe?",
+      "description": "Our technical experts are ready to help you choose the optimal product for your specific application and requirements.",
+      "contact": "Contact Our Experts",
+      "services": "View Our Services"
+    },
+    "steel": {
+      "name": "Steel Pipes",
+      "description": "High-strength carbon steel pipes for structural, mechanical, and industrial applications. Available in various grades and specifications."
+    },
+    "carbon": {
+      "name": "Carbon Pipes",
+      "description": "Premium carbon steel pipes engineered for high-temperature and high-pressure applications in demanding environments."
+    },
+    "stainless": {
+      "name": "Stainless Steel Pipes",
+      "description": "Corrosion-resistant stainless steel pipes for food processing, pharmaceutical, and marine applications."
+    },
+    "alloy": {
+      "name": "Alloy Pipes",
+      "description": "Specialty alloy pipes including nickel alloys, duplex, and super duplex for extreme service conditions."
+    },
+    "seamless": {
+      "name": "Seamless Pipes",
+      "description": "Hot-rolled and cold-drawn seamless pipes offering superior strength and pressure resistance without weld joints."
+    },
+    "welded": {
+      "name": "Welded Pipes",
+      "description": "ERW and SAW welded pipes for large-diameter applications, available in standard and custom lengths."
+    }
+  },
+  "services": {
+    "hero": {
+      "label": "Our Services",
+      "title": "Comprehensive Trade Solutions",
+      "description": "From sourcing to delivery, we provide end-to-end services to streamline your industrial pipe procurement and distribution needs."
+    },
+    "import": {
+      "title": "Import Services",
+      "subtitle": "Global Sourcing Excellence",
+      "description": "We connect you with certified manufacturers worldwide, handling all aspects of the import process to ensure quality products reach your facility seamlessly.",
+      "features": [
+        "Access to certified mills in Asia, Europe, and Americas",
+        "Supplier qualification and auditing",
+        "Price negotiation and contract management",
+        "Import documentation and compliance",
+        "Letter of credit and payment facilitation",
+        "Duty and tariff optimization"
+      ],
+      "benefits": {
+        "cost": { "title": "Cost Savings", "description": "Leverage our buying power and supplier relationships" },
+        "quality": { "title": "Quality Assurance", "description": "Pre-shipment inspection at origin" },
+        "risk": { "title": "Risk Mitigation", "description": "Comprehensive supplier vetting process" }
+      }
+    },
+    "export": {
+      "title": "Export Services",
+      "subtitle": "Reaching Global Markets",
+      "description": "Expand your market reach with our comprehensive export solutions. We manage the complexities of international trade so you can focus on your core business.",
+      "features": [
+        "Market research and buyer identification",
+        "Export documentation and licensing",
+        "Customs clearance coordination",
+        "Trade compliance and regulations",
+        "Currency management and hedging",
+        "After-sales support and warranty coordination"
+      ],
+      "benefits": {
+        "access": { "title": "Market Access", "description": "Entry to 50+ international markets" },
+        "compliance": { "title": "Compliance", "description": "Full regulatory and documentation support" },
+        "speed": { "title": "Speed", "description": "Streamlined processes for faster delivery" }
+      }
+    },
+    "logistics": {
+      "title": "Logistics & Shipping",
+      "subtitle": "End-to-End Transport Solutions",
+      "description": "From factory floor to your warehouse, we orchestrate the entire logistics chain with precision, ensuring your products arrive safely and on time.",
+      "features": [
+        "Multi-modal transportation (sea, air, rail, road)",
+        "Container booking and freight forwarding",
+        "Warehouse and storage solutions",
+        "Real-time shipment tracking",
+        "Cargo insurance coordination",
+        "Last-mile delivery management"
+      ],
+      "benefits": {
+        "visibility": { "title": "Visibility", "description": "Real-time tracking and status updates" },
+        "flexibility": { "title": "Flexibility", "description": "Scalable solutions for any volume" },
+        "reliability": { "title": "Reliability", "description": "99.5% on-time delivery rate" }
+      }
+    },
+    "inspection": {
+      "title": "Quality Inspection",
+      "subtitle": "Uncompromising Standards",
+      "description": "Our rigorous quality control processes ensure every product meets your specifications and international standards before shipment.",
+      "features": [
+        "Pre-production inspection (PPI)",
+        "During production inspection (DPI)",
+        "Pre-shipment inspection (PSI)",
+        "Mill test certificate verification",
+        "Dimensional and visual inspection",
+        "Non-destructive testing (NDT)"
+      ],
+      "benefits": {
+        "defects": { "title": "Zero Defects", "description": "Catch issues before they become problems" },
+        "compliance": { "title": "Compliance", "description": "Meet all required standards and specs" },
+        "docs": { "title": "Documentation", "description": "Comprehensive inspection reports" }
+      }
+    },
+    "sourcing": {
+      "title": "Custom Sourcing",
+      "subtitle": "Finding the Unfindable",
+      "description": "Can't find what you need? Our global network and industry expertise allow us to source specialized products tailored to your unique requirements.",
+      "features": [
+        "Custom size and specification sourcing",
+        "Rare grade and alloy procurement",
+        "Small batch manufacturing coordination",
+        "Special coating and treatment options",
+        "Prototype and sample production",
+        "Technical consultation and material selection"
+      ],
+      "benefits": {
+        "expertise": { "title": "Expertise", "description": "25+ years of industry knowledge" },
+        "network": { "title": "Network", "description": "Global supplier database" },
+        "solutions": { "title": "Solutions", "description": "Creative problem-solving approach" }
+      }
+    },
+    "process": {
+      "label": "How We Work",
+      "title": "Our Process",
+      "description": "A streamlined approach that ensures quality, transparency, and efficiency at every stage of your project.",
+      "steps": {
+        "consultation": { "title": "Consultation", "description": "We discuss your requirements, specifications, and timeline to understand your needs." },
+        "sourcing": { "title": "Sourcing", "description": "Our team identifies and qualifies the best suppliers for your specific requirements." },
+        "quality": { "title": "Quality Control", "description": "Rigorous inspection ensures all products meet your specifications before shipping." },
+        "delivery": { "title": "Delivery", "description": "Coordinated logistics ensure safe, on-time delivery to your designated location." }
+      }
+    },
+    "stats": {
+      "countries": "Countries Served",
+      "projects": "Projects Completed",
+      "delivery": "On-Time Delivery",
+      "support": "Customer Support"
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Frequently Asked Questions",
+      "q1": "What is the minimum order quantity?",
+      "a1": "Minimum order quantities vary by product type and supplier. For standard products, we typically work with MOQs starting from 5 metric tons. For specialty items, we can accommodate smaller quantities with adjusted pricing.",
+      "q2": "How long does shipping typically take?",
+      "a2": "Shipping times depend on the origin and destination. Sea freight from Asia to North America typically takes 25-35 days. We also offer expedited air freight options for urgent requirements.",
+      "q3": "Do you provide Mill Test Certificates?",
+      "a3": "Yes, all products come with original Mill Test Certificates (MTCs) documenting chemical composition, mechanical properties, and test results as per relevant standards.",
+      "q4": "What payment terms do you offer?",
+      "a4": "We offer flexible payment terms including Letter of Credit (L/C), Telegraphic Transfer (T/T), and Documentary Collection. Terms are tailored based on order value and customer relationship."
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Contact our team to discuss how we can support your industrial pipe requirements with our comprehensive service offerings.",
+      "contact": "Contact Us",
+      "products": "View Products"
+    }
+  },
+  "contact": {
+    "hero": {
+      "label": "Contact Us",
+      "title": "Let's Start a Conversation",
+      "description": "Have questions about our products or services? Our team is ready to help you find the right solution for your industrial pipe needs."
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Full Name",
+      "namePlaceholder": "John Smith",
+      "email": "Email Address",
+      "emailPlaceholder": "john@company.com",
+      "company": "Company Name",
+      "companyPlaceholder": "Your Company Inc.",
+      "inquiryType": "Inquiry Type",
+      "selectOption": "Select an option",
+      "message": "Message",
+      "messagePlaceholder": "Please describe your requirements, including product specifications, quantities, and delivery timeline...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "required": "Required fields",
+      "success": {
+        "title": "Thank You!",
+        "message": "Your message has been sent successfully. Our team will get back to you within 24 hours.",
+        "another": "Send Another Message"
+      }
+    },
+    "inquiryTypes": {
+      "general": "General Inquiry",
+      "quote": "Product Quote Request",
+      "import": "Import Services",
+      "export": "Export Services",
+      "technical": "Technical Support",
+      "partnership": "Partnership Opportunity",
+      "other": "Other"
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "hours": {
+      "title": "Business Hours",
+      "weekdays": "Monday - Friday",
+      "weekdaysTime": "8:00 AM - 6:00 PM CST",
+      "saturday": "Saturday",
+      "saturdayTime": "9:00 AM - 1:00 PM CST",
+      "sunday": "Sunday",
+      "sundayTime": "Closed"
+    },
+    "quickResponse": {
+      "title": "Quick Response",
+      "subtitle": "Within 24 hours",
+      "description": "We prioritize responding to all inquiries promptly. Urgent requests are typically addressed within 2-4 hours during business hours."
+    },
+    "location": {
+      "label": "Location",
+      "title": "Find Us",
+      "description": "Visit our headquarters in Houston, the heart of the American energy industry.",
+      "headquarters": "Broroma Headquarters",
+      "getDirections": "Get Directions"
+    },
+    "offices": {
+      "label": "Global Presence",
+      "title": "Our Offices",
+      "headquarters": "Headquarters",
+      "asiaPacific": "Asia Pacific",
+      "europe": "Europe"
+    }
+  },
+  "footer": {
+    "tagline": "Your trusted partner in global industrial pipe trade. Delivering quality, reliability, and excellence since 1998.",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "ourTeam": "Our Team",
+    "certifications": "Certifications",
+    "careers": "Careers",
+    "products": "Products",
+    "services": "Services",
+    "importServices": "Import Services",
+    "exportServices": "Export Services",
+    "logistics": "Logistics",
+    "qualityInspection": "Quality Inspection",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "copyright": "Broroma. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "readMore": "Read More",
+    "contactUs": "Contact Us",
+    "requestQuote": "Request Quote"
+  }
+}

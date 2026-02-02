@@ -1,44 +1,44 @@
-import Link from "next/link";
+"use client";
 
-const footerLinks = {
-  company: [
-    { name: "About Us", href: "/about" },
-    { name: "Our Team", href: "/about#team" },
-    { name: "Certifications", href: "/about#certifications" },
-    { name: "Careers", href: "/contact" },
-  ],
-  products: [
-    { name: "Steel Pipes", href: "/products/steel-pipes" },
-    { name: "Carbon Pipes", href: "/products/carbon-pipes" },
-    { name: "Stainless Steel", href: "/products/stainless-steel" },
-    { name: "Alloy Pipes", href: "/products/alloy-pipes" },
-  ],
-  services: [
-    { name: "Import Services", href: "/services#import" },
-    { name: "Export Services", href: "/services#export" },
-    { name: "Logistics", href: "/services#logistics" },
-    { name: "Quality Inspection", href: "/services#inspection" },
-  ],
-};
+import Link from "next/link";
+import Logo from "@/components/ui/Logo";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
+  const footerLinks = {
+    company: [
+      { name: t.footer.aboutUs, href: "/about" },
+      { name: t.footer.ourTeam, href: "/about#team" },
+      { name: t.footer.certifications, href: "/about#certifications" },
+      { name: t.footer.careers, href: "/contact" },
+    ],
+    products: [
+      { name: t.products.steel.name, href: "/products/steel-pipes" },
+      { name: t.products.carbon.name, href: "/products/carbon-pipes" },
+      { name: t.products.stainless.name, href: "/products/stainless-steel" },
+      { name: t.products.alloy.name, href: "/products/alloy-pipes" },
+    ],
+    services: [
+      { name: t.footer.importServices, href: "/services#import" },
+      { name: t.footer.exportServices, href: "/services#export" },
+      { name: t.footer.logistics, href: "/services#logistics" },
+      { name: t.footer.qualityInspection, href: "/services#inspection" },
+    ],
+  };
+
   return (
     <footer className="gradient-navy text-white">
       <div className="container-custom py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-navy-900 font-bold text-lg">B</span>
-              </div>
-              <span className="font-heading font-bold text-2xl tracking-tight">
-                BROROMA
-              </span>
+            <Link href="/" className="inline-block mb-6">
+              <Logo className="h-10 w-auto" variant="white" />
             </Link>
             <p className="text-navy-200 mb-6 max-w-sm leading-relaxed">
-              Your trusted partner in global industrial pipe trade. Delivering quality, 
-              reliability, and excellence since 1998.
+              {t.footer.tagline}
             </p>
             {/* Social Links */}
             <div className="flex gap-4">
@@ -74,10 +74,10 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Company</h4>
+            <h4 className="font-heading font-semibold text-lg mb-4">{t.footer.company}</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-navy-200 hover:text-white transition-colors duration-200"
@@ -91,10 +91,10 @@ export default function Footer() {
 
           {/* Products Links */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Products</h4>
+            <h4 className="font-heading font-semibold text-lg mb-4">{t.footer.products}</h4>
             <ul className="space-y-3">
               {footerLinks.products.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-navy-200 hover:text-white transition-colors duration-200"
@@ -108,10 +108,10 @@ export default function Footer() {
 
           {/* Services Links */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Services</h4>
+            <h4 className="font-heading font-semibold text-lg mb-4">{t.footer.services}</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-navy-200 hover:text-white transition-colors duration-200"
@@ -135,7 +135,7 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <p className="text-sm text-navy-300">Address</p>
+                <p className="text-sm text-navy-300">{t.footer.address}</p>
                 <p className="text-white">1234 Industrial Blvd, Houston, TX 77001</p>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <p className="text-sm text-navy-300">Phone</p>
+                <p className="text-sm text-navy-300">{t.footer.phone}</p>
                 <p className="text-white">+1 (713) 555-0192</p>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <p className="text-sm text-navy-300">Email</p>
+                <p className="text-sm text-navy-300">{t.footer.email}</p>
                 <p className="text-white">info@broroma.com</p>
               </div>
             </div>
@@ -167,14 +167,14 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-navy-700 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-navy-300 text-sm">
-            © {new Date().getFullYear()} Broroma. All rights reserved.
+            © {new Date().getFullYear()} {t.footer.copyright}
           </p>
           <div className="flex gap-6 text-sm">
             <Link href="/privacy" className="text-navy-300 hover:text-white transition-colors duration-200">
-              Privacy Policy
+              {t.footer.privacy}
             </Link>
             <Link href="/terms" className="text-navy-300 hover:text-white transition-colors duration-200">
-              Terms of Service
+              {t.footer.terms}
             </Link>
           </div>
         </div>

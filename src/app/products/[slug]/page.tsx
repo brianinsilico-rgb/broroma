@@ -23,7 +23,7 @@ const categoryData: Record<string, {
     name: "Steel Pipes",
     description: "High-strength carbon steel pipes for structural, mechanical, and industrial applications.",
     longDescription: "Our steel pipes are manufactured to the highest international standards, offering exceptional strength, durability, and versatility. Available in a wide range of grades and specifications, these pipes are ideal for structural applications, water transmission, oil and gas pipelines, and general industrial use.",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&q=80",
     specifications: ["ASTM A53", "ASTM A106", "API 5L", "EN 10210", "EN 10219"],
     applications: ["Construction", "Oil & Gas", "Water Systems", "Structural Support", "Mechanical Engineering"],
     products: [
@@ -45,7 +45,7 @@ const categoryData: Record<string, {
     name: "Carbon Pipes",
     description: "Premium carbon steel pipes engineered for high-temperature and high-pressure applications.",
     longDescription: "Our carbon pipes are specifically designed for demanding high-temperature and high-pressure environments. Perfect for power plants, refineries, and chemical processing facilities, these pipes offer superior performance in critical applications where reliability is paramount.",
-    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1200&q=80",
     specifications: ["ASTM A333", "ASTM A335", "ASTM A691", "ASTM A672", "EN 10216-2"],
     applications: ["Power Plants", "Refineries", "Chemical Plants", "Boilers", "Heat Exchangers"],
     products: [
@@ -67,7 +67,7 @@ const categoryData: Record<string, {
     name: "Stainless Steel Pipes",
     description: "Corrosion-resistant stainless steel pipes for food processing, pharmaceutical, and marine applications.",
     longDescription: "Our stainless steel pipes offer exceptional corrosion resistance and hygiene standards, making them ideal for food and beverage processing, pharmaceutical manufacturing, and marine environments. Available in various grades to suit specific application requirements.",
-    image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
     specifications: ["ASTM A312", "ASTM A358", "ASTM A269", "ASTM A213", "EN 10217-7"],
     applications: ["Food & Beverage", "Pharmaceutical", "Marine", "Chemical Processing", "Architecture"],
     products: [
@@ -89,7 +89,7 @@ const categoryData: Record<string, {
     name: "Alloy Pipes",
     description: "Specialty alloy pipes including nickel alloys, duplex, and super duplex for extreme service conditions.",
     longDescription: "Our alloy pipes represent the pinnacle of metallurgical engineering, designed for the most demanding applications in aerospace, chemical processing, and nuclear industries. These high-performance materials offer exceptional resistance to extreme temperatures, pressures, and corrosive environments.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1200&q=80",
     specifications: ["ASTM B167", "ASTM B444", "ASTM B619", "ASTM A790", "ASTM A928"],
     applications: ["Aerospace", "Chemical Processing", "Nuclear", "Offshore", "Desalination"],
     products: [
@@ -111,7 +111,7 @@ const categoryData: Record<string, {
     name: "Seamless Pipes",
     description: "Hot-rolled and cold-drawn seamless pipes offering superior strength and pressure resistance.",
     longDescription: "Our seamless pipes are manufactured without weld seams, providing superior strength and pressure resistance. Ideal for critical applications in boilers, heat exchangers, and pressure vessels where integrity is essential.",
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1605857840732-188a3f6d6dc5?w=1200&q=80",
     specifications: ["ASTM A179", "ASTM A192", "ASTM A213", "ASTM A519", "EN 10216-1"],
     applications: ["Boilers", "Heat Exchangers", "Pressure Vessels", "Hydraulics", "Mechanical Engineering"],
     products: [
@@ -133,7 +133,7 @@ const categoryData: Record<string, {
     name: "Welded Pipes",
     description: "ERW and SAW welded pipes for large-diameter applications and structural use.",
     longDescription: "Our welded pipes, including ERW (Electric Resistance Welded) and SAW (Submerged Arc Welded) varieties, are ideal for large-diameter applications such as pipelines, structural piling, and general construction. These pipes offer an excellent balance of performance and cost-effectiveness.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
     specifications: ["API 5L PSL1/PSL2", "ASTM A252", "EN 10219", "ASTM A139", "AWWA C200"],
     applications: ["Pipelines", "Piling", "Structural", "Water Transmission", "General Construction"],
     products: [
