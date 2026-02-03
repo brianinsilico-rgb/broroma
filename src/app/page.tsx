@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import TrustedBy from "@/components/ui/TrustedBy";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -175,6 +176,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Trusted By Section */}
+      <TrustedBy />
 
       {/* About Section */}
       <section className="section-padding bg-gray-50">

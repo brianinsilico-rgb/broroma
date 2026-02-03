@@ -1,0 +1,66 @@
+"use client";
+
+import { useLanguage } from "@/context/LanguageContext";
+
+interface Client {
+  name: string;
+  logo: string;
+}
+
+const clients: Client[] = [
+  { name: "PTT", logo: "/logos/ptt.svg" },
+  { name: "Dok Bua", logo: "/logos/dokbua.svg" },
+  { name: "Gulf", logo: "/logos/gulf.svg" },
+  { name: "SCG", logo: "/logos/scg.svg" },
+  { name: "Lin", logo: "/logos/lin.svg" },
+  { name: "EGAT", logo: "/logos/egat.svg" },
+  { name: "B.Grimm", logo: "/logos/bgrimm.svg" },
+  { name: "Mitrphol", logo: "/logos/mitrphol.svg" },
+];
+
+interface TrustedByProps {
+  className?: string;
+}
+
+export default function TrustedBy({ className = "" }: TrustedByProps) {
+  const { t } = useLanguage();
+  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const trustedByTitle = (t.home as any)?.trustedBy?.title || "Trusted By Industry Leaders";
+
+  return (
+    <section className={`section-padding bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 relative overflow-hidden ${className}`}>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+      </div>
+      
+      <div className="container-custom relative">
+        {/* Section Title */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold">
+            {trustedByTitle}
+          </h2>
+        </div>
+
+        {/* Logo Grid - 4 columns on desktop, 2 columns on mobile/tablet */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
+          {clients.map((client) => (
+            <div
+              key={client.name}
+              className="flex items-center justify-center h-24 md:h-28 lg:h-32"
+            >
+              <img
+                src={client.logo}
+                alt={`${client.name} logo`}
+                className="w-24 h-12 md:w-28 md:h-14 lg:w-32 lg:h-16 object-contain opacity-60 hover:opacity-100 transition-all duration-200 ease-out"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
