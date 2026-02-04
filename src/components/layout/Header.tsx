@@ -70,17 +70,16 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <>
-          {/* Backdrop - covers full viewport, tap/click to close */}
-          <div 
-            className="fixed inset-0 bg-black/50 md:hidden z-40 cursor-pointer"
-            onClick={() => setMobileMenuOpen(false)}
-            aria-label="Close menu"
-          />
+        <div 
+          className="fixed inset-0 top-20 md:hidden z-40"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/50 z-0" />
           
           {/* Menu Panel - stops propagation so clicks inside don't close */}
           <div 
-            className="fixed left-0 right-0 top-20 bg-white md:hidden z-50 shadow-elevated border-b border-gray-100"
+            className="relative bg-white shadow-elevated border-b border-gray-100 z-10"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="container-custom py-6">
@@ -108,7 +107,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
     </header>
   );
