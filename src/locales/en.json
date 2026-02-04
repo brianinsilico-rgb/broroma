@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About",
     "products": "Products",
+    "suppliers": "Suppliers",
     "services": "Services",
     "contact": "Contact",
     "getQuote": "Get a Quote"
@@ -87,10 +88,11 @@
     },
     "story": {
       "label": "Our Story",
-      "title": "From Humble Beginnings to Global Leadership",
-      "p1": "Founded in 1998 by a team of industry veterans, Broroma began as a small trading company with a simple mission: to bridge the gap between quality pipe manufacturers and businesses in need of reliable supply.",
-      "p2": "What started in a modest office in Houston has grown into a global operation spanning five continents. Our success is built on unwavering commitment to quality, transparency, and customer satisfaction.",
-      "p3": "Today, we serve over 500 clients worldwide, from small construction firms to major oil and gas corporations. Our network includes certified suppliers across Asia, Europe, and the Americas, ensuring we can meet any specification or volume requirement.",
+      "title": "From Local Supplier to Trusted Industry Partner",
+      "p1": "Broroma began with a single, clear mission: to streamline industrial processes for our customers.",
+      "p2": "What started as a small trading company has grown into one of Thailand's most trusted names in industrial pipe supply. Over the years, we've built our reputation on three principles — reliability, quality, and genuine partnership.",
+      "p3": "Today, we serve customers across Power, Oil & Gas, Petrochemical, Sugar Mills, Boilers, and other process-driven industries. Our success isn't measured by products sold, but by the long-term relationships we've built and the problems we've helped solve.",
+      "p4": "We're not just a supplier. We're the partner you call when it has to be right.",
       "yearsLabel": "Years of Excellence"
     },
     "mission": {
@@ -98,9 +100,34 @@
       "title": "Empowering Industries Through Reliable Supply",
       "description": "Our mission is to be the most trusted partner in the global pipe trade industry, delivering unmatched quality, reliability, and value to our clients while fostering sustainable practices and long-term partnerships."
     },
-    "journey": {
-      "label": "Our Journey",
-      "title": "Key Milestones"
+    "industries": {
+      "label": "Our Expertise",
+      "title": "Industries We Serve",
+      "description": "We supply quality products to a wide range of process-driven industries across Thailand and beyond.",
+      "power": {
+        "name": "Power Generation",
+        "description": "Pipes, valves, and fittings for power plants and energy facilities"
+      },
+      "oilgas": {
+        "name": "Oil & Gas",
+        "description": "High-performance products for upstream, midstream, and downstream operations"
+      },
+      "petrochemical": {
+        "name": "Petrochemical",
+        "description": "Corrosion-resistant solutions for chemical processing plants"
+      },
+      "sugar": {
+        "name": "Sugar Mills",
+        "description": "Durable piping systems for sugar production and processing"
+      },
+      "boilers": {
+        "name": "Boilers",
+        "description": "High-pressure tubes and fittings for steam generation"
+      },
+      "water": {
+        "name": "Water Treatment",
+        "description": "Reliable piping for municipal and industrial water systems"
+      }
     },
     "values": {
       "label": "Our Values",
@@ -123,15 +150,15 @@
         "description": "We view every client relationship as a long-term partnership, invested in mutual success."
       }
     },
-    "team": {
-      "label": "Our Leadership",
-      "title": "Meet the Team",
-      "description": "Our experienced leadership team brings decades of industry expertise to guide Broroma's continued growth and success."
+    "projects": {
+      "label": "Our Work",
+      "title": "Project References",
+      "description": "A selection of projects where we've delivered quality products on time and to specification."
     },
-    "certifications": {
-      "label": "Certifications",
-      "title": "Industry Certifications",
-      "description": "Our commitment to quality is backed by internationally recognized certifications and standards compliance."
+    "standards": {
+      "label": "Quality Assurance",
+      "title": "Standards & Compliance",
+      "description": "All products are sourced from certified manufacturers and meet internationally recognized standards."
     },
     "cta": {
       "title": "Ready to Work With Us?",
@@ -436,6 +463,28 @@
     "copyright": "Broroma. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"
+  },
+  "suppliers": {
+    "hero": {
+      "title": "Our Suppliers",
+      "description": "We partner with leading manufacturers worldwide to deliver quality products that meet the highest industry standards."
+    },
+    "grid": {
+      "title": "Trusted Manufacturing Partners",
+      "description": "Our extensive network of suppliers ensures we can source the right products for any application, backed by quality certifications and reliable delivery."
+    },
+    "stats": {
+      "partners": "50+ Manufacturing Partners",
+      "countries": "15+ Countries",
+      "continents": "4 Continents"
+    },
+    "morePartners": "And 30+ more manufacturing partners worldwide",
+    "cta": {
+      "title": "Looking for a Specific Manufacturer?",
+      "description": "Our sourcing team can help you find products from manufacturers not listed here. Contact us with your requirements.",
+      "contact": "Contact Our Team",
+      "products": "Browse Products"
+    }
   },
   "common": {
     "learnMore": "Learn More",

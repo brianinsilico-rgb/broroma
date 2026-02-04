@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface Supplier {
   name: string;
@@ -28,9 +29,15 @@ const suppliers: Supplier[] = [
   { name: "Sandvik", country: "Sweden" },
   { name: "Tubacex", country: "Spain" },
   { name: "DMV Stainless", country: "Netherlands" },
+  { name: "United States Steel", country: "USA" },
+  { name: "Mannesmann", country: "Germany" },
+  { name: "Benteler", country: "Germany" },
+  { name: "Dalmine", country: "Italy" },
 ];
 
 export default function SuppliersPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       {/* Hero Section */}
@@ -38,19 +45,18 @@ export default function SuppliersPage() {
         <div className="container-custom">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-navy-300 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t.nav.home}</Link>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-            <span className="text-white">Suppliers</span>
+            <span className="text-white">{t.suppliers.hero.title}</span>
           </nav>
 
           {/* Title */}
           <div className="max-w-3xl">
-            <h1 className="text-white mb-6">Our Suppliers</h1>
+            <h1 className="text-white mb-6">{t.suppliers.hero.title}</h1>
             <p className="text-xl text-navy-200 leading-relaxed">
-              We partner with leading manufacturers worldwide to deliver quality products 
-              that meet the highest industry standards.
+              {t.suppliers.hero.description}
             </p>
           </div>
         </div>
@@ -60,24 +66,33 @@ export default function SuppliersPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           {/* Section Header */}
-          <div className="text-center mb-12">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">Global Network</span>
-            <h2 className="text-navy-900 mt-2 mb-4">Trusted Manufacturing Partners</h2>
+          <div className="text-center mb-8">
+            <h2 className="text-navy-900 mb-4">{t.suppliers.grid.title}</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our extensive network of suppliers ensures we can source the right products 
-              for any application, backed by quality certifications and reliable delivery.
+              {t.suppliers.grid.description}
             </p>
           </div>
 
-          {/* Supplier Cards Grid - 5 columns desktop, 3 tablet, 2 mobile */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+          {/* Stats Line */}
+          <div className="text-center mb-12">
+            <p className="text-sm text-gray-500">
+              <span className="font-medium">{t.suppliers.stats.partners}</span>
+              <span className="mx-3 text-gray-300">|</span>
+              <span className="font-medium">{t.suppliers.stats.countries}</span>
+              <span className="mx-3 text-gray-300">|</span>
+              <span className="font-medium">{t.suppliers.stats.continents}</span>
+            </p>
+          </div>
+
+          {/* Supplier Cards Grid - 4 columns desktop, 3 tablet, 2 mobile */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {suppliers.map((supplier) => (
               <div
                 key={supplier.name}
-                className="group p-6 bg-gray-50 rounded-xl hover:bg-white hover:shadow-elevated transition-all duration-300 flex flex-col items-center text-center"
+                className="group px-6 py-8 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 flex flex-col items-center text-center"
               >
                 {/* Logo Placeholder */}
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-200 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-100 transition-colors">
+                <div className="w-full aspect-[3/2] max-w-[120px] bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors">
                   <span className="text-gray-400 text-xs font-medium uppercase tracking-wide">Logo</span>
                 </div>
                 
@@ -93,6 +108,13 @@ export default function SuppliersPage() {
               </div>
             ))}
           </div>
+
+          {/* More Partners Note */}
+          <div className="text-center mt-10">
+            <p className="text-sm text-gray-500">
+              {t.suppliers.morePartners}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -101,18 +123,17 @@ export default function SuppliersPage() {
         <div className="container-custom">
           <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-3xl p-8 md:p-12 lg:p-16 text-center">
             <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">
-              Looking for a Specific Manufacturer?
+              {t.suppliers.cta.title}
             </h2>
             <p className="text-navy-200 text-lg mb-8 max-w-2xl mx-auto">
-              Our sourcing team can help you find products from manufacturers not listed here. 
-              Contact us with your requirements.
+              {t.suppliers.cta.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="btn-primary">
-                Contact Our Team
+                {t.suppliers.cta.contact}
               </Link>
               <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900">
-                Browse Products
+                {t.suppliers.cta.products}
               </Link>
             </div>
           </div>
