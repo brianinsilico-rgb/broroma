@@ -68,43 +68,40 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Backdrop */}
       {mobileMenuOpen && (
         <div 
-          className="fixed inset-0 top-20 md:hidden z-40"
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/50 z-0" />
-          
-          {/* Menu Panel - stops propagation so clicks inside don't close */}
-          <div 
-            className="relative bg-white shadow-elevated border-b border-gray-100 z-10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="container-custom py-6">
-              <div className="flex flex-col gap-4">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="text-navy-700 hover:text-navy-900 font-medium py-2 transition-colors duration-200"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                <div className="pt-4 border-t border-gray-100">
-                  <LanguageToggle />
-                </div>
+          className="fixed inset-0 bg-black/50 md:hidden z-40"
+          onTouchStart={() => setMobileMenuOpen(false)}
+          onMouseDown={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu Panel */}
+      {mobileMenuOpen && (
+        <div className="fixed left-0 right-0 top-20 bg-white md:hidden z-50 shadow-elevated border-b border-gray-100">
+          <div className="container-custom py-6">
+            <div className="flex flex-col gap-4">
+              {navigation.map((item) => (
                 <Link
-                  href="/contact"
-                  className="btn-primary text-center mt-2"
+                  key={item.href}
+                  href={item.href}
+                  className="text-navy-700 hover:text-navy-900 font-medium py-2 transition-colors duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {t.nav.getQuote}
+                  {item.name}
                 </Link>
+              ))}
+              <div className="pt-4 border-t border-gray-100">
+                <LanguageToggle />
               </div>
+              <Link
+                href="/contact"
+                className="btn-primary text-center mt-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.nav.getQuote}
+              </Link>
             </div>
           </div>
         </div>
