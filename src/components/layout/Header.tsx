@@ -11,9 +11,9 @@ export default function Header() {
   const { t } = useLanguage();
 
   const navigation = [
-    { name: t.nav.home, href: "/" },
     { name: t.nav.about, href: "/about" },
     { name: t.nav.products, href: "/products" },
+    { name: "Suppliers", href: "/suppliers" },
     { name: t.nav.services, href: "/services" },
     { name: t.nav.contact, href: "/contact" },
   ];

@@ -15,10 +15,12 @@ export default function Footer() {
       { name: t.footer.careers, href: "/contact" },
     ],
     products: [
-      { name: t.products.steel.name, href: "/products/steel-pipes" },
-      { name: t.products.carbon.name, href: "/products/carbon-pipes" },
-      { name: t.products.stainless.name, href: "/products/stainless-steel" },
-      { name: t.products.alloy.name, href: "/products/alloy-pipes" },
+      { name: "Pipes", href: "/products/pipes" },
+      { name: "Fittings", href: "/products/fittings" },
+      { name: "Flanges", href: "/products/flanges" },
+      { name: "Tubes", href: "/products/boiler-tubes" },
+      { name: "Valves", href: "/products/manual-valves" },
+      { name: "Accessories", href: "/products/accessories-instruments" },
     ],
     services: [
       { name: t.footer.importServices, href: "/services#import" },

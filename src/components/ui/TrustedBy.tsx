@@ -29,7 +29,7 @@ export default function TrustedBy({ className = "" }: TrustedByProps) {
   const trustedByTitle = (t.home as any)?.trustedBy?.title || "Trusted By Industry Leaders";
 
   return (
-    <section className={`section-padding bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 relative overflow-hidden ${className}`}>
+    <section className={`py-12 md:py-16 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 relative overflow-hidden ${className}`}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -39,23 +39,23 @@ export default function TrustedBy({ className = "" }: TrustedByProps) {
       
       <div className="container-custom relative">
         {/* Section Title */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold">
+        <div className="text-center mb-8 md:mb-10">
+          <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-semibold">
             {trustedByTitle}
           </h2>
         </div>
 
         {/* Logo Grid - 4 columns on desktop, 2 columns on mobile/tablet */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {clients.map((client) => (
             <div
               key={client.name}
-              className="flex items-center justify-center h-24 md:h-28 lg:h-32"
+              className="flex items-center justify-center h-16 md:h-20 lg:h-24"
             >
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
-                className="w-24 h-12 md:w-28 md:h-14 lg:w-32 lg:h-16 object-contain opacity-60 hover:opacity-100 transition-all duration-200 ease-out"
+                className="w-20 h-10 md:w-24 md:h-12 lg:w-28 lg:h-14 object-contain opacity-60 hover:opacity-100 transition-all duration-200 ease-out"
               />
             </div>
           ))}

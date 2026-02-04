@@ -9,52 +9,58 @@ export default function ProductsPage() {
 
   const categories = [
     {
-      slug: "steel-pipes",
-      name: t.products.steel.name,
-      description: t.products.steel.description,
+      slug: "pipes",
+      name: "Pipes",
+      description: "High-quality steel, carbon, stainless, and alloy pipes for industrial applications.",
       image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",
-      specifications: ["ASTM A53", "ASTM A106", "API 5L"],
-      applications: ["Construction", "Oil & Gas", "Water Systems"],
     },
     {
-      slug: "carbon-pipes",
-      name: t.products.carbon.name,
-      description: t.products.carbon.description,
-      image: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=800&q=80",
-      specifications: ["ASTM A333", "ASTM A335", "ASTM A691"],
-      applications: ["Power Plants", "Refineries", "Chemical Plants"],
-    },
-    {
-      slug: "stainless-steel",
-      name: t.products.stainless.name,
-      description: t.products.stainless.description,
+      slug: "fittings",
+      name: "Fittings",
+      description: "Complete range of pipe fittings including elbows, tees, reducers, and couplings.",
       image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-      specifications: ["304/304L", "316/316L", "321", "347"],
-      applications: ["Food & Beverage", "Pharmaceutical", "Marine"],
     },
     {
-      slug: "alloy-pipes",
-      name: t.products.alloy.name,
-      description: t.products.alloy.description,
-      image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=800&q=80",
-      specifications: ["Inconel", "Monel", "Hastelloy", "Duplex"],
-      applications: ["Aerospace", "Chemical Processing", "Nuclear"],
-    },
-    {
-      slug: "seamless-pipes",
-      name: t.products.seamless.name,
-      description: t.products.seamless.description,
-      image: "https://images.unsplash.com/photo-1605857840732-188a3f6d6dc5?w=800&q=80",
-      specifications: ["ASTM A179", "ASTM A192", "ASTM A213"],
-      applications: ["Boilers", "Heat Exchangers", "Pressure Vessels"],
-    },
-    {
-      slug: "welded-pipes",
-      name: t.products.welded.name,
-      description: t.products.welded.description,
+      slug: "flanges",
+      name: "Flanges",
+      description: "Precision-engineered flanges for secure pipe connections and system integrity.",
       image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
-      specifications: ["API 5L PSL1/PSL2", "ASTM A252", "EN 10219"],
-      applications: ["Pipelines", "Piling", "Structural"],
+    },
+    {
+      slug: "boiler-tubes",
+      name: "Boiler Tubes",
+      description: "Heat-resistant tubes designed for high-temperature boiler applications.",
+      image: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=800&q=80",
+    },
+    {
+      slug: "heat-exchanger-tubes",
+      name: "Heat Exchanger Tubes",
+      description: "Efficient thermal transfer tubes for heat exchanger systems.",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    },
+    {
+      slug: "manual-valves",
+      name: "Manual Valves",
+      description: "Reliable manual control valves for flow regulation and isolation.",
+      image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=800&q=80",
+    },
+    {
+      slug: "safety-valves",
+      name: "Safety Valves",
+      description: "Certified safety and relief valves for pressure protection systems.",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    },
+    {
+      slug: "control-valves",
+      name: "Control Valves",
+      description: "Automated control valves for precise flow, pressure, and temperature regulation.",
+      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+    },
+    {
+      slug: "accessories-instruments",
+      name: "Accessories",
+      description: "Supporting equipment including gauges, strainers, and instrumentation.",
+      image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
     },
   ];
 
@@ -148,57 +154,36 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.map((category) => (
               <Link
                 key={category.slug}
                 href={`/products/${category.slug}`}
                 className="group"
               >
-                <div className="card h-full hover:border-navy-200">
-                  <div className="aspect-[16/10] relative rounded-lg overflow-hidden mb-6">
+                <div className="card h-full hover:border-navy-200 flex flex-col">
+                  <div className="aspect-[4/3] relative rounded-lg overflow-hidden mb-4">
                     <Image
                       src={category.image}
                       alt={category.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent" />
-                    <h3 className="absolute bottom-4 left-4 text-xl font-semibold text-white">
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent" />
+                  </div>
+                  <div className="flex flex-col flex-grow">
+                    <h3 className="text-base md:text-lg font-semibold text-navy-900 mb-2 group-hover:text-accent-500 transition-colors">
                       {category.name}
                     </h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">{category.description}</p>
-                  
-                  <div className="mb-4">
-                    <p className="text-sm font-medium text-navy-900 mb-2">{t.products.categories.specifications}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {category.specifications.map((spec, i) => (
-                        <span key={i} className="px-2 py-1 bg-navy-50 text-navy-700 text-xs rounded-md">
-                          {spec}
-                        </span>
-                      ))}
+                    <p className="text-gray-600 text-sm flex-grow line-clamp-2">{category.description}</p>
+                    <div className="mt-4 pt-4 border-t border-gray-100">
+                      <span className="inline-flex items-center text-accent-500 text-sm font-medium group-hover:text-accent-600 transition-colors">
+                        {t.products.categories.viewProducts}
+                        <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
                     </div>
-                  </div>
-                  
-                  <div>
-                    <p className="text-sm font-medium text-navy-900 mb-2">{t.products.categories.applications}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {category.applications.map((app, i) => (
-                        <span key={i} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">
-                          {app}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="mt-6 pt-6 border-t border-gray-100">
-                    <span className="inline-flex items-center text-accent-500 font-medium group-hover:text-accent-600 transition-colors">
-                      {t.products.categories.viewProducts}
-                      <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </span>
                   </div>
                 </div>
               </Link>
