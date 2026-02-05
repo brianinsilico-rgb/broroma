@@ -296,7 +296,7 @@ export default function QuotePage() {
                       <div className="relative datepicker-wrapper">
                         <DatePicker
                           selected={deliveryDate}
-                          onChange={(date) => setDeliveryDate(date)}
+                          onChange={(date: Date | null) => setDeliveryDate(date)}
                           dateFormat="dd/MM/yyyy"
                           minDate={new Date()}
                           placeholderText={t.quote.form.deliveryDatePlaceholder}
