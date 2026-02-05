@@ -105,22 +105,22 @@ export default function ProductsPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="gradient-navy py-20 md:py-28">
+      {/* Hero Section - Compact on mobile */}
+      <section className="gradient-navy py-6 md:py-16">
         <div className="container-custom">
           <div className="max-w-3xl">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-sm text-navy-300 mb-6">
+            <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 md:mb-4">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
               <span className="text-white">Products</span>
             </nav>
-            <h1 className="text-white mb-6">
+            <h1 className="text-white text-2xl md:text-4xl lg:text-5xl">
               {t.products.hero.title}
             </h1>
-            <p className="text-xl text-navy-200 leading-relaxed">
+            <p className="hidden md:block text-xl text-navy-200 leading-relaxed mt-4">
               {t.products.hero.description}
             </p>
           </div>
