@@ -75,9 +75,35 @@ body {
            outline-none transition-all duration-200 bg-white;
   }
   
+  /* Invalid input field styling */
+  .input-field:invalid:not(:placeholder-shown),
+  .input-field:user-invalid {
+    @apply border-accent-500 focus:ring-accent-500 focus:border-accent-500;
+  }
+  
+  input:invalid,
+  select:invalid,
+  textarea:invalid {
+    box-shadow: none;
+  }
+  
   .label-text {
     @apply block text-sm font-medium text-navy-800 mb-2;
   }
+}
+
+/* Checkbox styling with red accent */
+input[type="checkbox"] {
+  accent-color: #ef4444;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #ef4444;
+  border-color: #ef4444;
+}
+
+input[type="checkbox"]:focus {
+  --tw-ring-color: rgba(239, 68, 68, 0.3);
 }
 
 @layer utilities {
@@ -92,6 +118,58 @@ body {
   .gradient-light {
     @apply bg-gradient-to-br from-gray-50 to-white;
   }
+}
+
+/* Form Validation Styles */
+/* Remove default browser validation styling */
+input:invalid,
+select:invalid,
+textarea:invalid {
+  box-shadow: none;
+}
+
+/* Only show red border after user has interacted with the field */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: #dc2626 !important;
+}
+
+input:user-invalid:focus,
+select:user-invalid:focus,
+textarea:user-invalid:focus {
+  border-color: #dc2626 !important;
+  --tw-ring-color: #dc2626;
+}
+
+/* Override browser default validation bubble */
+::-webkit-validation-bubble-message {
+  padding: 0.75rem 1rem;
+  background-color: #dc2626;
+  color: white;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-validation-bubble-arrow {
+  background-color: #dc2626;
+}
+
+::-webkit-validation-bubble-icon {
+  display: none;
+}
+
+/* Firefox validation styling - only after interaction */
+:-moz-ui-invalid:not(:placeholder-shown) {
+  box-shadow: none;
+  border-color: #dc2626;
+}
+
+/* Product row validation - red border only after user interaction */
+.product-row-container:has(select:user-invalid),
+.product-row-container:has(input:user-invalid) {
+  border-color: #dc2626 !important;
 }
 
 /* Custom DatePicker Styles */
@@ -238,6 +316,7 @@ body {
 
 .react-datepicker-popper {
   z-index: 50;
+  position: fixed !important;
 }
 
 /* Set calendar width to match input */

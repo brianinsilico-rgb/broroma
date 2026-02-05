@@ -38,6 +38,18 @@ export default function QuotePage() {
     { id: 1, category: "", details: "" }
   ]);
   
+  const [preferredOrigins, setPreferredOrigins] = useState<string[]>([]);
+  
+  const originOptions = [
+    { id: "china", label: t.quote.form.origins.china },
+    { id: "india", label: t.quote.form.origins.india },
+    { id: "japan", label: t.quote.form.origins.japan },
+    { id: "korea", label: t.quote.form.origins.korea },
+    { id: "europe", label: t.quote.form.origins.europe },
+    { id: "usa", label: t.quote.form.origins.usa },
+    { id: "noPreference", label: t.quote.form.origins.noPreference },
+  ];
+  
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -65,6 +77,16 @@ export default function QuotePage() {
     if (productRows.length > 1) {
       setProductRows(rows => rows.filter(row => row.id !== id));
     }
+  };
+
+  const handleOriginChange = (originId: string) => {
+    setPreferredOrigins(prev => {
+      if (prev.includes(originId)) {
+        return prev.filter(id => id !== originId);
+      } else {
+        return [...prev, originId];
+      }
+    });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,6 +124,7 @@ export default function QuotePage() {
     });
     setDeliveryDate(null);
     setProductRows([{ id: 1, category: "", details: "" }]);
+    setPreferredOrigins([]);
     nextRowId.current = 2;
     setSelectedFile(null);
     if (fileInputRef.current) {
@@ -226,7 +249,7 @@ export default function QuotePage() {
                             key={row.id} 
                             className="relative transition-all duration-200"
                           >
-                            <div className="flex flex-col md:flex-row border border-gray-300 rounded-lg overflow-hidden focus-within:border-navy-400 focus-within:ring-1 focus-within:ring-navy-400">
+                            <div className="product-row-container flex flex-col md:flex-row border border-gray-300 rounded-lg overflow-hidden focus-within:border-navy-400 focus-within:ring-1 focus-within:ring-navy-400">
                               <select
                                 value={row.category}
                                 onChange={(e) => handleProductRowChange(row.id, 'category', e.target.value)}
@@ -276,6 +299,36 @@ export default function QuotePage() {
                       </div>
                     </div>
 
+                    {/* Preferred Origin */}
+                    <div>
+                      <label className="label-text">{t.quote.form.preferredOrigin} *</label>
+                      <div className="mt-2 flex flex-wrap gap-x-6 gap-y-3">
+                        {originOptions.map((origin) => (
+                          <label
+                            key={origin.id}
+                            className="inline-flex items-center gap-2 cursor-pointer"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={preferredOrigins.includes(origin.id)}
+                              onChange={() => handleOriginChange(origin.id)}
+                              className="w-4 h-4 rounded border-gray-300 text-accent-500 focus:ring-accent-500 focus:ring-offset-0 cursor-pointer"
+                            />
+                            <span className="text-sm text-navy-800">{origin.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                      {/* Hidden input for form validation */}
+                      <input
+                        type="text"
+                        required
+                        value={preferredOrigins.length > 0 ? "valid" : ""}
+                        className="sr-only"
+                        tabIndex={-1}
+                        onChange={() => {}}
+                      />
+                    </div>
+
                     {/* Additional Notes / Specifications */}
                     <div>
                       <label htmlFor="specifications" className="label-text">{t.quote.form.additionalNotes}</label>
@@ -305,6 +358,7 @@ export default function QuotePage() {
                           showPopperArrow={false}
                           popperPlacement="bottom-start"
                           wrapperClassName="w-full"
+                          popperProps={{ strategy: "fixed" }}
                         />
                         <div className="datepicker-icon">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

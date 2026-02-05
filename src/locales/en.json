@@ -506,6 +506,16 @@
       "selectCategory": "Select category",
       "detailsPlaceholder": "e.g., 50 tons, A106B, 2-inch seamless",
       "addProduct": "Add Another Product",
+      "preferredOrigin": "Preferred Origin",
+      "origins": {
+        "china": "China",
+        "india": "India",
+        "japan": "Japan",
+        "korea": "Korea",
+        "europe": "Europe",
+        "usa": "USA",
+        "noPreference": "No Preference"
+      },
       "additionalNotes": "Additional Notes",
       "additionalNotesPlaceholder": "Any other requirements, special instructions, or questions...",
       "deliveryDate": "Required Delivery Date",

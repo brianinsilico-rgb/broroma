@@ -509,6 +509,16 @@
       "selectCategory": "เลือกหมวดหมู่",
       "detailsPlaceholder": "เช่น 50 ตัน, A106B, 2 นิ้ว ไร้ตะเข็บ",
       "addProduct": "เพิ่มสินค้าอื่น",
+      "preferredOrigin": "แหล่งที่มาที่ต้องการ",
+      "origins": {
+        "china": "จีน",
+        "india": "อินเดีย",
+        "japan": "ญี่ปุ่น",
+        "korea": "เกาหลี",
+        "europe": "ยุโรป",
+        "usa": "สหรัฐอเมริกา",
+        "noPreference": "ไม่ระบุ"
+      },
       "additionalNotes": "หมายเหตุเพิ่มเติม",
       "additionalNotesPlaceholder": "ข้อกำหนดอื่นๆ คำแนะนำพิเศษ หรือคำถาม...",
       "deliveryDate": "วันที่ต้องการรับสินค้า",
