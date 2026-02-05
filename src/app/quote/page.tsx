@@ -2,6 +2,8 @@
 
 import { useState, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface ProductRow {
   id: number;
@@ -28,8 +30,9 @@ export default function QuotePage() {
     email: "",
     phone: "",
     specifications: "",
-    deliveryDate: "",
   });
+  
+  const [deliveryDate, setDeliveryDate] = useState<Date | null>(null);
   
   const [productRows, setProductRows] = useState<ProductRow[]>([
     { id: 1, category: "", details: "" }
@@ -96,8 +99,8 @@ export default function QuotePage() {
       email: "",
       phone: "",
       specifications: "",
-      deliveryDate: "",
     });
+    setDeliveryDate(null);
     setProductRows([{ id: 1, category: "", details: "" }]);
     nextRowId.current = 2;
     setSelectedFile(null);
@@ -288,16 +291,27 @@ export default function QuotePage() {
                     </div>
 
                     {/* Delivery Date */}
-                    <div className="md:w-1/2">
+                    <div className="w-full max-w-[280px]">
                       <label htmlFor="deliveryDate" className="label-text">{t.quote.form.deliveryDate}</label>
-                      <input
-                        type="date"
-                        id="deliveryDate"
-                        name="deliveryDate"
-                        value={formData.deliveryDate}
-                        onChange={handleChange}
-                        className="input-field"
-                      />
+                      <div className="relative datepicker-wrapper">
+                        <DatePicker
+                          selected={deliveryDate}
+                          onChange={(date) => setDeliveryDate(date)}
+                          dateFormat="dd/MM/yyyy"
+                          minDate={new Date()}
+                          placeholderText={t.quote.form.deliveryDatePlaceholder}
+                          className="input-field w-full"
+                          calendarClassName="custom-datepicker"
+                          showPopperArrow={false}
+                          popperPlacement="bottom-start"
+                          wrapperClassName="w-full"
+                        />
+                        <div className="datepicker-icon">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
 
                     {/* File Upload */}

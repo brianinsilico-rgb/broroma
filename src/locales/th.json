@@ -512,6 +512,7 @@
       "additionalNotes": "หมายเหตุเพิ่มเติม",
       "additionalNotesPlaceholder": "ข้อกำหนดอื่นๆ คำแนะนำพิเศษ หรือคำถาม...",
       "deliveryDate": "วันที่ต้องการรับสินค้า",
+      "deliveryDatePlaceholder": "เลือกวันที่",
       "uploadFile": "อัปโหลดไฟล์",
       "chooseFile": "เลือกไฟล์",
       "orDragDrop": "หรือลากและวาง",

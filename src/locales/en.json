@@ -509,6 +509,7 @@
       "additionalNotes": "Additional Notes",
       "additionalNotesPlaceholder": "Any other requirements, special instructions, or questions...",
       "deliveryDate": "Required Delivery Date",
+      "deliveryDatePlaceholder": "Select a date",
       "uploadFile": "Upload File",
       "chooseFile": "Choose a file",
       "orDragDrop": "or drag and drop",
