@@ -105,8 +105,8 @@ export default function ProductsPage() {
 
   return (
     <>
-      {/* Hero Section - Compact on mobile */}
-      <section className="gradient-navy py-6 md:py-16">
+      {/* Hero Section */}
+      <section className="gradient-navy py-20 md:py-28">
         <div className="container-custom">
           <div className="max-w-3xl">
             {/* Breadcrumb */}
@@ -117,10 +117,10 @@ export default function ProductsPage() {
               </svg>
               <span className="text-white">Products</span>
             </nav>
-            <h1 className="text-white text-2xl md:text-4xl lg:text-5xl">
+            <h1 className="text-white mb-6">
               {t.products.hero.title}
             </h1>
-            <p className="hidden md:block text-xl text-navy-200 leading-relaxed mt-4">
+            <p className="text-xl text-navy-200 leading-relaxed">
               {t.products.hero.description}
             </p>
           </div>
@@ -129,17 +129,14 @@ export default function ProductsPage() {
 
       {/* Features Bar - Below Hero */}
       <section className="bg-white border-b border-gray-100">
-        <div className="container-custom">
-          <div className="py-4 md:py-8 grid grid-cols-4 gap-3 md:gap-6">
+        <div className="container-custom py-4 md:py-6">
+          <div className="grid grid-cols-4 gap-3 md:gap-5">
             {features.map((feature, index) => (
-              <div key={index} className="flex flex-col md:flex-row items-center md:items-center gap-1.5 md:gap-3 text-center md:text-left">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-navy-50 rounded-lg flex items-center justify-center text-navy-900 flex-shrink-0 [&>svg]:w-4 [&>svg]:h-4 md:[&>svg]:w-6 md:[&>svg]:h-6">
+              <div key={index} className="flex flex-col md:flex-row items-center gap-1.5 md:gap-3 text-center md:text-left">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-navy-50 rounded-lg flex items-center justify-center text-navy-900 [&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:w-6 md:[&>svg]:h-6">
                   {feature.icon}
                 </div>
-                <div>
-                  <p className="font-semibold text-navy-900 text-[10px] md:text-sm leading-tight">{feature.title}</p>
-                  <p className="text-gray-500 text-xs hidden md:block">{feature.description}</p>
-                </div>
+                <p className="font-semibold text-navy-900 text-[11px] md:text-sm leading-tight">{feature.title}</p>
               </div>
             ))}
           </div>
@@ -217,36 +214,36 @@ export default function ProductsPage() {
       </section>
 
       {/* Custom Sourcing CTA */}
-      <section className="section-padding bg-white">
+      <section className="py-10 md:py-16 bg-white">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-10 items-center">
             <div>
-              <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.products.customSourcing.label}</span>
-              <h2 className="text-navy-900 mt-2 mb-6">
+              <span className="text-accent-500 font-semibold text-xs uppercase tracking-wider">{t.products.customSourcing.label}</span>
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-navy-900 mt-1 mb-3">
                 {t.products.customSourcing.title}
               </h2>
-              <p className="text-gray-600 mb-6 text-lg">
+              <p className="text-gray-600 mb-4 text-sm md:text-base">
                 {t.products.customSourcing.description}
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-2 mb-5">
                 {t.products.customSourcing.features.map((item: string, index: number) => (
-                  <li key={index} className="flex items-center gap-3 text-gray-700">
-                    <svg className="w-5 h-5 text-accent-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <li key={index} className="flex items-center gap-2 text-gray-700 text-sm">
+                    <svg className="w-4 h-4 text-accent-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     {item}
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" className="btn-primary">
+              <Link href="/contact" className="btn-primary text-sm">
                 {t.products.customSourcing.cta}
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
             </div>
-            <div className="relative">
-              <div className="aspect-square relative rounded-2xl overflow-hidden">
+            <div className="relative hidden md:block">
+              <div className="aspect-[4/3] relative rounded-xl overflow-hidden">
                 <Image
                   src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
                   alt="Custom sourcing"
@@ -260,20 +257,20 @@ export default function ProductsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="py-10 md:py-16 bg-gray-50">
         <div className="container-custom">
-          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-3xl p-8 md:p-16 text-center">
-            <h2 className="text-white mb-4">
+          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl p-6 md:p-10 text-center">
+            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-white mb-2">
               {t.products.cta.title}
             </h2>
-            <p className="text-navy-200 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-navy-200 text-sm md:text-base mb-5 max-w-xl mx-auto">
               {t.products.cta.description}
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-primary">
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/contact" className="btn-primary text-sm">
                 {t.products.cta.contact}
               </Link>
-              <Link href="/services" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900">
+              <Link href="/services" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900 text-sm">
                 {t.products.cta.services}
               </Link>
             </div>
