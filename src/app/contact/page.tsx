@@ -20,35 +20,6 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
-  const touchStartX = useRef<number>(0);
-  const touchEndX = useRef<number>(0);
-
-  const tabOrder: TabType[] = ["message", "call", "visit"];
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    const swipeDistance = touchStartX.current - touchEndX.current;
-    const minSwipeDistance = 50;
-
-    if (Math.abs(swipeDistance) > minSwipeDistance) {
-      const currentIndex = tabOrder.indexOf(activeTab);
-      
-      if (swipeDistance > 0 && currentIndex < tabOrder.length - 1) {
-        // Swipe left - go to next tab
-        setActiveTab(tabOrder[currentIndex + 1]);
-      } else if (swipeDistance < 0 && currentIndex > 0) {
-        // Swipe right - go to previous tab
-        setActiveTab(tabOrder[currentIndex - 1]);
-      }
-    }
-  };
 
   // Clear validation styling when clicking outside the form
   useEffect(() => {
@@ -190,15 +161,46 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Tab Content */}
-            <div 
-              className="bg-white rounded-2xl shadow-soft overflow-hidden"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
+            {/* Tab Content with Arrow Navigation */}
+            <div className="relative">
+              {/* Left Arrow - hidden on first tab */}
+              {activeTab !== "message" && (
+                <button
+                  onClick={() => {
+                    const tabs: TabType[] = ["message", "call", "visit"];
+                    const currentIndex = tabs.indexOf(activeTab);
+                    if (currentIndex > 0) setActiveTab(tabs[currentIndex - 1]);
+                  }}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 md:-translate-x-6 z-10 w-8 h-8 md:w-10 md:h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-400 hover:text-navy-900 hover:shadow-lg transition-all"
+                  aria-label="Previous tab"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              )}
+
+              {/* Right Arrow - hidden on last tab */}
+              {activeTab !== "visit" && (
+                <button
+                  onClick={() => {
+                    const tabs: TabType[] = ["message", "call", "visit"];
+                    const currentIndex = tabs.indexOf(activeTab);
+                    if (currentIndex < tabs.length - 1) setActiveTab(tabs[currentIndex + 1]);
+                  }}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 md:translate-x-6 z-10 w-8 h-8 md:w-10 md:h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-400 hover:text-navy-900 hover:shadow-lg transition-all"
+                  aria-label="Next tab"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
+
+              <div className="bg-white rounded-2xl shadow-soft overflow-hidden">
+                <div className="grid">
               {/* Send Message Tab */}
-              {activeTab === "message" && (
+              <div className={`col-start-1 row-start-1 transition-opacity duration-200 ${activeTab === "message" ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                 <div className="p-8">
                   {isSubmitted ? (
                     <div className="text-center py-8">
@@ -273,7 +275,7 @@ export default function ContactPage() {
                           />
                         </div>
 
-                        <div className="flex flex-col sm:flex-row items-center gap-4">
+                        <div className="flex flex-col sm:flex-row sm:items-end gap-4">
                           <button
                             type="submit"
                             disabled={isSubmitting}
@@ -290,22 +292,22 @@ export default function ContactPage() {
                             ) : (
                               <>
                                 {t.contact.form.submit}
-                                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 ml-2 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                                 </svg>
                               </>
                             )}
                           </button>
-                          <p className="text-sm text-gray-500">* {t.contact.form.required}</p>
+                          <p className="text-sm text-gray-500 mt-2 sm:mt-0">* {t.contact.form.required}</p>
                         </div>
                       </form>
                     </>
                   )}
                 </div>
-              )}
+              </div>
 
               {/* Call Us Tab */}
-              {activeTab === "call" && (
+              <div className={`col-start-1 row-start-1 transition-opacity duration-200 ${activeTab === "call" ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                 <div className="p-8">
                   <div className="text-center mb-8">
                     <h2 className="text-2xl font-semibold text-navy-900 mb-2">{t.contact.tabs?.callTitle || "Get in Touch"}</h2>
@@ -372,13 +374,13 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
 
               {/* Visit Us Tab */}
-              {activeTab === "visit" && (
+              <div className={`col-start-1 row-start-1 transition-opacity duration-200 ${activeTab === "visit" ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                 <div>
                   {/* Map */}
-                  <div className="aspect-[16/9] bg-navy-100 relative">
+                  <div className="aspect-[21/9] bg-navy-100 relative">
                     <Image
                       src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1400&q=80"
                       alt="Map location"
@@ -442,18 +444,29 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Dot Indicators */}
+            <div className="flex justify-center gap-2 mt-4">
+              {(["message", "call", "visit"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                    activeTab === tab 
+                      ? "bg-navy-900 w-6" 
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Go to ${tab} tab`}
+                />
+              ))}
             </div>
 
             {/* Need a Quote Banner */}
             <div className="mt-12 bg-gradient-to-r from-navy-900 to-navy-800 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden">
-              {/* Subtle diagonal lines */}
-              <div 
-                className="absolute inset-0 opacity-[0.05]"
-                style={{
-                  backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, #fff 10px, #fff 11px)`,
-                }}
-              />
               {/* Accent glow */}
               <div className="absolute -right-20 -top-20 w-40 h-40 bg-accent-500/20 rounded-full blur-2xl" />
               
