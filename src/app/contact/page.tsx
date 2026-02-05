@@ -20,7 +20,7 @@ export default function ContactPage() {
   const contactInfo = [
     {
       title: t.contact.info.address,
-      content: "1234 Industrial Boulevard\nHouston, TX 77001\nUnited States",
+      content: "11/88 Moo 20, Lam Luk Ka\nLam Luk Ka District\nPathum Thani 12150, Thailand",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -321,13 +321,14 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold text-navy-900 mb-2">{t.contact.location.headquarters}</h3>
+                  <h3 className="text-lg font-semibold text-navy-900 mb-2">{t.contact.location.office}</h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    1234 Industrial Boulevard<br />
-                    Houston, TX 77001, United States
+                    11/88 Moo 20, Lam Luk Ka<br />
+                    Lam Luk Ka District<br />
+                    Pathum Thani 12150, Thailand
                   </p>
                   <a
-                    href="https://maps.google.com"
+                    href="https://share.google/g0sl6xDJOFESJCe1m"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-accent-500 hover:text-accent-600 font-medium text-sm transition-colors"
@@ -344,35 +345,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Global Offices */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.contact.offices.label}</span>
-            <h2 className="text-navy-900 mt-2 mb-4">{t.contact.offices.title}</h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { city: "Houston, USA", address: "1234 Industrial Blvd", type: t.contact.offices.headquarters, phone: "+1 (713) 555-0192" },
-              { city: "Singapore", address: "88 Market Street", type: t.contact.offices.asiaPacific, phone: "+65 6555 0192" },
-              { city: "Rotterdam, Netherlands", address: "Havenstraat 45", type: t.contact.offices.europe, phone: "+31 10 555 0192" },
-            ].map((office, index) => (
-              <div key={index} className="card text-center">
-                <div className="w-12 h-12 bg-navy-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
-                <span className="text-xs font-medium text-accent-500 uppercase tracking-wider">{office.type}</span>
-                <h3 className="text-lg font-semibold text-navy-900 mt-1 mb-2">{office.city}</h3>
-                <p className="text-gray-600 text-sm mb-1">{office.address}</p>
-                <p className="text-gray-600 text-sm">{office.phone}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

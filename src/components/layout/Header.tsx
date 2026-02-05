@@ -43,7 +43,7 @@ export default function Header() {
           {/* Language Toggle & CTA Button */}
           <div className="hidden md:flex items-center gap-4">
             <LanguageToggle />
-            <Link href="/contact" className="btn-primary">
+            <Link href="/quote" className="btn-primary">
               {t.nav.getQuote}
             </Link>
           </div>
@@ -98,7 +98,7 @@ export default function Header() {
                   <LanguageToggle />
                 </div>
                 <Link
-                  href="/contact"
+                  href="/quote"
                   className="btn-primary text-center mt-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >

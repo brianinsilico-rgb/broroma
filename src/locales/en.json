@@ -3,14 +3,14 @@
     "home": "Home",
     "about": "About",
     "products": "Products",
-    "suppliers": "Suppliers",
+    "suppliers": "Brands",
     "services": "Services",
     "contact": "Contact",
     "getQuote": "Get a Quote"
   },
   "home": {
     "hero": {
-      "badge": "Trusted Global Partner Since 1998",
+      "badge": "Trusted Global Partner Since 2002",
       "title": "Your Gateway to",
       "titleHighlight": "Premium Industrial Pipes",
       "description": "Connecting manufacturers and buyers worldwide with reliable import and export solutions for steel, carbon, and specialty pipes.",
@@ -432,8 +432,8 @@
     "location": {
       "label": "Location",
       "title": "Find Us",
-      "description": "Visit our headquarters in Houston, the heart of the American energy industry.",
-      "headquarters": "Broroma Headquarters",
+      "description": "Visit our office in Pathum Thani, Thailand.",
+      "office": "Broroma Office",
       "getDirections": "Get Directions"
     },
     "offices": {
@@ -445,7 +445,7 @@
     }
   },
   "footer": {
-    "tagline": "Your trusted partner in global industrial pipe trade. Delivering quality, reliability, and excellence since 1998.",
+    "tagline": "Your trusted partner in global industrial pipe trade. Delivering quality, reliability, and excellence since 2002.",
     "company": "Company",
     "aboutUs": "About Us",
     "ourTeam": "Our Team",
@@ -484,6 +484,74 @@
       "description": "Our sourcing team can help you find products from manufacturers not listed here. Contact us with your requirements.",
       "contact": "Contact Our Team",
       "products": "Browse Products"
+    }
+  },
+  "quote": {
+    "hero": {
+      "label": "Request a Quote",
+      "title": "Get a Quote",
+      "description": "Tell us what you need and we'll get back to you within 24 hours."
+    },
+    "form": {
+      "title": "Quote Request Form",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Smith",
+      "company": "Company Name",
+      "companyPlaceholder": "Your Company Inc.",
+      "email": "Email Address",
+      "emailPlaceholder": "john@company.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "productCategory": "Primary Product Category",
+      "selectCategory": "Select a category",
+      "productCategoryHelper": "Need multiple product types? List them all in the details below.",
+      "specifications": "Specifications / Details",
+      "specificationsPlaceholder": "Please describe your requirements, including material grade, sizes, standards, and any other specifications.",
+      "quantity": "Quantity",
+      "quantityPlaceholder": "e.g., 500 meters, 100 pieces",
+      "deliveryDate": "Required Delivery Date",
+      "uploadFile": "Upload File",
+      "chooseFile": "Choose a file",
+      "orDragDrop": "or drag and drop",
+      "fileTypes": "PDF, DOC, or images up to 10MB",
+      "submit": "Submit Quote Request",
+      "submitting": "Submitting...",
+      "required": "Required fields",
+      "success": {
+        "title": "Quote Request Submitted!",
+        "message": "Thank you for your quote request. Our team will review your requirements and get back to you within 24 hours.",
+        "another": "Submit Another Request"
+      }
+    },
+    "categories": {
+      "pipes": "Pipes",
+      "fittings": "Fittings",
+      "flanges": "Flanges",
+      "boilerTubes": "Boiler Tubes",
+      "heatExchangerTubes": "Heat Exchanger Tubes",
+      "valves": "Valves",
+      "accessories": "Accessories & Instruments",
+      "other": "Other"
+    },
+    "sidebar": {
+      "quickResponse": {
+        "title": "Quick Response",
+        "subtitle": "Within 24 hours",
+        "description": "We respond to all quote requests within 24 hours during business hours."
+      },
+      "whatToInclude": {
+        "title": "What to Include",
+        "item1": "Material grade (e.g., ASTM A106 Gr.B)",
+        "item2": "Size and dimensions",
+        "item3": "Required standards",
+        "item4": "Quantity needed",
+        "item5": "Any special requirements"
+      },
+      "needHelp": {
+        "title": "Need Help?",
+        "description": "Not sure what specifications to include? Our team can help you determine the right products for your project.",
+        "contactLink": "Contact our experts"
+      }
     }
   },
   "common": {

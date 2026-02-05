@@ -1,37 +1,39 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface Supplier {
   name: string;
   country: string;
+  logo?: string;
 }
 
 const suppliers: Supplier[] = [
-  { name: "Nippon Steel", country: "Japan" },
+  { name: "Nippon Steel", country: "Japan", logo: "/logos/nippon-steel.svg" },
+  { name: "ArcelorMittal", country: "Luxembourg", logo: "/logos/arcelormittal.svg" },
+  { name: "Tenaris", country: "Argentina", logo: "/logos/tenaris.svg" },
+  { name: "JFE Steel", country: "Japan", logo: "/logos/jfe.svg" },
+  { name: "Benteler", country: "Germany", logo: "/logos/benteler.svg" },
+  { name: "Benkan", country: "Japan", logo: "/logos/benkan.svg" },
+  { name: "Emerson", country: "USA", logo: "/logos/emerson.svg" },
+  { name: "Flowserve", country: "USA", logo: "/logos/flowserve.svg" },
+  { name: "Rotork", country: "UK", logo: "/logos/rotork.svg" },
+  { name: "AUMA", country: "Germany", logo: "/logos/auma.svg" },
+  { name: "ARI Armaturen", country: "Germany", logo: "/logos/ari.svg" },
+  { name: "Leser", country: "Germany", logo: "/logos/leser.svg" },
+  { name: "PK Valve", country: "Thailand", logo: "/logos/pkvalve.svg" },
+  { name: "Powell Valves", country: "USA", logo: "/logos/powell-valves.svg" },
+  { name: "SeAH Steel", country: "South Korea", logo: "/logos/seah-steel.svg" },
+  { name: "Tubos Reunidos", country: "Spain", logo: "/logos/tubos-reunidos.svg" },
+  { name: "ULMA", country: "Spain", logo: "/logos/ulma.svg" },
   { name: "POSCO", country: "South Korea" },
-  { name: "Baosteel", country: "China" },
-  { name: "ArcelorMittal", country: "Luxembourg" },
-  { name: "Tenaris", country: "Argentina" },
   { name: "Vallourec", country: "France" },
   { name: "Sumitomo Metal", country: "Japan" },
-  { name: "JFE Steel", country: "Japan" },
   { name: "Hyundai Steel", country: "South Korea" },
   { name: "Tata Steel", country: "India" },
-  { name: "Nucor", country: "USA" },
-  { name: "SSAB", country: "Sweden" },
-  { name: "Voestalpine", country: "Austria" },
-  { name: "Salzgitter", country: "Germany" },
-  { name: "Severstal", country: "Russia" },
-  { name: "Kobe Steel", country: "Japan" },
-  { name: "Thyssenkrupp", country: "Germany" },
   { name: "Sandvik", country: "Sweden" },
-  { name: "Tubacex", country: "Spain" },
-  { name: "DMV Stainless", country: "Netherlands" },
-  { name: "United States Steel", country: "USA" },
-  { name: "Mannesmann", country: "Germany" },
-  { name: "Benteler", country: "Germany" },
   { name: "Dalmine", country: "Italy" },
 ];
 
@@ -91,9 +93,19 @@ export default function SuppliersPage() {
                 key={supplier.name}
                 className="group px-6 py-8 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 flex flex-col items-center text-center"
               >
-                {/* Logo Placeholder */}
-                <div className="w-full aspect-[3/2] max-w-[120px] bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors">
-                  <span className="text-gray-400 text-xs font-medium uppercase tracking-wide">Logo</span>
+                {/* Logo */}
+                <div className="w-full aspect-[3/2] max-w-[120px] bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors overflow-hidden">
+                  {supplier.logo ? (
+                    <Image
+                      src={supplier.logo}
+                      alt={supplier.name}
+                      width={100}
+                      height={60}
+                      className="object-contain p-2"
+                    />
+                  ) : (
+                    <span className="text-gray-400 text-xs font-medium uppercase tracking-wide">Logo</span>
+                  )}
                 </div>
                 
                 {/* Company Name */}
