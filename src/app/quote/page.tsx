@@ -318,20 +318,7 @@ export default function QuotePage() {
                           showPopperArrow={false}
                           popperPlacement="bottom-start"
                           wrapperClassName="w-full"
-                          popperProps={{ 
-                            strategy: "fixed",
-                            positionFixed: true
-                          }}
-                          popperModifiers={[
-                            {
-                              name: "preventOverflow",
-                              options: {
-                                rootBoundary: "viewport",
-                                tether: false,
-                                altAxis: true
-                              }
-                            }
-                          ]}
+                          popperProps={{ strategy: "fixed" }}
                         />
                         <div className="datepicker-icon">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
