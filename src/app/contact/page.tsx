@@ -20,6 +20,35 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+
+  const tabOrder: TabType[] = ["message", "call", "visit"];
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      const currentIndex = tabOrder.indexOf(activeTab);
+      
+      if (swipeDistance > 0 && currentIndex < tabOrder.length - 1) {
+        // Swipe left - go to next tab
+        setActiveTab(tabOrder[currentIndex + 1]);
+      } else if (swipeDistance < 0 && currentIndex > 0) {
+        // Swipe right - go to previous tab
+        setActiveTab(tabOrder[currentIndex - 1]);
+      }
+    }
+  };
 
   // Clear validation styling when clicking outside the form
   useEffect(() => {
@@ -126,7 +155,7 @@ export default function ContactPage() {
       </section>
 
       {/* Tab-Based Contact Section */}
-      <section className="pt-16 pb-12 bg-gray-50 relative overflow-hidden">
+      <section className="pt-10 pb-12 bg-gray-50 relative overflow-hidden">
         {/* Subtle dot pattern */}
         <div 
           className="absolute inset-0 opacity-[0.4]"
@@ -162,7 +191,12 @@ export default function ContactPage() {
             </div>
 
             {/* Tab Content */}
-            <div className="bg-white rounded-2xl shadow-soft overflow-hidden">
+            <div 
+              className="bg-white rounded-2xl shadow-soft overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               {/* Send Message Tab */}
               {activeTab === "message" && (
                 <div className="p-8">
