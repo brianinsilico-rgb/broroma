@@ -71,13 +71,14 @@ body {
   }
   
   .input-field {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-1 focus:ring-navy-500 focus:border-navy-500 
            outline-none transition-all duration-200 bg-white;
   }
   
-  /* Invalid input field styling */
-  .input-field:invalid:not(:placeholder-shown),
-  .input-field:user-invalid {
+  /* Invalid input field styling - only when form has show-validation class */
+  .show-validation input.input-field:invalid,
+  .show-validation select.input-field:invalid,
+  .show-validation textarea.input-field:invalid {
     @apply border-accent-500 focus:ring-accent-500 focus:border-accent-500;
   }
   
@@ -128,18 +129,18 @@ textarea:invalid {
   box-shadow: none;
 }
 
-/* Only show red border after user has interacted with the field */
-input:user-invalid,
-select:user-invalid,
-textarea:user-invalid {
-  border-color: #dc2626 !important;
+/* Only show red border when form has show-validation class */
+.show-validation input:invalid,
+.show-validation select:invalid,
+.show-validation textarea:invalid {
+  border-color: #ef4444 !important;
 }
 
-input:user-invalid:focus,
-select:user-invalid:focus,
-textarea:user-invalid:focus {
-  border-color: #dc2626 !important;
-  --tw-ring-color: #dc2626;
+.show-validation input:invalid:focus,
+.show-validation select:invalid:focus,
+.show-validation textarea:invalid:focus {
+  border-color: #ef4444 !important;
+  --tw-ring-color: #ef4444;
 }
 
 /* Override browser default validation bubble */
@@ -160,16 +161,20 @@ textarea:user-invalid:focus {
   display: none;
 }
 
-/* Firefox validation styling - only after interaction */
-:-moz-ui-invalid:not(:placeholder-shown) {
+/* Firefox validation styling - remove default red styling */
+:-moz-ui-invalid {
   box-shadow: none;
-  border-color: #dc2626;
 }
 
-/* Product row validation - red border only after user interaction */
-.product-row-container:has(select:user-invalid),
-.product-row-container:has(input:user-invalid) {
-  border-color: #dc2626 !important;
+/* Firefox validation - only when form has show-validation class */
+.show-validation :-moz-ui-invalid {
+  border-color: #ef4444;
+}
+
+/* Product row validation - red border only when form has show-validation class */
+.show-validation .product-row-container:has(select:invalid),
+.show-validation .product-row-container:has(input:invalid) {
+  border-color: #ef4444 !important;
 }
 
 /* Custom DatePicker Styles */
