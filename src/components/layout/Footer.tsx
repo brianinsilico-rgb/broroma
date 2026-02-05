@@ -23,10 +23,10 @@ export default function Footer() {
       { name: "Accessories", href: "/products/accessories-instruments" },
     ],
     services: [
-      { name: t.footer.importServices, href: "/services#import" },
-      { name: t.footer.exportServices, href: "/services#export" },
-      { name: t.footer.logistics, href: "/services#logistics" },
-      { name: t.footer.qualityInspection, href: "/services#inspection" },
+      { name: t.footer.stockistSupply, href: "/services#stockist" },
+      { name: t.footer.globalSourcing, href: "/services#sourcing" },
+      { name: t.footer.testingInspection, href: "/services#testing" },
+      { name: t.footer.fabrication, href: "/services#fabrication" },
     ],
   };
 

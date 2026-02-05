@@ -1,139 +1,140 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description: "Discover Broroma's comprehensive services including import/export, logistics support, quality inspection, and custom sourcing for industrial pipes.",
+const serviceImages = {
+  stockist: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+  sourcing: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80",
+  testing: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+  fabrication: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80",
+  installation: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
 };
 
-const services = [
-  {
-    id: "import",
-    title: "Import Services",
-    subtitle: "Global Sourcing Excellence",
-    description: "We connect you with certified manufacturers worldwide, handling all aspects of the import process to ensure quality products reach your facility seamlessly.",
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80",
-    features: [
-      "Access to certified mills in Asia, Europe, and Americas",
-      "Supplier qualification and auditing",
-      "Price negotiation and contract management",
-      "Import documentation and compliance",
-      "Letter of credit and payment facilitation",
-      "Duty and tariff optimization",
-    ],
-    benefits: [
-      { title: "Cost Savings", description: "Leverage our buying power and supplier relationships" },
-      { title: "Quality Assurance", description: "Pre-shipment inspection at origin" },
-      { title: "Risk Mitigation", description: "Comprehensive supplier vetting process" },
-    ],
-  },
-  {
-    id: "export",
-    title: "Export Services",
-    subtitle: "Reaching Global Markets",
-    description: "Expand your market reach with our comprehensive export solutions. We manage the complexities of international trade so you can focus on your core business.",
-    image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80",
-    features: [
-      "Market research and buyer identification",
-      "Export documentation and licensing",
-      "Customs clearance coordination",
-      "Trade compliance and regulations",
-      "Currency management and hedging",
-      "After-sales support and warranty coordination",
-    ],
-    benefits: [
-      { title: "Market Access", description: "Entry to 50+ international markets" },
-      { title: "Compliance", description: "Full regulatory and documentation support" },
-      { title: "Speed", description: "Streamlined processes for faster delivery" },
-    ],
-  },
-  {
-    id: "logistics",
-    title: "Logistics & Shipping",
-    subtitle: "End-to-End Transport Solutions",
-    description: "From factory floor to your warehouse, we orchestrate the entire logistics chain with precision, ensuring your products arrive safely and on time.",
-    image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&q=80",
-    features: [
-      "Multi-modal transportation (sea, air, rail, road)",
-      "Container booking and freight forwarding",
-      "Warehouse and storage solutions",
-      "Real-time shipment tracking",
-      "Cargo insurance coordination",
-      "Last-mile delivery management",
-    ],
-    benefits: [
-      { title: "Visibility", description: "Real-time tracking and status updates" },
-      { title: "Flexibility", description: "Scalable solutions for any volume" },
-      { title: "Reliability", description: "99.5% on-time delivery rate" },
-    ],
-  },
-  {
-    id: "inspection",
-    title: "Quality Inspection",
-    subtitle: "Uncompromising Standards",
-    description: "Our rigorous quality control processes ensure every product meets your specifications and international standards before shipment.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-    features: [
-      "Pre-production inspection (PPI)",
-      "During production inspection (DPI)",
-      "Pre-shipment inspection (PSI)",
-      "Mill test certificate verification",
-      "Dimensional and visual inspection",
-      "Non-destructive testing (NDT)",
-    ],
-    benefits: [
-      { title: "Zero Defects", description: "Catch issues before they become problems" },
-      { title: "Compliance", description: "Meet all required standards and specs" },
-      { title: "Documentation", description: "Comprehensive inspection reports" },
-    ],
-  },
-  {
-    id: "sourcing",
-    title: "Custom Sourcing",
-    subtitle: "Finding the Unfindable",
-    description: "Can't find what you need? Our global network and industry expertise allow us to source specialized products tailored to your unique requirements.",
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80",
-    features: [
-      "Custom size and specification sourcing",
-      "Rare grade and alloy procurement",
-      "Small batch manufacturing coordination",
-      "Special coating and treatment options",
-      "Prototype and sample production",
-      "Technical consultation and material selection",
-    ],
-    benefits: [
-      { title: "Expertise", description: "25+ years of industry knowledge" },
-      { title: "Network", description: "Global supplier database" },
-      { title: "Solutions", description: "Creative problem-solving approach" },
-    ],
-  },
-];
-
-const processSteps = [
-  {
-    step: "01",
-    title: "Consultation",
-    description: "We discuss your requirements, specifications, and timeline to understand your needs.",
-  },
-  {
-    step: "02",
-    title: "Sourcing",
-    description: "Our team identifies and qualifies the best suppliers for your specific requirements.",
-  },
-  {
-    step: "03",
-    title: "Quality Control",
-    description: "Rigorous inspection ensures all products meet your specifications before shipping.",
-  },
-  {
-    step: "04",
-    title: "Delivery",
-    description: "Coordinated logistics ensure safe, on-time delivery to your designated location.",
-  },
-];
+const serviceIcons: { [key: string]: React.ReactNode } = {
+  stockist: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+    </svg>
+  ),
+  sourcing: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  testing: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+  ),
+  fabrication: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  installation: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+    </svg>
+  ),
+};
 
 export default function ServicesPage() {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      id: "stockist",
+      title: t.services.stockist.title,
+      subtitle: t.services.stockist.subtitle,
+      description: t.services.stockist.description,
+      image: serviceImages.stockist,
+      features: t.services.stockist.features,
+      benefits: [
+        { title: t.services.stockist.benefits.availability.title, description: t.services.stockist.benefits.availability.description },
+        { title: t.services.stockist.benefits.speed.title, description: t.services.stockist.benefits.speed.description },
+        { title: t.services.stockist.benefits.convenience.title, description: t.services.stockist.benefits.convenience.description },
+      ],
+    },
+    {
+      id: "sourcing",
+      title: t.services.sourcing.title,
+      subtitle: t.services.sourcing.subtitle,
+      description: t.services.sourcing.description,
+      image: serviceImages.sourcing,
+      features: t.services.sourcing.features,
+      benefits: [
+        { title: t.services.sourcing.benefits.cost.title, description: t.services.sourcing.benefits.cost.description },
+        { title: t.services.sourcing.benefits.quality.title, description: t.services.sourcing.benefits.quality.description },
+        { title: t.services.sourcing.benefits.flexibility.title, description: t.services.sourcing.benefits.flexibility.description },
+      ],
+    },
+    {
+      id: "testing",
+      title: t.services.testing.title,
+      subtitle: t.services.testing.subtitle,
+      description: t.services.testing.description,
+      image: serviceImages.testing,
+      features: t.services.testing.features,
+      benefits: [
+        { title: t.services.testing.benefits.defects.title, description: t.services.testing.benefits.defects.description },
+        { title: t.services.testing.benefits.compliance.title, description: t.services.testing.benefits.compliance.description },
+        { title: t.services.testing.benefits.docs.title, description: t.services.testing.benefits.docs.description },
+      ],
+    },
+    {
+      id: "fabrication",
+      title: t.services.fabrication.title,
+      subtitle: t.services.fabrication.subtitle,
+      description: t.services.fabrication.description,
+      image: serviceImages.fabrication,
+      features: t.services.fabrication.features,
+      benefits: [
+        { title: t.services.fabrication.benefits.precision.title, description: t.services.fabrication.benefits.precision.description },
+        { title: t.services.fabrication.benefits.capability.title, description: t.services.fabrication.benefits.capability.description },
+        { title: t.services.fabrication.benefits.quality.title, description: t.services.fabrication.benefits.quality.description },
+      ],
+    },
+    {
+      id: "installation",
+      title: t.services.installation.title,
+      subtitle: t.services.installation.subtitle,
+      description: t.services.installation.description,
+      image: serviceImages.installation,
+      features: t.services.installation.features,
+      benefits: [
+        { title: t.services.installation.benefits.expertise.title, description: t.services.installation.benefits.expertise.description },
+        { title: t.services.installation.benefits.reliability.title, description: t.services.installation.benefits.reliability.description },
+        { title: t.services.installation.benefits.support.title, description: t.services.installation.benefits.support.description },
+      ],
+    },
+  ];
+
+  const processSteps = [
+    {
+      step: "01",
+      title: t.services.process.steps.consultation.title,
+      description: t.services.process.steps.consultation.description,
+    },
+    {
+      step: "02",
+      title: t.services.process.steps.sourcing.title,
+      description: t.services.process.steps.sourcing.description,
+    },
+    {
+      step: "03",
+      title: t.services.process.steps.testing.title,
+      description: t.services.process.steps.testing.description,
+    },
+    {
+      step: "04",
+      title: t.services.process.steps.delivery.title,
+      description: t.services.process.steps.delivery.description,
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -141,74 +142,99 @@ export default function ServicesPage() {
         <div className="container-custom">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
-              Our Services
+              {t.services.hero.label}
             </span>
             <h1 className="text-white mb-6">
-              Comprehensive Trade Solutions
+              {t.services.hero.title}
             </h1>
             <p className="text-xl text-navy-200 leading-relaxed">
-              From sourcing to delivery, we provide end-to-end services to streamline 
-              your industrial pipe procurement and distribution needs.
+              {t.services.hero.description}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Services Overview */}
+      {/* Services Quick Nav Bar */}
+      <section className="bg-white relative">
+        {/* Base divider line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gray-200" />
+        
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
+          {services.map((service, index) => (
+            <a
+              key={service.id}
+              href={`#${service.id}`}
+              className="group relative flex flex-col items-center justify-center text-center py-10 px-4 hover:bg-gray-50 transition-all duration-300 overflow-hidden border-r border-gray-100 last:border-r-0"
+            >
+              {/* Number badge */}
+              <span className="absolute top-3 right-3 text-base font-bold text-navy-200 group-hover:text-accent-400 transition-colors">
+                0{index + 1}
+              </span>
+              
+              {/* Icon */}
+              <div className="w-12 h-12 rounded-full bg-navy-50 group-hover:bg-accent-50 flex items-center justify-center mb-3 text-navy-600 group-hover:text-accent-600 transition-colors">
+                {serviceIcons[service.id]}
+              </div>
+              
+              {/* Title */}
+              <p className="font-semibold text-navy-900 text-sm leading-tight group-hover:text-accent-600 transition-colors">
+                {service.title}
+              </p>
+              
+              {/* Bottom accent line - overlays the divider */}
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent-400 to-accent-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-10" />
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* Services Details */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="grid md:grid-cols-5 gap-4 mb-16">
-            {services.map((service) => (
-              <a
-                key={service.id}
-                href={`#${service.id}`}
-                className="p-4 bg-gray-50 hover:bg-navy-50 rounded-xl text-center transition-colors duration-200"
-              >
-                <p className="font-semibold text-navy-900">{service.title}</p>
-              </a>
-            ))}
-          </div>
 
           {/* Individual Services */}
-          <div className="space-y-24">
+          <div className="space-y-20">
             {services.map((service, index) => (
-              <div key={service.id} id={service.id} className="scroll-mt-32">
-                <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                  <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                    <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{service.subtitle}</span>
-                    <h2 className="text-navy-900 mt-2 mb-6">{service.title}</h2>
-                    <p className="text-gray-600 text-lg mb-8">{service.description}</p>
-                    
-                    <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                      {service.features.map((feature, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <svg className="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className="text-gray-700 text-sm">{feature}</span>
-                        </div>
-                      ))}
+              <div key={service.id}>
+                {/* Divider with number (not before first item) */}
+                {index > 0 && (
+                  <div className="flex items-center justify-center gap-4 mb-20">
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-gray-200" />
+                    <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center">
+                      <span className="text-sm font-semibold text-gray-400">0{index + 1}</span>
                     </div>
-
-                    {/* Benefits */}
-                    <div className="grid sm:grid-cols-3 gap-4">
-                      {service.benefits.map((benefit, i) => (
-                        <div key={i} className="p-4 bg-navy-50 rounded-xl">
-                          <p className="font-semibold text-navy-900 mb-1">{benefit.title}</p>
-                          <p className="text-gray-600 text-sm">{benefit.description}</p>
-                        </div>
-                      ))}
-                    </div>
+                    <div className="flex-1 h-px bg-gradient-to-l from-transparent via-gray-200 to-gray-200" />
                   </div>
-                  
-                  <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                    <div className="aspect-[4/3] relative rounded-2xl overflow-hidden">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover"
-                      />
+                )}
+                
+                <div id={service.id} className="scroll-mt-32">
+                  <div className={`grid lg:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                    <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                      <span className="text-accent-500 font-medium text-sm uppercase tracking-wider">{service.subtitle}</span>
+                      <h2 className="text-navy-900 mt-2 mb-4">{service.title}</h2>
+                      <p className="text-gray-600 text-lg mb-6">{service.description}</p>
+                      
+                      <div className="space-y-3">
+                        {service.features.slice(0, 5).map((feature, i) => (
+                          <div key={i} className="flex items-center gap-3">
+                            <svg className="w-5 h-5 text-accent-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-gray-600">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                      <div className="aspect-[4/3] relative rounded-xl overflow-hidden">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -218,34 +244,55 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="section-padding bg-gray-50">
+      {/* Process Section - Horizontal Scroll Cards */}
+      <section className="section-padding bg-gray-50 overflow-hidden">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">How We Work</span>
-            <h2 className="text-navy-900 mt-2 mb-4">Our Process</h2>
+          <div className="text-center mb-12">
+            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.services.process.label}</span>
+            <h2 className="text-navy-900 mt-2 mb-4">{t.services.process.title}</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              A streamlined approach that ensures quality, transparency, and efficiency 
-              at every stage of your project.
+              {t.services.process.description}
             </p>
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Horizontal Scroll Container */}
+        <div className="relative">
+          <div className="flex gap-6 overflow-x-auto pb-8 px-6 md:px-0 snap-x snap-mandatory scrollbar-hide md:overflow-visible md:container-custom md:grid md:grid-cols-4 md:gap-6">
             {processSteps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="card text-center h-full">
-                  <span className="text-5xl font-bold text-navy-100 mb-4 block">{step.step}</span>
-                  <h3 className="text-xl font-semibold text-navy-900 mb-3">{step.title}</h3>
-                  <p className="text-gray-600">{step.description}</p>
-                </div>
-                {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                    <svg className="w-8 h-8 text-navy-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+              <div 
+                key={index} 
+                className="flex-shrink-0 w-[280px] md:w-auto snap-center"
+              >
+                <div className="relative h-full bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md hover:border-accent-200 transition-all duration-300">
+                  {/* Step Number - Large Background */}
+                  <div className="absolute top-4 right-4 text-7xl font-bold text-gray-100 select-none">
+                    {step.step}
                   </div>
-                )}
+                  
+                  {/* Content */}
+                  <div className="relative z-10 pt-4">
+                    <h3 className="text-xl font-semibold text-navy-900 mb-3">{step.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                  </div>
+                  
+                  {/* Arrow indicator for next step */}
+                  {index < processSteps.length - 1 && (
+                    <div className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-6 bg-white rounded-full shadow-md items-center justify-center">
+                      <svg className="w-3 h-3 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
               </div>
+            ))}
+          </div>
+          
+          {/* Scroll Indicator - Mobile Only */}
+          <div className="flex justify-center gap-2 mt-4 md:hidden">
+            {processSteps.map((_, index) => (
+              <div key={index} className="w-2 h-2 rounded-full bg-gray-300" />
             ))}
           </div>
         </div>
@@ -257,19 +304,19 @@ export default function ServicesPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <p className="text-5xl font-bold text-white mb-2">50+</p>
-              <p className="text-navy-200">Countries Served</p>
+              <p className="text-navy-200">{t.services.stats.countries}</p>
             </div>
             <div>
               <p className="text-5xl font-bold text-white mb-2">1000+</p>
-              <p className="text-navy-200">Projects Completed</p>
+              <p className="text-navy-200">{t.services.stats.projects}</p>
             </div>
             <div>
               <p className="text-5xl font-bold text-white mb-2">99.5%</p>
-              <p className="text-navy-200">On-Time Delivery</p>
+              <p className="text-navy-200">{t.services.stats.delivery}</p>
             </div>
             <div>
               <p className="text-5xl font-bold text-white mb-2">24/7</p>
-              <p className="text-navy-200">Customer Support</p>
+              <p className="text-navy-200">{t.services.stats.support}</p>
             </div>
           </div>
         </div>
@@ -280,28 +327,16 @@ export default function ServicesPage() {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">FAQ</span>
-              <h2 className="text-navy-900 mt-2 mb-4">Frequently Asked Questions</h2>
+              <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.services.faq.label}</span>
+              <h2 className="text-navy-900 mt-2 mb-4">{t.services.faq.title}</h2>
             </div>
 
             <div className="space-y-4">
               {[
-                {
-                  q: "What is the minimum order quantity?",
-                  a: "Minimum order quantities vary by product type and supplier. For standard products, we typically work with MOQs starting from 5 metric tons. For specialty items, we can accommodate smaller quantities with adjusted pricing.",
-                },
-                {
-                  q: "How long does shipping typically take?",
-                  a: "Shipping times depend on the origin and destination. Sea freight from Asia to North America typically takes 25-35 days. We also offer expedited air freight options for urgent requirements.",
-                },
-                {
-                  q: "Do you provide Mill Test Certificates?",
-                  a: "Yes, all products come with original Mill Test Certificates (MTCs) documenting chemical composition, mechanical properties, and test results as per relevant standards.",
-                },
-                {
-                  q: "What payment terms do you offer?",
-                  a: "We offer flexible payment terms including Letter of Credit (L/C), Telegraphic Transfer (T/T), and Documentary Collection. Terms are tailored based on order value and customer relationship.",
-                },
+                { q: t.services.faq.q1, a: t.services.faq.a1 },
+                { q: t.services.faq.q2, a: t.services.faq.a2 },
+                { q: t.services.faq.q3, a: t.services.faq.a3 },
+                { q: t.services.faq.q4, a: t.services.faq.a4 },
               ].map((faq, index) => (
                 <div key={index} className="card">
                   <h3 className="text-lg font-semibold text-navy-900 mb-2">{faq.q}</h3>
@@ -318,21 +353,20 @@ export default function ServicesPage() {
         <div className="container-custom">
           <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-3xl p-8 md:p-16 text-center">
             <h2 className="text-white mb-4">
-              Ready to Get Started?
+              {t.services.cta.title}
             </h2>
             <p className="text-navy-200 text-lg mb-8 max-w-2xl mx-auto">
-              Contact our team to discuss how we can support your industrial pipe 
-              requirements with our comprehensive service offerings.
+              {t.services.cta.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="btn-primary">
-                Contact Us
+                {t.services.cta.contact}
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
               <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900">
-                View Products
+                {t.services.cta.products}
               </Link>
             </div>
           </div>

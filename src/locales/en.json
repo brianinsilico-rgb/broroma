@@ -33,23 +33,23 @@
     "services": {
       "label": "Our Services",
       "title": "Comprehensive Solutions for Your Business",
-      "description": "From sourcing to delivery, we provide end-to-end services to streamline your industrial pipe procurement and distribution needs.",
+      "description": "From stock supply to installation, we provide comprehensive services covering sourcing, testing, fabrication, and maintenance for all your piping needs.",
       "viewAll": "View All Services",
-      "import": {
-        "title": "Import Services",
-        "description": "Seamless import of high-quality industrial pipes from certified manufacturers worldwide."
+      "stockist": {
+        "title": "Stockist & Supply",
+        "description": "Ready stock inventory of industrial pipes, fittings, and valves for immediate delivery."
       },
-      "export": {
-        "title": "Export Services",
-        "description": "Efficient export solutions to deliver your pipe products to markets around the globe."
+      "sourcing": {
+        "title": "Global Sourcing",
+        "description": "Worldwide procurement from certified manufacturers at competitive prices."
       },
-      "quality": {
-        "title": "Quality Assurance",
-        "description": "Rigorous inspection and certification processes ensuring every product meets international standards."
+      "testing": {
+        "title": "Testing & Inspection",
+        "description": "Rigorous quality testing and inspection to ensure products meet all specifications."
       },
-      "logistics": {
-        "title": "Logistics Support",
-        "description": "End-to-end logistics management including shipping, customs clearance, and delivery coordination."
+      "fabrication": {
+        "title": "Fabrication",
+        "description": "Custom fabrication, modification, and specialized processing to your exact requirements."
       }
     },
     "whyUs": {
@@ -245,96 +245,96 @@
     "hero": {
       "label": "Our Services",
       "title": "Comprehensive Trade Solutions",
-      "description": "From sourcing to delivery, we provide end-to-end services to streamline your industrial pipe procurement and distribution needs."
+      "description": "From stock supply to installation, we provide comprehensive services covering sourcing, testing, fabrication, and maintenance for all your piping needs."
     },
-    "import": {
-      "title": "Import Services",
-      "subtitle": "Global Sourcing Excellence",
-      "description": "We connect you with certified manufacturers worldwide, handling all aspects of the import process to ensure quality products reach your facility seamlessly.",
+    "stockist": {
+      "title": "Stockist & Supply",
+      "subtitle": "Ready When You Need It",
+      "description": "As an authorized stockist, we maintain a comprehensive inventory of industrial pipes, fittings, and valves ready for immediate delivery to meet your urgent requirements.",
       "features": [
-        "Access to certified mills in Asia, Europe, and Americas",
-        "Supplier qualification and auditing",
-        "Price negotiation and contract management",
-        "Import documentation and compliance",
-        "Letter of credit and payment facilitation",
-        "Duty and tariff optimization"
+        "Extensive ready stock inventory",
+        "Fast local delivery options",
+        "Wide range of standard sizes and grades",
+        "Emergency supply support",
+        "Competitive stock pricing",
+        "Inventory management solutions"
       ],
       "benefits": {
-        "cost": { "title": "Cost Savings", "description": "Leverage our buying power and supplier relationships" },
-        "quality": { "title": "Quality Assurance", "description": "Pre-shipment inspection at origin" },
-        "risk": { "title": "Risk Mitigation", "description": "Comprehensive supplier vetting process" }
-      }
-    },
-    "export": {
-      "title": "Export Services",
-      "subtitle": "Reaching Global Markets",
-      "description": "Expand your market reach with our comprehensive export solutions. We manage the complexities of international trade so you can focus on your core business.",
-      "features": [
-        "Market research and buyer identification",
-        "Export documentation and licensing",
-        "Customs clearance coordination",
-        "Trade compliance and regulations",
-        "Currency management and hedging",
-        "After-sales support and warranty coordination"
-      ],
-      "benefits": {
-        "access": { "title": "Market Access", "description": "Entry to 50+ international markets" },
-        "compliance": { "title": "Compliance", "description": "Full regulatory and documentation support" },
-        "speed": { "title": "Speed", "description": "Streamlined processes for faster delivery" }
-      }
-    },
-    "logistics": {
-      "title": "Logistics & Shipping",
-      "subtitle": "End-to-End Transport Solutions",
-      "description": "From factory floor to your warehouse, we orchestrate the entire logistics chain with precision, ensuring your products arrive safely and on time.",
-      "features": [
-        "Multi-modal transportation (sea, air, rail, road)",
-        "Container booking and freight forwarding",
-        "Warehouse and storage solutions",
-        "Real-time shipment tracking",
-        "Cargo insurance coordination",
-        "Last-mile delivery management"
-      ],
-      "benefits": {
-        "visibility": { "title": "Visibility", "description": "Real-time tracking and status updates" },
-        "flexibility": { "title": "Flexibility", "description": "Scalable solutions for any volume" },
-        "reliability": { "title": "Reliability", "description": "99.5% on-time delivery rate" }
-      }
-    },
-    "inspection": {
-      "title": "Quality Inspection",
-      "subtitle": "Uncompromising Standards",
-      "description": "Our rigorous quality control processes ensure every product meets your specifications and international standards before shipment.",
-      "features": [
-        "Pre-production inspection (PPI)",
-        "During production inspection (DPI)",
-        "Pre-shipment inspection (PSI)",
-        "Mill test certificate verification",
-        "Dimensional and visual inspection",
-        "Non-destructive testing (NDT)"
-      ],
-      "benefits": {
-        "defects": { "title": "Zero Defects", "description": "Catch issues before they become problems" },
-        "compliance": { "title": "Compliance", "description": "Meet all required standards and specs" },
-        "docs": { "title": "Documentation", "description": "Comprehensive inspection reports" }
+        "availability": { "title": "Availability", "description": "Products ready for immediate dispatch" },
+        "speed": { "title": "Speed", "description": "Same-day or next-day delivery options" },
+        "convenience": { "title": "Convenience", "description": "One-stop shop for all your needs" }
       }
     },
     "sourcing": {
-      "title": "Custom Sourcing",
-      "subtitle": "Finding the Unfindable",
-      "description": "Can't find what you need? Our global network and industry expertise allow us to source specialized products tailored to your unique requirements.",
+      "title": "Global Sourcing",
+      "subtitle": "Worldwide Procurement Network",
+      "description": "Leverage our extensive international network to source products from certified manufacturers across Asia, Europe, and the Americas at competitive prices.",
       "features": [
-        "Custom size and specification sourcing",
-        "Rare grade and alloy procurement",
-        "Small batch manufacturing coordination",
-        "Special coating and treatment options",
-        "Prototype and sample production",
-        "Technical consultation and material selection"
+        "Access to certified mills worldwide",
+        "Supplier qualification and auditing",
+        "Price negotiation and contract management",
+        "Custom specification sourcing",
+        "Import/export documentation handling",
+        "Rare grade and alloy procurement"
       ],
       "benefits": {
-        "expertise": { "title": "Expertise", "description": "25+ years of industry knowledge" },
-        "network": { "title": "Network", "description": "Global supplier database" },
-        "solutions": { "title": "Solutions", "description": "Creative problem-solving approach" }
+        "cost": { "title": "Cost Savings", "description": "Leverage our buying power globally" },
+        "quality": { "title": "Quality", "description": "Pre-vetted supplier network" },
+        "flexibility": { "title": "Flexibility", "description": "Source any product, any specification" }
+      }
+    },
+    "testing": {
+      "title": "Quality Testing & Inspection",
+      "subtitle": "Uncompromising Standards",
+      "description": "Our rigorous testing and inspection services ensure every product meets your specifications and international standards before delivery.",
+      "features": [
+        "Material testing and certification",
+        "Non-destructive testing (NDT)",
+        "Dimensional and visual inspection",
+        "Hydrostatic pressure testing",
+        "Mill test certificate verification",
+        "Third-party inspection coordination"
+      ],
+      "benefits": {
+        "defects": { "title": "Zero Defects", "description": "Catch issues before delivery" },
+        "compliance": { "title": "Compliance", "description": "Meet all required standards" },
+        "docs": { "title": "Documentation", "description": "Comprehensive test reports" }
+      }
+    },
+    "fabrication": {
+      "title": "Fabrication & Modification",
+      "subtitle": "Custom Solutions Built to Spec",
+      "description": "Our fabrication facilities can modify, customize, and fabricate products to meet your exact specifications and unique project requirements.",
+      "features": [
+        "Custom pipe fabrication",
+        "Product modification and customization",
+        "Welding and joining services",
+        "Threading and grooving",
+        "Coating and surface treatment",
+        "Special size and shape requirements"
+      ],
+      "benefits": {
+        "precision": { "title": "Precision", "description": "Built exactly to your specifications" },
+        "capability": { "title": "Capability", "description": "Handle complex fabrication needs" },
+        "quality": { "title": "Quality", "description": "Certified welding and workmanship" }
+      }
+    },
+    "installation": {
+      "title": "Installation & Maintenance",
+      "subtitle": "Complete Field Services",
+      "description": "From professional installation to ongoing maintenance, our experienced field service team ensures your piping systems perform optimally throughout their lifecycle.",
+      "features": [
+        "Professional on-site installation",
+        "Preventive maintenance programs",
+        "Repair and replacement services",
+        "System upgrades and modifications",
+        "Emergency breakdown support",
+        "Technical consultation and training"
+      ],
+      "benefits": {
+        "expertise": { "title": "Expertise", "description": "Certified installation technicians" },
+        "reliability": { "title": "Reliability", "description": "Minimize downtime with proper maintenance" },
+        "support": { "title": "Support", "description": "24/7 emergency service available" }
       }
     },
     "process": {
@@ -343,9 +343,9 @@
       "description": "A streamlined approach that ensures quality, transparency, and efficiency at every stage of your project.",
       "steps": {
         "consultation": { "title": "Consultation", "description": "We discuss your requirements, specifications, and timeline to understand your needs." },
-        "sourcing": { "title": "Sourcing", "description": "Our team identifies and qualifies the best suppliers for your specific requirements." },
-        "quality": { "title": "Quality Control", "description": "Rigorous inspection ensures all products meet your specifications before shipping." },
-        "delivery": { "title": "Delivery", "description": "Coordinated logistics ensure safe, on-time delivery to your designated location." }
+        "sourcing": { "title": "Supply & Sourcing", "description": "We check our stock or source from our global network for the best products and prices." },
+        "testing": { "title": "Testing & Fabrication", "description": "Quality testing, inspection, and any custom fabrication to meet your specifications." },
+        "delivery": { "title": "Delivery & Installation", "description": "Safe delivery with professional installation and ongoing maintenance support." }
       }
     },
     "stats": {
@@ -466,10 +466,10 @@
     "careers": "Careers",
     "products": "Products",
     "services": "Services",
-    "importServices": "Import Services",
-    "exportServices": "Export Services",
-    "logistics": "Logistics",
-    "qualityInspection": "Quality Inspection",
+    "stockistSupply": "Stockist & Supply",
+    "globalSourcing": "Global Sourcing",
+    "testingInspection": "Testing & Inspection",
+    "fabrication": "Fabrication & Modification",
     "address": "Address",
     "phone": "Phone",
     "email": "Email",
