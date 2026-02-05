@@ -46,16 +46,16 @@ export default function TrustedBy({ className = "" }: TrustedByProps) {
         </div>
 
         {/* Logo Grid - 4 columns on desktop, 2 columns on mobile/tablet */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
           {clients.map((client) => (
             <div
               key={client.name}
-              className="flex items-center justify-center h-20 md:h-24 lg:h-28"
+              className="flex items-center justify-center h-14 md:h-16 lg:h-18"
             >
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
-                className="w-28 h-14 md:w-32 md:h-16 lg:w-40 lg:h-20 object-contain opacity-70 hover:opacity-100 transition-all duration-200 ease-out brightness-0 invert"
+                className="w-20 h-10 md:w-24 md:h-12 lg:w-28 lg:h-14 object-contain opacity-70 hover:opacity-100 transition-all duration-200 ease-out brightness-0 invert"
               />
             </div>
           ))}

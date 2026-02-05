@@ -157,59 +157,32 @@ export default function AboutPage() {
     {
       name: t.about.industries.power.name,
       description: t.about.industries.power.description,
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
+      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80",
     },
     {
       name: t.about.industries.oilgas.name,
       description: t.about.industries.oilgas.description,
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
-        </svg>
-      ),
+      image: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=600&q=80",
     },
     {
       name: t.about.industries.petrochemical.name,
       description: t.about.industries.petrochemical.description,
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
-      ),
+      image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&q=80",
     },
     {
       name: t.about.industries.sugar.name,
       description: t.about.industries.sugar.description,
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
     },
     {
       name: t.about.industries.boilers.name,
       description: t.about.industries.boilers.description,
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          <circle cx="12" cy="12" r="3" strokeWidth={1.5} />
-        </svg>
-      ),
+      image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=80",
     },
     {
       name: t.about.industries.water.name,
       description: t.about.industries.water.description,
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3c-4 4-6 7-6 10a6 6 0 1012 0c0-3-2-6-6-10z" />
-        </svg>
-      ),
+      image: "https://images.unsplash.com/photo-1504387103978-e4ee71416c38?w=600&q=80",
     },
   ];
 
@@ -282,63 +255,36 @@ export default function AboutPage() {
       </section>
 
       {/* Industries We Serve Section */}
-      <section className="section-padding bg-white" id="industries">
+      <section className="py-12 md:py-16 gradient-navy" id="industries">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.about.industries.label}</span>
-            <h2 className="text-navy-900 mt-2 mb-4">{t.about.industries.title}</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+            <div>
+              <span className="text-accent-400 font-semibold text-xs uppercase tracking-wider">{t.about.industries.label}</span>
+              <h2 className="text-white text-2xl md:text-3xl font-semibold mt-1">{t.about.industries.title}</h2>
+            </div>
+            <p className="text-navy-300 text-sm max-w-md md:text-right">
               {t.about.industries.description}
             </p>
           </div>
           
-          <div className="max-w-3xl mx-auto">
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-navy-200 transform md:-translate-x-1/2" />
-              
-              {industries.map((industry, index) => (
-                <div key={index} className={`relative flex items-center mb-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:pl-12'} pl-12 md:pl-0`}>
-                    <div className="bg-white rounded-xl p-6 shadow-card border border-gray-100">
-                      <div className={`flex items-center gap-3 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                        <div className="w-10 h-10 bg-gradient-to-br from-accent-400 to-accent-600 rounded-lg flex items-center justify-center text-white flex-shrink-0 [&>svg]:w-5 [&>svg]:h-5">
-                          {industry.icon}
-                        </div>
-                        <h3 className="text-lg font-semibold text-navy-900">{industry.name}</h3>
-                      </div>
-                      <p className="text-gray-600 text-sm">{industry.description}</p>
-                    </div>
-                  </div>
-                  {/* Timeline dot */}
-                  <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-accent-500 rounded-full transform -translate-x-1/2 border-4 border-white shadow-md" />
-                  <div className="hidden md:block flex-1" />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+            {industries.map((industry, index) => (
+              <div 
+                key={index} 
+                className="group relative aspect-square rounded-lg overflow-hidden cursor-pointer"
+              >
+                <Image
+                  src={industry.image}
+                  alt={industry.name}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-navy-900/60 group-hover:bg-navy-900/40 transition-colors duration-300" />
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
+                  <h3 className="text-white font-semibold text-sm leading-tight">{industry.name}</h3>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="section-padding gradient-navy" id="values">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <span className="text-accent-400 font-semibold text-sm uppercase tracking-wider">{t.about.values.label}</span>
-            <h2 className="text-white mt-2 mb-4">{t.about.values.title}</h2>
-            <p className="text-navy-200 max-w-2xl mx-auto">
-              {t.about.values.description}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="bg-navy-800/50 backdrop-blur-sm rounded-2xl p-8 border border-navy-700 text-center">
-                <div className="w-16 h-16 bg-accent-500 rounded-2xl flex items-center justify-center text-white mx-auto mb-6">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3">{value.title}</h3>
-                <p className="text-navy-300">{value.description}</p>
               </div>
             ))}
           </div>
@@ -374,9 +320,10 @@ export default function AboutPage() {
       </section>
 
       {/* Standards & Compliance Section */}
-      <section className="section-padding bg-gray-50" id="standards">
+      <section className="section-padding bg-white border-y border-gray-100" id="standards">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          {/* Header */}
+          <div className="text-center mb-12">
             <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.about.standards.label}</span>
             <h2 className="text-navy-900 mt-2 mb-4">{t.about.standards.title}</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -384,19 +331,37 @@ export default function AboutPage() {
             </p>
           </div>
 
+          {/* Standards Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {standards.map((standard, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-xl p-6 text-center border border-gray-100 shadow-card hover:-translate-y-1 hover:shadow-elevated transition-all duration-300"
+                className="bg-gray-50 border border-gray-200 rounded-lg p-6 hover:border-navy-200 hover:bg-gray-100/50 transition-colors duration-200"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-accent-400 to-accent-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white">
+                {/* Icon */}
+                <div className="w-14 h-14 bg-navy-900 rounded-lg flex items-center justify-center text-white mb-5">
                   {standard.icon}
                 </div>
+                
+                {/* Content */}
                 <h3 className="text-lg font-semibold text-navy-900 mb-2">{standard.name}</h3>
-                <p className="text-gray-600 text-sm">{standard.description}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{standard.description}</p>
               </div>
             ))}
+          </div>
+
+          {/* Certification Badges */}
+          <div className="mt-12 pt-10 border-t border-gray-200">
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+              {['ISO 9001', 'API', 'ASTM', 'ASME'].map((cert, i) => (
+                <div key={i} className="flex items-center gap-2 px-4 py-2 bg-navy-50 border border-navy-100 rounded">
+                  <svg className="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm font-medium text-navy-800">{cert}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

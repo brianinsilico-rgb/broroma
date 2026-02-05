@@ -109,9 +109,14 @@ export default function ProductsPage() {
       <section className="gradient-navy py-20 md:py-28">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
-              {t.products.hero.label}
-            </span>
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-sm text-navy-300 mb-6">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+              <span className="text-white">Products</span>
+            </nav>
             <h1 className="text-white mb-6">
               {t.products.hero.title}
             </h1>
@@ -122,18 +127,18 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Features Bar */}
+      {/* Features Bar - Below Hero */}
       <section className="bg-white border-b border-gray-100">
         <div className="container-custom">
-          <div className="py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="py-4 md:py-8 grid grid-cols-4 gap-3 md:gap-6">
             {features.map((feature, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-navy-50 rounded-lg flex items-center justify-center text-navy-900 flex-shrink-0">
+              <div key={index} className="flex flex-col md:flex-row items-center md:items-center gap-1.5 md:gap-3 text-center md:text-left">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-navy-50 rounded-lg flex items-center justify-center text-navy-900 flex-shrink-0 [&>svg]:w-4 [&>svg]:h-4 md:[&>svg]:w-6 md:[&>svg]:h-6">
                   {feature.icon}
                 </div>
                 <div>
-                  <p className="font-semibold text-navy-900 text-sm">{feature.title}</p>
-                  <p className="text-gray-500 text-xs">{feature.description}</p>
+                  <p className="font-semibold text-navy-900 text-[10px] md:text-sm leading-tight">{feature.title}</p>
+                  <p className="text-gray-500 text-xs hidden md:block">{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -142,9 +147,10 @@ export default function ProductsPage() {
       </section>
 
       {/* Products Grid */}
-      <section className="section-padding bg-gray-50">
+      <section className="py-6 md:py-12 lg:py-20 bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          {/* Header - Hidden on mobile */}
+          <div className="hidden md:block text-center mb-16">
             <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.products.categories.label}</span>
             <h2 className="text-navy-900 mt-2 mb-4">
               {t.products.categories.title}
@@ -154,14 +160,32 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
             {categories.map((category) => (
               <Link
                 key={category.slug}
                 href={`/products/${category.slug}`}
                 className="group"
               >
-                <div className="card h-full hover:border-navy-200 flex flex-col">
+                {/* Mobile: Overlay style */}
+                <div className="md:hidden relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm">
+                  <Image
+                    src={category.image}
+                    alt={category.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between">
+                    <h3 className="text-white font-semibold text-sm">{category.name}</h3>
+                    <svg className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Desktop: Original card style */}
+                <div className="hidden md:flex card h-full hover:border-navy-200 flex-col p-6">
                   <div className="aspect-[4/3] relative rounded-lg overflow-hidden mb-4">
                     <Image
                       src={category.image}
@@ -172,7 +196,7 @@ export default function ProductsPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent" />
                   </div>
                   <div className="flex flex-col flex-grow">
-                    <h3 className="text-base md:text-lg font-semibold text-navy-900 mb-2 group-hover:text-accent-500 transition-colors">
+                    <h3 className="text-lg font-semibold text-navy-900 mb-2 group-hover:text-accent-500 transition-colors">
                       {category.name}
                     </h3>
                     <p className="text-gray-600 text-sm flex-grow line-clamp-2">{category.description}</p>

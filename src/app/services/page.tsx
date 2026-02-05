@@ -52,11 +52,6 @@ export default function ServicesPage() {
       description: t.services.stockist.description,
       image: serviceImages.stockist,
       features: t.services.stockist.features,
-      benefits: [
-        { title: t.services.stockist.benefits.availability.title, description: t.services.stockist.benefits.availability.description },
-        { title: t.services.stockist.benefits.speed.title, description: t.services.stockist.benefits.speed.description },
-        { title: t.services.stockist.benefits.convenience.title, description: t.services.stockist.benefits.convenience.description },
-      ],
     },
     {
       id: "sourcing",
@@ -65,11 +60,6 @@ export default function ServicesPage() {
       description: t.services.sourcing.description,
       image: serviceImages.sourcing,
       features: t.services.sourcing.features,
-      benefits: [
-        { title: t.services.sourcing.benefits.cost.title, description: t.services.sourcing.benefits.cost.description },
-        { title: t.services.sourcing.benefits.quality.title, description: t.services.sourcing.benefits.quality.description },
-        { title: t.services.sourcing.benefits.flexibility.title, description: t.services.sourcing.benefits.flexibility.description },
-      ],
     },
     {
       id: "testing",
@@ -78,11 +68,6 @@ export default function ServicesPage() {
       description: t.services.testing.description,
       image: serviceImages.testing,
       features: t.services.testing.features,
-      benefits: [
-        { title: t.services.testing.benefits.defects.title, description: t.services.testing.benefits.defects.description },
-        { title: t.services.testing.benefits.compliance.title, description: t.services.testing.benefits.compliance.description },
-        { title: t.services.testing.benefits.docs.title, description: t.services.testing.benefits.docs.description },
-      ],
     },
     {
       id: "fabrication",
@@ -91,11 +76,6 @@ export default function ServicesPage() {
       description: t.services.fabrication.description,
       image: serviceImages.fabrication,
       features: t.services.fabrication.features,
-      benefits: [
-        { title: t.services.fabrication.benefits.precision.title, description: t.services.fabrication.benefits.precision.description },
-        { title: t.services.fabrication.benefits.capability.title, description: t.services.fabrication.benefits.capability.description },
-        { title: t.services.fabrication.benefits.quality.title, description: t.services.fabrication.benefits.quality.description },
-      ],
     },
     {
       id: "installation",
@@ -104,11 +84,6 @@ export default function ServicesPage() {
       description: t.services.installation.description,
       image: serviceImages.installation,
       features: t.services.installation.features,
-      benefits: [
-        { title: t.services.installation.benefits.expertise.title, description: t.services.installation.benefits.expertise.description },
-        { title: t.services.installation.benefits.reliability.title, description: t.services.installation.benefits.reliability.description },
-        { title: t.services.installation.benefits.support.title, description: t.services.installation.benefits.support.description },
-      ],
     },
   ];
 
@@ -309,20 +284,20 @@ export default function ServicesPage() {
         <div className="container-custom relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <p className="text-5xl md:text-6xl font-bold text-white mb-2">50<span className="text-accent-400">+</span></p>
-              <p className="text-white/70 text-sm uppercase tracking-wider">{t.services.stats.countries}</p>
+              <p className="text-5xl md:text-6xl font-bold text-white mb-2">50+</p>
+              <p className="text-white text-sm uppercase tracking-wider">{t.services.stats.countries}</p>
             </div>
             <div className="text-center">
-              <p className="text-5xl md:text-6xl font-bold text-white mb-2">1000<span className="text-accent-400">+</span></p>
-              <p className="text-white/70 text-sm uppercase tracking-wider">{t.services.stats.projects}</p>
+              <p className="text-5xl md:text-6xl font-bold text-white mb-2">1000+</p>
+              <p className="text-white text-sm uppercase tracking-wider">{t.services.stats.projects}</p>
             </div>
             <div className="text-center">
-              <p className="text-5xl md:text-6xl font-bold text-white mb-2">99.5<span className="text-accent-400">%</span></p>
-              <p className="text-white/70 text-sm uppercase tracking-wider">{t.services.stats.delivery}</p>
+              <p className="text-5xl md:text-6xl font-bold text-white mb-2">99.5%</p>
+              <p className="text-white text-sm uppercase tracking-wider">{t.services.stats.delivery}</p>
             </div>
             <div className="text-center">
-              <p className="text-5xl md:text-6xl font-bold text-white mb-2">24<span className="text-accent-400">/7</span></p>
-              <p className="text-white/70 text-sm uppercase tracking-wider">{t.services.stats.support}</p>
+              <p className="text-5xl md:text-6xl font-bold text-white mb-2">24/7</p>
+              <p className="text-white text-sm uppercase tracking-wider">{t.services.stats.support}</p>
             </div>
           </div>
         </div>

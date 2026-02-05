@@ -28,7 +28,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navigation.map((item) => (
               <Link
                 key={item.href}
@@ -40,38 +40,41 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Language Toggle & CTA Button */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Language Toggle & CTA Button - Desktop */}
+          <div className="hidden lg:flex items-center gap-4">
             <LanguageToggle />
             <Link href="/quote" className="btn-primary">
               {t.nav.getQuote}
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="md:hidden p-2 text-navy-900 z-50 relative"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+          {/* Mobile/Tablet: Language Toggle + Hamburger Menu */}
+          <div className="flex lg:hidden items-center gap-2">
+            <LanguageToggle />
+            <button
+              type="button"
+              className="p-2 text-navy-900 z-50 relative"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div 
-          className="fixed inset-0 top-20 md:hidden z-40"
+          className="fixed inset-0 top-20 lg:hidden z-40"
           onClick={() => setMobileMenuOpen(false)}
         >
           {/* Backdrop */}
@@ -94,9 +97,7 @@ export default function Header() {
                     {item.name}
                   </Link>
                 ))}
-                <div className="pt-4 border-t border-gray-100">
-                  <LanguageToggle />
-                </div>
+                <div className="pt-4 border-t border-gray-100"></div>
                 <Link
                   href="/quote"
                   className="btn-primary text-center mt-2"

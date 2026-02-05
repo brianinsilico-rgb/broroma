@@ -542,7 +542,7 @@
       "chooseFile": "เลือกไฟล์",
       "orDragDrop": "หรือลากและวาง",
       "fileTypes": "PDF, DOC หรือรูปภาพ ขนาดไม่เกิน 10MB",
-      "submit": "ส่งคำขอใบเสนอราคา",
+      "submit": "ขอใบเสนอราคา",
       "submitting": "กำลังส่ง...",
       "required": "ช่องที่จำเป็น",
       "success": {

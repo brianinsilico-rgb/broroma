@@ -378,7 +378,7 @@ export default function QuotePage() {
                     </div>
 
                     {/* Submit Button */}
-                    <div className="flex items-center gap-4 pt-4">
+                    <div className="flex items-end gap-4 pt-4">
                       <button
                         type="submit"
                         disabled={isSubmitting}
