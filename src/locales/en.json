@@ -381,6 +381,7 @@
     },
     "form": {
       "title": "Send Us a Message",
+      "subtitle": "Have a question? Send us a message and we'll get back to you.",
       "name": "Full Name",
       "namePlaceholder": "John Smith",
       "email": "Email Address",
@@ -423,6 +424,18 @@
       "saturdayTime": "9:00 AM - 1:00 PM CST",
       "sunday": "Sunday",
       "sundayTime": "Closed"
+    },
+    "quoteCta": {
+      "title": "Need a Product Quote?",
+      "description": "Get pricing for pipes, fittings, valves, and more.",
+      "button": "Request a Quote"
+    },
+    "tabs": {
+      "message": "Send Message",
+      "call": "Call Us",
+      "visit": "Visit Us",
+      "callTitle": "Get in Touch",
+      "callDescription": "Reach out to us directly via phone or email."
     },
     "quickResponse": {
       "title": "Quick Response",
