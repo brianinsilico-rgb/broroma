@@ -479,8 +479,9 @@
   },
   "suppliers": {
     "hero": {
-      "title": "Our Suppliers",
-      "description": "We partner with leading manufacturers worldwide to deliver quality products that meet the highest industry standards."
+      "label": "Our Brands",
+      "title": "Brands We Carry",
+      "description": "Direct partnerships with the world's top manufacturers ensure authentic products, competitive pricing, and reliable supply."
     },
     "grid": {
       "title": "Trusted Manufacturing Partners",

@@ -138,7 +138,7 @@ export default function QuotePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-navy py-20 md:py-28">
+      <section className="gradient-navy py-16 md:py-24">
         <div className="container-custom">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">

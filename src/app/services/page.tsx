@@ -196,12 +196,12 @@ export default function ServicesPage() {
           <div className="space-y-20">
             {services.map((service, index) => (
               <div key={service.id}>
-                {/* Divider with number (not before first item) */}
+                {/* Divider with icon (not before first item) */}
                 {index > 0 && (
                   <div className="flex items-center justify-center gap-4 mb-20">
                     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-gray-200" />
-                    <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center">
-                      <span className="text-sm font-semibold text-gray-400">0{index + 1}</span>
+                    <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-400">
+                      {serviceIcons[service.id]}
                     </div>
                     <div className="flex-1 h-px bg-gradient-to-l from-transparent via-gray-200 to-gray-200" />
                   </div>
@@ -299,48 +299,54 @@ export default function ServicesPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding gradient-navy">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-5xl font-bold text-white mb-2">50+</p>
-              <p className="text-navy-200">{t.services.stats.countries}</p>
+      <section className="section-padding gradient-navy relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-400 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="container-custom relative">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <p className="text-5xl md:text-6xl font-bold text-white mb-2">50<span className="text-accent-400">+</span></p>
+              <p className="text-white/70 text-sm uppercase tracking-wider">{t.services.stats.countries}</p>
             </div>
-            <div>
-              <p className="text-5xl font-bold text-white mb-2">1000+</p>
-              <p className="text-navy-200">{t.services.stats.projects}</p>
+            <div className="text-center">
+              <p className="text-5xl md:text-6xl font-bold text-white mb-2">1000<span className="text-accent-400">+</span></p>
+              <p className="text-white/70 text-sm uppercase tracking-wider">{t.services.stats.projects}</p>
             </div>
-            <div>
-              <p className="text-5xl font-bold text-white mb-2">99.5%</p>
-              <p className="text-navy-200">{t.services.stats.delivery}</p>
+            <div className="text-center">
+              <p className="text-5xl md:text-6xl font-bold text-white mb-2">99.5<span className="text-accent-400">%</span></p>
+              <p className="text-white/70 text-sm uppercase tracking-wider">{t.services.stats.delivery}</p>
             </div>
-            <div>
-              <p className="text-5xl font-bold text-white mb-2">24/7</p>
-              <p className="text-navy-200">{t.services.stats.support}</p>
+            <div className="text-center">
+              <p className="text-5xl md:text-6xl font-bold text-white mb-2">24<span className="text-accent-400">/7</span></p>
+              <p className="text-white/70 text-sm uppercase tracking-wider">{t.services.stats.support}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.services.faq.label}</span>
-              <h2 className="text-navy-900 mt-2 mb-4">{t.services.faq.title}</h2>
+              <span className="text-accent-500 font-medium text-sm uppercase tracking-wider">{t.services.faq.label}</span>
+              <h2 className="text-navy-900 mt-2">{t.services.faq.title}</h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
               {[
                 { q: t.services.faq.q1, a: t.services.faq.a1 },
                 { q: t.services.faq.q2, a: t.services.faq.a2 },
                 { q: t.services.faq.q3, a: t.services.faq.a3 },
                 { q: t.services.faq.q4, a: t.services.faq.a4 },
               ].map((faq, index) => (
-                <div key={index} className="card">
-                  <h3 className="text-lg font-semibold text-navy-900 mb-2">{faq.q}</h3>
-                  <p className="text-gray-600">{faq.a}</p>
+                <div key={index} className="border-l-2 border-gray-200 hover:border-accent-400 pl-6 py-1 transition-colors">
+                  <h3 className="text-base font-semibold text-navy-900 mb-2">{faq.q}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>

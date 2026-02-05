@@ -43,19 +43,12 @@ export default function SuppliersPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-navy py-16 md:py-24">
+      <section className="gradient-navy py-20 md:py-28">
         <div className="container-custom">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-navy-300 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">{t.nav.home}</Link>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-            <span className="text-white">{t.suppliers.hero.title}</span>
-          </nav>
-
-          {/* Title */}
           <div className="max-w-3xl">
+            <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
+              {t.suppliers.hero.label}
+            </span>
             <h1 className="text-white mb-6">{t.suppliers.hero.title}</h1>
             <p className="text-xl text-navy-200 leading-relaxed">
               {t.suppliers.hero.description}
