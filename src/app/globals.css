@@ -320,8 +320,15 @@ textarea:invalid {
 }
 
 .react-datepicker-popper {
-  z-index: 50;
-  position: fixed !important;
+  z-index: 9999 !important;
+}
+
+.react-datepicker-popper[data-placement^="bottom"] {
+  padding-top: 4px;
+}
+
+.react-datepicker-popper[data-placement^="top"] {
+  padding-bottom: 4px;
 }
 
 /* Set calendar width to match input */

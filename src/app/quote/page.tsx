@@ -9,13 +9,13 @@ export default function QuotePage() {
   const { t } = useLanguage();
   
   const productCategories = [
-    t.quote.categories.pipes,
-    t.quote.categories.fittings,
-    t.quote.categories.flanges,
-    t.quote.categories.tubes,
-    t.quote.categories.valves,
-    t.quote.categories.accessories,
-    t.quote.categories.other,
+    { id: "pipes", label: t.quote.categories.pipes },
+    { id: "fittings", label: t.quote.categories.fittings },
+    { id: "flanges", label: t.quote.categories.flanges },
+    { id: "tubes", label: t.quote.categories.tubes },
+    { id: "valves", label: t.quote.categories.valves },
+    { id: "accessories", label: t.quote.categories.accessories },
+    { id: "other", label: t.quote.categories.other },
   ];
 
   const [formData, setFormData] = useState({
@@ -33,11 +33,11 @@ export default function QuotePage() {
   
   const originOptions = [
     { id: "china", label: t.quote.form.origins.china },
-    { id: "india", label: t.quote.form.origins.india },
     { id: "japan", label: t.quote.form.origins.japan },
     { id: "korea", label: t.quote.form.origins.korea },
     { id: "europe", label: t.quote.form.origins.europe },
     { id: "usa", label: t.quote.form.origins.usa },
+    { id: "india", label: t.quote.form.origins.india },
     { id: "noPreference", label: t.quote.form.origins.noPreference },
   ];
   
@@ -261,7 +261,7 @@ export default function QuotePage() {
                       >
                         <option value="">{t.quote.form.selectCategory}</option>
                         {productCategories.map((category) => (
-                          <option key={category} value={category}>{category}</option>
+                          <option key={category.id} value={category.id}>{category.label}</option>
                         ))}
                       </select>
                       <p className="text-sm text-gray-500 mt-2">{t.quote.form.categoryHelper}</p>
@@ -284,7 +284,7 @@ export default function QuotePage() {
 
                     {/* Preferred Origin */}
                     <div>
-                      <label className="label-text">{t.quote.form.preferredOrigin} *</label>
+                      <label className="label-text">{t.quote.form.preferredOrigin}</label>
                       <div className="mt-2 flex flex-wrap gap-x-6 gap-y-3">
                         {originOptions.map((origin) => (
                           <label
@@ -301,15 +301,6 @@ export default function QuotePage() {
                           </label>
                         ))}
                       </div>
-                      {/* Hidden input for form validation */}
-                      <input
-                        type="text"
-                        required
-                        value={preferredOrigins.length > 0 ? "valid" : ""}
-                        className="sr-only"
-                        tabIndex={-1}
-                        onChange={() => {}}
-                      />
                     </div>
 
                     {/* Delivery Date */}
@@ -327,7 +318,20 @@ export default function QuotePage() {
                           showPopperArrow={false}
                           popperPlacement="bottom-start"
                           wrapperClassName="w-full"
-                          popperProps={{ strategy: "fixed" }}
+                          popperProps={{ 
+                            strategy: "fixed",
+                            positionFixed: true
+                          }}
+                          popperModifiers={[
+                            {
+                              name: "preventOverflow",
+                              options: {
+                                rootBoundary: "viewport",
+                                tether: false,
+                                altAxis: true
+                              }
+                            }
+                          ]}
                         />
                         <div className="datepicker-icon">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
