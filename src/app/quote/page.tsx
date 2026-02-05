@@ -3,6 +3,12 @@
 import { useState, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
+interface ProductRow {
+  id: number;
+  category: string;
+  details: string;
+}
+
 export default function QuotePage() {
   const { t } = useLanguage();
   
@@ -10,8 +16,7 @@ export default function QuotePage() {
     t.quote.categories.pipes,
     t.quote.categories.fittings,
     t.quote.categories.flanges,
-    t.quote.categories.boilerTubes,
-    t.quote.categories.heatExchangerTubes,
+    t.quote.categories.tubes,
     t.quote.categories.valves,
     t.quote.categories.accessories,
     t.quote.categories.other,
@@ -22,21 +27,41 @@ export default function QuotePage() {
     company: "",
     email: "",
     phone: "",
-    productCategory: "",
     specifications: "",
-    quantity: "",
     deliveryDate: "",
   });
+  
+  const [productRows, setProductRows] = useState<ProductRow[]>([
+    { id: 1, category: "", details: "" }
+  ]);
+  
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const nextRowId = useRef(2);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleProductRowChange = (id: number, field: 'category' | 'details', value: string) => {
+    setProductRows(rows => 
+      rows.map(row => row.id === id ? { ...row, [field]: value } : row)
+    );
+  };
+
+  const addProductRow = () => {
+    setProductRows(rows => [...rows, { id: nextRowId.current++, category: "", details: "" }]);
+  };
+
+  const removeProductRow = (id: number) => {
+    if (productRows.length > 1) {
+      setProductRows(rows => rows.filter(row => row.id !== id));
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,11 +95,11 @@ export default function QuotePage() {
       company: "",
       email: "",
       phone: "",
-      productCategory: "",
       specifications: "",
-      quantity: "",
       deliveryDate: "",
     });
+    setProductRows([{ id: 1, category: "", details: "" }]);
+    nextRowId.current = 2;
     setSelectedFile(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
@@ -189,68 +214,93 @@ export default function QuotePage() {
                       </div>
                     </div>
 
-                    {/* Row 3: Product Category */}
+                    {/* Products Section */}
                     <div>
-                      <label htmlFor="productCategory" className="label-text">{t.quote.form.productCategory} *</label>
-                      <select
-                        id="productCategory"
-                        name="productCategory"
-                        value={formData.productCategory}
-                        onChange={handleChange}
-                        required
-                        className="input-field"
-                      >
-                        <option value="">{t.quote.form.selectCategory}</option>
-                        {productCategories.map((category) => (
-                          <option key={category} value={category}>{category}</option>
+                      <label className="label-text">{t.quote.form.productsNeeded} *</label>
+                      <div className="mt-2 space-y-2">
+                        {productRows.map((row) => (
+                          <div 
+                            key={row.id} 
+                            className="relative transition-all duration-200"
+                          >
+                            <div className="flex flex-col md:flex-row border border-gray-300 rounded-lg overflow-hidden focus-within:border-navy-400 focus-within:ring-1 focus-within:ring-navy-400">
+                              <select
+                                value={row.category}
+                                onChange={(e) => handleProductRowChange(row.id, 'category', e.target.value)}
+                                required
+                                className="w-full md:w-[30%] pl-4 pr-10 py-3 bg-gray-50 border-0 border-b md:border-b-0 md:border-r border-gray-300 text-navy-900 focus:outline-none focus:bg-white appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg%20xmlns%3d%22http%3a%2f%2fwww.w3.org%2f2000%2fsvg%22%20viewBox%3d%220%200%2020%2020%22%20fill%3d%22%236b7280%22%3e%3cpath%20fill-rule%3d%22evenodd%22%20d%3d%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%20clip-rule%3d%22evenodd%22%2f%3e%3c%2fsvg%3e')] bg-[length:1.25rem_1.25rem] bg-[right_0.75rem_center] bg-no-repeat"
+                              >
+                                <option value="">{t.quote.form.selectCategory}</option>
+                                {productCategories.map((category) => (
+                                  <option key={category} value={category}>{category}</option>
+                                ))}
+                              </select>
+                              <input
+                                type="text"
+                                value={row.details}
+                                onChange={(e) => handleProductRowChange(row.id, 'details', e.target.value)}
+                                required
+                                className={`w-full md:w-[70%] px-4 py-3 border-0 text-navy-900 focus:outline-none placeholder:text-gray-400 ${productRows.length > 1 ? 'pr-10' : ''}`}
+                                placeholder={t.quote.form.detailsPlaceholder}
+                              />
+                            </div>
+                            {productRows.length > 1 && (
+                              <button
+                                type="button"
+                                onClick={() => removeProductRow(row.id)}
+                                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-gray-300 hover:text-red-400 transition-colors"
+                                aria-label="Remove product"
+                              >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </button>
+                            )}
+                          </div>
                         ))}
-                      </select>
-                      <p className="text-sm text-gray-500 mt-2">{t.quote.form.productCategoryHelper}</p>
+                        
+                        {/* Add Another Product Button */}
+                        <button
+                          type="button"
+                          onClick={addProductRow}
+                          className="inline-flex items-center gap-1.5 text-accent-500 hover:text-accent-600 text-sm font-medium transition-colors pt-1"
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                          </svg>
+                          {t.quote.form.addProduct}
+                        </button>
+                      </div>
                     </div>
 
-                    {/* Row 4: Specifications / Details */}
+                    {/* Additional Notes / Specifications */}
                     <div>
-                      <label htmlFor="specifications" className="label-text">{t.quote.form.specifications} *</label>
+                      <label htmlFor="specifications" className="label-text">{t.quote.form.additionalNotes}</label>
                       <textarea
                         id="specifications"
                         name="specifications"
                         value={formData.specifications}
                         onChange={handleChange}
-                        required
-                        rows={6}
+                        rows={4}
                         className="input-field resize-none"
-                        placeholder={t.quote.form.specificationsPlaceholder}
+                        placeholder={t.quote.form.additionalNotesPlaceholder}
                       />
                     </div>
 
-                    {/* Row 5: Quantity & Delivery Date */}
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="quantity" className="label-text">{t.quote.form.quantity}</label>
-                        <input
-                          type="text"
-                          id="quantity"
-                          name="quantity"
-                          value={formData.quantity}
-                          onChange={handleChange}
-                          className="input-field"
-                          placeholder={t.quote.form.quantityPlaceholder}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="deliveryDate" className="label-text">{t.quote.form.deliveryDate}</label>
-                        <input
-                          type="date"
-                          id="deliveryDate"
-                          name="deliveryDate"
-                          value={formData.deliveryDate}
-                          onChange={handleChange}
-                          className="input-field"
-                        />
-                      </div>
+                    {/* Delivery Date */}
+                    <div className="md:w-1/2">
+                      <label htmlFor="deliveryDate" className="label-text">{t.quote.form.deliveryDate}</label>
+                      <input
+                        type="date"
+                        id="deliveryDate"
+                        name="deliveryDate"
+                        value={formData.deliveryDate}
+                        onChange={handleChange}
+                        className="input-field"
+                      />
                     </div>
 
-                    {/* Row 6: File Upload */}
+                    {/* File Upload */}
                     <div>
                       <label className="label-text">{t.quote.form.uploadFile}</label>
                       <div className="mt-2">
