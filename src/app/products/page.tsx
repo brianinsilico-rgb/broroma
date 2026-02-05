@@ -106,7 +106,7 @@ export default function ProductsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-navy py-20 md:py-28">
+      <section className="gradient-navy py-16 md:py-24">
         <div className="container-custom">
           <div className="max-w-3xl">
             {/* Breadcrumb */}
@@ -120,7 +120,7 @@ export default function ProductsPage() {
             <h1 className="text-white mb-6">
               {t.products.hero.title}
             </h1>
-            <p className="text-xl text-navy-200 leading-relaxed">
+            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
               {t.products.hero.description}
             </p>
           </div>
