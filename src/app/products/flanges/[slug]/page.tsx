@@ -21,9 +21,9 @@ const flangeData: Record<string, {
 }> = {
   "weld-neck": {
     name: "Weld Neck Flanges",
-    description: "High-integrity flanges with tapered hub for excellent stress distribution. Ideal for high-pressure and high-temperature applications.",
-    longDescription: "Our weld neck flanges feature a long tapered hub that provides excellent stress distribution and reinforcement at the flange-to-pipe weld joint. The bore of the flange matches the pipe bore, ensuring smooth flow and minimizing turbulence. These flanges are the preferred choice for critical, high-pressure, and high-temperature applications in power generation, petrochemical, and offshore industries.",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
+    description: "Tapered hub design for maximum strength at the weld joint. Best for high-pressure and high-temperature service.",
+    longDescription: "Tapered hub design for maximum strength at the weld joint. Best for high-pressure and high-temperature service.",
+    image: "/flanges/weld-neck.png",
     specifications: ["ASME B16.5", "ASME B16.47", "EN 1092-1", "JIS B2220", "BS 1560"],
     applications: ["Power Plants", "Refineries", "Chemical Plants", "Petrochemical", "Offshore", "High-Pressure Systems"],
     products: [
@@ -44,9 +44,9 @@ const flangeData: Record<string, {
   },
   "slip-on": {
     name: "Slip-On Flanges",
-    description: "Cost-effective flanges that slide over the pipe end. Easy alignment and welding for low-pressure applications.",
-    longDescription: "Our slip-on flanges offer a cost-effective solution for piping connections where high pressure is not a concern. The flange slides over the pipe end and is welded both inside and outside, providing adequate strength for moderate service conditions. Easy to align and economical to manufacture, these flanges are popular in low-pressure water, air, and general industrial applications.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    description: "Slides over the pipe for easy alignment and welding. Cost-effective choice for low-pressure applications.",
+    longDescription: "Slides over the pipe for easy alignment and welding. Cost-effective choice for low-pressure applications.",
+    image: "/flanges/slip-on.png",
     specifications: ["ASME B16.5", "ASME B16.47", "EN 1092-1", "JIS B2220", "BS 1560"],
     applications: ["Power Plants", "Water Systems", "HVAC", "General Industrial", "Low-Pressure Piping", "Process Piping"],
     products: [
@@ -67,9 +67,9 @@ const flangeData: Record<string, {
   },
   "blind": {
     name: "Blind Flanges",
-    description: "Solid flanges for closing pipe ends, valve openings, or pressure vessel connections. Essential for system isolation.",
-    longDescription: "Our blind flanges are solid discs used to close or blank off piping systems, valves, and pressure vessel openings. They are essential for system isolation, pressure testing, and providing access for future expansion. Blind flanges must withstand full system pressure and are available in all standard pressure classes and materials.",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&q=80",
+    description: "Closes off the end of a piping system. Used for testing, inspection, or future expansion.",
+    longDescription: "Closes off the end of a piping system. Used for testing, inspection, or future expansion.",
+    image: "/flanges/blind.png",
     specifications: ["ASME B16.5", "ASME B16.47", "EN 1092-1", "JIS B2220", "API 590"],
     applications: ["Power Plants", "Refineries", "Chemical Plants", "Pressure Testing", "System Isolation", "Future Expansion"],
     products: [
@@ -90,9 +90,9 @@ const flangeData: Record<string, {
   },
   "socket-weld": {
     name: "Socket Weld Flanges",
-    description: "Flanges with a socket for pipe insertion and fillet welding. Ideal for small-bore, high-pressure piping systems.",
-    longDescription: "Our socket weld flanges feature a recessed area (socket) where the pipe is inserted before being fillet welded. This design provides excellent joint strength and is ideal for small-bore, high-pressure piping systems where butt welding may be impractical. The socket provides automatic pipe alignment and requires only a single fillet weld.",
-    image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1200&q=80",
+    description: "Pipe inserts into the socket before welding. Ideal for small-diameter, high-pressure lines.",
+    longDescription: "Pipe inserts into the socket before welding. Ideal for small-diameter, high-pressure lines.",
+    image: "/flanges/socket-weld.png",
     specifications: ["ASME B16.5", "EN 1092-1", "JIS B2220", "BS 1560", "MSS SP-44"],
     applications: ["Power Plants", "Refineries", "Chemical Plants", "Instrumentation", "High-Pressure Small Bore", "Process Piping"],
     products: [
@@ -113,9 +113,9 @@ const flangeData: Record<string, {
   },
   "threaded": {
     name: "Threaded Flanges",
-    description: "Flanges with internal threads for non-welded connections. Suitable for low-pressure applications and easy assembly.",
-    longDescription: "Our threaded flanges feature internal NPT or BSPT threads that allow connection to threaded pipe without welding. This makes them ideal for applications where welding is not practical or permitted, such as in explosive atmospheres or for ease of assembly and disassembly. Threaded flanges are suitable for low-pressure, ambient temperature applications.",
-    image: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1200&q=80",
+    description: "Screws onto threaded pipe — no welding required. Best for low-pressure, non-critical systems.",
+    longDescription: "Screws onto threaded pipe — no welding required. Best for low-pressure, non-critical systems.",
+    image: "/flanges/threaded.png",
     specifications: ["ASME B16.5", "EN 1092-1", "JIS B2220", "BS 1560", "ASME B1.20.1"],
     applications: ["Power Plants", "Low-Pressure Systems", "Air Lines", "Water Systems", "Non-Welded Applications", "Easy Assembly"],
     products: [
@@ -136,9 +136,9 @@ const flangeData: Record<string, {
   },
   "lap-joint": {
     name: "Lap Joint Flanges",
-    description: "Two-piece assembly with stub end and backing flange. Economical solution for stainless and alloy piping systems.",
-    longDescription: "Our lap joint flanges consist of two components: a stub end (welded to the pipe) and a backing flange (loose). This design allows the backing flange to be made from carbon steel while only the stub end needs to be the expensive alloy material. The loose flange can rotate freely for easy bolt hole alignment, making assembly convenient.",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80",
+    description: "Two-piece design allows easy bolt alignment and rotation. Good for systems requiring frequent disassembly.",
+    longDescription: "Two-piece design allows easy bolt alignment and rotation. Good for systems requiring frequent disassembly.",
+    image: "/flanges/lap-joint.png",
     specifications: ["ASME B16.5", "ASME B16.47", "EN 1092-1", "JIS B2220", "MSS SP-43"],
     applications: ["Power Plants", "Refineries", "Chemical Plants", "Stainless Steel Systems", "Alloy Systems", "Frequent Disassembly"],
     products: [
@@ -193,11 +193,10 @@ export default async function FlangeDetailPage({ params }: Props) {
   
   return (
     <>
-      {/* Hero Section */}
-      <section className="gradient-navy py-20 md:py-28">
+      {/* Hero — same height/styling as Flanges listing */}
+      <section className="gradient-navy py-16 md:py-24">
         <div className="container-custom">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-navy-300 mb-4 flex-wrap">
+          <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 md:mb-4 flex-wrap">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -212,15 +211,9 @@ export default async function FlangeDetailPage({ params }: Props) {
             </svg>
             <span className="text-white">{flange.name}</span>
           </nav>
-          
-          {/* Category Badge */}
-          <span className="inline-block px-3 py-1 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-4">
-            Flanges
-          </span>
-          
           <div className="max-w-3xl">
             <h1 className="text-white mb-6">{flange.name}</h1>
-            <p className="text-xl text-navy-200 leading-relaxed">
+            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
               {flange.longDescription}
             </p>
           </div>
@@ -228,19 +221,19 @@ export default async function FlangeDetailPage({ params }: Props) {
       </section>
 
       {/* Main Content */}
-      <section className="section-padding bg-white">
+      <section className="py-10 md:py-16 bg-white">
         <div className="container-custom">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              {/* Hero Image */}
-              <div className="aspect-[16/9] relative rounded-2xl overflow-hidden mb-12">
+              {/* Product image */}
+              <div className="aspect-[4/3] relative rounded-2xl overflow-hidden mb-12 bg-gray-100 border border-gray-200">
                 <Image
                   src={flange.image}
                   alt={flange.name}
                   fill
-                  className="object-cover"
-                  priority
+                  className="object-contain p-6"
+                  sizes="(max-width: 1024px) 100vw, 66vw"
                 />
               </div>
 
@@ -355,7 +348,7 @@ export default async function FlangeDetailPage({ params }: Props) {
       </section>
 
       {/* Related Products */}
-      <section className="section-padding bg-gray-50">
+      <section className="py-10 md:py-16 bg-gray-50">
         <div className="container-custom">
           <h2 className="text-2xl font-semibold text-navy-900 mb-8">Other Flange Products</h2>
           <div className="grid md:grid-cols-3 gap-6">

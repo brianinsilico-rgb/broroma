@@ -199,6 +199,50 @@
         "button": "Request a Quote"
       }
     },
+    "boilerTubes": {
+      "pageTitle": "Boiler Tubes",
+      "pageDescription": "Heat-resistant tubes for high-temperature boiler and steam generation applications.",
+      "materialsTitle": "Boiler Tube Materials",
+      "materialsDescription": "Carbon, stainless, alloy, and duplex steel tubes for boiler and steam applications.",
+      "applicationsTitle": "Applications",
+      "applications": ["Power Generation", "Boilers", "Steam Systems", "Refineries", "Chemical Plants"],
+      "downloads": {
+        "sectionTitle": "Product Catalogs",
+        "sectionDescription": "Download our detailed product catalogs for specifications, dimensions, and technical data.",
+        "catalogPdf": "#",
+        "fullPdf": "#",
+        "catalogName": "Boiler Tubes Catalog",
+        "fullCatalogName": "Full Tubes Catalog",
+        "catalogLabel": "Download Boiler Tubes Catalog (PDF)"
+      },
+      "cta": {
+        "title": "Need a Quote for Boiler Tubes?",
+        "description": "Contact our team for pricing, availability, and custom specifications.",
+        "button": "Request a Quote"
+      }
+    },
+    "heatExchangerTubes": {
+      "pageTitle": "Heat Exchanger Tubes",
+      "pageDescription": "Precision tubes for efficient thermal transfer in heat exchanger systems.",
+      "materialsTitle": "Heat Exchanger Tube Materials",
+      "materialsDescription": "Carbon, stainless, alloy, and duplex steel tubes for heat transfer applications.",
+      "applicationsTitle": "Applications",
+      "applications": ["Power Generation", "Boilers", "Steam Systems", "Refineries", "Chemical Plants"],
+      "downloads": {
+        "sectionTitle": "Product Catalogs",
+        "sectionDescription": "Download our detailed product catalogs for specifications, dimensions, and technical data.",
+        "catalogPdf": "#",
+        "fullPdf": "#",
+        "catalogName": "Heat Exchanger Tubes Catalog",
+        "fullCatalogName": "Full Tubes Catalog",
+        "catalogLabel": "Download Heat Exchanger Tubes Catalog (PDF)"
+      },
+      "cta": {
+        "title": "Need a Quote for Heat Exchanger Tubes?",
+        "description": "Contact our team for pricing, availability, and custom specifications.",
+        "button": "Request a Quote"
+      }
+    },
     "features": {
       "mtc": {
         "title": "Mill Test Certificates",
