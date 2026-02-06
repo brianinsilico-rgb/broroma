@@ -140,7 +140,7 @@ export default function Home() {
         </div>
         
         <div className="container-custom relative">
-          <div className="py-24 md:py-32 lg:py-40">
+          <div className="py-32 md:py-32 lg:py-40">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
