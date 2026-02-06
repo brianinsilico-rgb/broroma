@@ -138,16 +138,16 @@ export default function QuotePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-navy py-16 md:py-24">
+      <section className="gradient-navy py-10 sm:py-16 md:py-24">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
+            <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-navy-800/50 text-steel-400 text-xs sm:text-sm font-medium rounded-full mb-4 sm:mb-6">
               {t.quote.hero.label}
             </span>
-            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               {t.quote.hero.title}
             </h1>
-            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-navy-200 leading-relaxed">
               {t.quote.hero.description}
             </p>
           </div>
@@ -155,23 +155,23 @@ export default function QuotePage() {
       </section>
 
       {/* Quote Form Section */}
-      <section className="section-padding bg-white">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-white">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {/* Quote Form */}
             <div className="lg:col-span-2">
-              <div className="card">
-                <h2 className="text-2xl font-semibold text-navy-900 mb-6">{t.quote.form.title}</h2>
+              <div className="card p-4 sm:p-6">
+                <h2 className="text-xl sm:text-2xl font-semibold text-navy-900 mb-4 sm:mb-6">{t.quote.form.title}</h2>
                 
                 {isSubmitted ? (
-                  <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="text-center py-8 sm:py-12">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-navy-900 mb-2">{t.quote.form.success.title}</h3>
-                    <p className="text-gray-600 mb-6">
+                    <h3 className="text-lg sm:text-xl font-semibold text-navy-900 mb-2">{t.quote.form.success.title}</h3>
+                    <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
                       {t.quote.form.success.message}
                     </p>
                     <button
@@ -185,13 +185,13 @@ export default function QuotePage() {
                   <form 
                     ref={formRef}
                     onSubmit={handleSubmit} 
-                    className={`space-y-6 ${showValidation ? 'show-validation' : ''}`}
+                    className={`space-y-4 sm:space-y-6 ${showValidation ? 'show-validation' : ''}`}
                     noValidate
                   >
                     {/* Row 1: Full Name & Company Name */}
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label htmlFor="fullName" className="label-text">{t.quote.form.fullName} *</label>
+                        <label htmlFor="fullName" className="label-text text-sm sm:text-base">{t.quote.form.fullName} *</label>
                         <input
                           type="text"
                           id="fullName"
@@ -199,12 +199,12 @@ export default function QuotePage() {
                           value={formData.fullName}
                           onChange={handleChange}
                           required
-                          className="input-field"
+                          className="input-field text-base"
                           placeholder={t.quote.form.fullNamePlaceholder}
                         />
                       </div>
                       <div>
-                        <label htmlFor="company" className="label-text">{t.quote.form.company} *</label>
+                        <label htmlFor="company" className="label-text text-sm sm:text-base">{t.quote.form.company} *</label>
                         <input
                           type="text"
                           id="company"
@@ -219,9 +219,9 @@ export default function QuotePage() {
                     </div>
 
                     {/* Row 2: Email & Phone */}
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label htmlFor="email" className="label-text">{t.quote.form.email} *</label>
+                        <label htmlFor="email" className="label-text text-sm sm:text-base">{t.quote.form.email} *</label>
                         <input
                           type="email"
                           id="email"
@@ -234,7 +234,7 @@ export default function QuotePage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="phone" className="label-text">{t.quote.form.phone} *</label>
+                        <label htmlFor="phone" className="label-text text-sm sm:text-base">{t.quote.form.phone} *</label>
                         <input
                           type="tel"
                           id="phone"
@@ -250,7 +250,7 @@ export default function QuotePage() {
 
                     {/* Primary Product Category */}
                     <div>
-                      <label htmlFor="productCategory" className="label-text">{t.quote.form.productCategory} *</label>
+                      <label htmlFor="productCategory" className="label-text text-sm sm:text-base">{t.quote.form.productCategory} *</label>
                       <select
                         id="productCategory"
                         name="productCategory"
@@ -264,28 +264,28 @@ export default function QuotePage() {
                           <option key={category.id} value={category.id}>{category.label}</option>
                         ))}
                       </select>
-                      <p className="text-sm text-gray-500 mt-2">{t.quote.form.categoryHelper}</p>
+                      <p className="text-xs sm:text-sm text-gray-500 mt-1.5 sm:mt-2">{t.quote.form.categoryHelper}</p>
                     </div>
 
                     {/* Specifications / Details */}
                     <div>
-                      <label htmlFor="specifications" className="label-text">{t.quote.form.specifications} *</label>
+                      <label htmlFor="specifications" className="label-text text-sm sm:text-base">{t.quote.form.specifications} *</label>
                       <textarea
                         id="specifications"
                         name="specifications"
                         value={formData.specifications}
                         onChange={handleChange}
                         required
-                        rows={6}
-                        className="input-field resize-none"
+                        rows={5}
+                        className="input-field resize-none text-base py-3 min-h-[120px] sm:min-h-0"
                         placeholder={t.quote.form.specificationsPlaceholder}
                       />
                     </div>
 
                     {/* Preferred Origin */}
                     <div>
-                      <label className="label-text">{t.quote.form.preferredOrigin}</label>
-                      <div className="mt-2 flex flex-wrap gap-x-6 gap-y-3">
+                      <label className="label-text text-sm sm:text-base">{t.quote.form.preferredOrigin}</label>
+                      <div className="mt-2 flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2.5 sm:gap-y-3">
                         {originOptions.map((origin) => (
                           <label
                             key={origin.id}
@@ -295,9 +295,9 @@ export default function QuotePage() {
                               type="checkbox"
                               checked={preferredOrigins.includes(origin.id)}
                               onChange={() => handleOriginChange(origin.id)}
-                              className="w-4 h-4 rounded border-gray-300 text-accent-500 focus:ring-accent-500 focus:ring-offset-0 cursor-pointer"
+                              className="w-4 h-4 min-w-[16px] min-h-[16px] rounded border-gray-300 text-accent-500 focus:ring-accent-500 focus:ring-offset-0 cursor-pointer"
                             />
-                            <span className="text-sm text-navy-800">{origin.label}</span>
+                            <span className="text-xs sm:text-sm text-navy-800">{origin.label}</span>
                           </label>
                         ))}
                       </div>
@@ -305,7 +305,7 @@ export default function QuotePage() {
 
                     {/* Delivery Date */}
                     <div className="w-full max-w-[280px]">
-                      <label htmlFor="deliveryDate" className="label-text">{t.quote.form.deliveryDate}</label>
+                      <label htmlFor="deliveryDate" className="label-text text-sm sm:text-base">{t.quote.form.deliveryDate}</label>
                       <div className="relative datepicker-wrapper">
                         <DatePicker
                           selected={deliveryDate}
@@ -330,22 +330,23 @@ export default function QuotePage() {
 
                     {/* File Upload */}
                     <div>
-                      <label className="label-text">{t.quote.form.uploadFile}</label>
+                      <label className="label-text text-sm sm:text-base">{t.quote.form.uploadFile}</label>
                       <div className="mt-2">
-                        <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-navy-400 transition-colors">
+                        <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 sm:p-6 text-center hover:border-navy-400 transition-colors">
                           {selectedFile ? (
-                            <div className="flex items-center justify-center gap-3">
-                              <svg className="w-8 h-8 text-navy-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+                              <svg className="w-7 h-7 sm:w-8 sm:h-8 text-navy-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                               </svg>
-                              <div className="text-left">
-                                <p className="font-medium text-navy-900">{selectedFile.name}</p>
-                                <p className="text-sm text-gray-500">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+                              <div className="text-center sm:text-left min-w-0">
+                                <p className="font-medium text-navy-900 text-sm sm:text-base truncate max-w-[200px] sm:max-w-none">{selectedFile.name}</p>
+                                <p className="text-xs sm:text-sm text-gray-500">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>
                               </div>
                               <button
                                 type="button"
                                 onClick={handleRemoveFile}
-                                className="ml-4 p-1 text-gray-400 hover:text-red-500 transition-colors"
+                                className="sm:ml-4 p-1.5 text-gray-400 hover:text-red-500 transition-colors touch-manipulation"
+                                aria-label="Remove file"
                               >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -354,10 +355,10 @@ export default function QuotePage() {
                             </div>
                           ) : (
                             <>
-                              <svg className="w-10 h-10 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400 mx-auto mb-2 sm:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                               </svg>
-                              <label htmlFor="file-upload" className="cursor-pointer">
+                              <label htmlFor="file-upload" className="cursor-pointer block text-sm sm:text-base">
                                 <span className="text-accent-500 hover:text-accent-600 font-medium">{t.quote.form.chooseFile}</span>
                                 <span className="text-gray-600"> {t.quote.form.orDragDrop}</span>
                               </label>
@@ -370,7 +371,7 @@ export default function QuotePage() {
                                 accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
                                 onChange={handleFileChange}
                               />
-                              <p className="text-sm text-gray-500 mt-2">{t.quote.form.fileTypes}</p>
+                              <p className="text-xs sm:text-sm text-gray-500 mt-1.5 sm:mt-2">{t.quote.form.fileTypes}</p>
                             </>
                           )}
                         </div>
@@ -378,11 +379,11 @@ export default function QuotePage() {
                     </div>
 
                     {/* Submit Button */}
-                    <div className="flex items-end gap-4 pt-4">
+                    <div className="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-4 pt-2 sm:pt-4">
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto py-3 text-sm sm:text-base touch-manipulation"
                       >
                         {isSubmitting ? (
                           <>
@@ -401,7 +402,7 @@ export default function QuotePage() {
                           </>
                         )}
                       </button>
-                      <p className="text-sm text-gray-500">* {t.quote.form.required}</p>
+                      <p className="text-xs sm:text-sm text-gray-500">* {t.quote.form.required}</p>
                     </div>
                   </form>
                 )}
@@ -409,29 +410,29 @@ export default function QuotePage() {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1 space-y-6">
+            <div className="lg:col-span-1 space-y-4 sm:space-y-6">
               {/* Quick Response Card */}
-              <div className="card bg-navy-900 border-navy-800">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-accent-500 rounded-full flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="card p-4 sm:p-6 bg-navy-900 border-navy-800">
+                <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 bg-accent-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <div>
-                    <p className="font-semibold text-white">{t.quote.sidebar.quickResponse.title}</p>
-                    <p className="text-navy-300 text-sm">{t.quote.sidebar.quickResponse.subtitle}</p>
+                  <div className="min-w-0">
+                    <p className="font-semibold text-white text-sm sm:text-base">{t.quote.sidebar.quickResponse.title}</p>
+                    <p className="text-navy-300 text-xs sm:text-sm">{t.quote.sidebar.quickResponse.subtitle}</p>
                   </div>
                 </div>
-                <p className="text-navy-200 text-sm">
+                <p className="text-navy-200 text-xs sm:text-sm leading-relaxed">
                   {t.quote.sidebar.quickResponse.description}
                 </p>
               </div>
 
               {/* What to Include */}
-              <div className="card">
-                <h3 className="text-lg font-semibold text-navy-900 mb-4">{t.quote.sidebar.whatToInclude.title}</h3>
-                <ul className="space-y-3">
+              <div className="card p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">{t.quote.sidebar.whatToInclude.title}</h3>
+                <ul className="space-y-2.5 sm:space-y-3">
                   {[
                     t.quote.sidebar.whatToInclude.item1,
                     t.quote.sidebar.whatToInclude.item2,
@@ -439,25 +440,25 @@ export default function QuotePage() {
                     t.quote.sidebar.whatToInclude.item4,
                     t.quote.sidebar.whatToInclude.item5,
                   ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li key={index} className="flex items-start gap-2.5 sm:gap-3">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-accent-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-600 text-sm">{item}</span>
+                      <span className="text-gray-600 text-xs sm:text-sm">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* Need Help? */}
-              <div className="card bg-gray-50 border-gray-200">
-                <h3 className="text-lg font-semibold text-navy-900 mb-2">{t.quote.sidebar.needHelp.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">
+              <div className="card p-4 sm:p-6 bg-gray-50 border-gray-200">
+                <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-1.5 sm:mb-2">{t.quote.sidebar.needHelp.title}</h3>
+                <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
                   {t.quote.sidebar.needHelp.description}
                 </p>
                 <a
                   href="/contact"
-                  className="inline-flex items-center text-accent-500 hover:text-accent-600 font-medium text-sm transition-colors"
+                  className="inline-flex items-center text-accent-500 hover:text-accent-600 font-medium text-xs sm:text-sm transition-colors touch-manipulation"
                 >
                   {t.quote.sidebar.needHelp.contactLink}
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
