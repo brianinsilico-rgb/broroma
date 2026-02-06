@@ -6,28 +6,40 @@ import { useRef, useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import TrustedBy from "@/components/ui/TrustedBy";
 
+const WHY_US_CARD_COUNT = 4;
+
 export default function Home() {
   const { t } = useLanguage();
   const whyUsCardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [visibleWhyUsCards, setVisibleWhyUsCards] = useState<Set<number>>(new Set());
+  const [centerCardIndex, setCenterCardIndex] = useState(0);
 
   useEffect(() => {
-    const observers = whyUsCardRefs.current.map((el, index) => {
-      if (!el) return null;
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setVisibleWhyUsCards((prev) => new Set(prev).add(index));
-            }
-          });
-        },
-        { rootMargin: "0px 0px -40px 0px", threshold: 0.1 }
-      );
-      observer.observe(el);
-      return observer;
-    });
-    return () => observers.forEach((o) => o?.disconnect());
+    const updateCenterCard = () => {
+      const viewportCenterY = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
+      let bestIndex = 0;
+      let bestDistance = Infinity;
+      for (let i = 0; i < WHY_US_CARD_COUNT; i++) {
+        const el = whyUsCardRefs.current[i];
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        const cardCenterY = rect.top + rect.height / 2;
+        const distance = Math.abs(cardCenterY - viewportCenterY);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIndex = i;
+        }
+      }
+      // On desktop, don't highlight the first box (ISO) so it stays same color as others
+      const isDesktop = typeof window !== "undefined" && window.innerWidth >= 768;
+      setCenterCardIndex(isDesktop && bestIndex === 0 ? -1 : bestIndex);
+    };
+    updateCenterCard();
+    window.addEventListener("scroll", updateCenterCard, { passive: true });
+    window.addEventListener("resize", updateCenterCard);
+    return () => {
+      window.removeEventListener("scroll", updateCenterCard);
+      window.removeEventListener("resize", updateCenterCard);
+    };
   }, []);
 
   const services = [
@@ -322,37 +334,43 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 rounded-2xl overflow-hidden">
-            {trustIndicators.map((item, index) => (
-              <div
-                key={index}
-                ref={(el) => { whyUsCardRefs.current[index] = el; }}
-                className={`bg-white p-8 group relative transition-all duration-500 ease-out md:hover:bg-navy-900 ${
-                  visibleWhyUsCards.has(index)
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-6"
-                }`}
-                style={{
-                  transitionDelay: visibleWhyUsCards.has(index) ? `${index * 80}ms` : "0ms",
-                }}
-              >
-                {/* Number */}
-                <span className="absolute top-4 right-4 text-5xl font-bold text-gray-100 md:group-hover:text-navy-800 transition-colors">
-                  0{index + 1}
-                </span>
+            {trustIndicators.map((item, index) => {
+              const isScrollActive = centerCardIndex === index;
+              return (
+                <div
+                  key={index}
+                  ref={(el) => { whyUsCardRefs.current[index] = el; }}
+                  className={`p-8 group relative transition-all duration-700 ease-in-out md:hover:bg-navy-900 ${
+                    isScrollActive ? "bg-navy-900 opacity-100" : "bg-white opacity-90 md:opacity-100"
+                  }`}
+                >
+                  {/* Number */}
+                  <span className={`absolute top-4 right-4 text-5xl font-bold transition-all duration-700 ease-in-out ${
+                    isScrollActive ? "text-navy-800" : "text-gray-100"
+                  } md:group-hover:text-navy-800`}>
+                    0{index + 1}
+                  </span>
 
-                {/* Icon */}
-                <div className="w-11 h-11 bg-navy-50 md:group-hover:bg-accent-500 rounded-lg flex items-center justify-center text-navy-600 md:group-hover:text-white mb-5 transition-all duration-300">
-                  {item.icon}
+                  {/* Icon */}
+                  <div className={`w-11 h-11 rounded-lg flex items-center justify-center mb-5 transition-all duration-700 ease-in-out ${
+                    isScrollActive ? "bg-accent-500 text-white" : "bg-navy-50 text-navy-600"
+                  } md:group-hover:bg-accent-500 md:group-hover:text-white`}>
+                    {item.icon}
+                  </div>
+
+                  <h3 className={`text-lg font-semibold mb-2 transition-all duration-700 ease-in-out ${
+                    isScrollActive ? "text-white" : "text-navy-900"
+                  } md:group-hover:text-white`}>
+                    {item.title}
+                  </h3>
+                  <p className={`text-sm leading-relaxed transition-all duration-700 ease-in-out ${
+                    isScrollActive ? "text-navy-300" : "text-gray-500"
+                  } md:group-hover:text-navy-300`}>
+                    {item.description}
+                  </p>
                 </div>
-
-                <h3 className="text-lg font-semibold text-navy-900 md:group-hover:text-white mb-2 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-gray-500 md:group-hover:text-navy-300 text-sm leading-relaxed transition-colors">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
