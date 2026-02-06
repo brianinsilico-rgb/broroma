@@ -62,11 +62,6 @@ export default function SafetyValvesCategoryPage() {
       {/* Safety Valve Products Grid */}
       <section className="py-8 md:py-12 bg-gray-50">
         <div className="container-custom">
-          <div className="mb-6">
-            <h2 className="text-xl md:text-2xl font-semibold text-navy-900 mb-2">Safety Valve Types</h2>
-            <p className="text-gray-600 text-sm md:text-base">Choose from our range of certified safety valves engineered for specific pressure relief requirements.</p>
-          </div>
-
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {safetyValveProducts.map((product) => (
               <Link key={product.slug} href={`/products/safety-valves/${product.slug}`} className="group">

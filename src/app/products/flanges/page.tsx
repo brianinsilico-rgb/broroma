@@ -74,11 +74,6 @@ export default function FlangesCategoryPage() {
       {/* Flange Products Grid */}
       <section className="py-8 md:py-12 bg-gray-50">
         <div className="container-custom">
-          <div className="mb-6">
-            <h2 className="text-xl md:text-2xl font-semibold text-navy-900 mb-2">Flange Types</h2>
-            <p className="text-gray-600 text-sm md:text-base">Choose from our complete range of flange types, each designed for specific connection requirements and pressure ratings.</p>
-          </div>
-
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {flangeProducts.map((product) => (
               <Link key={product.slug} href={`/products/flanges/${product.slug}`} className="group">

@@ -110,11 +110,6 @@ export default function AccessoriesCategoryPage() {
       {/* Accessories Products Grid */}
       <section className="py-8 md:py-12 bg-gray-50">
         <div className="container-custom">
-          <div className="mb-6">
-            <h2 className="text-xl md:text-2xl font-semibold text-navy-900 mb-2">Product Range</h2>
-            <p className="text-gray-600 text-sm md:text-base">Browse our complete range of accessories and instruments with full documentation.</p>
-          </div>
-
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {accessoryProducts.map((product) => (
               <Link key={product.slug} href={`/products/accessories-instruments/${product.slug}`} className="group">
