@@ -10,10 +10,9 @@
   },
   "home": {
     "hero": {
-      "badge": "Trusted Global Partner Since 2002",
-      "title": "Your Gateway to",
-      "titleHighlight": "Premium Industrial Pipes",
-      "description": "Connecting manufacturers and buyers worldwide with reliable import and export solutions for steel, carbon, and specialty pipes.",
+      "badge": "Since 2002",
+      "title": "Industrial Pipe Solutions",
+      "description": "Industrial pipes, fittings, and valves from certified global manufacturers.",
       "cta": "Request a Quote",
       "exploreProducts": "Explore Products"
     },

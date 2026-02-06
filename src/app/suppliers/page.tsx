@@ -85,10 +85,10 @@ export default function SuppliersPage() {
             {suppliers.map((supplier) => (
               <div
                 key={supplier.name}
-                className="group px-6 py-8 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 flex flex-col items-center text-center"
+                className="group px-6 py-8 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 ease-out flex flex-col items-center text-center"
               >
                 {/* Logo */}
-                <div className="w-full aspect-[3/2] max-w-[120px] bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors overflow-hidden p-2">
+                <div className="logo-card-hover w-full aspect-[3/2] max-w-[120px] bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors overflow-hidden p-2">
                   {supplier.logo ? (
                     <Image
                       src={supplier.logo}

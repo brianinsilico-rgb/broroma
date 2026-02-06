@@ -33,7 +33,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-navy-700 hover:text-navy-900 font-medium transition-colors duration-200"
+                className="text-navy-700 hover:text-navy-900 font-medium transition-colors duration-[0.2s] ease-out"
               >
                 {item.name}
               </Link>

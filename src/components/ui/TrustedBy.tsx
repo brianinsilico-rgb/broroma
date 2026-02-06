@@ -58,7 +58,7 @@ export default function TrustedBy({ className = "" }: TrustedByProps) {
                 alt={`${client.name} logo`}
                 width={112}
                 height={56}
-                className="w-20 h-10 md:w-24 md:h-12 lg:w-28 lg:h-14 object-contain opacity-70 hover:opacity-100 transition-all duration-200 ease-out brightness-0 invert"
+                className="w-20 h-10 md:w-24 md:h-12 lg:w-28 lg:h-14 object-contain opacity-70 hover:opacity-100 transition-all duration-300 ease-out brightness-0 invert"
               />
             </div>
           ))}

@@ -49,17 +49,29 @@ body {
   
   .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3 bg-accent-500 text-white font-medium rounded-lg 
-           hover:bg-accent-600 transition-all duration-200 shadow-sm hover:shadow-md;
+           hover:bg-accent-600 shadow-sm transition-all duration-300 ease-out;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
   }
   
   .btn-secondary {
     @apply inline-flex items-center justify-center px-6 py-3 bg-navy-900 text-white font-medium rounded-lg 
-           hover:bg-navy-800 transition-all duration-200 shadow-sm hover:shadow-md;
+           hover:bg-navy-800 shadow-sm transition-all duration-300 ease-out;
+  }
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
   }
   
   .btn-outline {
     @apply inline-flex items-center justify-center px-6 py-3 border-2 border-navy-900 text-navy-900 font-medium rounded-lg 
-           hover:bg-navy-900 hover:text-white transition-all duration-200;
+           hover:bg-navy-900 hover:text-white transition-all duration-300 ease-out;
+  }
+  .btn-outline:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
   }
   
   .section-padding {
@@ -67,7 +79,32 @@ body {
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-card border border-gray-100 p-6 transition-all duration-200 hover:shadow-elevated;
+    @apply bg-white rounded-xl shadow-card border border-gray-100 p-6 transition-all duration-300 ease-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Image cards: zoom on hover */
+  .image-zoom-hover {
+    @apply overflow-hidden;
+  }
+  .image-zoom-hover img {
+    transition: transform 0.5s ease;
+  }
+  .image-zoom-hover:hover img {
+    transform: scale(1.03);
+  }
+  
+  /* Logo cards: grayscale → color on hover (no lift) */
+  .logo-card-hover img {
+    filter: grayscale(1);
+    transition: filter 0.3s ease;
+  }
+  .logo-card-hover:hover img {
+    filter: grayscale(0);
   }
   
   .input-field {

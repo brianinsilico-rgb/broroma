@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import TrustedBy from "@/components/ui/TrustedBy";
+import CountUp from "@/components/ui/CountUp";
 
 const WHY_US_CARD_COUNT = 4;
 
@@ -83,10 +84,10 @@ export default function Home() {
   ];
 
   const stats = [
-    { value: "25+", label: t.home.stats.years },
-    { value: "50+", label: t.home.stats.countries },
-    { value: "1000+", label: t.home.stats.projects },
-    { value: "99%", label: t.home.stats.satisfaction },
+    { end: 25, suffix: "+", label: t.home.stats.years },
+    { end: 50, suffix: "+", label: t.home.stats.countries },
+    { end: 1000, suffix: "+", label: t.home.stats.projects },
+    { end: 99, suffix: "%", label: t.home.stats.satisfaction },
   ];
 
   const trustIndicators = [
@@ -146,11 +147,10 @@ export default function Home() {
                 <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
                   {t.home.hero.badge}
                 </span>
-                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance tracking-tight">
                   {t.home.hero.title}
-                  <span className="text-accent-400"> {t.home.hero.titleHighlight}</span>
                 </h1>
-                <p className="text-base md:text-lg text-navy-200 mb-8 max-w-lg leading-relaxed">
+                <p className="text-base md:text-lg text-navy-200 mb-10 max-w-lg leading-relaxed">
                   {t.home.hero.description}
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -171,7 +171,7 @@ export default function Home() {
                 <div className="aspect-square relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-steel-500/20 to-accent-500/20 rounded-3xl" />
                   <Image
-                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
+                    src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80"
                     alt="Industrial pipes"
                     fill
                     className="object-cover rounded-3xl"
@@ -204,7 +204,9 @@ export default function Home() {
           <div className="py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <p className="text-4xl md:text-5xl font-bold text-navy-900 mb-2">{stat.value}</p>
+                <p className="text-4xl md:text-5xl font-bold text-navy-900 mb-2">
+                  <CountUp end={stat.end} suffix={stat.suffix} duration={1.75} />
+                </p>
                 <p className="text-gray-500">{stat.label}</p>
               </div>
             ))}
@@ -241,7 +243,7 @@ export default function Home() {
             {/* Image Grid */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="aspect-[4/3] relative rounded-2xl overflow-hidden">
+                <div className="aspect-[4/3] relative rounded-2xl overflow-hidden image-zoom-hover">
                   <Image
                     src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80"
                     alt="Quality inspection"
@@ -249,7 +251,7 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="aspect-square relative rounded-2xl overflow-hidden">
+                <div className="aspect-square relative rounded-2xl overflow-hidden image-zoom-hover">
                   <Image
                     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
                     alt="Corporate headquarters"
@@ -259,7 +261,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="space-y-4 pt-8">
-                <div className="aspect-square relative rounded-2xl overflow-hidden">
+                <div className="aspect-square relative rounded-2xl overflow-hidden image-zoom-hover">
                   <Image
                     src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=600&q=80"
                     alt="Global shipping"
@@ -267,7 +269,7 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="aspect-[4/3] relative rounded-2xl overflow-hidden">
+                <div className="aspect-[4/3] relative rounded-2xl overflow-hidden image-zoom-hover">
                   <Image
                     src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=80"
                     alt="Pipe warehouse"
@@ -297,7 +299,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <div key={index} className="card group">
-                <div className="w-14 h-14 bg-navy-50 rounded-xl flex items-center justify-center text-navy-900 mb-6 group-hover:bg-accent-500 group-hover:text-white transition-colors duration-300">
+                <div className="w-14 h-14 bg-navy-50 rounded-xl flex items-center justify-center text-navy-900 mb-6 group-hover:bg-accent-500 group-hover:text-white transition-colors duration-300 group-hover:scale-[1.03] transition-transform duration-300">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-navy-900 mb-3">{service.title}</h3>
@@ -341,14 +343,14 @@ export default function Home() {
                 <div
                   key={index}
                   ref={(el) => { whyUsCardRefs.current[index] = el; }}
-                  className={`group relative transition-all duration-700 ease-in-out md:hover:bg-navy-900 ${
+                  className={`group relative transition-all duration-600 ease-out md:hover:bg-navy-900 ${
                     isIsoCard ? "p-8 md:p-10" : "p-8"
                   } ${
                     isScrollActive ? "bg-navy-900 opacity-100" : "bg-white opacity-90 md:opacity-100"
                   }`}
                 >
                   {/* Number */}
-                  <span className={`absolute top-4 right-4 font-bold transition-all duration-700 ease-in-out ${
+                  <span className={`absolute top-4 right-4 font-bold transition-all duration-600 ease-out ${
                     isIsoCard ? "text-4xl md:text-5xl" : "text-5xl"
                   } ${
                     isScrollActive ? "text-navy-800" : "text-gray-100"
@@ -357,7 +359,7 @@ export default function Home() {
                   </span>
 
                   {/* Icon */}
-                  <div className={`rounded-lg flex items-center justify-center transition-all duration-700 ease-in-out ${
+                  <div className={`rounded-lg flex items-center justify-center transition-all duration-600 ease-out ${
                     isIsoCard ? "w-14 h-14 mb-6 [&>svg]:w-8 [&>svg]:h-8" : "w-11 h-11 mb-5"
                   } ${
                     isScrollActive ? "bg-accent-500 text-white" : "bg-navy-50 text-navy-600"
@@ -365,18 +367,18 @@ export default function Home() {
                     {item.icon}
                   </div>
 
-                  <h3 className={`font-semibold transition-all duration-700 ease-in-out ${
+                  <h3 className={`font-semibold transition-all duration-600 ease-out ${
                     isIsoCard ? "text-xl mb-3" : "text-lg mb-2"
                   } ${
                     isScrollActive ? "text-white" : "text-navy-900"
                   } md:group-hover:text-white`}>
                     {item.title}
                   </h3>
-                  <p className={`leading-relaxed transition-all duration-700 ease-in-out ${
+                  <p className={`leading-relaxed transition-all duration-600 ease-out ${
                     isIsoCard ? "text-base max-w-[85%] md:max-w-full" : "text-sm"
                   } ${
                     isScrollActive ? "text-navy-300" : isIsoCard ? "text-gray-600" : "text-gray-500"
-                  } md:group-hover:text-navy-300`}>
+                  }                   md:group-hover:text-navy-300`}>
                     {item.description}
                   </p>
                 </div>
