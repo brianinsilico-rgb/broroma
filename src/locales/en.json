@@ -172,6 +172,33 @@
       "title": "Our Products",
       "description": "Everything you need for your next project, sourced and ready to deliver."
     },
+    "pipesPageTitle": "Pipes",
+    "pipesPageDescription": "Seamless and welded pipes in carbon, stainless, alloy, and duplex steel.",
+    "pipes": {
+      "seamlessTitle": "Seamless Pipes",
+      "seamlessDescription": "Hot-rolled and cold-drawn seamless pipes offering superior strength and pressure resistance without weld seams.",
+      "weldedTitle": "Welded Pipes (ERW)",
+      "weldedDescription": "Electric Resistance Welded pipes offering excellent quality and cost-effectiveness for various applications.",
+      "applicationsTitle": "Applications",
+      "applications": ["Power Generation", "Oil & Gas", "Petrochemical", "Water Treatment", "Construction"],
+      "downloads": {
+        "title": "Product Catalogs",
+        "description": "Download our detailed product catalogs for specifications, dimensions, and technical data.",
+        "seamlessPdf": "#",
+        "weldedPdf": "#",
+        "fullPdf": "#",
+        "seamlessCatalog": "Seamless Pipes Catalog",
+        "weldedCatalog": "Welded Pipes Catalog",
+        "fullCatalog": "Full Pipes Catalog",
+        "seamlessCatalogLabel": "Download Seamless Pipes Catalog (PDF)",
+        "weldedCatalogLabel": "Download Welded Pipes Catalog (PDF)"
+      },
+      "cta": {
+        "title": "Need a Quote for Pipes?",
+        "description": "Contact our team for pricing, availability, and custom specifications.",
+        "button": "Request a Quote"
+      }
+    },
     "features": {
       "mtc": {
         "title": "Mill Test Certificates",

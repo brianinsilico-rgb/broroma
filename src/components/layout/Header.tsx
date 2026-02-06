@@ -23,7 +23,7 @@ export default function Header() {
       <nav className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center -mt-1">
             <Logo className="h-10 w-auto" />
           </Link>
 
@@ -49,11 +49,11 @@ export default function Header() {
           </div>
 
           {/* Mobile/Tablet: Language Toggle + Hamburger Menu */}
-          <div className="flex lg:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-1">
             <LanguageToggle />
             <button
               type="button"
-              className="p-2 text-navy-900 z-50 relative"
+              className="flex items-center justify-center w-10 h-10 text-navy-900 z-50 relative"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
