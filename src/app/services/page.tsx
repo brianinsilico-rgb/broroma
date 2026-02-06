@@ -329,24 +329,24 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section — mobile: same size/font as other pages */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-3xl p-8 md:p-16 text-center">
-            <h2 className="text-white mb-4">
+          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl md:rounded-3xl p-6 md:p-16 text-center">
+            <h2 className="text-lg font-semibold text-white mb-2 md:text-3xl lg:text-4xl md:mb-4">
               {t.services.cta.title}
             </h2>
-            <p className="text-navy-200 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-navy-200 text-sm mb-5 max-w-xl mx-auto md:text-lg md:mb-8 md:max-w-2xl">
               {t.services.cta.description}
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-primary">
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              <Link href="/contact" className="btn-primary text-sm md:text-base">
                 {t.services.cta.contact}
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 md:w-5 md:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900">
+              <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900 text-sm md:text-base">
                 {t.services.cta.products}
               </Link>
             </div>

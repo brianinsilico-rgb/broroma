@@ -331,10 +331,10 @@ export default function AboutPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-3xl p-8 md:p-16 text-center">
-            <h2 className="text-white mb-4">
+            <h2 className="text-lg font-semibold text-white mb-2 md:text-3xl lg:text-4xl md:mb-4">
               {t.about.cta.title}
             </h2>
-            <p className="text-navy-200 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-navy-200 text-sm mb-5 max-w-xl mx-auto md:text-lg md:mb-8 md:max-w-2xl">
               {t.about.cta.description}
             </p>
             <Link href="/contact" className="btn-primary">

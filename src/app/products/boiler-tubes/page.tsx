@@ -192,10 +192,10 @@ export default function BoilerTubesPage() {
       <section className="py-10 md:py-16 bg-gray-50">
         <div className="container-custom">
           <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl p-6 md:p-10 text-center">
-            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-white mb-2">
+            <h2 className="text-lg font-semibold text-white mb-2 md:text-3xl lg:text-4xl md:mb-4">
               {boiler?.cta?.title ?? "Need a Quote for Boiler Tubes?"}
             </h2>
-            <p className="text-navy-200 text-sm md:text-base mb-5 max-w-xl mx-auto">
+            <p className="text-navy-200 text-sm mb-5 max-w-xl mx-auto md:text-lg md:mb-8 md:max-w-2xl">
               {boiler?.cta?.description ?? "Contact our team for pricing, availability, and custom specifications."}
             </p>
             <Link href="/quote" className="btn-primary text-sm inline-flex items-center gap-2">
