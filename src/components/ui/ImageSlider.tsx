@@ -6,9 +6,11 @@ import NextImage from "next/image";
 interface ImageSliderProps {
   images: string[];
   alt: string;
+  /** Optional: aspect ratio class. Defaults to aspect-[16/9]. Use e.g. "aspect-[2/1] sm:aspect-[16/9]" for shorter image on mobile. */
+  aspectClass?: string;
 }
 
-export function ImageSlider({ images, alt }: ImageSliderProps) {
+export function ImageSlider({ images, alt, aspectClass = "aspect-[16/9]" }: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
@@ -23,7 +25,7 @@ export function ImageSlider({ images, alt }: ImageSliderProps) {
 
   if (images.length === 1) {
     return (
-      <div className="aspect-[16/9] relative">
+      <div className={`${aspectClass} relative`}>
         <NextImage
           src={images[0]}
           alt={alt}
@@ -35,7 +37,7 @@ export function ImageSlider({ images, alt }: ImageSliderProps) {
   }
 
   return (
-    <div className="aspect-[16/9] relative group">
+    <div className={`${aspectClass} relative group`}>
       {/* Current Image */}
       <NextImage
         src={images[currentIndex]}

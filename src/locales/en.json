@@ -93,7 +93,9 @@
       "p2": "What started as a small trading company has grown into one of Thailand's most trusted names in industrial pipe supply. Over the years, we've built our reputation on three principles — reliability, quality, and genuine partnership.",
       "p3": "Today, we serve customers across Power, Oil & Gas, Petrochemical, Sugar Mills, Boilers, and other process-driven industries. Our success isn't measured by products sold, but by the long-term relationships we've built and the problems we've helped solve.",
       "p4": "We're not just a supplier. We're the partner you call when it has to be right.",
-      "yearsLabel": "Years of Excellence"
+      "yearsLabel": "Years of Excellence",
+      "countriesLabel": "Countries Served",
+      "projectsLabel": "Projects Delivered"
     },
     "mission": {
       "label": "Our Mission",
@@ -123,6 +125,10 @@
       "boilers": {
         "name": "Boilers",
         "description": "High-pressure tubes and fittings for steam generation"
+      },
+      "construction": {
+        "name": "Construction",
+        "description": "Pipes, fittings, and valves for building and infrastructure projects"
       },
       "water": {
         "name": "Water Treatment",
@@ -155,10 +161,26 @@
       "title": "Project References",
       "description": "A selection of projects where we've delivered quality products on time and to specification."
     },
-    "standards": {
+    "qualityPromise": {
       "label": "Quality Assurance",
-      "title": "Standards & Compliance",
-      "description": "All products are sourced from certified manufacturers and meet internationally recognized standards."
+      "title": "Our Quality Promise",
+      "subtext": "Every order comes with full traceability and documentation.",
+      "mtc": {
+        "title": "Mill Test Certificates",
+        "description": "Every product ships with original mill test certificates for full material traceability."
+      },
+      "certifiedManufacturers": {
+        "title": "Certified Manufacturers",
+        "description": "We source exclusively from manufacturers with ISO 9001, API, and ASME certifications."
+      },
+      "standardsCompliance": {
+        "title": "Standards Compliance",
+        "description": "All products conform to ASTM, ASME, and API specifications for your industry requirements."
+      },
+      "inspectionDocs": {
+        "title": "Inspection & Documentation",
+        "description": "Incoming inspection, dimensional checks, and complete documentation with every shipment."
+      }
     },
     "cta": {
       "title": "Ready to Work With Us?",
@@ -321,6 +343,8 @@
     "stockist": {
       "title": "Stockist & Supply",
       "subtitle": "Ready When You Need It",
+      "shortDescription": "Ready stock inventory for immediate delivery.",
+      "bullets3": ["Extensive ready stock", "Fast local delivery", "Emergency supply support"],
       "description": "As an authorized stockist, we maintain a comprehensive inventory of industrial pipes, fittings, and valves ready for immediate delivery to meet your urgent requirements.",
       "features": [
         "Extensive ready stock inventory",
@@ -339,6 +363,8 @@
     "sourcing": {
       "title": "Global Sourcing",
       "subtitle": "Worldwide Procurement Network",
+      "shortDescription": "Products from 50+ certified manufacturers worldwide.",
+      "bullets3": ["Certified mills worldwide", "Custom specification sourcing", "Import/export handling"],
       "description": "Leverage our extensive international network to source products from certified manufacturers across Asia, Europe, and the Americas at competitive prices.",
       "features": [
         "Access to certified mills worldwide",
@@ -355,8 +381,10 @@
       }
     },
     "testing": {
-      "title": "Quality Testing & Inspection",
+      "title": "Quality Inspection",
       "subtitle": "Uncompromising Standards",
+      "shortDescription": "Full testing and documentation with every order.",
+      "bullets3": ["Material verification", "Dimensional checks", "Mill test certificates"],
       "description": "Our rigorous testing and inspection services ensure every product meets your specifications and international standards before delivery.",
       "features": [
         "Material testing and certification",
@@ -373,8 +401,10 @@
       }
     },
     "fabrication": {
-      "title": "Fabrication & Modification",
+      "title": "Fabrication & Machining",
       "subtitle": "Custom Solutions Built to Spec",
+      "shortDescription": "Custom cutting, threading, and preparation.",
+      "bullets3": ["Precision cutting", "Threading & beveling", "Custom lengths"],
       "description": "Our fabrication facilities can modify, customize, and fabricate products to meet your exact specifications and unique project requirements.",
       "features": [
         "Custom pipe fabrication",
@@ -391,8 +421,10 @@
       }
     },
     "installation": {
-      "title": "Installation & Maintenance",
+      "title": "Logistics & Delivery",
       "subtitle": "Complete Field Services",
+      "shortDescription": "Worldwide shipping with tracking.",
+      "bullets3": ["Global shipping", "Real-time tracking", "Customs handling"],
       "description": "From professional installation to ongoing maintenance, our experienced field service team ensures your piping systems perform optimally throughout their lifecycle.",
       "features": [
         "Professional on-site installation",
@@ -407,6 +439,11 @@
         "reliability": { "title": "Reliability", "description": "Minimize downtime with proper maintenance" },
         "support": { "title": "Support", "description": "24/7 emergency service available" }
       }
+    },
+    "technicalSupport": {
+      "title": "Technical Support",
+      "shortDescription": "Expert guidance on specs and materials.",
+      "bullets3": ["Product selection help", "Spec consultation", "Application advice"]
     },
     "process": {
       "label": "How We Work",
@@ -552,18 +589,22 @@
     "hero": {
       "label": "Our Brands",
       "title": "Brands We Carry",
-      "description": "Direct partnerships with the world's top manufacturers ensure authentic products, competitive pricing, and reliable supply."
+      "description": "Sourcing directly from 50+ certified manufacturers across 15 countries."
     },
     "grid": {
-      "title": "Trusted Manufacturing Partners",
-      "description": "Our extensive network of suppliers ensures we can source the right products for any application, backed by quality certifications and reliable delivery."
+      "title": "Our Partners",
+      "description": "From steel mills to valve specialists — direct relationships mean better pricing and faster delivery."
     },
     "stats": {
-      "partners": "50+ Manufacturing Partners",
-      "countries": "15+ Countries",
+      "partners": "50+ Brands",
+      "countries": "15 Countries",
       "continents": "4 Continents"
     },
-    "morePartners": "And 30+ more manufacturing partners worldwide",
+    "moreCard": {
+      "heading": "+ Many More",
+      "subtext": "Can't find your brand? We'll source it.",
+      "contact": "Contact us →"
+    },
     "cta": {
       "title": "Looking for a Specific Manufacturer?",
       "description": "Our sourcing team can help you find products from manufacturers not listed here. Contact us with your requirements.",

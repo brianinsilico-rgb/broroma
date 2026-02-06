@@ -8,33 +8,34 @@ interface Supplier {
   name: string;
   country: string;
   logo?: string;
+  /** multiply = blend white with container; screen = blend black with container; black = invert + multiply (show logo as black) */
+  logoBlend?: "multiply" | "screen" | "black";
 }
 
 const suppliers: Supplier[] = [
-  { name: "Nippon Steel", country: "Japan", logo: "/logos/nippon-steel.svg" },
+  { name: "ARI Armaturen", country: "Germany", logo: "/logos/ari.svg" },
   { name: "ArcelorMittal", country: "Luxembourg", logo: "/logos/arcelormittal.svg" },
-  { name: "Tenaris", country: "Argentina", logo: "/logos/tenaris.svg" },
-  { name: "JFE Steel", country: "Japan", logo: "/logos/jfe.svg" },
-  { name: "Benteler", country: "Germany", logo: "/logos/benteler.svg" },
+  { name: "AUMA", country: "Germany", logo: "/logos/auma.svg" },
   { name: "Benkan", country: "Japan", logo: "/logos/benkan.svg" },
+  { name: "Benteler", country: "Germany", logo: "/logos/benteler.svg" },
+  { name: "Bonetti", country: "Italy", logo: "/logos/bonetti.png", logoBlend: "multiply" },
+  { name: "Böhmer", country: "Germany", logo: "/logos/bohmer.png" },
   { name: "Emerson", country: "USA", logo: "/logos/emerson.svg" },
   { name: "Flowserve", country: "USA", logo: "/logos/flowserve.svg" },
-  { name: "Rotork", country: "UK", logo: "/logos/rotork.svg" },
-  { name: "AUMA", country: "Germany", logo: "/logos/auma.svg" },
-  { name: "ARI Armaturen", country: "Germany", logo: "/logos/ari.svg" },
+  { name: "JFE Steel", country: "Japan", logo: "/logos/jfe.svg" },
+  { name: "KSB", country: "Germany", logo: "/logos/ksb.png" },
   { name: "Leser", country: "Germany", logo: "/logos/leser.svg" },
+  { name: "Neway", country: "China", logo: "/logos/neway.png" },
+  { name: "Nippon Steel", country: "Japan", logo: "/logos/nippon-steel.svg" },
   { name: "PK Valve", country: "Thailand", logo: "/logos/pkvalve.svg" },
   { name: "Powell Valves", country: "USA", logo: "/logos/powell-valves.svg" },
+  { name: "Rotork", country: "UK", logo: "/logos/rotork.svg" },
+  { name: "Samson", country: "Germany", logo: "/logos/samson.png" },
   { name: "SeAH Steel", country: "South Korea", logo: "/logos/seah-steel.svg" },
+  { name: "Tenaris", country: "Argentina", logo: "/logos/tenaris.svg" },
   { name: "Tubos Reunidos", country: "Spain", logo: "/logos/tubos-reunidos.svg" },
   { name: "ULMA", country: "Spain", logo: "/logos/ulma.svg" },
-  { name: "POSCO", country: "South Korea" },
-  { name: "Vallourec", country: "France" },
-  { name: "Sumitomo Metal", country: "Japan" },
-  { name: "Hyundai Steel", country: "South Korea" },
-  { name: "Tata Steel", country: "India" },
-  { name: "Sandvik", country: "Sweden" },
-  { name: "Dalmine", country: "Italy" },
+  { name: "Yoshitake", country: "Japan", logo: "/logos/yoshitake.png" },
 ];
 
 export default function SuppliersPage() {
@@ -87,14 +88,14 @@ export default function SuppliersPage() {
                 className="group px-6 py-8 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 flex flex-col items-center text-center"
               >
                 {/* Logo */}
-                <div className="w-full aspect-[3/2] max-w-[120px] bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors overflow-hidden">
+                <div className="w-full aspect-[3/2] max-w-[120px] bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors overflow-hidden p-2">
                   {supplier.logo ? (
                     <Image
                       src={supplier.logo}
                       alt={supplier.name}
                       width={100}
                       height={60}
-                      className="object-contain p-2"
+                      className={`object-contain w-full h-full ${supplier.logo?.includes("jfe") ? "brightness-0" : ""} ${supplier.logoBlend === "multiply" ? "mix-blend-multiply" : ""} ${supplier.logoBlend === "screen" ? "mix-blend-screen" : ""} ${supplier.logoBlend === "black" ? "invert contrast-[4] mix-blend-multiply" : ""}`}
                     />
                   ) : (
                     <span className="text-gray-400 text-xs font-medium uppercase tracking-wide">Logo</span>
@@ -112,13 +113,17 @@ export default function SuppliersPage() {
                 </p>
               </div>
             ))}
-          </div>
-
-          {/* More Partners Note */}
-          <div className="text-center mt-10">
-            <p className="text-sm text-gray-500">
-              {t.suppliers.morePartners}
-            </p>
+            {/* + Many More card - last in grid */}
+            <Link
+              href="/contact"
+              className="group flex flex-col items-center justify-center text-center px-6 py-8 bg-navy-900 border border-navy-800 rounded-xl hover:bg-navy-800 transition-all duration-300 min-h-[200px]"
+            >
+              <h3 className="text-lg font-semibold text-white mb-2">{t.suppliers.moreCard.heading}</h3>
+              <p className="text-sm text-navy-200 mb-3">{t.suppliers.moreCard.subtext}</p>
+              <span className="text-sm font-medium text-accent-400 group-hover:text-accent-300 transition-colors">
+                {t.suppliers.moreCard.contact}
+              </span>
+            </Link>
           </div>
         </div>
       </section>

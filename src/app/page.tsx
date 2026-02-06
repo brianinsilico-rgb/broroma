@@ -336,35 +336,46 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 rounded-2xl overflow-hidden">
             {trustIndicators.map((item, index) => {
               const isScrollActive = centerCardIndex === index;
+              const isIsoCard = index === 0;
               return (
                 <div
                   key={index}
                   ref={(el) => { whyUsCardRefs.current[index] = el; }}
-                  className={`p-8 group relative transition-all duration-700 ease-in-out md:hover:bg-navy-900 ${
+                  className={`group relative transition-all duration-700 ease-in-out md:hover:bg-navy-900 ${
+                    isIsoCard ? "p-8 md:p-10" : "p-8"
+                  } ${
                     isScrollActive ? "bg-navy-900 opacity-100" : "bg-white opacity-90 md:opacity-100"
                   }`}
                 >
                   {/* Number */}
-                  <span className={`absolute top-4 right-4 text-5xl font-bold transition-all duration-700 ease-in-out ${
+                  <span className={`absolute top-4 right-4 font-bold transition-all duration-700 ease-in-out ${
+                    isIsoCard ? "text-4xl md:text-5xl" : "text-5xl"
+                  } ${
                     isScrollActive ? "text-navy-800" : "text-gray-100"
                   } md:group-hover:text-navy-800`}>
                     0{index + 1}
                   </span>
 
                   {/* Icon */}
-                  <div className={`w-11 h-11 rounded-lg flex items-center justify-center mb-5 transition-all duration-700 ease-in-out ${
+                  <div className={`rounded-lg flex items-center justify-center transition-all duration-700 ease-in-out ${
+                    isIsoCard ? "w-14 h-14 mb-6 [&>svg]:w-8 [&>svg]:h-8" : "w-11 h-11 mb-5"
+                  } ${
                     isScrollActive ? "bg-accent-500 text-white" : "bg-navy-50 text-navy-600"
                   } md:group-hover:bg-accent-500 md:group-hover:text-white`}>
                     {item.icon}
                   </div>
 
-                  <h3 className={`text-lg font-semibold mb-2 transition-all duration-700 ease-in-out ${
+                  <h3 className={`font-semibold transition-all duration-700 ease-in-out ${
+                    isIsoCard ? "text-xl mb-3" : "text-lg mb-2"
+                  } ${
                     isScrollActive ? "text-white" : "text-navy-900"
                   } md:group-hover:text-white`}>
                     {item.title}
                   </h3>
-                  <p className={`text-sm leading-relaxed transition-all duration-700 ease-in-out ${
-                    isScrollActive ? "text-navy-300" : "text-gray-500"
+                  <p className={`leading-relaxed transition-all duration-700 ease-in-out ${
+                    isIsoCard ? "text-base max-w-[85%] md:max-w-full" : "text-sm"
+                  } ${
+                    isScrollActive ? "text-navy-300" : isIsoCard ? "text-gray-600" : "text-gray-500"
                   } md:group-hover:text-navy-300`}>
                     {item.description}
                   </p>

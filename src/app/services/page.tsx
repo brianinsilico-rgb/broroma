@@ -10,6 +10,7 @@ const serviceImages = {
   testing: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
   fabrication: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80",
   installation: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+  technicalSupport: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
 };
 
 const serviceIcons: { [key: string]: React.ReactNode } = {
@@ -36,7 +37,12 @@ const serviceIcons: { [key: string]: React.ReactNode } = {
   ),
   installation: (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+    </svg>
+  ),
+  technicalSupport: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
     </svg>
   ),
 };
@@ -45,46 +51,12 @@ export default function ServicesPage() {
   const { t } = useLanguage();
 
   const services = [
-    {
-      id: "stockist",
-      title: t.services.stockist.title,
-      subtitle: t.services.stockist.subtitle,
-      description: t.services.stockist.description,
-      image: serviceImages.stockist,
-      features: t.services.stockist.features,
-    },
-    {
-      id: "sourcing",
-      title: t.services.sourcing.title,
-      subtitle: t.services.sourcing.subtitle,
-      description: t.services.sourcing.description,
-      image: serviceImages.sourcing,
-      features: t.services.sourcing.features,
-    },
-    {
-      id: "testing",
-      title: t.services.testing.title,
-      subtitle: t.services.testing.subtitle,
-      description: t.services.testing.description,
-      image: serviceImages.testing,
-      features: t.services.testing.features,
-    },
-    {
-      id: "fabrication",
-      title: t.services.fabrication.title,
-      subtitle: t.services.fabrication.subtitle,
-      description: t.services.fabrication.description,
-      image: serviceImages.fabrication,
-      features: t.services.fabrication.features,
-    },
-    {
-      id: "installation",
-      title: t.services.installation.title,
-      subtitle: t.services.installation.subtitle,
-      description: t.services.installation.description,
-      image: serviceImages.installation,
-      features: t.services.installation.features,
-    },
+    { id: "stockist", title: t.services.stockist.title, shortDescription: t.services.stockist.shortDescription, bullets3: t.services.stockist.bullets3, image: serviceImages.stockist },
+    { id: "sourcing", title: t.services.sourcing.title, shortDescription: t.services.sourcing.shortDescription, bullets3: t.services.sourcing.bullets3, image: serviceImages.sourcing },
+    { id: "testing", title: t.services.testing.title, shortDescription: t.services.testing.shortDescription, bullets3: t.services.testing.bullets3, image: serviceImages.testing },
+    { id: "fabrication", title: t.services.fabrication.title, shortDescription: t.services.fabrication.shortDescription, bullets3: t.services.fabrication.bullets3, image: serviceImages.fabrication },
+    { id: "installation", title: t.services.installation.title, shortDescription: t.services.installation.shortDescription, bullets3: t.services.installation.bullets3, image: serviceImages.installation },
+    { id: "technicalSupport", title: t.services.technicalSupport.title, shortDescription: t.services.technicalSupport.shortDescription, bullets3: t.services.technicalSupport.bullets3, image: serviceImages.technicalSupport },
   ];
 
   const processSteps = [
@@ -134,7 +106,7 @@ export default function ServicesPage() {
         {/* Base divider line */}
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gray-200" />
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
           {services.map((service, index) => (
             <a
               key={service.id}
@@ -163,61 +135,47 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Details */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-
-          {/* Individual Services */}
-          <div className="space-y-20">
-            {services.map((service, index) => (
-              <div key={service.id}>
-                {/* Divider with icon (not before first item) */}
-                {index > 0 && (
-                  <div className="flex items-center justify-center gap-4 mb-20">
-                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-gray-200" />
-                    <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-400">
-                      {serviceIcons[service.id]}
-                    </div>
-                    <div className="flex-1 h-px bg-gradient-to-l from-transparent via-gray-200 to-gray-200" />
-                  </div>
-                )}
-                
-                <div id={service.id} className="scroll-mt-32">
-                  <div className={`grid lg:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                    <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                      <span className="text-accent-500 font-medium text-sm uppercase tracking-wider">{service.subtitle}</span>
-                      <h2 className="text-navy-900 mt-2 mb-4">{service.title}</h2>
-                      <p className="text-gray-600 text-lg mb-6">{service.description}</p>
-                      
-                      <div className="space-y-3">
-                        {service.features.slice(0, 5).map((feature, i) => (
-                          <div key={i} className="flex items-center gap-3">
-                            <svg className="w-5 h-5 text-accent-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-gray-600">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                      <div className="aspect-[4/3] relative rounded-xl overflow-hidden">
-                        <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
+      {/* Services Details — compact sections for tab bar */}
+      <div>
+        {services.map((service, index) => (
+          <section
+            key={service.id}
+            id={service.id}
+            className={`scroll-mt-28 py-8 md:py-10 flex items-center ${index % 2 === 1 ? "bg-gray-50" : "bg-white"}`}
+          >
+            <div className="container-custom w-full">
+              <div className="grid lg:grid-cols-5 gap-4 lg:gap-8 items-start">
+                {/* Image: left 40%, smaller height */}
+                <div className="order-2 lg:order-1 lg:col-span-2 lg:row-span-2 relative aspect-[2/1] rounded-lg overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                {/* Text: right 60% */}
+                <div className="order-1 lg:order-2 lg:col-span-3 lg:col-start-3">
+                  <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-2">{service.title}</h2>
+                </div>
+                <div className="order-3 lg:order-2 lg:col-span-3 lg:col-start-3 lg:row-start-2 -mt-1 lg:mt-0">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-3">{service.shortDescription}</p>
+                  <ul className="space-y-1.5">
+                    {service.bullets3.map((bullet, i) => (
+                      <li key={i} className="flex items-center gap-2.5 text-gray-600 text-sm">
+                        <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-accent-500 [&>svg]:w-4 [&>svg]:h-4" aria-hidden>
+                          {serviceIcons[service.id]}
+                        </span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
+        ))}
+      </div>
 
       {/* Process Section - Horizontal Scroll Cards */}
       <section className="section-padding bg-gray-50 overflow-hidden">
