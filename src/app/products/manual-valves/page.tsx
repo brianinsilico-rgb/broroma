@@ -57,7 +57,7 @@ export default function ManualValvesCategoryPage() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               <span className="text-white">Manual Valves</span>
             </nav>
-            <h1 className="text-white mb-6">Manual Valves</h1>
+            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Manual Valves</h1>
             <p className="text-base md:text-lg text-navy-200 leading-relaxed">
               Gate, globe, ball, check, and butterfly valves for flow control and isolation.
             </p>

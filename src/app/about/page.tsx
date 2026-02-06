@@ -150,16 +150,16 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-navy py-20 md:py-28">
+      <section className="gradient-navy py-16 md:py-24">
         <div className="container-custom">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
               {t.about.hero.label}
             </span>
-            <h1 className="text-white mb-6">
+            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               {t.about.hero.title}
             </h1>
-            <p className="text-xl text-navy-200 leading-relaxed">
+            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
               {t.about.hero.description}
             </p>
           </div>

@@ -140,17 +140,17 @@ export default function Home() {
         </div>
         
         <div className="container-custom relative">
-          <div className="py-24 md:py-32 lg:py-40">
+          <div className="py-16 md:py-24">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
                   {t.home.hero.badge}
                 </span>
-                <h1 className="text-white mb-6 text-balance">
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
                   {t.home.hero.title}
                   <span className="text-accent-400"> {t.home.hero.titleHighlight}</span>
                 </h1>
-                <p className="text-xl text-navy-200 mb-8 max-w-lg leading-relaxed">
+                <p className="text-base md:text-lg text-navy-200 mb-8 max-w-lg leading-relaxed">
                   {t.home.hero.description}
                 </p>
                 <div className="flex flex-wrap gap-4">

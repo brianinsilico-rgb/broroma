@@ -144,10 +144,10 @@ export default function QuotePage() {
             <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
               {t.quote.hero.label}
             </span>
-            <h1 className="text-white mb-6">
+            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               {t.quote.hero.title}
             </h1>
-            <p className="text-xl text-navy-200 leading-relaxed">
+            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
               {t.quote.hero.description}
             </p>
           </div>

@@ -130,7 +130,7 @@ export default function HeatExchangerTubesPage() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               <span className="text-white">{heatex?.pageTitle ?? "Heat Exchanger Tubes"}</span>
             </nav>
-            <h1 className="text-white mb-6">{heatex?.pageTitle ?? "Heat Exchanger Tubes"}</h1>
+            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{heatex?.pageTitle ?? "Heat Exchanger Tubes"}</h1>
             <p className="text-base md:text-lg text-navy-200 leading-relaxed">
               {heatex?.pageDescription ?? "Precision tubes for efficient thermal transfer in heat exchanger systems."}
             </p>

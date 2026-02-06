@@ -117,7 +117,7 @@ export default function ProductsPage() {
               </svg>
               <span className="text-white">Products</span>
             </nav>
-            <h1 className="text-white mb-6">
+            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               {t.products.hero.title}
             </h1>
             <p className="text-base md:text-lg text-navy-200 leading-relaxed">

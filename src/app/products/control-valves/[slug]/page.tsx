@@ -160,7 +160,7 @@ export default async function ControlValveDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-navy py-20 md:py-28">
+      <section className="gradient-navy py-16 md:py-24">
         <div className="container-custom">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-navy-300 mb-4 flex-wrap">
@@ -185,8 +185,8 @@ export default async function ControlValveDetailPage({ params }: Props) {
           </span>
           
           <div className="max-w-3xl">
-            <h1 className="text-white mb-6">{valve.name}</h1>
-            <p className="text-xl text-navy-200 leading-relaxed">
+            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{valve.name}</h1>
+            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
               {valve.longDescription}
             </p>
           </div>

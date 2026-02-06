@@ -212,7 +212,7 @@ export default async function FlangeDetailPage({ params }: Props) {
             <span className="text-white">{flange.name}</span>
           </nav>
           <div className="max-w-3xl">
-            <h1 className="text-white mb-6">{flange.name}</h1>
+            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{flange.name}</h1>
             <p className="text-base md:text-lg text-navy-200 leading-relaxed">
               {flange.longDescription}
             </p>
