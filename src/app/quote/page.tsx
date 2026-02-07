@@ -155,7 +155,7 @@ export default function QuotePage() {
       </section>
 
       {/* Quote Form Section */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-white">
+      <section className="quote-page py-8 sm:py-12 md:py-16 lg:py-24 bg-white">
         <div className="container-custom">
           <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {/* Quote Form */}
@@ -332,7 +332,7 @@ export default function QuotePage() {
                     <div>
                       <label className="label-text text-sm sm:text-base">{t.quote.form.uploadFile}</label>
                       <div className="mt-2">
-                        <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 sm:p-6 text-center hover:border-navy-400 transition-colors">
+                        <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 sm:p-6 text-center">
                           {selectedFile ? (
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
                               <svg className="w-7 h-7 sm:w-8 sm:h-8 text-navy-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

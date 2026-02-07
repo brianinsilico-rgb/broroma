@@ -13,6 +13,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Reserve space for scrollbar so opening mobile menu (overflow: hidden) doesn't shift layout */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -85,6 +87,12 @@ body {
   .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Quote page: no card hover effects */
+  .quote-page .card:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   }
   
   /* Image cards: zoom on hover */

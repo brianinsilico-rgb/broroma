@@ -105,20 +105,20 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="gradient-navy py-16 md:py-24 relative overflow-hidden">
+      {/* Hero Section - matches Get a Quote page font size and height */}
+      <section className="gradient-navy py-10 sm:py-16 md:py-24 relative overflow-hidden">
         {/* Decorative accent glow */}
         <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-accent-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         
         <div className="container-custom relative">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-2 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-6">
+            <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-navy-800/50 text-steel-400 text-xs sm:text-sm font-medium rounded-full mb-4 sm:mb-6">
               {t.contact.hero.label}
             </span>
-            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               {t.contact.hero.title}
             </h1>
-            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-navy-200 leading-relaxed">
               {t.contact.hero.description}
             </p>
           </div>
