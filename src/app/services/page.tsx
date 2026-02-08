@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -34,6 +35,52 @@ const serviceIcons: { [key: string]: React.ReactNode } = {
 
 export default function ServicesPage() {
   const { t } = useLanguage();
+  const [activeProcessStep, setActiveProcessStep] = useState(0);
+  const processScrollRef = useRef<HTMLDivElement>(null);
+  const processCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Scroll to a specific process card when dot is clicked
+  const scrollToProcessCard = useCallback((index: number) => {
+    const card = processCardRefs.current[index];
+    if (card && processScrollRef.current) {
+      const container = processScrollRef.current;
+      const cardLeft = card.offsetLeft;
+      const cardWidth = card.offsetWidth;
+      const containerWidth = container.offsetWidth;
+      // Center the card in the container
+      const scrollPosition = cardLeft - (containerWidth - cardWidth) / 2;
+      container.scrollTo({ left: scrollPosition, behavior: "smooth" });
+    }
+  }, []);
+
+  // Track which card is in view using IntersectionObserver
+  useEffect(() => {
+    const container = processScrollRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = processCardRefs.current.findIndex((ref) => ref === entry.target);
+            if (index !== -1) {
+              setActiveProcessStep(index);
+            }
+          }
+        });
+      },
+      {
+        root: container,
+        threshold: 0.6, // Card is considered "active" when 60% visible
+      }
+    );
+
+    processCardRefs.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const services = [
     { id: "stockist", title: t.services.stockist.title, shortDescription: t.services.stockist.shortDescription, bullets3: t.services.stockist.bullets3 },
@@ -189,11 +236,27 @@ export default function ServicesPage() {
 
         {/* Horizontal Scroll Container */}
         <div className="relative">
-          <div className="flex gap-6 overflow-x-auto pb-8 px-6 md:px-0 snap-x snap-mandatory scrollbar-hide md:overflow-visible md:container-custom md:grid md:grid-cols-4 md:gap-6">
+          <div 
+            ref={processScrollRef}
+            className="flex gap-6 overflow-x-auto pb-8 px-6 md:px-0 md:overflow-visible md:container-custom md:grid md:grid-cols-4 md:gap-6"
+            style={{
+              scrollSnapType: "x mandatory",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            <style jsx>{`
+              div::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
             {processSteps.map((step, index) => (
               <div 
-                key={index} 
-                className="flex-shrink-0 w-[280px] md:w-auto snap-center"
+                key={index}
+                ref={(el) => { processCardRefs.current[index] = el; }}
+                className="flex-shrink-0 w-[280px] md:w-auto"
+                style={{ scrollSnapAlign: "center" }}
               >
                 <div className="relative h-full bg-navy-800/80 rounded-2xl p-8 border border-navy-700/80 hover:border-navy-600 hover:bg-navy-800 transition-all duration-300 backdrop-blur-sm">
                   {/* Step Number - Large Background */}
@@ -223,7 +286,16 @@ export default function ServicesPage() {
           {/* Scroll Indicator - Mobile Only */}
           <div className="flex justify-center gap-2 mt-4 md:hidden">
             {processSteps.map((_, index) => (
-              <div key={index} className="w-2 h-2 rounded-full bg-white/40" />
+              <button
+                key={index}
+                onClick={() => scrollToProcessCard(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeProcessStep === index
+                    ? "w-6 bg-accent-400"
+                    : "w-2 bg-white/40 hover:bg-white/60"
+                }`}
+                aria-label={`Go to step ${index + 1}`}
+              />
             ))}
           </div>
         </div>
