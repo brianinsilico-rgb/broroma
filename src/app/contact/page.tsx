@@ -18,6 +18,7 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [showValidation, setShowValidation] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -42,12 +43,10 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Check if form is valid
+    setSubmitError(null);
+
     if (!formRef.current?.checkValidity()) {
       setShowValidation(true);
-      
-      // Find first invalid field and scroll to it
       const firstInvalid = formRef.current?.querySelector(':invalid') as HTMLElement;
       if (firstInvalid) {
         firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -55,19 +54,35 @@ export default function ContactPage() {
       }
       return;
     }
-    
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setShowValidation(false);
+    try {
+      const url = typeof window !== "undefined" ? `${window.location.origin}/api/contact` : "/api/contact";
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error((data as { error?: string })?.error ?? "Submit failed");
+      }
+      setIsSubmitted(true);
+      setShowValidation(false);
+    } catch {
+      setSubmitError(t.contact.form?.error ?? "Something went wrong. Please try again or email us at info@broroma.com.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetForm = () => {
     setIsSubmitted(false);
+    setSubmitError(null);
     setShowValidation(false);
     setFormData({ name: "", email: "", message: "" });
   };
@@ -106,11 +121,8 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section - matches Get a Quote page font size and height */}
-      <section className="gradient-navy py-10 sm:py-16 md:py-24 relative overflow-hidden">
-        {/* Decorative accent glow */}
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-accent-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        
-        <div className="container-custom relative">
+      <section className="gradient-navy py-10 sm:py-16 md:py-24">
+        <div className="container-custom">
           <div className="max-w-3xl">
             <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-navy-800/50 text-steel-400 text-xs sm:text-sm font-medium rounded-full mb-4 sm:mb-6">
               {t.contact.hero.label}
@@ -226,6 +238,18 @@ export default function ContactPage() {
                         <h2 className="text-2xl font-semibold text-navy-900 mb-2">{t.contact.form.title}</h2>
                         <p className="text-gray-600">{t.contact.form.subtitle || "Have a question? Send us a message and we'll get back to you."}</p>
                       </div>
+                      {submitError && (
+                        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 text-sm space-y-3">
+                          <p>{submitError}</p>
+                          <a
+                            href={`mailto:info@broroma.com?subject=Contact from website&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`}
+                            className="inline-flex items-center gap-2 font-medium text-accent-600 hover:text-accent-700"
+                          >
+                            {(t.contact.form as { emailInstead?: string }).emailInstead ?? "Send via email instead"}
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                          </a>
+                        </div>
+                      )}
                       <form 
                         ref={formRef}
                         onSubmit={handleSubmit} 

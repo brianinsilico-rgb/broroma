@@ -114,6 +114,10 @@ body {
   .logo-card-hover:hover img {
     filter: grayscale(0);
   }
+  /* Keep grayscale on hover for specific logos (e.g. JFE) */
+  .logo-card-hover.logo-card-no-color-hover:hover img {
+    filter: grayscale(1);
+  }
   
   .input-field {
     @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-1 focus:ring-navy-500 focus:border-navy-500 

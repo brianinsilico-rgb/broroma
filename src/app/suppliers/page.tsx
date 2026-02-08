@@ -43,45 +43,40 @@ export default function SuppliersPage() {
 
   return (
     <>
-      {/* Hero Section — matches Contact page height and font */}
-      <section className="gradient-navy py-10 sm:py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-accent-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        <div className="container-custom relative">
+      {/* Hero: title, subtitle, stats */}
+      <section className="gradient-navy py-10 sm:py-16 md:py-24">
+        <div className="container-custom">
           <div className="max-w-3xl">
             <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-navy-800/50 text-steel-400 text-xs sm:text-sm font-medium rounded-full mb-4 sm:mb-6">
               {t.suppliers.hero.label}
             </span>
             <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">{t.suppliers.hero.title}</h1>
-            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
+            <p className="text-base md:text-lg text-navy-200 leading-relaxed mb-6">
               {t.suppliers.hero.description}
+            </p>
+            <p className="text-sm text-steel-400">
+              <span className="font-medium">{t.suppliers.stats.partners}</span>
+              <span className="mx-3 text-navy-400">|</span>
+              <span className="font-medium">{t.suppliers.stats.countries}</span>
+              <span className="mx-3 text-navy-400">|</span>
+              <span className="font-medium">{t.suppliers.stats.continents}</span>
             </p>
           </div>
         </div>
       </section>
 
-      {/* Suppliers Grid */}
-      <section className="section-padding bg-white">
+      {/* Label/divider between hero and logo grid */}
+      <div className="flex items-center justify-center gap-4 py-8 bg-white">
+        <div className="h-px w-12 bg-gray-300" aria-hidden />
+        <span className="text-xs uppercase tracking-widest text-gray-500">
+          {t.suppliers.grid.label}
+        </span>
+        <div className="h-px w-12 bg-gray-300" aria-hidden />
+      </div>
+
+      {/* Logo grid */}
+      <section className="section-padding bg-white pt-0">
         <div className="container-custom">
-          {/* Section Header */}
-          <div className="text-center mb-8">
-            <h2 className="text-navy-900 mb-4">{t.suppliers.grid.title}</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              {t.suppliers.grid.description}
-            </p>
-          </div>
-
-          {/* Stats Line */}
-          <div className="text-center mb-12">
-            <p className="text-sm text-gray-500">
-              <span className="font-medium">{t.suppliers.stats.partners}</span>
-              <span className="mx-3 text-gray-300">|</span>
-              <span className="font-medium">{t.suppliers.stats.countries}</span>
-              <span className="mx-3 text-gray-300">|</span>
-              <span className="font-medium">{t.suppliers.stats.continents}</span>
-            </p>
-          </div>
-
-          {/* Supplier Cards Grid - 4 columns desktop, 3 tablet, 2 mobile */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {suppliers.map((supplier) => (
               <div
@@ -89,7 +84,7 @@ export default function SuppliersPage() {
                 className="group px-6 py-8 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 ease-out flex flex-col items-center text-center"
               >
                 {/* Logo */}
-                <div className="logo-card-hover w-full aspect-[3/2] max-w-[120px] bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors overflow-hidden p-2">
+                <div className={`logo-card-hover w-full aspect-[3/2] max-w-[120px] bg-gray-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors overflow-hidden p-2 ${supplier.logo?.includes("jfe") ? "logo-card-no-color-hover" : ""}`}>
                   {supplier.logo ? (
                     <Image
                       src={supplier.logo}
@@ -129,21 +124,21 @@ export default function SuppliersPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section — mobile: same size as Services "Ready to get started?" card */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-3xl p-8 md:p-12 lg:p-16 text-center">
-            <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">
+          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl md:rounded-3xl p-6 md:p-16 text-center">
+            <h2 className="text-lg font-semibold text-white mb-2 md:text-3xl lg:text-4xl md:mb-4">
               {t.suppliers.cta.title}
             </h2>
-            <p className="text-navy-200 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-navy-200 text-sm mb-5 max-w-xl mx-auto md:text-lg md:mb-8 md:max-w-2xl">
               {t.suppliers.cta.description}
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-primary">
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              <Link href="/contact" className="btn-primary text-sm md:text-base">
                 {t.suppliers.cta.contact}
               </Link>
-              <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900">
+              <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900 text-sm md:text-base">
                 {t.suppliers.cta.products}
               </Link>
             </div>

@@ -506,7 +506,9 @@
         "title": "Thank You!",
         "message": "Your message has been sent successfully. Our team will get back to you within 24 hours.",
         "another": "Send Another Message"
-      }
+      },
+      "error": "Something went wrong. Please try again or email us directly at info@broroma.com.",
+      "emailInstead": "Send via email instead"
     },
     "inquiryTypes": {
       "general": "General Inquiry",
@@ -588,11 +590,11 @@
     "hero": {
       "label": "Our Brands",
       "title": "Brands We Carry",
-      "description": "Sourcing directly from 50+ certified manufacturers across 15 countries."
+      "description": "Global manufacturers. Local service. One source — us."
     },
     "grid": {
-      "title": "Our Partners",
-      "description": "From steel mills to valve specialists — direct relationships mean better pricing and faster delivery."
+      "description": "We do the sourcing. You get the products.",
+      "label": "Our Manufacturers"
     },
     "stats": {
       "partners": "50+ Brands",

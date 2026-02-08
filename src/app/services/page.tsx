@@ -85,10 +85,8 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero Section — matches Contact page height and font */}
-      <section className="gradient-navy py-10 sm:py-16 md:py-24 relative overflow-hidden">
-        {/* Decorative accent glow */}
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-accent-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        <div className="container-custom relative">
+      <section className="gradient-navy py-10 sm:py-16 md:py-24">
+        <div className="container-custom">
           <div className="max-w-3xl">
             <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-navy-800/50 text-steel-400 text-xs sm:text-sm font-medium rounded-full mb-4 sm:mb-6">
               {t.services.hero.label}
