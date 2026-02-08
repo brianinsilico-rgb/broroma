@@ -1,17 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-
-const serviceImages = {
-  stockist: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
-  sourcing: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80",
-  testing: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-  fabrication: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80",
-  installation: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
-  technicalSupport: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-};
 
 const serviceIcons: { [key: string]: React.ReactNode } = {
   stockist: (
@@ -40,23 +30,17 @@ const serviceIcons: { [key: string]: React.ReactNode } = {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
     </svg>
   ),
-  technicalSupport: (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-    </svg>
-  ),
 };
 
 export default function ServicesPage() {
   const { t } = useLanguage();
 
   const services = [
-    { id: "stockist", title: t.services.stockist.title, shortDescription: t.services.stockist.shortDescription, bullets3: t.services.stockist.bullets3, image: serviceImages.stockist },
-    { id: "sourcing", title: t.services.sourcing.title, shortDescription: t.services.sourcing.shortDescription, bullets3: t.services.sourcing.bullets3, image: serviceImages.sourcing },
-    { id: "testing", title: t.services.testing.title, shortDescription: t.services.testing.shortDescription, bullets3: t.services.testing.bullets3, image: serviceImages.testing },
-    { id: "fabrication", title: t.services.fabrication.title, shortDescription: t.services.fabrication.shortDescription, bullets3: t.services.fabrication.bullets3, image: serviceImages.fabrication },
-    { id: "installation", title: t.services.installation.title, shortDescription: t.services.installation.shortDescription, bullets3: t.services.installation.bullets3, image: serviceImages.installation },
-    { id: "technicalSupport", title: t.services.technicalSupport.title, shortDescription: t.services.technicalSupport.shortDescription, bullets3: t.services.technicalSupport.bullets3, image: serviceImages.technicalSupport },
+    { id: "stockist", title: t.services.stockist.title, shortDescription: t.services.stockist.shortDescription, bullets3: t.services.stockist.bullets3 },
+    { id: "sourcing", title: t.services.sourcing.title, shortDescription: t.services.sourcing.shortDescription, bullets3: t.services.sourcing.bullets3 },
+    { id: "testing", title: t.services.testing.title, shortDescription: t.services.testing.shortDescription, bullets3: t.services.testing.bullets3 },
+    { id: "fabrication", title: t.services.fabrication.title, shortDescription: t.services.fabrication.shortDescription, bullets3: t.services.fabrication.bullets3 },
+    { id: "installation", title: t.services.installation.title, shortDescription: t.services.installation.shortDescription, bullets3: t.services.installation.bullets3 },
   ];
 
   const processSteps = [
@@ -106,7 +90,7 @@ export default function ServicesPage() {
         {/* Base divider line */}
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gray-200" />
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
           {services.map((service, index) => (
             <a
               key={service.id}
@@ -135,41 +119,55 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Details — compact sections for tab bar */}
-      <div>
+      {/* Services Details — mobile: badge + title inline; desktop: split layout */}
+      <div className="container-custom space-y-6 md:space-y-10 py-8 md:py-10">
         {services.map((service, index) => (
           <section
             key={service.id}
             id={service.id}
-            className={`scroll-mt-28 py-8 md:py-10 flex items-center ${index % 2 === 1 ? "bg-gray-50" : "bg-white"}`}
+            className={`scroll-mt-28 rounded-xl border border-gray-100 bg-white shadow-sm overflow-hidden ${index % 2 === 1 ? "md:bg-gray-50/50" : ""}`}
           >
-            <div className="container-custom w-full">
-              <div className="grid lg:grid-cols-5 gap-4 lg:gap-8 items-start">
-                {/* Image: left 40%, smaller height */}
-                <div className="order-2 lg:order-1 lg:col-span-2 lg:row-span-2 relative aspect-[2/1] rounded-lg overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                  />
+            <div className="flex flex-col md:flex-row min-h-0">
+              {/* Left column: desktop only — number over faded icon */}
+              <div className="hidden md:flex relative items-center justify-center md:w-[160px] md:min-w-[160px] md:flex-shrink-0 md:h-auto md:min-h-[200px] md:py-0 md:px-0 bg-navy-50/60 md:border-r border-gray-200/80">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none [&>svg]:w-[150px] [&>svg]:h-[150px] text-navy-200/25" aria-hidden>
+                  {serviceIcons[service.id]}
                 </div>
-                {/* Text: right 60% */}
-                <div className="order-1 lg:order-2 lg:col-span-3 lg:col-start-3">
-                  <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-2">{service.title}</h2>
+                <span className="relative z-10 text-5xl font-bold text-navy-200 tabular-nums select-none">
+                  0{index + 1}
+                </span>
+              </div>
+              {/* Right column: title, description, bullets + subtle texture */}
+              <div className="relative flex-1 p-6 md:p-8 bg-white overflow-hidden">
+                {/* Subtle dot texture overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-[0.08]"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='0.8' fill='%236b7280'/%3E%3Ccircle cx='16' cy='4' r='0.8' fill='%236b7280'/%3E%3Ccircle cx='4' cy='16' r='0.8' fill='%236b7280'/%3E%3Ccircle cx='16' cy='16' r='0.8' fill='%236b7280'/%3E%3C/svg%3E")`,
+                  }}
+                  aria-hidden
+                />
+                <div className="relative z-10">
+                {/* Mobile: red badge + title inline; desktop: title only */}
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-accent-500 flex items-center justify-center text-white md:hidden [&>svg]:w-6 [&>svg]:h-6" aria-hidden>
+                    {serviceIcons[service.id]}
+                  </div>
+                  <h2 className="text-lg md:text-xl font-bold text-navy-900">{service.title}</h2>
                 </div>
-                <div className="order-3 lg:order-2 lg:col-span-3 lg:col-start-3 lg:row-start-2 -mt-1 lg:mt-0">
-                  <p className="text-gray-600 text-sm leading-relaxed mb-3">{service.shortDescription}</p>
-                  <ul className="space-y-1.5">
-                    {service.bullets3.map((bullet, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-gray-600 text-sm">
-                        <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-navy-50 flex items-center justify-center text-accent-500 [&>svg]:w-4 [&>svg]:h-4" aria-hidden>
-                          {serviceIcons[service.id]}
-                        </span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <p className="text-gray-600 text-sm leading-relaxed mb-5">{service.shortDescription}</p>
+                <ul className="space-y-2">
+                  {service.bullets3.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-3 text-gray-600 text-sm">
+                      <span className="flex-shrink-0 mt-0.5 text-accent-500" aria-hidden>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
                 </div>
               </div>
             </div>
@@ -177,13 +175,13 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      {/* Process Section - Horizontal Scroll Cards */}
-      <section className="section-padding bg-gray-50 overflow-hidden">
-        <div className="container-custom">
+      {/* Process Section - Navy background, light-on-dark */}
+      <section className="gradient-navy overflow-hidden py-[4.4rem] md:py-[6.6rem]">
+        <div className="container-custom relative">
           <div className="text-center mb-12">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.services.process.label}</span>
-            <h2 className="text-navy-900 mt-2 mb-4">{t.services.process.title}</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <span className="text-accent-400 font-semibold text-sm uppercase tracking-wider">{t.services.process.label}</span>
+            <h2 className="text-white mt-2 mb-4">{t.services.process.title}</h2>
+            <p className="text-navy-200 max-w-2xl mx-auto">
               {t.services.process.description}
             </p>
           </div>
@@ -197,22 +195,22 @@ export default function ServicesPage() {
                 key={index} 
                 className="flex-shrink-0 w-[280px] md:w-auto snap-center"
               >
-                <div className="relative h-full bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md hover:border-accent-200 transition-all duration-300">
+                <div className="relative h-full bg-navy-800/80 rounded-2xl p-8 border border-navy-700/80 hover:border-navy-600 hover:bg-navy-800 transition-all duration-300 backdrop-blur-sm">
                   {/* Step Number - Large Background */}
-                  <div className="absolute top-4 right-4 text-7xl font-bold text-gray-100 select-none">
+                  <div className="absolute top-4 right-4 text-7xl font-bold text-navy-600/80 select-none">
                     {step.step}
                   </div>
                   
                   {/* Content */}
                   <div className="relative z-10 pt-4">
-                    <h3 className="text-xl font-semibold text-navy-900 mb-3">{step.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                    <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
+                    <p className="text-navy-200 text-sm leading-relaxed">{step.description}</p>
                   </div>
                   
                   {/* Arrow indicator for next step */}
                   {index < processSteps.length - 1 && (
-                    <div className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-6 bg-white rounded-full shadow-md items-center justify-center">
-                      <svg className="w-3 h-3 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-6 bg-navy-700 rounded-full border border-navy-600 items-center justify-center">
+                      <svg className="w-3 h-3 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
@@ -225,41 +223,22 @@ export default function ServicesPage() {
           {/* Scroll Indicator - Mobile Only */}
           <div className="flex justify-center gap-2 mt-4 md:hidden">
             {processSteps.map((_, index) => (
-              <div key={index} className="w-2 h-2 rounded-full bg-gray-300" />
+              <div key={index} className="w-2 h-2 rounded-full bg-white/40" />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="section-padding gradient-navy relative overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-400 rounded-full blur-3xl" />
-        </div>
-        
-        <div className="container-custom relative">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <p className="text-5xl md:text-6xl font-bold text-white mb-2">50+</p>
-              <p className="text-white text-sm uppercase tracking-wider">{t.services.stats.countries}</p>
-            </div>
-            <div className="text-center">
-              <p className="text-5xl md:text-6xl font-bold text-white mb-2">1000+</p>
-              <p className="text-white text-sm uppercase tracking-wider">{t.services.stats.projects}</p>
-            </div>
-            <div className="text-center">
-              <p className="text-5xl md:text-6xl font-bold text-white mb-2">99.5%</p>
-              <p className="text-white text-sm uppercase tracking-wider">{t.services.stats.delivery}</p>
-            </div>
-            <div className="text-center">
-              <p className="text-5xl md:text-6xl font-bold text-white mb-2">24/7</p>
-              <p className="text-white text-sm uppercase tracking-wider">{t.services.stats.support}</p>
-            </div>
+      {/* Divider between Process and FAQ */}
+      <div className="bg-gray-50 relative" aria-hidden>
+        <div className="container-custom py-8 md:py-10">
+          <div className="flex items-center justify-center gap-3">
+            <span className="h-px flex-1 max-w-[160px] md:max-w-[280px] bg-gradient-to-r from-transparent via-gray-300 to-gray-400 rounded-full" />
+            <span className="flex-shrink-0 w-2.5 h-2.5 rotate-45 bg-accent-400/80 rounded-sm shadow-sm" />
+            <span className="h-px flex-1 max-w-[160px] md:max-w-[280px] bg-gradient-to-l from-transparent via-gray-300 to-gray-400 rounded-full" />
           </div>
         </div>
-      </section>
+      </div>
 
       {/* FAQ Section */}
       <section className="section-padding bg-gray-50">

@@ -115,7 +115,7 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* Hero Section — matches Contact page height and font */}
+      {/* Hero Section — same height and font as Services page */}
       <section className="gradient-navy py-10 sm:py-16 md:py-24">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -133,18 +133,18 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section — clean split layout: text left, image right */}
-      <section className="section-padding bg-gray-50">
+      <section className="py-10 md:py-16 lg:py-24 bg-gray-50">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-10 lg:gap-16 items-center">
             {/* Left: text — on mobile stacks on top */}
             <div>
-              <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">
+              <span className="text-accent-500 font-semibold text-xs md:text-sm uppercase tracking-wider">
                 {t.about.story.label}
               </span>
-              <h2 className="text-navy-900 mt-2 mb-6 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+              <h2 className="text-navy-900 mt-1.5 md:mt-2 mb-4 md:mb-6 text-xl md:text-3xl lg:text-4xl font-bold leading-tight">
                 {t.about.story.title}
               </h2>
-              <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed">
+              <div className="space-y-3 md:space-y-4 text-gray-600 text-sm md:text-lg leading-relaxed">
                 <p>{t.about.story.p1}</p>
                 <p>{t.about.story.p2}</p>
               </div>
@@ -163,14 +163,14 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="py-10 md:py-16 lg:py-24 bg-gray-50">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.about.mission.label}</span>
-            <h2 className="text-navy-900 mt-2 mb-6">
+            <span className="text-accent-500 font-semibold text-xs md:text-sm uppercase tracking-wider">{t.about.mission.label}</span>
+            <h2 className="text-navy-900 mt-1.5 md:mt-2 mb-4 md:mb-6 text-xl md:text-2xl lg:text-3xl font-bold">
               {t.about.mission.title}
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-base md:text-xl text-gray-600 leading-relaxed px-0">
               {t.about.mission.description}
             </p>
           </div>
@@ -178,19 +178,19 @@ export default function AboutPage() {
       </section>
 
       {/* Industries We Serve Section */}
-      <section className="section-padding gradient-navy" id="industries">
+      <section className="py-10 md:py-16 lg:py-24 gradient-navy" id="industries">
         <div className="container-custom">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 mb-6 md:mb-8">
             <div>
               <span className="text-accent-400 font-semibold text-xs uppercase tracking-wider">{t.about.industries.label}</span>
-              <h2 className="text-white text-2xl md:text-3xl font-semibold mt-1">{t.about.industries.title}</h2>
+              <h2 className="text-white text-xl md:text-3xl font-semibold mt-1">{t.about.industries.title}</h2>
             </div>
-            <p className="text-navy-300 text-sm max-w-md md:text-right">
+            <p className="text-navy-300 text-xs md:text-sm max-w-md md:text-right">
               {t.about.industries.description}
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1.5 md:gap-2">
             {industries.map((industry, index) => (
               <div 
                 key={index} 
@@ -205,8 +205,8 @@ export default function AboutPage() {
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-navy-900/60 group-hover:bg-navy-900/40 transition-colors duration-300" />
                 {/* Content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
-                  <h3 className="text-white font-semibold text-sm leading-tight">{industry.name}</h3>
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-2 md:p-3 text-center">
+                  <h3 className="text-white font-semibold text-xs md:text-sm leading-tight">{industry.name}</h3>
                 </div>
               </div>
             ))}
@@ -215,26 +215,28 @@ export default function AboutPage() {
       </section>
 
       {/* Project References Section */}
-      <section className="section-padding bg-white" id="projects">
+      <section className="py-10 md:py-16 lg:py-24 bg-white" id="projects">
         <div className="container-custom">
-          <div className="text-center mb-10 md:mb-12">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.about.projects.label}</span>
-            <h2 className="text-navy-900 mt-2 mb-4">{t.about.projects.title}</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-6 md:mb-12">
+            <span className="text-accent-500 font-semibold text-xs md:text-sm uppercase tracking-wider">{t.about.projects.label}</span>
+            <h2 className="text-navy-900 mt-1.5 md:mt-2 mb-3 md:mb-4 text-xl md:text-2xl lg:text-3xl font-bold">
+              {t.about.projects.title}
+            </h2>
+            <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
               {t.about.projects.description}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {projectReferences.map((project, index) => (
               <div
                 key={index}
                 className="bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-card"
               >
                 <ImageSlider images={project.images} alt={project.name} aspectClass="aspect-[2/1] sm:aspect-[16/9]" />
-                <div className="p-6 flex flex-col min-h-0">
-                  <h3 className="text-lg font-bold text-navy-900 mb-2">{project.name}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{project.description}</p>
+                <div className="p-4 md:p-6 flex flex-col min-h-0">
+                  <h3 className="text-base md:text-lg font-bold text-navy-900 mb-1.5 md:mb-2">{project.name}</h3>
+                  <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.products.map((product, i) => (
                       <span
@@ -256,19 +258,19 @@ export default function AboutPage() {
       </section>
 
       {/* Quality Assurance — full-width dark banner */}
-      <section className="py-12 md:py-16 gradient-navy" id="standards">
+      <section className="py-8 md:py-16 gradient-navy" id="standards">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-accent-400 font-semibold text-xs md:text-sm uppercase tracking-wider">
               {t.about.qualityPromise.label}
             </span>
-            <h2 className="text-white mt-2 mb-4 text-2xl md:text-3xl lg:text-4xl font-bold">
+            <h2 className="text-white mt-1.5 md:mt-2 mb-3 md:mb-4 text-xl md:text-3xl lg:text-4xl font-bold">
               {t.about.qualityPromise.title}
             </h2>
-            <p className="text-navy-200 text-sm md:text-base leading-relaxed mb-10 md:mb-12">
+            <p className="text-navy-200 text-xs md:text-base leading-relaxed mb-6 md:mb-12">
               {t.about.qualityPromise.subtext}
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 lg:gap-x-16 lg:gap-y-6 justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-6 lg:gap-x-16 lg:gap-y-6 justify-items-center">
               {qualityPromiseItems.map((key) => (
                 <div key={key} className="flex items-center gap-3 text-left w-full sm:w-auto sm:min-w-[240px]">
                   <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent-500/20 flex items-center justify-center text-accent-400" aria-hidden>
@@ -285,18 +287,18 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-white">
+      <section className="py-10 md:py-16 lg:py-24 bg-white">
         <div className="container-custom">
-          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-3xl p-8 md:p-16 text-center">
-            <h2 className="text-lg font-semibold text-white mb-2 md:text-3xl lg:text-4xl md:mb-4">
+          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl md:rounded-3xl p-6 md:p-16 text-center">
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-2 md:mb-4">
               {t.about.cta.title}
             </h2>
-            <p className="text-navy-200 text-sm mb-5 max-w-xl mx-auto md:text-lg md:mb-8 md:max-w-2xl">
+            <p className="text-navy-200 text-sm md:text-lg mb-4 md:mb-8 max-w-xl mx-auto md:max-w-2xl">
               {t.about.cta.description}
             </p>
-            <Link href="/contact" className="btn-primary">
+            <Link href="/contact" className="btn-primary text-sm md:text-base">
               {t.about.cta.button}
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>

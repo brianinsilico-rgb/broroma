@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
-const HERO_TUBES_IMAGE = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80";
+const HERO_TUBES_IMAGE = "/products/boiler-tubes.png";
 
 const materialSpecs = [
   { material: "Carbon Steel", grades: "A192, A210, A213", sizes: "1/2\" - 4\"", standard: "ASTM A192, A213" },

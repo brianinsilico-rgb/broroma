@@ -26,8 +26,7 @@ interface TrustedByProps {
 export default function TrustedBy({ className = "" }: TrustedByProps) {
   const { t } = useLanguage();
   
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const trustedByTitle = (t.home as any)?.trustedBy?.title || "Trusted By Industry Leaders";
+  const trustedByTitle = t.home.trustedBy?.title ?? "Trusted By Industry Leaders";
 
   return (
     <section className={`py-12 md:py-16 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 relative overflow-hidden ${className}`}>

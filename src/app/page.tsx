@@ -321,7 +321,7 @@ export default function Home() {
         {/* Subtle background accents */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-navy-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-100/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
-        
+
         <div className="container-custom relative">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
             <div className="max-w-xl">
@@ -378,7 +378,7 @@ export default function Home() {
                     isIsoCard ? "text-base max-w-[85%] md:max-w-full" : "text-sm"
                   } ${
                     isScrollActive ? "text-navy-300" : isIsoCard ? "text-gray-600" : "text-gray-500"
-                  }                   md:group-hover:text-navy-300`}>
+                  } md:group-hover:text-navy-300`}>
                     {item.description}
                   </p>
                 </div>

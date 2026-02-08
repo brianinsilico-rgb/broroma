@@ -12,55 +12,55 @@ export default function ProductsPage() {
       slug: "pipes",
       name: "Pipes",
       description: "High-quality steel, carbon, stainless, and alloy pipes for industrial applications.",
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",
+      image: "/products/pipes.png",
     },
     {
       slug: "fittings",
       name: "Fittings",
       description: "Complete range of pipe fittings including elbows, tees, reducers, and couplings.",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      image: "/products/fittings.png",
     },
     {
       slug: "flanges",
       name: "Flanges",
       description: "Precision-engineered flanges for secure pipe connections and system integrity.",
-      image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+      image: "/products/flanges.png",
     },
     {
       slug: "boiler-tubes",
       name: "Boiler Tubes",
       description: "Heat-resistant tubes designed for high-temperature boiler applications.",
-      image: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=800&q=80",
+      image: "/products/boiler-tubes.png",
     },
     {
       slug: "heat-exchanger-tubes",
       name: "Heat Exchanger Tubes",
       description: "Efficient thermal transfer tubes for heat exchanger systems.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+      image: "/products/heat-exchanger-tubes.png",
     },
     {
       slug: "manual-valves",
       name: "Manual Valves",
       description: "Reliable manual control valves for flow regulation and isolation.",
-      image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=800&q=80",
+      image: "/products/manual-valve.png",
     },
     {
       slug: "safety-valves",
       name: "Safety Valves",
       description: "Certified safety and relief valves for pressure protection systems.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+      image: "/products/safety-valve.png",
     },
     {
       slug: "control-valves",
       name: "Control Valves",
       description: "Automated control valves for precise flow, pressure, and temperature regulation.",
-      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+      image: "/products/control-valve.png",
     },
     {
       slug: "accessories-instruments",
       name: "Accessories",
       description: "Supporting equipment including gauges, strainers, and instrumentation.",
-      image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+      image: "/products/accessories.png",
     },
   ];
 
@@ -105,8 +105,8 @@ export default function ProductsPage() {
 
   return (
     <>
-      {/* Hero Section — matches Contact page height and font */}
-      <section className="gradient-navy py-10 sm:py-16 md:py-24">
+      {/* Hero Section — subtle gradient */}
+      <section className="py-10 sm:py-16 md:py-24 bg-gradient-to-b from-navy-950 via-navy-900 to-navy-800">
         <div className="container-custom">
           <div className="max-w-3xl">
             {/* Breadcrumb */}
@@ -127,13 +127,13 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Features Bar - Below Hero */}
+      {/* Features Bar - Below Hero (compact, refined) */}
       <section className="bg-white border-b border-gray-100">
-        <div className="container-custom py-4 md:py-6">
-          <div className="grid grid-cols-4 gap-3 md:gap-5">
+        <div className="container-custom py-3 md:py-4">
+          <div className="grid grid-cols-4 gap-2 md:gap-4">
             {features.map((feature, index) => (
-              <div key={index} className="flex flex-col md:flex-row items-center gap-1.5 md:gap-3 text-center md:text-left">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-navy-50 rounded-lg flex items-center justify-center text-navy-900 [&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:w-6 md:[&>svg]:h-6">
+              <div key={index} className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-center md:text-left">
+                <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg flex items-center justify-center text-gray-500 [&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:h-5 md:[&>svg]:w-5 bg-gray-100">
                   {feature.icon}
                 </div>
                 <p className="font-semibold text-navy-900 text-[11px] md:text-sm leading-tight">{feature.title}</p>
@@ -213,6 +213,32 @@ export default function ProductsPage() {
         </div>
       </section>
 
+      {/* Need Help Choosing? CTA */}
+      <section className="py-16 md:py-20 bg-gray-100/80 border-y border-gray-200/80">
+        <div className="container-custom text-center">
+          <h2 className="text-xl md:text-2xl font-semibold text-navy-900 mb-3">
+            {t.products.pageCta.title}
+          </h2>
+          <p className="text-gray-600 max-w-xl mx-auto mb-8">
+            {t.products.pageCta.description}
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <Link
+              href="/contact"
+              className="btn-secondary text-sm min-w-[140px]"
+            >
+              {t.products.pageCta.contactUs}
+            </Link>
+            <Link
+              href="/quote"
+              className="btn-primary text-sm min-w-[140px]"
+            >
+              {t.products.pageCta.getQuote}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Custom Sourcing CTA */}
       <section className="py-10 md:py-16 bg-white">
         <div className="container-custom">
@@ -251,28 +277,6 @@ export default function ProductsPage() {
                   className="object-cover"
                 />
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-10 md:py-16 bg-gray-50">
-        <div className="container-custom">
-          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl p-6 md:p-10 text-center">
-            <h2 className="text-lg font-semibold text-white mb-2 md:text-3xl lg:text-4xl md:mb-4">
-              {t.products.cta.title}
-            </h2>
-            <p className="text-navy-200 text-sm mb-5 max-w-xl mx-auto md:text-lg md:mb-8 md:max-w-2xl">
-              {t.products.cta.description}
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/contact" className="btn-primary text-sm">
-                {t.products.cta.contact}
-              </Link>
-              <Link href="/services" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900 text-sm">
-                {t.products.cta.services}
-              </Link>
             </div>
           </div>
         </div>

@@ -77,13 +77,16 @@
       "description": "Get in touch with our team to discuss your requirements. We'll provide customized solutions tailored to your specific needs.",
       "contact": "Contact Us Today",
       "browse": "Browse Products"
+    },
+    "trustedBy": {
+      "title": "Trusted By Industry Leaders"
     }
   },
   "about": {
     "hero": {
       "label": "About Broroma",
       "title": "Building Trust Through Excellence",
-      "description": "For over 25 years, Broroma has been a cornerstone of the global industrial pipe trade, connecting quality manufacturers with businesses worldwide."
+      "description": "Since 2002, we've supplied industrial pipes to projects across 50+ countries. No shortcuts. No surprises."
     },
     "story": {
       "label": "Our Story",
@@ -308,6 +311,63 @@
       "contact": "Contact Our Experts",
       "services": "View Our Services"
     },
+    "pageCta": {
+      "title": "Need Help Choosing?",
+      "description": "Our team can help you find the right products for your project requirements.",
+      "contactUs": "Contact Us",
+      "getQuote": "Get a Quote"
+    },
+    "manualValves": {
+      "hero": { "title": "Manual Valves", "description": "Gate, globe, ball, check, and butterfly valves for flow control and isolation." },
+      "cta": { "title": "Need Help Selecting the Right Valve?", "description": "Our technical experts can help you select the optimal valve type, material, and pressure class for your specific application.", "contact": "Contact Our Experts", "services": "View Our Services" },
+      "products": [
+        { "slug": "globe", "name": "Globe Valves", "description": "Precision flow control valves with linear motion disc for throttling and regulating applications." },
+        { "slug": "gate", "name": "Gate Valves", "description": "Full-bore isolation valves for on/off service with minimal pressure drop when fully open." },
+        { "slug": "check", "name": "Check Valves", "description": "Non-return valves preventing backflow in piping systems. Swing, lift, and wafer types available." },
+        { "slug": "ball", "name": "Ball Valves", "description": "Quarter-turn valves with spherical closure element for quick shut-off and tight sealing." },
+        { "slug": "butterfly", "name": "Butterfly Valves", "description": "Compact quarter-turn valves ideal for large diameter applications and flow regulation." }
+      ]
+    },
+    "controlValves": {
+      "hero": { "title": "Control Valves", "description": "Automated control valves for precise flow, pressure, and temperature regulation in process systems." },
+      "cta": { "title": "Need Help Selecting Control Valves?", "description": "Our technical experts can help you select and size the optimal control valve for your process control requirements.", "contact": "Contact Our Experts", "services": "View Our Services" },
+      "products": [
+        { "slug": "globe", "name": "Globe Control Valves", "description": "Precision flow control valves with linear characteristics for accurate process regulation." },
+        { "slug": "gate", "name": "Gate Control Valves", "description": "Automated gate valves for on/off control and isolation in process systems." },
+        { "slug": "ball", "name": "Ball Control Valves", "description": "Quarter-turn control valves with characterized trim for modulating service." },
+        { "slug": "butterfly", "name": "Butterfly Control Valves", "description": "High-performance butterfly valves for large flow control applications." }
+      ]
+    },
+    "flanges": {
+      "hero": { "title": "Flanges", "description": "Pipe flanges for secure connections. Weld neck, slip-on, blind, socket weld, threaded, and lap joint." },
+      "cta": { "title": "Need Help Selecting the Right Flange?", "description": "Our technical experts can help you select the optimal flange type, material, and pressure class for your specific application.", "contact": "Contact Our Experts", "services": "View Our Services" },
+      "products": [
+        { "slug": "weld-neck", "name": "Weld Neck", "description": "Tapered hub design for maximum strength at the weld joint. Best for high-pressure and high-temperature service." },
+        { "slug": "slip-on", "name": "Slip-On", "description": "Slides over the pipe for easy alignment and welding. Cost-effective choice for low-pressure applications." },
+        { "slug": "blind", "name": "Blind", "description": "Closes off the end of a piping system. Used for testing, inspection, or future expansion." },
+        { "slug": "socket-weld", "name": "Socket Weld", "description": "Pipe inserts into the socket before welding. Ideal for small-diameter, high-pressure lines." },
+        { "slug": "threaded", "name": "Threaded", "description": "Screws onto threaded pipe — no welding required. Best for low-pressure, non-critical systems." },
+        { "slug": "lap-joint", "name": "Lap Joint", "description": "Two-piece design allows easy bolt alignment and rotation. Good for systems requiring frequent disassembly." }
+      ]
+    },
+    "accessoriesInstruments": {
+      "hero": { "title": "Accessories & Instruments", "description": "Actuators, steam traps, positioners, gauges, and instrumentation for process control and monitoring." },
+      "cta": { "title": "Need Accessories for Your Project?", "description": "Our team can help you source the right accessories and instruments for your piping system requirements.", "contact": "Contact Our Experts", "services": "View Our Services" },
+      "products": [
+        { "slug": "electric-actuator", "name": "Electric Actuator", "description": "Motor-driven actuators for automated valve control with precise positioning capability." },
+        { "slug": "pneumatic-actuator", "name": "Pneumatic Actuator", "description": "Air-operated actuators for fast, reliable valve automation in process systems." },
+        { "slug": "steam-trap", "name": "Steam Trap", "description": "Automatic condensate removal devices for efficient steam system operation." },
+        { "slug": "positioner", "name": "Positioner", "description": "Valve positioners for accurate control valve positioning and feedback." },
+        { "slug": "level-gauge", "name": "Level Gauge", "description": "Visual and electronic level indicators for tanks and vessels." },
+        { "slug": "transmitter", "name": "Transmitter", "description": "Pressure, temperature, and flow transmitters for process measurement." },
+        { "slug": "tube-fitting", "name": "Tube Fitting", "description": "Compression and flare fittings for instrumentation tubing connections." },
+        { "slug": "expansion-joint", "name": "Expansion Joint", "description": "Flexible connectors for thermal expansion and vibration absorption." },
+        { "slug": "pressure-gauge", "name": "Pressure Gauge", "description": "Mechanical and digital pressure indicators for process monitoring." },
+        { "slug": "temperature-gauge", "name": "Temperature Gauge", "description": "Bimetallic and filled system temperature indicators for local display." },
+        { "slug": "strainer", "name": "Strainer", "description": "Y-strainers and basket strainers for pipeline debris removal." },
+        { "slug": "gaskets", "name": "Gaskets", "description": "Flange gaskets in spiral wound, ring joint, and sheet materials." }
+      ]
+    },
     "steel": {
       "name": "Steel Pipes",
       "description": "High-strength carbon steel pipes for structural, mechanical, and industrial applications. Available in various grades and specifications."
@@ -337,13 +397,18 @@
     "hero": {
       "label": "Our Services",
       "title": "Comprehensive Trade Solutions",
-      "description": "From stock supply to installation, we provide comprehensive services covering sourcing, testing, fabrication, and maintenance for all your piping needs."
+      "description": "We handle the sourcing, inspection, and logistics so you can focus on what matters."
     },
     "stockist": {
-      "title": "Stockist & Supply",
+      "title": "Ready Stock",
       "subtitle": "Ready When You Need It",
-      "shortDescription": "Ready stock inventory for immediate delivery.",
-      "bullets3": ["Extensive ready stock", "Fast local delivery", "Emergency supply support"],
+      "shortDescription": "Get what you need, when you need it — no waiting on production.",
+      "bullets3": [
+        "Large inventory of pipes, fittings, flanges, and valves",
+        "Common sizes and grades always available",
+        "Same-day dispatch for urgent orders",
+        "No minimum order for in-stock items"
+      ],
       "description": "As an authorized stockist, we maintain a comprehensive inventory of industrial pipes, fittings, and valves ready for immediate delivery to meet your urgent requirements.",
       "features": [
         "Extensive ready stock inventory",
@@ -360,10 +425,15 @@
       }
     },
     "sourcing": {
-      "title": "Global Sourcing",
+      "title": "Custom Sourcing",
       "subtitle": "Worldwide Procurement Network",
-      "shortDescription": "Products from 50+ certified manufacturers worldwide.",
-      "bullets3": ["Certified mills worldwide", "Custom specification sourcing", "Import/export handling"],
+      "shortDescription": "Can't find it? Tell us the spec — we'll handle the rest.",
+      "bullets3": [
+        "Access to 50+ certified manufacturers across Asia, Europe, and the Americas",
+        "Rare grades, custom dimensions, special coatings",
+        "We negotiate pricing and manage the paperwork",
+        "Direct mill orders for large volumes"
+      ],
       "description": "Leverage our extensive international network to source products from certified manufacturers across Asia, Europe, and the Americas at competitive prices.",
       "features": [
         "Access to certified mills worldwide",
@@ -380,10 +450,15 @@
       }
     },
     "testing": {
-      "title": "Quality Inspection",
+      "title": "Quality Assurance",
       "subtitle": "Uncompromising Standards",
-      "shortDescription": "Full testing and documentation with every order.",
-      "bullets3": ["Material verification", "Dimensional checks", "Mill test certificates"],
+      "shortDescription": "Every product inspected and documented before it leaves.",
+      "bullets3": [
+        "Chemical composition and mechanical property verification",
+        "Dimensional inspection to your tolerances",
+        "Mill Test Certificates with full traceability",
+        "Third-party inspection available on request"
+      ],
       "description": "Our rigorous testing and inspection services ensure every product meets your specifications and international standards before delivery.",
       "features": [
         "Material testing and certification",
@@ -400,10 +475,15 @@
       }
     },
     "fabrication": {
-      "title": "Fabrication & Machining",
+      "title": "Processing & Prep",
       "subtitle": "Custom Solutions Built to Spec",
-      "shortDescription": "Custom cutting, threading, and preparation.",
-      "bullets3": ["Precision cutting", "Threading & beveling", "Custom lengths"],
+      "shortDescription": "Delivered ready to install — not just ready to ship.",
+      "bullets3": [
+        "Precision cutting to custom lengths",
+        "Threading, beveling, and end preparation",
+        "Coating, painting, and surface treatment",
+        "Bundled, labeled, and packed to your specs"
+      ],
       "description": "Our fabrication facilities can modify, customize, and fabricate products to meet your exact specifications and unique project requirements.",
       "features": [
         "Custom pipe fabrication",
@@ -420,10 +500,15 @@
       }
     },
     "installation": {
-      "title": "Logistics & Delivery",
+      "title": "Shipping & Logistics",
       "subtitle": "Complete Field Services",
-      "shortDescription": "Worldwide shipping with tracking.",
-      "bullets3": ["Global shipping", "Real-time tracking", "Customs handling"],
+      "shortDescription": "Door-to-door delivery, anywhere in the world.",
+      "bullets3": [
+        "Sea, air, and land freight options",
+        "Real-time shipment tracking",
+        "Full customs clearance and export documentation",
+        "Consolidated shipping to reduce costs"
+      ],
       "description": "From professional installation to ongoing maintenance, our experienced field service team ensures your piping systems perform optimally throughout their lifecycle.",
       "features": [
         "Professional on-site installation",
@@ -464,14 +549,14 @@
     "faq": {
       "label": "FAQ",
       "title": "Frequently Asked Questions",
-      "q1": "What is the minimum order quantity?",
-      "a1": "Minimum order quantities vary by product type and supplier. For standard products, we typically work with MOQs starting from 5 metric tons. For specialty items, we can accommodate smaller quantities with adjusted pricing.",
-      "q2": "How long does shipping typically take?",
-      "a2": "Shipping times depend on the origin and destination. Sea freight from Asia to North America typically takes 25-35 days. We also offer expedited air freight options for urgent requirements.",
-      "q3": "Do you provide Mill Test Certificates?",
-      "a3": "Yes, all products come with original Mill Test Certificates (MTCs) documenting chemical composition, mechanical properties, and test results as per relevant standards.",
-      "q4": "What payment terms do you offer?",
-      "a4": "We offer flexible payment terms including Letter of Credit (L/C), Telegraphic Transfer (T/T), and Documentary Collection. Terms are tailored based on order value and customer relationship."
+      "q1": "What products do you supply?",
+      "a1": "We supply industrial pipes, fittings, flanges, valves, boiler tubes, heat exchanger tubes, and accessories. All products are sourced from certified manufacturers and come with full documentation.",
+      "q2": "Do all products come with Mill Test Certificates?",
+      "a2": "Yes. Every product ships with original Mill Test Certificates (MTCs) documenting chemical composition, mechanical properties, and test results per industry standards.",
+      "q3": "What is the minimum order quantity?",
+      "a3": "MOQs vary by product. Standard items start at 5 metric tons. For smaller quantities or specialty items, contact us — we'll find a solution.",
+      "q4": "Which countries do you ship to?",
+      "a4": "We ship worldwide. Most orders go to Southeast Asia, Middle East, and Africa. Shipping time depends on destination — sea freight typically takes 2-5 weeks."
     },
     "cta": {
       "title": "Ready to Get Started?",
