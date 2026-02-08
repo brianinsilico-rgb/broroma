@@ -2,46 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import TrustedBy from "@/components/ui/TrustedBy";
 import CountUp from "@/components/ui/CountUp";
 
-const WHY_US_CARD_COUNT = 4;
-
 export default function Home() {
   const { t } = useLanguage();
-  const whyUsCardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [centerCardIndex, setCenterCardIndex] = useState(0);
-
-  useEffect(() => {
-    const updateCenterCard = () => {
-      const viewportCenterY = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
-      let bestIndex = 0;
-      let bestDistance = Infinity;
-      for (let i = 0; i < WHY_US_CARD_COUNT; i++) {
-        const el = whyUsCardRefs.current[i];
-        if (!el) continue;
-        const rect = el.getBoundingClientRect();
-        const cardCenterY = rect.top + rect.height / 2;
-        const distance = Math.abs(cardCenterY - viewportCenterY);
-        if (distance < bestDistance) {
-          bestDistance = distance;
-          bestIndex = i;
-        }
-      }
-      // On desktop, don't highlight the first box (ISO) so it stays same color as others
-      const isDesktop = typeof window !== "undefined" && window.innerWidth >= 768;
-      setCenterCardIndex(isDesktop && bestIndex === 0 ? -1 : bestIndex);
-    };
-    updateCenterCard();
-    window.addEventListener("scroll", updateCenterCard, { passive: true });
-    window.addEventListener("resize", updateCenterCard);
-    return () => {
-      window.removeEventListener("scroll", updateCenterCard);
-      window.removeEventListener("resize", updateCenterCard);
-    };
-  }, []);
 
   const services = [
     {
@@ -92,17 +58,21 @@ export default function Home() {
 
   const trustIndicators = [
     {
-      title: t.home.whyUs.iso.title,
-      description: t.home.whyUs.iso.description,
+      title: "25+ Years in the Business",
+      description: "We've seen every challenge — and solved it.",
+      stat: "25+",
+      statLabel: "Years",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       ),
     },
     {
-      title: t.home.whyUs.global.title,
-      description: t.home.whyUs.global.description,
+      title: "50+ Global Manufacturers",
+      description: "Access to brands others can't get.",
+      stat: "50+",
+      statLabel: "Brands",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -110,20 +80,24 @@ export default function Home() {
       ),
     },
     {
-      title: t.home.whyUs.quality.title,
-      description: t.home.whyUs.quality.description,
+      title: "Mill Test Certificates Included",
+      description: "Full traceability on every order.",
+      stat: "100%",
+      statLabel: "Traceable",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       ),
     },
     {
-      title: t.home.whyUs.delivery.title,
-      description: t.home.whyUs.delivery.description,
+      title: "Fast Response",
+      description: "Quote within 24 hours. Delivery when you need it.",
+      stat: "24h",
+      statLabel: "Response",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
     },
@@ -284,33 +258,85 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.home.services.label}</span>
-            <h2 className="text-navy-900 mt-2 mb-4">
-              {t.home.services.title}
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              {t.home.services.description}
-            </p>
+      <section className="section-padding bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-navy-500/5 rounded-full blur-3xl" />
+        
+        <div className="container-custom relative">
+          {/* Header with left-aligned text and right CTA on desktop */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+            <div className="max-w-xl">
+              <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.home.services.label}</span>
+              <h2 className="text-navy-900 mt-2 mb-4">
+                {t.home.services.title}
+              </h2>
+              <p className="text-gray-600 text-lg">
+                {t.home.services.description}
+              </p>
+            </div>
+            <Link href="/services" className="btn-primary hidden lg:inline-flex">
+              {t.home.services.viewAll}
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Services Grid - Bento-style with featured first card */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
             {services.map((service, index) => (
-              <div key={index} className="card group">
-                <div className="w-14 h-14 bg-navy-50 rounded-xl flex items-center justify-center text-navy-900 mb-6 group-hover:bg-accent-500 group-hover:text-white transition-colors duration-300 group-hover:scale-[1.03] transition-transform duration-300">
-                  {service.icon}
+              <Link
+                key={index}
+                href="/services"
+                className={`group relative bg-white rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-gray-200 hover:-translate-y-1 ${
+                  index === 0 ? "md:col-span-2 lg:col-span-1" : ""
+                }`}
+              >
+                {/* Card content */}
+                <div className="p-6 lg:p-7 h-full flex flex-col">
+                  {/* Top row: number and icon */}
+                  <div className="flex items-start justify-between mb-5">
+                    <span className="text-5xl font-bold text-gray-100 group-hover:text-accent-100 transition-colors duration-300 select-none">
+                      0{index + 1}
+                    </span>
+                    <div className="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center text-white group-hover:bg-accent-500 transition-all duration-300 group-hover:scale-110 [&>svg]:w-6 [&>svg]:h-6">
+                      {service.icon}
+                    </div>
+                  </div>
+                  
+                  {/* Title and description */}
+                  <h3 className="text-lg font-semibold text-navy-900 mb-2 group-hover:text-accent-600 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed flex-grow">
+                    {service.description}
+                  </p>
+                  
+                  {/* Arrow indicator */}
+                  <div className="mt-4 flex items-center text-navy-400 group-hover:text-accent-500 transition-colors duration-300">
+                    <span className="text-sm font-medium opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                      Learn more
+                    </span>
+                    <svg className="w-5 h-5 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-navy-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
+                
+                {/* Hover gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-accent-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </Link>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Link href="/services" className="btn-outline">
+          {/* Mobile CTA */}
+          <div className="text-center mt-10 lg:hidden">
+            <Link href="/services" className="btn-primary">
               {t.home.services.viewAll}
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           </div>
         </div>
@@ -318,72 +344,116 @@ export default function Home() {
 
       {/* Why Choose Us Section */}
       <section className="section-padding bg-gray-50 relative overflow-hidden">
-        {/* Subtle background accents */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-navy-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-100/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
-
         <div className="container-custom relative">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-            <div className="max-w-xl">
-              <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.home.whyUs.label}</span>
-              <h2 className="text-navy-900 mt-2">
-                {t.home.whyUs.title}
-              </h2>
-            </div>
-            <p className="text-gray-600 max-w-md lg:text-right">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.home.whyUs.label}</span>
+            <h2 className="text-navy-900 mt-2 mb-4">
+              {t.home.whyUs.title}
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               {t.home.whyUs.description}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 rounded-2xl overflow-hidden">
-            {trustIndicators.map((item, index) => {
-              const isScrollActive = centerCardIndex === index;
-              const isIsoCard = index === 0;
-              return (
-                <div
-                  key={index}
-                  ref={(el) => { whyUsCardRefs.current[index] = el; }}
-                  className={`group relative transition-all duration-600 ease-out md:hover:bg-navy-900 ${
-                    isIsoCard ? "p-8 md:p-10" : "p-8"
-                  } ${
-                    isScrollActive ? "bg-navy-900 opacity-100" : "bg-white opacity-90 md:opacity-100"
-                  }`}
-                >
-                  {/* Number */}
-                  <span className={`absolute top-4 right-4 font-bold transition-all duration-600 ease-out ${
-                    isIsoCard ? "text-4xl md:text-5xl" : "text-5xl"
-                  } ${
-                    isScrollActive ? "text-navy-800" : "text-gray-100"
-                  } md:group-hover:text-navy-800`}>
-                    0{index + 1}
-                  </span>
-
-                  {/* Icon */}
-                  <div className={`rounded-lg flex items-center justify-center transition-all duration-600 ease-out ${
-                    isIsoCard ? "w-14 h-14 mb-6 [&>svg]:w-8 [&>svg]:h-8" : "w-11 h-11 mb-5"
-                  } ${
-                    isScrollActive ? "bg-accent-500 text-white" : "bg-navy-50 text-navy-600"
-                  } md:group-hover:bg-accent-500 md:group-hover:text-white`}>
-                    {item.icon}
-                  </div>
-
-                  <h3 className={`font-semibold transition-all duration-600 ease-out ${
-                    isIsoCard ? "text-xl mb-3" : "text-lg mb-2"
-                  } ${
-                    isScrollActive ? "text-white" : "text-navy-900"
-                  } md:group-hover:text-white`}>
-                    {item.title}
-                  </h3>
-                  <p className={`leading-relaxed transition-all duration-600 ease-out ${
-                    isIsoCard ? "text-base max-w-[85%] md:max-w-full" : "text-sm"
-                  } ${
-                    isScrollActive ? "text-navy-300" : isIsoCard ? "text-gray-600" : "text-gray-500"
-                  } md:group-hover:text-navy-300`}>
-                    {item.description}
-                  </p>
+          {/* Bento Grid Layout */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Featured Card - 25+ Years */}
+            <div className="md:col-span-2 lg:col-span-1 lg:row-span-2 bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl p-8 relative overflow-hidden group">
+              {/* Decorative circles */}
+              <div className="absolute -top-12 -right-12 w-40 h-40 bg-accent-500/10 rounded-full" />
+              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-navy-700/50 rounded-full" />
+              
+              <div className="relative h-full flex flex-col">
+                <div className="w-16 h-16 bg-accent-500 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {trustIndicators[0].icon}
                 </div>
-              );
-            })}
+                <h3 className="text-2xl font-bold text-white mb-3">{trustIndicators[0].title}</h3>
+                <p className="text-navy-300 leading-relaxed flex-grow">{trustIndicators[0].description}</p>
+                
+                {/* Badge */}
+                <div className="mt-6 pt-6 border-t border-navy-800">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-navy-800 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold text-sm">Trusted Since 2002</p>
+                      <p className="text-navy-400 text-xs">Proven track record</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 - 50+ Global Manufacturers */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent-200 hover:shadow-lg transition-all duration-300 group">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-navy-50 rounded-xl flex items-center justify-center text-navy-700 group-hover:bg-accent-500 group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                  {trustIndicators[1].icon}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-navy-900 mb-1">{trustIndicators[1].title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{trustIndicators[1].description}</p>
+                </div>
+              </div>
+              {/* Mini stat */}
+              <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                <span className="text-gray-400 text-xs uppercase tracking-wide">{trustIndicators[1].statLabel}</span>
+                <span className="text-2xl font-bold text-navy-900">{trustIndicators[1].stat}</span>
+              </div>
+            </div>
+
+            {/* Card 3 - Mill Test Certificates */}
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent-200 hover:shadow-lg transition-all duration-300 group">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-navy-50 rounded-xl flex items-center justify-center text-navy-700 group-hover:bg-accent-500 group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                  {trustIndicators[2].icon}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-navy-900 mb-1">{trustIndicators[2].title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{trustIndicators[2].description}</p>
+                </div>
+              </div>
+              {/* Mini stat */}
+              <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                <span className="text-gray-400 text-xs uppercase tracking-wide">{trustIndicators[2].statLabel}</span>
+                <span className="text-2xl font-bold text-navy-900">{trustIndicators[2].stat}</span>
+              </div>
+            </div>
+
+            {/* Card 4 - Fast Response - Wide card */}
+            <div className="md:col-span-2 bg-gradient-to-r from-accent-500 to-accent-600 rounded-2xl p-6 relative overflow-hidden group">
+              {/* Pattern overlay */}
+              <div 
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Ccircle cx='3' cy='3' r='1.5'/%3E%3C/g%3E%3C/svg%3E")`,
+                }}
+              />
+              
+              <div className="relative flex flex-col md:flex-row md:items-center gap-6">
+                <div className="flex items-start gap-4 flex-grow">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white flex-shrink-0">
+                    {trustIndicators[3].icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">{trustIndicators[3].title}</h3>
+                    <p className="text-white/80 text-sm leading-relaxed">{trustIndicators[3].description}</p>
+                  </div>
+                </div>
+                
+                {/* Large stat */}
+                <div className="flex items-center gap-3 md:border-l md:border-white/20 md:pl-6">
+                  <div className="text-right">
+                    <p className="text-4xl md:text-5xl font-bold text-white">{trustIndicators[3].stat}</p>
+                    <p className="text-white/70 text-sm">{trustIndicators[3].statLabel}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

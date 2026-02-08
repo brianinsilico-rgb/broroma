@@ -115,7 +115,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      {/* Hero Section — matches Contact page height and font */}
+      {/* Hero Section */}
       <section className="gradient-navy py-10 sm:py-16 md:py-24">
         <div className="container-custom">
           <div className="max-w-3xl">
@@ -133,34 +133,31 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Quick Nav Bar */}
-      <section className="bg-white relative">
-        {/* Base divider line */}
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gray-200" />
-        
+      <section className="bg-white border-b border-gray-100">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
           {services.map((service, index) => (
             <a
               key={service.id}
               href={`#${service.id}`}
-              className="group relative flex flex-col items-center justify-center text-center py-10 px-4 hover:bg-gray-50 transition-all duration-300 overflow-hidden border-r border-gray-100 last:border-r-0"
+              className="group relative flex flex-col items-center justify-center text-center py-8 px-4 hover:bg-gray-50 transition-all duration-200 border-r border-gray-100 last:border-r-0"
             >
               {/* Number badge */}
-              <span className="absolute top-3 right-3 text-base font-bold text-navy-200 group-hover:text-accent-400 transition-colors">
+              <span className="absolute top-3 right-3 text-xs font-medium text-gray-300 group-hover:text-accent-400 transition-colors">
                 0{index + 1}
               </span>
               
               {/* Icon */}
-              <div className="w-12 h-12 rounded-full bg-navy-50 group-hover:bg-accent-50 flex items-center justify-center mb-3 text-navy-600 group-hover:text-accent-600 transition-colors">
+              <div className="w-11 h-11 rounded-xl bg-gray-100 group-hover:bg-accent-500 flex items-center justify-center text-gray-500 group-hover:text-white transition-all duration-200 mb-3">
                 {serviceIcons[service.id]}
               </div>
               
               {/* Title */}
-              <p className="font-semibold text-navy-900 text-sm leading-tight group-hover:text-accent-600 transition-colors">
+              <p className="font-medium text-navy-900 text-sm leading-tight">
                 {service.title}
               </p>
               
-              {/* Bottom accent line - overlays the divider */}
-              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent-400 to-accent-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-10" />
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
             </a>
           ))}
         </div>
@@ -222,13 +219,15 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      {/* Process Section - Navy background, light-on-dark */}
-      <section className="gradient-navy overflow-hidden py-[4.4rem] md:py-[6.6rem]">
-        <div className="container-custom relative">
+      {/* Process Section */}
+      <section className="gradient-navy py-16 md:py-24">
+        <div className="container-custom">
           <div className="text-center mb-12">
-            <span className="text-accent-400 font-semibold text-sm uppercase tracking-wider">{t.services.process.label}</span>
+            <span className="text-accent-400 font-semibold text-sm uppercase tracking-wider">
+              {t.services.process.label}
+            </span>
             <h2 className="text-white mt-2 mb-4">{t.services.process.title}</h2>
-            <p className="text-navy-200 max-w-2xl mx-auto">
+            <p className="text-navy-300 max-w-2xl mx-auto">
               {t.services.process.description}
             </p>
           </div>
@@ -238,7 +237,7 @@ export default function ServicesPage() {
         <div className="relative">
           <div 
             ref={processScrollRef}
-            className="flex gap-6 overflow-x-auto pb-8 px-6 md:px-0 md:overflow-visible md:container-custom md:grid md:grid-cols-4 md:gap-6"
+            className="flex gap-4 overflow-x-auto pb-8 px-6 md:px-0 md:overflow-visible md:container-custom md:grid md:grid-cols-4 md:gap-4"
             style={{
               scrollSnapType: "x mandatory",
               scrollbarWidth: "none",
@@ -258,23 +257,23 @@ export default function ServicesPage() {
                 className="flex-shrink-0 w-[280px] md:w-auto"
                 style={{ scrollSnapAlign: "center" }}
               >
-                <div className="relative h-full bg-navy-800/80 rounded-2xl p-8 border border-navy-700/80 hover:border-navy-600 hover:bg-navy-800 transition-all duration-300 backdrop-blur-sm">
-                  {/* Step Number - Large Background */}
-                  <div className="absolute top-4 right-4 text-7xl font-bold text-navy-600/80 select-none">
+                <div className="relative h-full bg-navy-800 rounded-xl p-6 border border-navy-700 hover:border-navy-600 transition-colors duration-200">
+                  {/* Step Number */}
+                  <div className="absolute top-4 right-4 text-6xl font-bold text-navy-700 select-none">
                     {step.step}
                   </div>
                   
                   {/* Content */}
-                  <div className="relative z-10 pt-4">
-                    <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
-                    <p className="text-navy-200 text-sm leading-relaxed">{step.description}</p>
+                  <div className="relative z-10 pt-2">
+                    <h3 className="text-lg font-semibold text-white mb-2">{step.title}</h3>
+                    <p className="text-navy-300 text-sm leading-relaxed">{step.description}</p>
                   </div>
                   
-                  {/* Arrow indicator for next step */}
+                  {/* Arrow connector */}
                   {index < processSteps.length - 1 && (
-                    <div className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-6 bg-navy-700 rounded-full border border-navy-600 items-center justify-center">
-                      <svg className="w-3 h-3 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <div className="hidden md:flex absolute -right-2 top-1/2 -translate-y-1/2 z-20 w-4 h-4 bg-accent-500 rounded-full items-center justify-center">
+                      <svg className="w-2 h-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
                   )}
@@ -289,10 +288,10 @@ export default function ServicesPage() {
               <button
                 key={index}
                 onClick={() => scrollToProcessCard(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-200 ${
                   activeProcessStep === index
                     ? "w-6 bg-accent-400"
-                    : "w-2 bg-white/40 hover:bg-white/60"
+                    : "w-2 bg-white/30 hover:bg-white/50"
                 }`}
                 aria-label={`Go to step ${index + 1}`}
               />
@@ -317,18 +316,23 @@ export default function ServicesPage() {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <span className="text-accent-500 font-medium text-sm uppercase tracking-wider">{t.services.faq.label}</span>
+              <span className="text-accent-500 font-medium text-sm uppercase tracking-wider">
+                {t.services.faq.label}
+              </span>
               <h2 className="text-navy-900 mt-2">{t.services.faq.title}</h2>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-3">
               {[
                 { q: t.services.faq.q1, a: t.services.faq.a1 },
                 { q: t.services.faq.q2, a: t.services.faq.a2 },
                 { q: t.services.faq.q3, a: t.services.faq.a3 },
                 { q: t.services.faq.q4, a: t.services.faq.a4 },
               ].map((faq, index) => (
-                <div key={index} className="border-l-2 border-gray-200 hover:border-accent-400 pl-6 py-1 transition-colors">
+                <div 
+                  key={index} 
+                  className="bg-white rounded-lg border border-gray-100 p-5 hover:border-gray-200 transition-colors"
+                >
                   <h3 className="text-base font-semibold text-navy-900 mb-2">{faq.q}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
                 </div>
@@ -338,14 +342,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section — mobile: same size/font as other pages */}
+      {/* CTA Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <div className="bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl md:rounded-3xl p-6 md:p-16 text-center">
+          <div className="bg-navy-900 rounded-2xl md:rounded-3xl p-6 md:p-16 text-center">
             <h2 className="text-lg font-semibold text-white mb-2 md:text-3xl lg:text-4xl md:mb-4">
               {t.services.cta.title}
             </h2>
-            <p className="text-navy-200 text-sm mb-5 max-w-xl mx-auto md:text-lg md:mb-8 md:max-w-2xl">
+            <p className="text-navy-300 text-sm mb-5 max-w-xl mx-auto md:text-lg md:mb-8 md:max-w-2xl">
               {t.services.cta.description}
             </p>
             <div className="flex flex-wrap justify-center gap-3 md:gap-4">
