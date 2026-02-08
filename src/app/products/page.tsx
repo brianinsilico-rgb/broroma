@@ -105,9 +105,10 @@ export default function ProductsPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="gradient-navy py-16 md:py-24">
-        <div className="container-custom">
+      {/* Hero Section — matches Contact page height and font */}
+      <section className="gradient-navy py-10 sm:py-16 md:py-24 relative overflow-hidden">
+        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-accent-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="container-custom relative">
           <div className="max-w-3xl">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 md:mb-4">
@@ -117,7 +118,7 @@ export default function ProductsPage() {
               </svg>
               <span className="text-white">Products</span>
             </nav>
-            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               {t.products.hero.title}
             </h1>
             <p className="text-base md:text-lg text-navy-200 leading-relaxed">
