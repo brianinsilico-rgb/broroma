@@ -391,6 +391,131 @@
     "welded": {
       "name": "Welded Pipes",
       "description": "ERW and SAW welded pipes for large-diameter applications, available in standard and custom lengths."
+    },
+    "fittings": {
+      "hero": {
+        "title": "Fittings",
+        "description": "Buttweld and forged fittings for complete piping systems."
+      },
+      "buttweld": {
+        "title": "Buttweld Fittings",
+        "description": "Butt weld pipe fittings designed for permanent welded connections in high-pressure piping systems. Available in carbon steel, stainless steel, and alloy steel materials."
+      },
+      "forged": {
+        "title": "Forged Fittings",
+        "description": "Socket weld and threaded forged fittings for small-bore, high-pressure piping applications. Manufactured from solid bar stock for superior strength."
+      },
+      "products": {
+        "buttweldElbow": { "name": "Elbow (90° / 45°)", "description": "Buttweld elbows for changing pipe direction. Available in long radius and short radius configurations." },
+        "buttweldTee": { "name": "Tee", "description": "Buttweld tees for creating branch connections. Available in equal and reducing configurations." },
+        "buttweldReducer": { "name": "Reducer (Concentric / Eccentric)", "description": "Buttweld reducers for transitioning between pipe sizes. Concentric and eccentric options available." },
+        "buttweldCap": { "name": "Cap", "description": "Buttweld caps for sealing pipe ends. Used for system termination and pressure testing." },
+        "buttweldStubEnd": { "name": "Stub End", "description": "Stub ends for use with lap joint flanges. Economical option for stainless and alloy systems." },
+        "buttweldCross": { "name": "Cross", "description": "Buttweld crosses for four-way pipe connections. Available in equal and reducing configurations." },
+        "forgedCoupling": { "name": "Coupling", "description": "Forged couplings for connecting two pipes. Available in full coupling and half coupling configurations." },
+        "forgedUnion": { "name": "Union", "description": "Forged unions for easy pipe disconnection. Three-piece design allows for maintenance access." },
+        "forgedElbow": { "name": "Elbow", "description": "Forged elbows for changing direction in small-bore piping. Available in 90° and 45° configurations." },
+        "forgedTee": { "name": "Tee", "description": "Forged tees for branch connections in small-bore systems. Equal and reducing options available." },
+        "forgedCap": { "name": "Cap", "description": "Forged caps for closing pipe ends. Socket weld and threaded connections available." },
+        "forgedBushing": { "name": "Bushing", "description": "Forged bushings for reducing pipe size. Hex head and flush designs available." }
+      },
+      "cta": {
+        "title": "Need Help Choosing the Right Fitting?",
+        "description": "Our technical experts are ready to help you select the optimal fitting for your specific application and requirements.",
+        "contact": "Contact Our Experts",
+        "services": "View Our Services"
+      }
+    },
+    "safetyValves": {
+      "hero": {
+        "title": "Safety Valves",
+        "description": "Certified safety and relief valves for pressure protection."
+      },
+      "products": [
+        { "slug": "globe", "name": "Globe Safety Valves", "description": "Pressure relief valves with precise set pressure control for steam and gas applications." },
+        { "slug": "gate", "name": "Gate Safety Valves", "description": "High-capacity pressure relief valves for liquid service and large volume discharge." },
+        { "slug": "ball", "name": "Ball Safety Valves", "description": "Quick-opening safety valves with full-bore relief capacity for critical applications." },
+        { "slug": "butterfly", "name": "Butterfly Safety Valves", "description": "Large diameter pressure relief valves for low-pressure, high-volume applications." }
+      ],
+      "cta": {
+        "title": "Need Help Selecting Safety Valves?",
+        "description": "Our technical experts can help you select and size the optimal safety valve for your pressure protection requirements.",
+        "contact": "Contact Our Experts",
+        "services": "View Our Services"
+      }
+    },
+    "common": {
+      "breadcrumb": {
+        "home": "Home",
+        "products": "Products"
+      },
+      "table": {
+        "material": "Material",
+        "grades": "Grades",
+        "sizes": "Sizes",
+        "schedule": "Schedule / Wall Thickness",
+        "standard": "Standard",
+        "odRange": "OD Range",
+        "wallThickness": "Wall Thickness (mm)",
+        "wallThicknessBwg": "Wall Thickness (BWG/mm)"
+      },
+      "options": {
+        "availableLengths": "Available Lengths",
+        "endFinish": "End Finish",
+        "coatingOptions": "Coating Options",
+        "surfaceFinish": "Surface Finish",
+        "lengths": {
+          "3m": "3m",
+          "6m": "6m",
+          "9m": "9m",
+          "12m": "12m",
+          "randomLength": "Random Length",
+          "cutToLength": "Cut-to-Length available",
+          "customCut": "Custom Cut"
+        },
+        "ends": {
+          "plainEnd": "Plain End",
+          "beveledEnd": "Beveled End",
+          "threaded": "Threaded",
+          "swagedEnd": "Swaged End",
+          "upsetEnd": "Upset End",
+          "expandedEnd": "Expanded End"
+        },
+        "coatings": {
+          "bare": "Bare",
+          "blackPainted": "Black Painted",
+          "galvanized": "Galvanized",
+          "epoxyCoated": "Epoxy Coated",
+          "pickled": "Pickled",
+          "polished": "Polished",
+          "brightAnnealed": "Bright Annealed"
+        }
+      },
+      "applications": {
+        "powerGeneration": { "name": "Power Generation", "description": "High-pressure piping for thermal and nuclear power plants" },
+        "oilGas": { "name": "Oil & Gas", "description": "Upstream, midstream, and downstream applications" },
+        "petrochemical": { "name": "Petrochemical", "description": "Chemical processing and refining operations" },
+        "waterTreatment": { "name": "Water Treatment", "description": "Municipal and industrial water systems" },
+        "construction": { "name": "Construction", "description": "Structural and mechanical piping systems" },
+        "steamSystems": { "name": "Steam Systems", "description": "Steam generation and distribution systems" },
+        "refineries": { "name": "Refineries", "description": "Oil refining and processing facilities" },
+        "chemicalPlants": { "name": "Chemical Plants", "description": "Chemical manufacturing and processing" },
+        "pulpPaper": { "name": "Pulp & Paper", "description": "Paper manufacturing and processing facilities" },
+        "hvac": { "name": "HVAC", "description": "Heating, ventilation, and air conditioning" },
+        "marine": { "name": "Marine", "description": "Shipbuilding and offshore applications" }
+      },
+      "downloads": {
+        "pipesCatalog": "Pipes Catalog",
+        "boilerTubesCatalog": "Boiler Tubes Catalog",
+        "heatExchangerCatalog": "Heat Exchanger Tubes Catalog"
+      },
+      "cta": {
+        "needQuotePipes": "Need a Quote for Pipes?",
+        "needQuoteBoilerTubes": "Need a Quote for Boiler Tubes?",
+        "needQuoteHeatExchanger": "Need a Quote for Heat Exchanger Tubes?",
+        "tellUsGrade": "Tell us your grade, size, and quantity — we'll respond within 24 hours.",
+        "tellUsOd": "Tell us your grade, OD, and quantity — we'll respond within 24 hours."
+      }
     }
   },
   "services": {
@@ -568,22 +693,34 @@
   "contact": {
     "hero": {
       "label": "Contact Us",
-      "title": "Let's Start a Conversation",
-      "description": "Have questions about our products or services? Our team is ready to help you find the right solution for your industrial pipe needs."
+      "title": "Get in Touch",
+      "description": "Send us your specs and requirements. We respond within 24 hours."
     },
     "form": {
       "title": "Send Us a Message",
       "subtitle": "Have a question? Send us a message and we'll get back to you.",
       "name": "Full Name",
       "namePlaceholder": "John Smith",
-      "email": "Email Address",
-      "emailPlaceholder": "john@company.com",
       "company": "Company Name",
       "companyPlaceholder": "Your Company Inc.",
+      "email": "Email Address",
+      "emailPlaceholder": "john@company.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "productInterest": "Product Interest",
+      "productInterestPlaceholder": "Select an option",
+      "productOptions": {
+        "pipes": "Pipes",
+        "fittings": "Fittings",
+        "flanges": "Flanges",
+        "valves": "Valves",
+        "accessories": "Accessories",
+        "other": "Other"
+      },
       "inquiryType": "Inquiry Type",
       "selectOption": "Select an option",
       "message": "Message",
-      "messagePlaceholder": "Please describe your requirements, including product specifications, quantities, and delivery timeline...",
+      "messagePlaceholder": "Tell us what you need — product specs, quantities, delivery timeline, or any questions.",
       "submit": "Send Message",
       "sending": "Sending...",
       "required": "Required fields",
@@ -613,23 +750,27 @@
     "hours": {
       "title": "Business Hours",
       "weekdays": "Monday - Friday",
-      "weekdaysTime": "8:00 AM - 6:00 PM CST",
+      "weekdaysTime": "8:00 AM - 6:00 PM ICT",
       "saturday": "Saturday",
-      "saturdayTime": "9:00 AM - 1:00 PM CST",
+      "saturdayTime": "9:00 AM - 1:00 PM ICT",
       "sunday": "Sunday",
       "sundayTime": "Closed"
     },
     "quoteCta": {
-      "title": "Need a Product Quote?",
-      "description": "Get pricing for pipes, fittings, valves, and more.",
-      "button": "Request a Quote"
+      "title": "Prefer to Browse First?",
+      "description": "Explore our full product range with detailed specifications.",
+      "button": "View Products"
     },
     "tabs": {
       "message": "Send Message",
-      "call": "Call Us",
+      "call": "Get in Touch",
       "visit": "Visit Us",
       "callTitle": "Get in Touch",
-      "callDescription": "Reach out to us directly via phone or email."
+      "callDescription": "Reach out to us directly via phone, email, or messaging apps.",
+      "wechat": "WeChat",
+      "wechatId": "broroma-official",
+      "line": "LINE",
+      "lineId": "@broroma"
     },
     "quickResponse": {
       "title": "Quick Response",

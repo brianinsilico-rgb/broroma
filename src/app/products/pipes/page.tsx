@@ -20,7 +20,7 @@ const weldedSpecs = [
 
 type SpecRow = (typeof seamlessSpecs)[number];
 
-function MaterialCardMobile({ row }: { row: SpecRow }) {
+function MaterialCardMobile({ row, labels }: { row: SpecRow; labels: { grades: string; sizes: string; schedule: string; standard: string } }) {
   return (
     <div className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
       <h3 className="text-navy-900 font-semibold text-base mb-4 pb-3 border-b border-gray-100">
@@ -28,19 +28,19 @@ function MaterialCardMobile({ row }: { row: SpecRow }) {
       </h3>
       <dl className="space-y-3">
         <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-0.5">Grades</dt>
+          <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-0.5">{labels.grades}</dt>
           <dd className="text-sm text-navy-800 leading-snug">{row.grades}</dd>
         </div>
         <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-0.5">Sizes</dt>
+          <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-0.5">{labels.sizes}</dt>
           <dd className="text-sm text-navy-800 leading-snug">{row.sizes}</dd>
         </div>
         <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-0.5">Schedule / Wall Thickness</dt>
+          <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-0.5">{labels.schedule}</dt>
           <dd className="text-sm text-navy-800 leading-snug">{row.schedule}</dd>
         </div>
         <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-0.5">Standard</dt>
+          <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-0.5">{labels.standard}</dt>
           <dd className="text-sm text-navy-800 leading-snug">{row.standard}</dd>
         </div>
       </dl>
@@ -48,13 +48,13 @@ function MaterialCardMobile({ row }: { row: SpecRow }) {
   );
 }
 
-function SpecsTable({ rows }: { rows: typeof seamlessSpecs }) {
+function SpecsTable({ rows, labels }: { rows: typeof seamlessSpecs; labels: { material: string; grades: string; sizes: string; schedule: string; standard: string } }) {
   return (
     <>
       {/* Mobile: stacked cards — no horizontal scroll */}
       <div className="flex flex-col gap-4 md:hidden">
         {rows.map((row) => (
-          <MaterialCardMobile key={row.material} row={row} />
+          <MaterialCardMobile key={row.material} row={row} labels={labels} />
         ))}
       </div>
       {/* Desktop: table */}
@@ -62,11 +62,11 @@ function SpecsTable({ rows }: { rows: typeof seamlessSpecs }) {
         <table className="w-full min-w-[700px] border-collapse text-sm md:text-base">
           <thead>
             <tr className="border-b-2 border-navy-200 bg-navy-50/50">
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">Material</th>
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">Grades</th>
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">Sizes</th>
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">Schedule / Wall Thickness</th>
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">Standard</th>
+              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.material}</th>
+              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.grades}</th>
+              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.sizes}</th>
+              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.schedule}</th>
+              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.standard}</th>
             </tr>
           </thead>
           <tbody>
@@ -127,6 +127,16 @@ export default function PipesPage() {
   const pipes = t.products?.pipes;
   const downloads = pipes?.downloads;
   const cta = pipes?.cta;
+  const common = t.products?.common;
+  const tableLabels = {
+    material: common?.table?.material || "Material",
+    grades: common?.table?.grades || "Grades",
+    sizes: common?.table?.sizes || "Sizes",
+    schedule: common?.table?.schedule || "Schedule / Wall Thickness",
+    standard: common?.table?.standard || "Standard",
+  };
+  const options = common?.options;
+  const apps = common?.applications;
 
   return (
     <>
@@ -164,34 +174,34 @@ export default function PipesPage() {
               {pipes?.seamlessDescription ?? "Hot-rolled and cold-drawn seamless pipes offering superior strength and pressure resistance without weld seams."}
             </p>
           </div>
-          <SpecsTable rows={seamlessSpecs} />
+          <SpecsTable rows={seamlessSpecs} labels={tableLabels} />
           {/* Additional Options */}
           <div className="mt-6 pt-6 border-t border-gray-200 px-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-5 md:gap-6">
               <div>
-                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">Available Lengths</h4>
+                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">{options?.availableLengths || "Available Lengths"}</h4>
                 <div className="space-y-1 text-sm text-gray-500">
-                  <p>6m</p>
-                  <p>12m</p>
-                  <p>Random Length</p>
-                  <p>Cut-to-Length available</p>
+                  <p>{options?.lengths?.["6m"] || "6m"}</p>
+                  <p>{options?.lengths?.["12m"] || "12m"}</p>
+                  <p>{options?.lengths?.randomLength || "Random Length"}</p>
+                  <p>{options?.lengths?.cutToLength || "Cut-to-Length available"}</p>
                 </div>
               </div>
               <div>
-                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">End Finish</h4>
+                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">{options?.endFinish || "End Finish"}</h4>
                 <div className="space-y-1 text-sm text-gray-500">
-                  <p>Plain End</p>
-                  <p>Beveled End</p>
-                  <p>Threaded</p>
+                  <p>{options?.ends?.plainEnd || "Plain End"}</p>
+                  <p>{options?.ends?.beveledEnd || "Beveled End"}</p>
+                  <p>{options?.ends?.threaded || "Threaded"}</p>
                 </div>
               </div>
               <div className="col-span-2 md:col-span-1">
-                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">Coating Options</h4>
+                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">{options?.coatingOptions || "Coating Options"}</h4>
                 <div className="space-y-1 text-sm text-gray-500">
-                  <p>Bare</p>
-                  <p>Black Painted</p>
-                  <p>Galvanized</p>
-                  <p>Epoxy Coated</p>
+                  <p>{options?.coatings?.bare || "Bare"}</p>
+                  <p>{options?.coatings?.blackPainted || "Black Painted"}</p>
+                  <p>{options?.coatings?.galvanized || "Galvanized"}</p>
+                  <p>{options?.coatings?.epoxyCoated || "Epoxy Coated"}</p>
                 </div>
               </div>
             </div>
@@ -210,31 +220,31 @@ export default function PipesPage() {
               {pipes?.weldedDescription ?? "Electric Resistance Welded pipes offering excellent quality and cost-effectiveness for various applications."}
             </p>
           </div>
-          <SpecsTable rows={weldedSpecs} />
+          <SpecsTable rows={weldedSpecs} labels={tableLabels} />
           {/* Additional Options */}
           <div className="mt-6 pt-6 border-t border-gray-200 px-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-5 md:gap-6">
               <div>
-                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">Available Lengths</h4>
+                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">{options?.availableLengths || "Available Lengths"}</h4>
                 <div className="space-y-1 text-sm text-gray-500">
-                  <p>6m</p>
-                  <p>12m</p>
-                  <p>Random Length</p>
+                  <p>{options?.lengths?.["6m"] || "6m"}</p>
+                  <p>{options?.lengths?.["12m"] || "12m"}</p>
+                  <p>{options?.lengths?.randomLength || "Random Length"}</p>
                 </div>
               </div>
               <div>
-                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">End Finish</h4>
+                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">{options?.endFinish || "End Finish"}</h4>
                 <div className="space-y-1 text-sm text-gray-500">
-                  <p>Plain End</p>
-                  <p>Beveled End</p>
+                  <p>{options?.ends?.plainEnd || "Plain End"}</p>
+                  <p>{options?.ends?.beveledEnd || "Beveled End"}</p>
                 </div>
               </div>
               <div className="col-span-2 md:col-span-1">
-                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">Coating Options</h4>
+                <h4 className="text-xs font-semibold text-navy-900 uppercase tracking-wide mb-2">{options?.coatingOptions || "Coating Options"}</h4>
                 <div className="space-y-1 text-sm text-gray-500">
-                  <p>Bare</p>
-                  <p>Black Painted</p>
-                  <p>Galvanized</p>
+                  <p>{options?.coatings?.bare || "Bare"}</p>
+                  <p>{options?.coatings?.blackPainted || "Black Painted"}</p>
+                  <p>{options?.coatings?.galvanized || "Galvanized"}</p>
                 </div>
               </div>
             </div>
@@ -251,8 +261,7 @@ export default function PipesPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { 
-                name: "Power Generation", 
-                description: "High-pressure boiler tubes and steam line piping",
+                key: "powerGeneration",
                 icon: (
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -260,8 +269,7 @@ export default function PipesPage() {
                 )
               },
               { 
-                name: "Oil & Gas", 
-                description: "Upstream drilling, downstream refining, and pipeline transport",
+                key: "oilGas",
                 icon: (
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
@@ -270,8 +278,7 @@ export default function PipesPage() {
                 )
               },
               { 
-                name: "Petrochemical", 
-                description: "Process piping for chemical plants and refineries",
+                key: "petrochemical",
                 icon: (
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -279,8 +286,7 @@ export default function PipesPage() {
                 )
               },
               { 
-                name: "Water Treatment", 
-                description: "Distribution mains, intake lines, and treatment plant piping",
+                key: "waterTreatment",
                 icon: (
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
@@ -289,30 +295,32 @@ export default function PipesPage() {
                 )
               },
               { 
-                name: "Construction", 
-                description: "Structural steel, piling, and mechanical piping systems",
+                key: "construction",
                 icon: (
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 )
               },
-            ].map((app) => (
-              <div
-                key={app.name}
-                className="bg-gray-50 rounded-lg p-4 border border-gray-100"
-              >
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-accent-500/10 flex items-center justify-center text-accent-500 flex-shrink-0">
-                    {app.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-navy-900 text-sm mb-1">{app.name}</h3>
-                    <p className="text-gray-600 text-xs leading-relaxed">{app.description}</p>
+            ].map((app) => {
+              const appData = apps?.[app.key as keyof typeof apps] as { name?: string; description?: string } | undefined;
+              return (
+                <div
+                  key={app.key}
+                  className="bg-gray-50 rounded-lg p-4 border border-gray-100"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-accent-500/10 flex items-center justify-center text-accent-500 flex-shrink-0">
+                      {app.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-navy-900 text-sm mb-1">{appData?.name || app.key}</h3>
+                      <p className="text-gray-600 text-xs leading-relaxed">{appData?.description || ""}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -328,7 +336,7 @@ export default function PipesPage() {
           </p>
           <DownloadCard
             href={downloads?.fullPdf ?? "#"}
-            title="Pipes Catalog"
+            title={common?.downloads?.pipesCatalog || "Pipes Catalog"}
             format="PDF"
           />
         </div>
@@ -340,10 +348,10 @@ export default function PipesPage() {
           {/* Mobile: simple card without image */}
           <div className="md:hidden bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl p-6 text-center">
             <h2 className="text-xl font-semibold text-white mb-2">
-              Need a Quote for Pipes?
+              {common?.cta?.needQuotePipes || "Need a Quote for Pipes?"}
             </h2>
             <p className="text-navy-200 text-sm mb-5">
-              Tell us your grade, size, and quantity — we&apos;ll respond within 24 hours.
+              {common?.cta?.tellUsGrade || "Tell us your grade, size, and quantity — we'll respond within 24 hours."}
             </p>
             <Link href="/quote" className="btn-primary text-sm inline-flex items-center gap-2">
               {cta?.button ?? "Request a Quote"}
@@ -358,10 +366,10 @@ export default function PipesPage() {
               {/* Content */}
               <div className="p-10 text-left">
                 <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-4">
-                  Need a Quote for Pipes?
+                  {common?.cta?.needQuotePipes || "Need a Quote for Pipes?"}
                 </h2>
                 <p className="text-navy-200 text-lg mb-8 max-w-md">
-                  Tell us your grade, size, and quantity — we&apos;ll respond within 24 hours.
+                  {common?.cta?.tellUsGrade || "Tell us your grade, size, and quantity — we'll respond within 24 hours."}
                 </p>
                 <Link href="/quote" className="btn-primary inline-flex items-center gap-2">
                   {cta?.button ?? "Request a Quote"}

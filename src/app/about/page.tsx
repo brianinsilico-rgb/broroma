@@ -132,30 +132,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Story Section — clean split layout: text left, image right */}
-      <section className="py-10 md:py-16 lg:py-24 bg-gray-50">
+      {/* Story Section — clean split layout: text left, image right; smaller on desktop */}
+      <section className="py-10 md:py-12 lg:py-16 bg-gray-50">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-6 md:gap-10 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-10 items-center">
             {/* Left: text — on mobile stacks on top */}
             <div>
               <span className="text-accent-500 font-semibold text-xs md:text-sm uppercase tracking-wider">
                 {t.about.story.label}
               </span>
-              <h2 className="text-navy-900 mt-1.5 md:mt-2 mb-4 md:mb-6 text-xl md:text-3xl lg:text-4xl font-bold leading-tight">
+              <h2 className="text-navy-900 mt-1.5 md:mt-2 mb-4 md:mb-4 lg:mb-5 text-xl md:text-3xl lg:text-3xl font-bold leading-tight">
                 {t.about.story.title}
               </h2>
-              <div className="space-y-3 md:space-y-4 text-gray-600 text-sm md:text-lg leading-relaxed">
+              <div className="space-y-3 md:space-y-3 lg:space-y-4 text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed">
                 <p>{t.about.story.p1}</p>
                 <p>{t.about.story.p2}</p>
               </div>
             </div>
             {/* Right: image — on mobile stacks below text */}
-            <div className="relative aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden">
+            <div className="relative w-full aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden lg:max-w-xl lg:justify-self-end min-h-[200px]">
               <Image
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
                 alt="Broroma — industrial pipe supply"
                 fill
                 className="object-cover"
+                sizes="(max-width: 1023px) 100vw, 36rem"
               />
             </div>
           </div>

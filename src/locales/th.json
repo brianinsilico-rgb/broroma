@@ -391,6 +391,131 @@
     "welded": {
       "name": "ท่อเชื่อม",
       "description": "ท่อเชื่อม ERW และ SAW สำหรับการใช้งานขนาดใหญ่ มีความยาวมาตรฐานและตามสั่ง"
+    },
+    "fittings": {
+      "hero": {
+        "title": "ข้อต่อท่อ",
+        "description": "ข้อต่อแบบ Buttweld และ Forged สำหรับระบบท่อครบวงจร"
+      },
+      "buttweld": {
+        "title": "ข้อต่อ Buttweld",
+        "description": "ข้อต่อท่อแบบเชื่อมชนออกแบบสำหรับการเชื่อมต่อถาวรในระบบท่อแรงดันสูง มีให้เลือกทั้งเหล็กคาร์บอน สแตนเลส และเหล็กผสม"
+      },
+      "forged": {
+        "title": "ข้อต่อ Forged",
+        "description": "ข้อต่อ Socket weld และเกลียวสำหรับงานท่อขนาดเล็กแรงดันสูง ผลิตจากเหล็กแท่งตันเพื่อความแข็งแรงสูงสุด"
+      },
+      "products": {
+        "buttweldElbow": { "name": "ข้องอ (90° / 45°)", "description": "ข้องอ Buttweld สำหรับเปลี่ยนทิศทางท่อ มีทั้งแบบ Long radius และ Short radius" },
+        "buttweldTee": { "name": "ที", "description": "ที Buttweld สำหรับสร้างจุดแยก มีทั้งแบบเท่ากันและแบบลดขนาด" },
+        "buttweldReducer": { "name": "ตัวลด (Concentric / Eccentric)", "description": "ตัวลด Buttweld สำหรับเปลี่ยนขนาดท่อ มีทั้งแบบ Concentric และ Eccentric" },
+        "buttweldCap": { "name": "ฝาปิด", "description": "ฝาปิด Buttweld สำหรับปิดปลายท่อ ใช้สำหรับปิดระบบและทดสอบแรงดัน" },
+        "buttweldStubEnd": { "name": "Stub End", "description": "Stub end สำหรับใช้กับหน้าแปลน Lap joint ทางเลือกประหยัดสำหรับระบบสแตนเลสและโลหะผสม" },
+        "buttweldCross": { "name": "ครอส", "description": "ครอส Buttweld สำหรับการต่อท่อสี่ทาง มีทั้งแบบเท่ากันและแบบลดขนาด" },
+        "forgedCoupling": { "name": "คัปปลิ้ง", "description": "คัปปลิ้ง Forged สำหรับต่อท่อสองเส้น มีทั้งแบบ Full coupling และ Half coupling" },
+        "forgedUnion": { "name": "ยูเนี่ยน", "description": "ยูเนี่ยน Forged สำหรับถอดท่อง่าย ออกแบบสามชิ้นสำหรับการบำรุงรักษา" },
+        "forgedElbow": { "name": "ข้องอ", "description": "ข้องอ Forged สำหรับเปลี่ยนทิศทางในท่อขนาดเล็ก มีทั้งแบบ 90° และ 45°" },
+        "forgedTee": { "name": "ที", "description": "ที Forged สำหรับจุดแยกในระบบท่อขนาดเล็ก มีทั้งแบบเท่ากันและแบบลดขนาด" },
+        "forgedCap": { "name": "ฝาปิด", "description": "ฝาปิด Forged สำหรับปิดปลายท่อ มีทั้งแบบ Socket weld และเกลียว" },
+        "forgedBushing": { "name": "บุชชิ่ง", "description": "บุชชิ่ง Forged สำหรับลดขนาดท่อ มีทั้งแบบหัวหกเหลี่ยมและแบบเรียบ" }
+      },
+      "cta": {
+        "title": "ต้องการความช่วยเหลือในการเลือกข้อต่อที่เหมาะสม?",
+        "description": "ผู้เชี่ยวชาญทางเทคนิคของเราพร้อมช่วยคุณเลือกข้อต่อที่เหมาะสมที่สุดสำหรับการใช้งานและความต้องการเฉพาะของคุณ",
+        "contact": "ติดต่อผู้เชี่ยวชาญของเรา",
+        "services": "ดูบริการของเรา"
+      }
+    },
+    "safetyValves": {
+      "hero": {
+        "title": "วาล์วนิรภัย",
+        "description": "วาล์วนิรภัยและระบายแรงดันที่ได้รับการรับรองสำหรับการป้องกันแรงดัน"
+      },
+      "products": [
+        { "slug": "globe", "name": "วาล์วนิรภัยโกลบ", "description": "วาล์วระบายแรงดันที่ควบคุมแรงดันตั้งได้แม่นยำสำหรับงานไอน้ำและก๊าซ" },
+        { "slug": "gate", "name": "วาล์วนิรภัยเกต", "description": "วาล์วระบายแรงดันความจุสูงสำหรับงานของเหลวและการระบายปริมาณมาก" },
+        { "slug": "ball", "name": "วาล์วนิรภัยบอล", "description": "วาล์วนิรภัยเปิดเร็วพร้อมความจุระบายเต็ม bore สำหรับงานวิกฤต" },
+        { "slug": "butterfly", "name": "วาล์วนิรภัยบัตเตอร์ฟลาย", "description": "วาล์วระบายแรงดันเส้นผ่านศูนย์กลางใหญ่สำหรับงานแรงดันต่ำปริมาณมาก" }
+      ],
+      "cta": {
+        "title": "ต้องการความช่วยเหลือในการเลือกวาล์วนิรภัย?",
+        "description": "ผู้เชี่ยวชาญทางเทคนิคของเราช่วยคุณเลือกและกำหนดขนาดวาล์วนิรภัยที่เหมาะสมสำหรับความต้องการป้องกันแรงดันของคุณ",
+        "contact": "ติดต่อผู้เชี่ยวชาญของเรา",
+        "services": "ดูบริการของเรา"
+      }
+    },
+    "common": {
+      "breadcrumb": {
+        "home": "หน้าแรก",
+        "products": "สินค้า"
+      },
+      "table": {
+        "material": "วัสดุ",
+        "grades": "เกรด",
+        "sizes": "ขนาด",
+        "schedule": "Schedule / ความหนาผนัง",
+        "standard": "มาตรฐาน",
+        "odRange": "ช่วง OD",
+        "wallThickness": "ความหนาผนัง (มม.)",
+        "wallThicknessBwg": "ความหนาผนัง (BWG/มม.)"
+      },
+      "options": {
+        "availableLengths": "ความยาวที่มี",
+        "endFinish": "การตกแต่งปลาย",
+        "coatingOptions": "ตัวเลือกการเคลือบ",
+        "surfaceFinish": "การตกแต่งผิว",
+        "lengths": {
+          "3m": "3 เมตร",
+          "6m": "6 เมตร",
+          "9m": "9 เมตร",
+          "12m": "12 เมตร",
+          "randomLength": "ความยาวสุ่ม",
+          "cutToLength": "ตัดตามขนาดได้",
+          "customCut": "ตัดตามสั่ง"
+        },
+        "ends": {
+          "plainEnd": "ปลายเรียบ",
+          "beveledEnd": "ปลายบีเวล",
+          "threaded": "เกลียว",
+          "swagedEnd": "ปลาย Swaged",
+          "upsetEnd": "ปลาย Upset",
+          "expandedEnd": "ปลายขยาย"
+        },
+        "coatings": {
+          "bare": "ไม่เคลือบ",
+          "blackPainted": "ทาสีดำ",
+          "galvanized": "ชุบกัลวาไนซ์",
+          "epoxyCoated": "เคลือบอีพ็อกซี่",
+          "pickled": "กัดกรด",
+          "polished": "ขัดเงา",
+          "brightAnnealed": "อบอ่อนเงา"
+        }
+      },
+      "applications": {
+        "powerGeneration": { "name": "การผลิตไฟฟ้า", "description": "ท่อแรงดันสูงสำหรับโรงไฟฟ้าพลังความร้อนและนิวเคลียร์" },
+        "oilGas": { "name": "น้ำมันและก๊าซ", "description": "งานต้นน้ำ กลางน้ำ และปลายน้ำ" },
+        "petrochemical": { "name": "ปิโตรเคมี", "description": "การแปรรูปเคมีและการกลั่น" },
+        "waterTreatment": { "name": "การบำบัดน้ำ", "description": "ระบบน้ำเทศบาลและอุตสาหกรรม" },
+        "construction": { "name": "การก่อสร้าง", "description": "ระบบท่อโครงสร้างและเครื่องกล" },
+        "steamSystems": { "name": "ระบบไอน้ำ", "description": "ระบบผลิตและจ่ายไอน้ำ" },
+        "refineries": { "name": "โรงกลั่น", "description": "โรงกลั่นน้ำมันและแปรรูป" },
+        "chemicalPlants": { "name": "โรงงานเคมี", "description": "การผลิตและแปรรูปเคมี" },
+        "pulpPaper": { "name": "เยื่อและกระดาษ", "description": "โรงงานผลิตและแปรรูปกระดาษ" },
+        "hvac": { "name": "HVAC", "description": "ระบบทำความร้อน ระบายอากาศ และปรับอากาศ" },
+        "marine": { "name": "ทางทะเล", "description": "การต่อเรือและงานนอกชายฝั่ง" }
+      },
+      "downloads": {
+        "pipesCatalog": "แคตตาล็อกท่อ",
+        "boilerTubesCatalog": "แคตตาล็อกท่อหม้อไอน้ำ",
+        "heatExchangerCatalog": "แคตตาล็อกท่อแลกเปลี่ยนความร้อน"
+      },
+      "cta": {
+        "needQuotePipes": "ต้องการใบเสนอราคาท่อ?",
+        "needQuoteBoilerTubes": "ต้องการใบเสนอราคาท่อหม้อไอน้ำ?",
+        "needQuoteHeatExchanger": "ต้องการใบเสนอราคาท่อแลกเปลี่ยนความร้อน?",
+        "tellUsGrade": "บอกเกรด ขนาด และจำนวน — เราจะตอบกลับภายใน 24 ชั่วโมง",
+        "tellUsOd": "บอกเกรด OD และจำนวน — เราจะตอบกลับภายใน 24 ชั่วโมง"
+      }
     }
   },
   "services": {
@@ -568,22 +693,34 @@
   "contact": {
     "hero": {
       "label": "ติดต่อเรา",
-      "title": "มาเริ่มการสนทนา",
-      "description": "มีคำถามเกี่ยวกับผลิตภัณฑ์หรือบริการของเรา? ทีมงานของเราพร้อมช่วยคุณหาโซลูชันที่เหมาะสมสำหรับความต้องการท่ออุตสาหกรรมของคุณ"
+      "title": "ติดต่อเรา",
+      "description": "ส่งข้อมูลจำเพาะและความต้องการของคุณ เราจะตอบกลับภายใน 24 ชั่วโมง"
     },
     "form": {
       "title": "ส่งข้อความถึงเรา",
       "subtitle": "มีคำถาม? ส่งข้อความถึงเราแล้วเราจะติดต่อกลับ",
       "name": "ชื่อ-นามสกุล",
       "namePlaceholder": "สมชาย ใจดี",
-      "email": "อีเมล",
-      "emailPlaceholder": "somchai@company.com",
       "company": "ชื่อบริษัท",
       "companyPlaceholder": "บริษัท ของคุณ จำกัด",
+      "email": "อีเมล",
+      "emailPlaceholder": "somchai@company.com",
+      "phone": "เบอร์โทรศัพท์",
+      "phonePlaceholder": "+66 2 000 0000",
+      "productInterest": "ความสนใจผลิตภัณฑ์",
+      "productInterestPlaceholder": "เลือกตัวเลือก",
+      "productOptions": {
+        "pipes": "ท่อ",
+        "fittings": "ข้อต่อ",
+        "flanges": "หน้าแปลน",
+        "valves": "วาล์ว",
+        "accessories": "อุปกรณ์เสริม",
+        "other": "อื่นๆ"
+      },
       "inquiryType": "ประเภทการสอบถาม",
       "selectOption": "เลือกตัวเลือก",
       "message": "ข้อความ",
-      "messagePlaceholder": "กรุณาอธิบายความต้องการของคุณ รวมถึงข้อมูลจำเพาะของผลิตภัณฑ์ ปริมาณ และไทม์ไลน์การจัดส่ง...",
+      "messagePlaceholder": "บอกความต้องการ — ข้อมูลจำเพาะผลิตภัณฑ์ ปริมาณ ไทม์ไลน์การจัดส่ง หรือคำถามใดๆ",
       "submit": "ส่งข้อความ",
       "sending": "กำลังส่ง...",
       "required": "ช่องที่จำเป็น",
@@ -620,16 +757,20 @@
       "sundayTime": "ปิดทำการ"
     },
     "quoteCta": {
-      "title": "ต้องการใบเสนอราคาสินค้า?",
-      "description": "รับราคาสำหรับท่อ ข้อต่อ วาล์ว และอื่นๆ",
-      "button": "ขอใบเสนอราคา"
+      "title": "อยากดูสินค้าก่อน?",
+      "description": "สำรวจรายการผลิตภัณฑ์ของเราพร้อมข้อมูลจำเพาะโดยละเอียด",
+      "button": "ดูสินค้า"
     },
     "tabs": {
       "message": "ส่งข้อความ",
-      "call": "โทรหาเรา",
+      "call": "ติดต่อเรา",
       "visit": "เยี่ยมชม",
       "callTitle": "ติดต่อเรา",
-      "callDescription": "ติดต่อเราโดยตรงทางโทรศัพท์หรืออีเมล"
+      "callDescription": "ติดต่อเราโดยตรงทางโทรศัพท์ อีเมล หรือแอปแชท",
+      "wechat": "WeChat",
+      "wechatId": "broroma-official",
+      "line": "LINE",
+      "lineId": "@broroma"
     },
     "quickResponse": {
       "title": "ตอบกลับรวดเร็ว",
