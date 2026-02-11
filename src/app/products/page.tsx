@@ -106,9 +106,9 @@ export default function ProductsPage() {
   return (
     <>
       {/* Hero Section — subtle gradient */}
-      <section className="py-10 sm:py-16 md:py-24 bg-gradient-to-b from-navy-950 via-navy-900 to-navy-800">
+      <section className="py-8 sm:py-10 md:py-16 bg-gradient-to-b from-navy-950 via-navy-900 to-navy-800">
         <div className="container-custom">
-          <div className="max-w-3xl mb-8 md:mb-12">
+          <div className="max-w-3xl mb-6 md:mb-8">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 md:mb-4">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>

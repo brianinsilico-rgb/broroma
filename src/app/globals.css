@@ -94,6 +94,30 @@ body {
     transform: none;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   }
+
+  /* Fittings detail sidebar: no card hover effects */
+  .fittings-sidebar .card:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Flanges detail sidebar: no card hover effects */
+  .flanges-sidebar .card:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Valves detail sidebar: no card hover effects */
+  .valves-sidebar .card:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Accessories detail sidebar: no card hover effects */
+  .accessories-sidebar .card:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
   
   /* Image cards: zoom on hover */
   .image-zoom-hover {
