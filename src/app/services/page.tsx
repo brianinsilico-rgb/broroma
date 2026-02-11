@@ -356,8 +356,9 @@ export default function ServicesPage() {
               ].map((faq, index) => (
                 <div 
                   key={index} 
-                  className="bg-white rounded-lg border border-gray-100 p-5 hover:border-gray-200 transition-colors"
+                  className="group bg-white rounded-lg border border-gray-100 p-5 hover:border-gray-200 transition-all duration-200 relative overflow-hidden"
                 >
+                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-accent-500/20 group-hover:bg-accent-500 transition-colors duration-200" />
                   <h3 className="text-base font-semibold text-navy-900 mb-2">{faq.q}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
                 </div>

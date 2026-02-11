@@ -140,33 +140,28 @@ export default async function BoilerTubeDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-navy py-16 md:py-24">
+      <section className="gradient-navy pt-10 pb-12 md:pt-12 md:pb-16">
         <div className="container-custom">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-navy-300 mb-4 flex-wrap">
+          <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 flex-wrap">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
             <Link href="/products" className="hover:text-white transition-colors">Products</Link>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
             <Link href="/products/boiler-tubes" className="hover:text-white transition-colors">Boiler Tubes</Link>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-            <span className="text-white">{tube.name}</span>
+            <span className="text-white truncate max-w-[180px] sm:max-w-none">{tube.name}</span>
           </nav>
           
-          {/* Category Badge */}
-          <span className="inline-block px-3 py-1 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-4">
-            Boiler Tubes
-          </span>
-          
           <div className="max-w-3xl">
-            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{tube.name}</h1>
-            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
+            <h1 className="text-white text-2xl md:text-4xl font-bold mt-3 mb-4">{tube.name}</h1>
+            <p className="text-sm md:text-base text-navy-200 leading-relaxed">
               {tube.longDescription}
             </p>
           </div>

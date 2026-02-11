@@ -119,33 +119,28 @@ export default async function SafetyValveDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-navy py-10 sm:py-14 md:py-24">
+      <section className="gradient-navy pt-10 pb-12 md:pt-12 md:pb-16">
         <div className="container-custom">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-1.5 text-xs sm:text-sm text-navy-300 mb-3 sm:mb-4 flex-wrap">
+          <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 flex-wrap">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
             <Link href="/products" className="hover:text-white transition-colors">Products</Link>
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
             <Link href="/products/safety-valves" className="hover:text-white transition-colors">Safety Valves</Link>
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
             <span className="text-white truncate max-w-[180px] sm:max-w-none">{valve.name}</span>
           </nav>
           
-          {/* Category Badge */}
-          <span className="inline-block px-2.5 py-1 sm:px-3 sm:py-1 bg-navy-800/50 text-steel-400 text-xs sm:text-sm font-medium rounded-full mb-3 sm:mb-4">
-            {valve.category}
-          </span>
-          
           <div className="max-w-3xl">
-            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">{valve.name}</h1>
-            <p className="text-sm sm:text-base md:text-lg text-navy-200 leading-relaxed">
+            <h1 className="text-white text-2xl md:text-4xl font-bold mt-3 mb-4">{valve.name}</h1>
+            <p className="text-sm md:text-base text-navy-200 leading-relaxed">
               {valve.longDescription}
             </p>
           </div>

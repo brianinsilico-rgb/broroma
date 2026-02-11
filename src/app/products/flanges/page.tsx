@@ -19,17 +19,17 @@ export default function FlangesCategoryPage() {
 
   return (
     <>
-      <section className="gradient-navy py-16 md:py-24">
+      <section className="gradient-navy pt-11 pb-14 md:pt-14 md:pb-20">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 md:mb-4">
+            <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2">
               <Link href="/" className="hover:text-white transition-colors">{t.nav.home}</Link>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               <Link href="/products" className="hover:text-white transition-colors">{t.nav.products}</Link>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               <span className="text-white">{hero.title}</span>
             </nav>
-            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{hero.title}</h1>
+            <h1 className="text-white text-4xl md:text-5xl font-bold mt-3 mb-4">{hero.title}</h1>
             <p className="text-base md:text-lg text-navy-200 leading-relaxed">{hero.description}</p>
           </div>
         </div>

@@ -6,282 +6,256 @@ import { notFound } from "next/navigation";
 // Accessory product data
 const accessoryData: Record<string, {
   name: string;
+  category: string;
   description: string;
   longDescription: string;
   image: string;
   specifications: string[];
   applications: string[];
-  products: {
-    name: string;
-    type: string;
-    sizes: string;
-    standard: string;
-  }[];
-  features: string[];
+  tableHeaders: string[];
+  products: Record<string, string>[];
+  infoNote: string;
 }> = {
-  "electric-actuator": {
-    name: "Electric Actuators",
-    description: "Motor-driven actuators for automated valve control with precise positioning capability.",
-    longDescription: "Our electric actuators provide reliable, precise valve automation for a wide range of industrial applications. Featuring intelligent motor control, these actuators offer accurate positioning, torque limiting, and extensive diagnostic capabilities. Suitable for both on/off and modulating control applications.",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80",
-    specifications: ["IEC 60034", "IEC 61508", "IP67/IP68 Protection", "ATEX/IECEx Options", "4-20mA / HART / Fieldbus"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Process Control", "Water Treatment", "HVAC Systems"],
-    products: [
-      { name: "Quarter-Turn Electric Actuator", type: "On/Off", sizes: "50-10,000 Nm", standard: "IEC 60034" },
-      { name: "Quarter-Turn Electric Actuator", type: "Modulating", sizes: "50-10,000 Nm", standard: "IEC 60034" },
-      { name: "Multi-Turn Electric Actuator", type: "On/Off", sizes: "10-100,000 Nm", standard: "IEC 60034" },
-      { name: "Multi-Turn Electric Actuator", type: "Modulating", sizes: "10-100,000 Nm", standard: "IEC 60034" },
-      { name: "Linear Electric Actuator", type: "Modulating", sizes: "1-100 kN", standard: "IEC 60034" },
-    ],
-    features: [
-      "Precise positioning accuracy",
-      "Local and remote control",
-      "Diagnostic and monitoring functions",
-      "Explosion-proof options",
-      "Multiple communication protocols",
-    ],
-  },
-  "pneumatic-actuator": {
-    name: "Pneumatic Actuators",
-    description: "Air-operated actuators for fast, reliable valve automation in process systems.",
-    longDescription: "Our pneumatic actuators deliver fast, reliable valve automation using compressed air as the power source. Available in spring-return (fail-safe) and double-acting configurations, these actuators are ideal for applications requiring quick response times and simple, robust operation.",
-    image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1200&q=80",
-    specifications: ["ISO 5211", "NAMUR Standard", "3-15 psi / 4-20mA", "IP66 Protection", "ATEX Options"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Process Control", "Oil & Gas", "Pharmaceutical"],
-    products: [
-      { name: "Scotch Yoke Actuator", type: "Double-Acting", sizes: "50-500,000 Nm", standard: "ISO 5211" },
-      { name: "Scotch Yoke Actuator", type: "Spring-Return", sizes: "50-100,000 Nm", standard: "ISO 5211" },
-      { name: "Rack & Pinion Actuator", type: "Double-Acting", sizes: "10-20,000 Nm", standard: "ISO 5211" },
-      { name: "Rack & Pinion Actuator", type: "Spring-Return", sizes: "10-10,000 Nm", standard: "ISO 5211" },
-      { name: "Diaphragm Actuator", type: "Spring-Return", sizes: "1-50 kN", standard: "IEC 60534" },
-    ],
-    features: [
-      "Fast response time",
-      "Fail-safe spring return options",
-      "Simple and reliable operation",
-      "Intrinsically safe",
-      "Wide torque range available",
-    ],
-  },
-  "steam-trap": {
-    name: "Steam Traps",
-    description: "Automatic condensate removal devices for efficient steam system operation.",
-    longDescription: "Our steam traps automatically remove condensate and non-condensable gases from steam systems while preventing live steam loss. Available in thermodynamic, thermostatic, and mechanical (float) types to suit different applications and operating conditions for maximum energy efficiency.",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
-    specifications: ["ASME B16.34", "API 607", "PN16-PN100", "150-1500 Class", "NACE MR0175"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Steam Distribution", "Process Heating", "HVAC"],
-    products: [
-      { name: "Thermodynamic Steam Trap", type: "TD Series", sizes: "1/2\" - 2\"", standard: "ASME B16.34" },
-      { name: "Thermostatic Steam Trap", type: "Balanced Pressure", sizes: "1/2\" - 2\"", standard: "ASME B16.34" },
-      { name: "Thermostatic Steam Trap", type: "Bimetallic", sizes: "1/2\" - 2\"", standard: "ASME B16.34" },
-      { name: "Float & Thermostatic Trap", type: "F&T Series", sizes: "1/2\" - 4\"", standard: "ASME B16.34" },
-      { name: "Inverted Bucket Trap", type: "IB Series", sizes: "1/2\" - 3\"", standard: "ASME B16.34" },
-    ],
-    features: [
-      "Energy-efficient condensate removal",
-      "Air venting capability",
-      "Multiple operating principles",
-      "Long service life",
-      "Easy maintenance",
-    ],
-  },
-  "positioner": {
-    name: "Valve Positioners",
-    description: "Valve positioners for accurate control valve positioning and feedback.",
-    longDescription: "Our valve positioners ensure accurate control valve positioning by comparing the valve position with the control signal and making corrections as needed. Available in pneumatic, electro-pneumatic, and digital (smart) versions with advanced diagnostics and communication capabilities.",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&q=80",
-    specifications: ["IEC 60534-6", "NAMUR NE43", "4-20mA / HART / Fieldbus", "IP66 Protection", "SIL2/SIL3 Capable"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Process Control", "Petrochemical", "Pharmaceutical"],
-    products: [
-      { name: "Pneumatic Positioner", type: "P/P", sizes: "Single/Double Acting", standard: "IEC 60534-6" },
-      { name: "Electro-Pneumatic Positioner", type: "I/P", sizes: "Single/Double Acting", standard: "IEC 60534-6" },
-      { name: "Digital Smart Positioner", type: "HART", sizes: "Single/Double Acting", standard: "IEC 60534-6" },
-      { name: "Digital Smart Positioner", type: "Foundation Fieldbus", sizes: "Single/Double Acting", standard: "IEC 60534-6" },
-      { name: "Digital Smart Positioner", type: "PROFIBUS PA", sizes: "Single/Double Acting", standard: "IEC 60534-6" },
-    ],
-    features: [
-      "Accurate valve positioning",
-      "Advanced diagnostics",
-      "Auto-calibration function",
-      "Multiple communication protocols",
-      "Explosion-proof options",
-    ],
-  },
-  "level-gauge": {
-    name: "Level Gauges",
-    description: "Visual and electronic level indicators for tanks and vessels.",
-    longDescription: "Our level gauges provide reliable liquid level indication for tanks, vessels, and process equipment. Available in tubular glass, magnetic, and reflex types for visual indication, plus electronic options for remote level monitoring and control integration.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-    specifications: ["ASME B16.34", "EN 12516", "PN16-PN420", "150-2500 Class", "ATEX Options"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Storage Tanks", "Boilers", "Process Vessels"],
-    products: [
-      { name: "Tubular Glass Level Gauge", type: "Transparent", sizes: "Up to 1500mm", standard: "EN 12516" },
-      { name: "Reflex Level Gauge", type: "Single Window", sizes: "Up to 3000mm", standard: "EN 12516" },
-      { name: "Magnetic Level Gauge", type: "Float Type", sizes: "Up to 6000mm", standard: "EN 12516" },
-      { name: "Magnetic Level Indicator", type: "With Transmitter", sizes: "Up to 6000mm", standard: "EN 12516" },
-      { name: "Bi-Color Level Gauge", type: "Dual Chamber", sizes: "Up to 2000mm", standard: "EN 12516" },
-    ],
-    features: [
-      "Clear visual indication",
-      "High pressure/temperature ratings",
-      "Magnetic coupling options",
-      "Remote transmitter integration",
-      "Low maintenance design",
-    ],
-  },
-  "transmitter": {
-    name: "Transmitters",
-    description: "Pressure, temperature, and flow transmitters for process measurement.",
-    longDescription: "Our process transmitters provide accurate, reliable measurement of pressure, temperature, differential pressure, and flow for process control and monitoring. Available with various process connections and output signals for integration into any control system.",
+  "gaskets": {
+    name: "Gaskets",
+    category: "Accessories",
+    description: "Flange gaskets in spiral wound, ring joint, and sheet materials.",
+    longDescription: "Spiral wound, ring joint, and sheet gaskets for flange sealing. Stainless steel, carbon steel, and specialty alloys. Sizes from 1/2\" to 60\". Available in all ASME pressure classes.",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80",
-    specifications: ["IEC 61298", "IEC 60529", "4-20mA / HART / Fieldbus", "IP67 Protection", "SIL2/SIL3 Capable"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Process Control", "Oil & Gas", "Water Treatment"],
+    specifications: ["ASME B16.20", "ASME B16.21", "API 601", "EN 1514"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Material", "Sizes", "Pressure Class", "Standard"],
     products: [
-      { name: "Pressure Transmitter", type: "Gauge/Absolute", sizes: "0-100 mbar to 0-1000 bar", standard: "IEC 61298" },
-      { name: "Differential Pressure Transmitter", type: "DP", sizes: "0-10 mbar to 0-100 bar", standard: "IEC 61298" },
-      { name: "Temperature Transmitter", type: "RTD/TC Input", sizes: "-200°C to +850°C", standard: "IEC 61298" },
-      { name: "Level Transmitter", type: "DP/Radar/Guided Wave", sizes: "Various ranges", standard: "IEC 61298" },
-      { name: "Flow Transmitter", type: "DP/Vortex/Magnetic", sizes: "Various ranges", standard: "IEC 61298" },
+      { Type: "Spiral Wound", Material: "SS304/316 + graphite fill", Sizes: "1/2\" - 60\"", "Pressure Class": "150#, 300#, 600#, 900#, 1500#, 2500#", Standard: "ASME B16.20" },
+      { Type: "Ring Joint (RTJ)", Material: "SS304/316, soft iron, Inconel", Sizes: "1/2\" - 24\"", "Pressure Class": "600#, 900#, 1500#, 2500#", Standard: "ASME B16.20" },
+      { Type: "Sheet / Non-metallic", Material: "PTFE, graphite, CAF", Sizes: "1/2\" - 60\"", "Pressure Class": "150#, 300#", Standard: "ASME B16.21" },
+      { Type: "Kammprofile", Material: "SS304/316 + graphite", Sizes: "1/2\" - 24\"", "Pressure Class": "150# - 2500#", Standard: "ASME B16.20" },
     ],
-    features: [
-      "High accuracy and stability",
-      "Multiple output protocols",
-      "Self-diagnostics",
-      "Wide rangeability",
-      "Explosion-proof options",
-    ],
+    infoNote: "Gasket selection depends on flange type, pressure class, and service medium. Spiral wound gaskets are standard for most ASME flanges. For sour service or high-temperature applications, contact our team for material recommendations.",
   },
-  "tube-fitting": {
-    name: "Tube Fittings",
-    description: "Compression and flare fittings for instrumentation tubing connections.",
-    longDescription: "Our tube fittings provide leak-tight connections for instrumentation tubing in process plants. Available in compression (ferrule) and flare types in stainless steel, brass, and other materials. Designed for easy installation and reliable, repeatable sealing.",
+  "bolts-studs": {
+    name: "Bolts & Studs",
+    category: "Accessories",
+    description: "Stud bolts, hex bolts, and nuts for flange connections.",
+    longDescription: "Stud bolts, hex bolts, and nuts for flange connections. ASTM A193/A194 grades. Sizes from 1/2\" to 4\" diameter. Full thread and continuous thread options.",
     image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
-    specifications: ["ASME B16.11", "ISO 8434", "MS 33656", "SAE J514", "DIN 2353"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Instrumentation", "Hydraulics", "Pneumatics"],
+    specifications: ["ASME B18.2.1", "ASME B18.2.2", "ASTM A193", "ASTM A194"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Grade", "Material", "Diameter", "Length Range", "Standard"],
     products: [
-      { name: "Compression Fitting", type: "Twin Ferrule", sizes: "1/8\" - 2\" OD", standard: "ISO 8434" },
-      { name: "Compression Fitting", type: "Single Ferrule", sizes: "1/8\" - 1\" OD", standard: "ISO 8434" },
-      { name: "Flare Fitting", type: "37° Flare (JIC)", sizes: "1/8\" - 2\" OD", standard: "SAE J514" },
-      { name: "Flare Fitting", type: "45° Flare (SAE)", sizes: "1/8\" - 1\" OD", standard: "SAE J512" },
-      { name: "Bite Type Fitting", type: "DIN 2353", sizes: "4mm - 42mm OD", standard: "DIN 2353" },
+      { Grade: "ASTM A193 B7", Material: "Chromium-Molybdenum Steel", Diameter: "1/2\" - 4\"", "Length Range": "2\" - 24\"", Standard: "ASME B18.2.1" },
+      { Grade: "ASTM A193 B8/B8M", Material: "Stainless Steel 304/316", Diameter: "1/2\" - 4\"", "Length Range": "2\" - 24\"", Standard: "ASME B18.2.1" },
+      { Grade: "ASTM A193 B16", Material: "Cr-Mo-V Steel", Diameter: "1/2\" - 4\"", "Length Range": "2\" - 24\"", Standard: "ASME B18.2.1" },
+      { Grade: "ASTM A194 2H (Nuts)", Material: "Carbon Steel", Diameter: "1/2\" - 4\"", "Length Range": "-", Standard: "ASME B18.2.2" },
+      { Grade: "ASTM A194 8/8M (Nuts)", Material: "Stainless Steel 304/316", Diameter: "1/2\" - 4\"", "Length Range": "-", Standard: "ASME B18.2.2" },
     ],
-    features: [
-      "Leak-tight metal-to-metal seal",
-      "Reusable design",
-      "Easy installation",
-      "Wide material selection",
-      "Various end connections",
-    ],
-  },
-  "expansion-joint": {
-    name: "Expansion Joints",
-    description: "Flexible connectors for thermal expansion and vibration absorption.",
-    longDescription: "Our expansion joints accommodate thermal expansion, vibration, and misalignment in piping systems. Available in metallic bellows, rubber, and PTFE designs to suit different pressure, temperature, and media requirements. Essential for protecting piping systems and equipment.",
-    image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1200&q=80",
-    specifications: ["EJMA Standards", "ASME B31.3", "EN 14917", "AD 2000 Merkblatt", "PED Compliant"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "HVAC", "Marine", "Process Piping"],
-    products: [
-      { name: "Metal Bellows Expansion Joint", type: "Single Ply", sizes: "1\" - 120\" DN", standard: "EJMA" },
-      { name: "Metal Bellows Expansion Joint", type: "Multi-Ply", sizes: "2\" - 60\" DN", standard: "EJMA" },
-      { name: "Rubber Expansion Joint", type: "Single Sphere", sizes: "1\" - 120\" DN", standard: "ASME B31.3" },
-      { name: "Rubber Expansion Joint", type: "Twin Sphere", sizes: "1\" - 48\" DN", standard: "ASME B31.3" },
-      { name: "PTFE Expansion Joint", type: "Lined Bellows", sizes: "1\" - 24\" DN", standard: "ASME B31.3" },
-    ],
-    features: [
-      "Absorbs thermal movement",
-      "Vibration isolation",
-      "Misalignment compensation",
-      "Multiple material options",
-      "Custom designs available",
-    ],
-  },
-  "pressure-gauge": {
-    name: "Pressure Gauges",
-    description: "Mechanical and digital pressure indicators for process monitoring.",
-    longDescription: "Our pressure gauges provide reliable local pressure indication for process monitoring and equipment protection. Available in bourdon tube, diaphragm, and digital types with various accuracy classes, case sizes, and process connections to suit all applications.",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&q=80",
-    specifications: ["EN 837-1", "ASME B40.100", "Accuracy Class 0.5-2.5", "IP65 Protection", "Safety Pattern Options"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Process Monitoring", "HVAC", "Compressors"],
-    products: [
-      { name: "Bourdon Tube Gauge", type: "Dry Case", sizes: "63-250mm dial", standard: "EN 837-1" },
-      { name: "Bourdon Tube Gauge", type: "Liquid Filled", sizes: "63-160mm dial", standard: "EN 837-1" },
-      { name: "Diaphragm Pressure Gauge", type: "For Corrosive Media", sizes: "100-160mm dial", standard: "EN 837-3" },
-      { name: "Digital Pressure Gauge", type: "Battery Powered", sizes: "Various", standard: "EN 837-1" },
-      { name: "Differential Pressure Gauge", type: "Dual Bourdon", sizes: "100-160mm dial", standard: "EN 837-1" },
-    ],
-    features: [
-      "Multiple accuracy classes",
-      "Liquid-filled options",
-      "Safety pattern available",
-      "Various process connections",
-      "Weatherproof enclosures",
-    ],
-  },
-  "temperature-gauge": {
-    name: "Temperature Gauges",
-    description: "Bimetallic and filled system temperature indicators for local display.",
-    longDescription: "Our temperature gauges provide reliable local temperature indication using bimetallic or filled system sensing elements. Available in various stem lengths, dial sizes, and temperature ranges with options for adjustable angle mounting and thermowell installation.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-    specifications: ["EN 13190", "ASME B40.200", "Accuracy Class 1-2", "IP65 Protection", "Various Stem Lengths"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "HVAC", "Process Monitoring", "Boilers"],
-    products: [
-      { name: "Bimetallic Thermometer", type: "Back Connection", sizes: "63-160mm dial", standard: "EN 13190" },
-      { name: "Bimetallic Thermometer", type: "Bottom Connection", sizes: "63-160mm dial", standard: "EN 13190" },
-      { name: "Gas Filled Thermometer", type: "Capillary Type", sizes: "100-160mm dial", standard: "EN 13190" },
-      { name: "Vapor Filled Thermometer", type: "Direct Mount", sizes: "100-160mm dial", standard: "EN 13190" },
-      { name: "Digital Temperature Indicator", type: "Battery Powered", sizes: "Various", standard: "EN 13190" },
-    ],
-    features: [
-      "Accurate local indication",
-      "Multiple mounting options",
-      "Adjustable stem angle",
-      "Thermowell compatible",
-      "Wide temperature ranges",
-    ],
+    infoNote: "Bolt grade must match flange pressure class and service temperature per ASME PCC-1. B7 studs with 2H nuts are standard for most applications up to 400°C. For higher temperatures or corrosive service, contact our team.",
   },
   "strainer": {
     name: "Strainers",
+    category: "Accessories",
     description: "Y-strainers and basket strainers for pipeline debris removal.",
-    longDescription: "Our strainers protect pumps, valves, and other equipment by removing debris and particulates from pipelines. Available in Y-type and basket configurations with various screen materials and perforation sizes to suit different filtration requirements.",
+    longDescription: "Y-strainers and basket strainers for pipeline debris removal. Carbon and stainless steel. Sizes from 1/2\" to 24\". Available in flanged, socket weld, and threaded connections.",
     image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80",
-    specifications: ["ASME B16.34", "API 609", "150-2500 Class", "PN16-PN420", "SS Mesh 20-200"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Pump Protection", "Steam Systems", "Water Treatment"],
+    specifications: ["ASME B16.34", "API 600", "BS 6750"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Material", "Sizes", "Pressure Class", "Standard"],
     products: [
-      { name: "Y-Strainer", type: "Cast Body", sizes: "1/2\" - 24\"", standard: "ASME B16.34" },
-      { name: "Y-Strainer", type: "Fabricated Body", sizes: "8\" - 48\"", standard: "ASME B16.34" },
-      { name: "Basket Strainer", type: "Single Basket", sizes: "2\" - 24\"", standard: "ASME B16.34" },
-      { name: "Basket Strainer", type: "Duplex Basket", sizes: "2\" - 16\"", standard: "ASME B16.34" },
-      { name: "T-Strainer", type: "Tee Pattern", sizes: "1\" - 12\"", standard: "ASME B16.34" },
+      { Type: "Y-Strainer", Material: "ASTM A216 WCB", Sizes: "1/2\" - 24\"", "Pressure Class": "150#, 300#, 600#", Standard: "ASME B16.34" },
+      { Type: "Y-Strainer", Material: "ASTM A351 CF8/CF8M", Sizes: "1/2\" - 12\"", "Pressure Class": "150#, 300#", Standard: "ASME B16.34" },
+      { Type: "Basket Strainer", Material: "ASTM A216 WCB", Sizes: "2\" - 24\"", "Pressure Class": "150#, 300#", Standard: "ASME B16.34" },
     ],
-    features: [
-      "Various screen mesh sizes",
-      "Blow-down connections",
-      "Quick-opening covers",
-      "Magnetic options available",
-      "Multiple material choices",
-    ],
+    infoNote: "Mesh size and screen material selected based on application requirements. Standard mesh sizes from 20 to 200 available. For specific filtration requirements, contact our team.",
   },
-  "gaskets": {
-    name: "Gaskets",
-    description: "Flange gaskets in spiral wound, ring joint, and sheet materials.",
-    longDescription: "Our gaskets provide reliable sealing for flanged connections in piping systems. Available in spiral wound, ring joint, and sheet materials including graphite, PTFE, and compressed fiber. Manufactured to ASME standards with various filler and winding materials for different service conditions.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80",
-    specifications: ["ASME B16.20", "ASME B16.21", "API 6A", "EN 1514", "NACE MR0175"],
-    applications: ["Power Plants", "Refineries", "Chemical Plants", "Petrochemical", "Oil & Gas", "Process Piping"],
+  "steam-trap": {
+    name: "Steam Traps",
+    category: "Accessories",
+    description: "Automatic condensate removal devices for efficient steam system operation.",
+    longDescription: "Mechanical, thermostatic, and thermodynamic steam traps. Carbon and stainless steel. Sizes from 1/2\" to 2\". For condensate removal in steam systems.",
+    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
+    specifications: ["BS 6023", "EN 27841", "ASME B16.34"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Material", "Sizes", "Pressure Rating", "Standard"],
     products: [
-      { name: "Spiral Wound Gasket", type: "With Inner/Outer Ring", sizes: "1/2\" - 60\"", standard: "ASME B16.20" },
-      { name: "Spiral Wound Gasket", type: "Basic Style", sizes: "1/2\" - 48\"", standard: "ASME B16.20" },
-      { name: "Ring Joint Gasket", type: "R, RX, BX Types", sizes: "1\" - 24\"", standard: "API 6A" },
-      { name: "Sheet Gasket", type: "Compressed Fiber", sizes: "1/2\" - 48\"", standard: "ASME B16.21" },
-      { name: "Sheet Gasket", type: "PTFE/Graphite", sizes: "1/2\" - 48\"", standard: "ASME B16.21" },
+      { Type: "Mechanical (Float & Thermostatic)", Material: "Carbon Steel / Stainless Steel", Sizes: "1/2\" - 2\"", "Pressure Rating": "Up to 600 PSI", Standard: "BS 6023" },
+      { Type: "Thermostatic (Bimetallic)", Material: "Carbon Steel / Stainless Steel", Sizes: "1/2\" - 2\"", "Pressure Rating": "Up to 600 PSI", Standard: "BS 6023" },
+      { Type: "Thermodynamic (Disc)", Material: "Carbon Steel / Stainless Steel", Sizes: "1/2\" - 1\"", "Pressure Rating": "Up to 900 PSI", Standard: "BS 6023" },
     ],
-    features: [
-      "Multiple material options",
-      "Various pressure classes",
-      "Chemical resistance",
-      "High temperature capability",
-      "Standard and custom sizes",
+    infoNote: "Trap selection depends on steam pressure, condensate load, and application. For sizing assistance and trap survey services, contact our team.",
+  },
+  "sight-glass": {
+    name: "Sight Glasses",
+    category: "Accessories",
+    description: "Visual flow monitoring devices for pipelines and vessels.",
+    longDescription: "Tubular and bull's-eye sight glasses for visual flow monitoring. Carbon and stainless steel. Sizes from 1/2\" to 8\". Rated for high-pressure service.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    specifications: ["DIN 28120", "EN 13079"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Material", "Sizes", "Pressure Class", "Standard"],
+    products: [
+      { Type: "Tubular", Material: "Carbon Steel / Stainless Steel", Sizes: "1/2\" - 8\"", "Pressure Class": "150#, 300#", Standard: "DIN 28120" },
+      { Type: "Bull's Eye", Material: "Carbon Steel / Stainless Steel", Sizes: "1/2\" - 4\"", "Pressure Class": "150#, 300#, 600#", Standard: "DIN 28120" },
     ],
+    infoNote: "All sight glasses pressure tested before shipment. Glass material selected based on service temperature and pressure. For high-temperature applications, borosilicate glass is standard.",
+  },
+  "expansion-joint": {
+    name: "Expansion Joints",
+    category: "Accessories",
+    description: "Flexible connectors for thermal expansion and vibration absorption.",
+    longDescription: "Metal bellows and rubber expansion joints for thermal movement and vibration absorption. Carbon and stainless steel. Sizes from 2\" to 48\".",
+    image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1200&q=80",
+    specifications: ["EJMA Standards", "ASME B31.3"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Material", "Sizes", "Pressure Rating", "Standard"],
+    products: [
+      { Type: "Metal Bellows", Material: "SS304/316", Sizes: "2\" - 48\"", "Pressure Rating": "150#, 300#", Standard: "EJMA Standards" },
+      { Type: "Rubber", Material: "EPDM / Neoprene", Sizes: "2\" - 48\"", "Pressure Rating": "150#, 300#", Standard: "EJMA Standards" },
+      { Type: "Fabric", Material: "Fiberglass / Silicone", Sizes: "6\" - 72\"", "Pressure Rating": "Low pressure", Standard: "EJMA Standards" },
+    ],
+    infoNote: "Joint selection depends on movement type (axial, lateral, angular), temperature range, and pressure. For movement calculations and sizing, contact our team.",
+  },
+  "electric-actuator": {
+    name: "Electric Actuators",
+    category: "Accessories",
+    description: "Motor-driven actuators for automated valve control with precise positioning capability.",
+    longDescription: "Electric actuators for automated valve control. Quarter-turn and multi-turn designs. Torque range from 50 to 100,000 Nm. Available with intelligent controls and diagnostics.",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80",
+    specifications: ["IEC 60034", "IEC 61508", "ISO 5211", "ATEX/IECEx"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Operation", "Torque Range", "Standard"],
+    products: [
+      { Type: "Quarter-Turn", Operation: "On/Off", "Torque Range": "50 - 10,000 Nm", Standard: "IEC 60034" },
+      { Type: "Quarter-Turn", Operation: "Modulating", "Torque Range": "50 - 10,000 Nm", Standard: "IEC 60034" },
+      { Type: "Multi-Turn", Operation: "On/Off", "Torque Range": "10 - 100,000 Nm", Standard: "IEC 60034" },
+      { Type: "Multi-Turn", Operation: "Modulating", "Torque Range": "10 - 100,000 Nm", Standard: "IEC 60034" },
+      { Type: "Linear", Operation: "Modulating", "Torque Range": "1 - 100 kN", Standard: "IEC 60034" },
+    ],
+    infoNote: "Actuator selection based on valve torque requirements, control type, and environmental conditions. For sizing and selection assistance, contact our team.",
+  },
+  "pneumatic-actuator": {
+    name: "Pneumatic Actuators",
+    category: "Accessories",
+    description: "Air-operated actuators for fast, reliable valve automation in process systems.",
+    longDescription: "Pneumatic actuators for fast valve automation. Scotch yoke and rack & pinion designs. Spring-return fail-safe options. Torque range from 10 to 500,000 Nm.",
+    image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1200&q=80",
+    specifications: ["ISO 5211", "NAMUR Standard", "VDI/VDE 3845", "ATEX Options"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Operation", "Torque Range", "Standard"],
+    products: [
+      { Type: "Scotch Yoke", Operation: "Double-Acting", "Torque Range": "50 - 500,000 Nm", Standard: "ISO 5211" },
+      { Type: "Scotch Yoke", Operation: "Spring-Return", "Torque Range": "50 - 100,000 Nm", Standard: "ISO 5211" },
+      { Type: "Rack & Pinion", Operation: "Double-Acting", "Torque Range": "10 - 20,000 Nm", Standard: "ISO 5211" },
+      { Type: "Rack & Pinion", Operation: "Spring-Return", "Torque Range": "10 - 10,000 Nm", Standard: "ISO 5211" },
+      { Type: "Diaphragm", Operation: "Spring-Return", "Torque Range": "1 - 50 kN", Standard: "IEC 60534" },
+    ],
+    infoNote: "Actuator selection based on valve torque, air supply pressure, and fail-safe requirements. For sizing and selection assistance, contact our team.",
+  },
+  "positioner": {
+    name: "Valve Positioners",
+    category: "Accessories",
+    description: "Valve positioners for accurate control valve positioning and feedback.",
+    longDescription: "Pneumatic, electro-pneumatic, and digital positioners for control valve automation. HART, Foundation Fieldbus, and PROFIBUS communication. SIL2/SIL3 capable.",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&q=80",
+    specifications: ["IEC 60534-6", "NAMUR NE43", "SIL2/SIL3"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Signal", "Actuation", "Standard"],
+    products: [
+      { Type: "Pneumatic", Signal: "3-15 PSI", Actuation: "Single/Double Acting", Standard: "IEC 60534-6" },
+      { Type: "Electro-Pneumatic", Signal: "4-20mA", Actuation: "Single/Double Acting", Standard: "IEC 60534-6" },
+      { Type: "Digital Smart", Signal: "HART", Actuation: "Single/Double Acting", Standard: "IEC 60534-6" },
+      { Type: "Digital Smart", Signal: "Foundation Fieldbus", Actuation: "Single/Double Acting", Standard: "IEC 60534-6" },
+      { Type: "Digital Smart", Signal: "PROFIBUS PA", Actuation: "Single/Double Acting", Standard: "IEC 60534-6" },
+    ],
+    infoNote: "Positioner selection based on control requirements, communication protocol, and safety integrity level. For selection assistance, contact our team.",
+  },
+  "level-gauge": {
+    name: "Level Gauges",
+    category: "Accessories",
+    description: "Visual and electronic level indicators for tanks and vessels.",
+    longDescription: "Tubular glass, magnetic, and reflex level gauges for tanks and vessels. Visual and electronic indication. Lengths up to 6000mm. High pressure and temperature ratings.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    specifications: ["EN 12516", "ASME B16.34", "DIN 28120"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Indication", "Length Range", "Standard"],
+    products: [
+      { Type: "Tubular Glass", Indication: "Visual", "Length Range": "Up to 1500mm", Standard: "EN 12516" },
+      { Type: "Reflex", Indication: "Visual", "Length Range": "Up to 3000mm", Standard: "EN 12516" },
+      { Type: "Magnetic", Indication: "Visual", "Length Range": "Up to 6000mm", Standard: "EN 12516" },
+      { Type: "Magnetic + Transmitter", Indication: "Visual + Electronic", "Length Range": "Up to 6000mm", Standard: "EN 12516" },
+    ],
+    infoNote: "Level gauge selection based on process conditions, visibility requirements, and transmitter needs. For selection assistance, contact our team.",
+  },
+  "transmitter": {
+    name: "Transmitters",
+    category: "Accessories",
+    description: "Pressure, temperature, and flow transmitters for process measurement.",
+    longDescription: "Pressure, differential pressure, temperature, and flow transmitters. 4-20mA, HART, and Fieldbus outputs. SIL2/SIL3 capable. High accuracy and stability.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80",
+    specifications: ["IEC 61298", "IEC 60529", "SIL2/SIL3"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Measurement", "Range", "Standard"],
+    products: [
+      { Type: "Pressure", Measurement: "Gauge/Absolute", Range: "0-100 mbar to 0-1000 bar", Standard: "IEC 61298" },
+      { Type: "Differential Pressure", Measurement: "DP", Range: "0-10 mbar to 0-100 bar", Standard: "IEC 61298" },
+      { Type: "Temperature", Measurement: "RTD/TC Input", Range: "-200°C to +850°C", Standard: "IEC 61298" },
+      { Type: "Level", Measurement: "DP/Radar/Guided Wave", Range: "Various", Standard: "IEC 61298" },
+      { Type: "Flow", Measurement: "DP/Vortex/Magnetic", Range: "Various", Standard: "IEC 61298" },
+    ],
+    infoNote: "Transmitter selection based on process variable, accuracy requirements, and communication protocol. For selection assistance, contact our team.",
+  },
+  "tube-fitting": {
+    name: "Tube Fittings",
+    category: "Accessories",
+    description: "Compression and flare fittings for instrumentation tubing connections.",
+    longDescription: "Compression and flare fittings for instrumentation tubing. Twin ferrule and single ferrule designs. Stainless steel, brass, and alloy materials. Sizes from 1/8\" to 2\" OD.",
+    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
+    specifications: ["ISO 8434", "SAE J514", "DIN 2353", "ASME B16.11"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Design", "Sizes", "Standard"],
+    products: [
+      { Type: "Compression", Design: "Twin Ferrule", Sizes: "1/8\" - 2\" OD", Standard: "ISO 8434" },
+      { Type: "Compression", Design: "Single Ferrule", Sizes: "1/8\" - 1\" OD", Standard: "ISO 8434" },
+      { Type: "Flare", Design: "37° Flare (JIC)", Sizes: "1/8\" - 2\" OD", Standard: "SAE J514" },
+      { Type: "Flare", Design: "45° Flare (SAE)", Sizes: "1/8\" - 1\" OD", Standard: "SAE J512" },
+      { Type: "Bite Type", Design: "DIN 2353", Sizes: "4mm - 42mm OD", Standard: "DIN 2353" },
+    ],
+    infoNote: "Fitting selection based on tubing material, pressure rating, and connection type. For selection assistance, contact our team.",
+  },
+  "pressure-gauge": {
+    name: "Pressure Gauges",
+    category: "Accessories",
+    description: "Mechanical and digital pressure indicators for process monitoring.",
+    longDescription: "Bourdon tube, diaphragm, and digital pressure gauges. Dry and liquid-filled cases. Dial sizes from 63mm to 250mm. Accuracy classes 0.5 to 2.5.",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&q=80",
+    specifications: ["EN 837-1", "ASME B40.100"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Case", "Dial Size", "Standard"],
+    products: [
+      { Type: "Bourdon Tube", Case: "Dry", "Dial Size": "63-250mm", Standard: "EN 837-1" },
+      { Type: "Bourdon Tube", Case: "Liquid Filled", "Dial Size": "63-160mm", Standard: "EN 837-1" },
+      { Type: "Diaphragm", Case: "For Corrosive Media", "Dial Size": "100-160mm", Standard: "EN 837-3" },
+      { Type: "Digital", Case: "Battery Powered", "Dial Size": "Various", Standard: "EN 837-1" },
+      { Type: "Differential", Case: "Dual Bourdon", "Dial Size": "100-160mm", Standard: "EN 837-1" },
+    ],
+    infoNote: "Gauge selection based on pressure range, accuracy requirements, and process conditions. For selection assistance, contact our team.",
+  },
+  "temperature-gauge": {
+    name: "Temperature Gauges",
+    category: "Accessories",
+    description: "Bimetallic and filled system temperature indicators for local display.",
+    longDescription: "Bimetallic and gas-filled temperature gauges for local indication. Dial sizes from 63mm to 160mm. Various stem lengths. Thermowell compatible.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    specifications: ["EN 13190", "ASME B40.200"],
+    applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    tableHeaders: ["Type", "Connection", "Dial Size", "Standard"],
+    products: [
+      { Type: "Bimetallic", Connection: "Back", "Dial Size": "63-160mm", Standard: "EN 13190" },
+      { Type: "Bimetallic", Connection: "Bottom", "Dial Size": "63-160mm", Standard: "EN 13190" },
+      { Type: "Gas Filled", Connection: "Capillary", "Dial Size": "100-160mm", Standard: "EN 13190" },
+      { Type: "Vapor Filled", Connection: "Direct Mount", "Dial Size": "100-160mm", Standard: "EN 13190" },
+      { Type: "Digital", Connection: "Various", "Dial Size": "Various", Standard: "EN 13190" },
+    ],
+    infoNote: "Gauge selection based on temperature range, stem length, and mounting requirements. For selection assistance, contact our team.",
   },
 };
 
@@ -320,47 +294,42 @@ export default async function AccessoryDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero Section */}
-      <section className="gradient-navy py-16 md:py-24">
+      <section className="gradient-navy pt-10 pb-12 md:pt-12 md:pb-16">
         <div className="container-custom">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-navy-300 mb-4 flex-wrap">
+          <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 flex-wrap">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
             <Link href="/products" className="hover:text-white transition-colors">Products</Link>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
             <Link href="/products/accessories-instruments" className="hover:text-white transition-colors">Accessories</Link>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-            <span className="text-white">{accessory.name}</span>
+            <span className="text-white truncate max-w-[180px] sm:max-w-none">{accessory.name}</span>
           </nav>
           
-          {/* Category Badge */}
-          <span className="inline-block px-3 py-1 bg-navy-800/50 text-steel-400 text-sm font-medium rounded-full mb-4">
-            Accessories
-          </span>
-          
           <div className="max-w-3xl">
-            <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{accessory.name}</h1>
-            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
+            <h1 className="text-white text-2xl md:text-4xl font-bold mt-3 mb-4">{accessory.name}</h1>
+            <p className="text-sm md:text-base text-navy-200 leading-relaxed">
               {accessory.longDescription}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="section-padding bg-white">
+      {/* Main Content - tightened spacing */}
+      <section className="py-6 sm:py-8 md:py-14 bg-white">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Main Content */}
-            <div className="lg:col-span-2">
-              {/* Hero Image */}
-              <div className="aspect-[16/9] relative rounded-2xl overflow-hidden mb-12">
+            <div className="lg:col-span-2 min-w-0">
+              {/* Hero Image - reduced height like fittings */}
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden mb-5 sm:mb-7 aspect-[5/2]">
                 <Image
                   src={accessory.image}
                   alt={accessory.name}
@@ -371,74 +340,84 @@ export default async function AccessoryDetailPage({ params }: Props) {
               </div>
 
               {/* Products Table */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-semibold text-navy-900 mb-6">Available Products</h2>
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="bg-navy-50">
-                        <th className="px-4 py-3 text-left text-sm font-semibold text-navy-900 rounded-l-lg">Product</th>
-                        <th className="px-4 py-3 text-left text-sm font-semibold text-navy-900">Type</th>
-                        <th className="px-4 py-3 text-left text-sm font-semibold text-navy-900">Sizes/Range</th>
-                        <th className="px-4 py-3 text-left text-sm font-semibold text-navy-900 rounded-r-lg">Standard</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {accessory.products.map((product, index) => (
-                        <tr key={index} className="border-b border-gray-100">
-                          <td className="px-4 py-4 text-navy-900 font-medium">{product.name}</td>
-                          <td className="px-4 py-4 text-gray-600">{product.type}</td>
-                          <td className="px-4 py-4 text-gray-600">{product.sizes}</td>
-                          <td className="px-4 py-4">
-                            <span className="px-2 py-1 bg-navy-50 text-navy-700 text-sm rounded-md">
-                              {product.standard}
-                            </span>
-                          </td>
+              <div className="mb-5 sm:mb-7">
+                <h2 className="text-xl sm:text-2xl font-semibold text-navy-900 mb-3 sm:mb-4">Available Products</h2>
+                <div className="overflow-x-auto -mx-4 sm:mx-0">
+                  <div className="inline-block min-w-full align-middle px-4 sm:px-0">
+                    <table className="w-full min-w-[600px]">
+                      <thead>
+                        <tr className="bg-navy-50">
+                          {accessory.tableHeaders.map((header, index) => (
+                            <th 
+                              key={header} 
+                              className={`px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 whitespace-nowrap ${index === 0 ? 'rounded-l-lg' : ''} ${index === accessory.tableHeaders.length - 1 ? 'rounded-r-lg' : ''}`}
+                            >
+                              {header}
+                            </th>
+                          ))}
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {accessory.products.map((product, index) => (
+                          <tr key={index} className="border-b border-gray-100">
+                            {accessory.tableHeaders.map((header, colIndex) => (
+                              <td 
+                                key={header} 
+                                className={`px-3 py-2.5 sm:px-4 sm:py-4 text-xs sm:text-sm ${colIndex === 0 ? 'text-navy-900 font-medium' : 'text-gray-600'}`}
+                              >
+                                {header === "Standard" ? (
+                                  <span className="px-2 py-0.5 sm:py-1 bg-navy-50 text-navy-700 text-xs sm:text-sm rounded-md whitespace-nowrap">
+                                    {product[header]}
+                                  </span>
+                                ) : (
+                                  product[header]
+                                )}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 
-              {/* Features */}
-              <div>
-                <h2 className="text-2xl font-semibold text-navy-900 mb-6">Key Features</h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {accessory.features.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl">
-                      <svg className="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
+              {/* Info Note Box */}
+              <div className="mb-5 sm:mb-7 p-3 sm:p-4 bg-blue-50 border border-blue-100 rounded-xl flex gap-2.5 sm:gap-3">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div className="min-w-0">
+                  <p className="text-xs sm:text-sm text-blue-900 font-medium mb-0.5 sm:mb-1">Selection Guide</p>
+                  <p className="text-xs sm:text-sm text-blue-800">
+                    {accessory.infoNote}
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-28 space-y-6">
+            <div className="lg:col-span-1 accessories-sidebar">
+              <div className="lg:sticky lg:top-28 space-y-4 sm:space-y-5">
                 {/* Specifications */}
-                <div className="card">
-                  <h3 className="text-lg font-semibold text-navy-900 mb-4">Specifications</h3>
-                  <div className="space-y-2">
+                <div className="card p-4 sm:p-5">
+                  <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">Specifications</h3>
+                  <div className="space-y-1.5 sm:space-y-2">
                     {accessory.specifications.map((spec, index) => (
                       <div key={index} className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-accent-500 rounded-full" />
-                        <span className="text-gray-700">{spec}</span>
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-accent-500 rounded-full flex-shrink-0" />
+                        <span className="text-sm sm:text-base text-gray-700">{spec}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Applications */}
-                <div className="card">
-                  <h3 className="text-lg font-semibold text-navy-900 mb-4">Applications</h3>
-                  <div className="flex flex-wrap gap-2">
+                <div className="card p-4 sm:p-5">
+                  <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">Applications</h3>
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {accessory.applications.map((app, index) => (
-                      <span key={index} className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-full">
+                      <span key={index} className="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-gray-100 text-gray-700 text-xs sm:text-sm rounded-full">
                         {app}
                       </span>
                     ))}
@@ -446,33 +425,25 @@ export default async function AccessoryDetailPage({ params }: Props) {
                 </div>
 
                 {/* CTA Card */}
-                <div className="card bg-navy-900 border-navy-800">
-                  <h3 className="text-lg font-semibold text-white mb-2">Need This Product?</h3>
-                  <p className="text-navy-200 text-sm mb-4">
+                <div className="card p-4 sm:p-5 bg-navy-900 border-navy-800">
+                  <h3 className="text-base sm:text-lg font-semibold text-white mb-1.5 sm:mb-2">Need This Product?</h3>
+                  <p className="text-navy-200 text-xs sm:text-sm mb-3 sm:mb-4">
                     Contact our team for pricing, availability, and technical specifications.
                   </p>
-                  <Link href="/contact" className="btn-primary w-full justify-center">
+                  <Link href="/contact" className="btn-primary w-full justify-center text-sm sm:text-base py-2.5 sm:py-3">
                     Request Quote
                   </Link>
                 </div>
 
-                {/* Downloads */}
-                <div className="card">
-                  <h3 className="text-lg font-semibold text-navy-900 mb-4">Downloads</h3>
-                  <div className="space-y-3">
-                    <a href="#" className="flex items-center gap-3 text-gray-700 hover:text-navy-900 transition-colors">
-                      <svg className="w-5 h-5 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      Product Catalog (PDF)
-                    </a>
-                    <a href="#" className="flex items-center gap-3 text-gray-700 hover:text-navy-900 transition-colors">
-                      <svg className="w-5 h-5 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      Technical Specifications
-                    </a>
-                  </div>
+                {/* Downloads - single PDF only */}
+                <div className="card p-4 sm:p-5">
+                  <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">Downloads</h3>
+                  <a href="#" className="flex items-center gap-2.5 sm:gap-3 text-gray-700 hover:text-navy-900 transition-colors text-sm sm:text-base py-1">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-accent-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Accessories Catalog (PDF)
+                  </a>
                 </div>
               </div>
             </div>
@@ -480,17 +451,17 @@ export default async function AccessoryDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Related Products */}
-      <section className="section-padding bg-gray-50">
+      {/* Related Products - tightened spacing, 3 items */}
+      <section className="py-6 sm:py-8 md:py-14 bg-gray-50">
         <div className="container-custom">
-          <h2 className="text-2xl font-semibold text-navy-900 mb-8">Other Accessories</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <h2 className="text-xl sm:text-2xl font-semibold text-navy-900 mb-4 sm:mb-5">Other Accessories</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {Object.entries(accessoryData)
               .filter(([key]) => key !== slug)
-              .slice(0, 4)
+              .slice(0, 3)
               .map(([key, a]) => (
-                <Link key={key} href={`/products/accessories-instruments/${key}`} className="card group">
-                  <div className="aspect-[16/10] relative rounded-lg overflow-hidden mb-4">
+                <Link key={key} href={`/products/accessories-instruments/${key}`} className="card group p-4 sm:p-5">
+                  <div className="aspect-[16/10] relative rounded-lg overflow-hidden mb-3 sm:mb-4">
                     <Image
                       src={a.image}
                       alt={a.name}
@@ -498,16 +469,16 @@ export default async function AccessoryDetailPage({ params }: Props) {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <span className="text-xs text-accent-500 font-medium">Accessories</span>
-                  <h3 className="text-sm md:text-base font-semibold text-navy-900 mb-2 line-clamp-1">{a.name}</h3>
-                  <p className="text-gray-600 text-xs md:text-sm line-clamp-2">{a.description}</p>
+                  <span className="text-xs text-accent-500 font-medium">{a.category}</span>
+                  <h3 className="text-sm sm:text-base font-semibold text-navy-900 mb-1.5 sm:mb-2 line-clamp-1">{a.name}</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm line-clamp-2">{a.description}</p>
                 </Link>
               ))}
           </div>
           
           {/* Back to Accessories Link */}
-          <div className="mt-10 text-center">
-            <Link href="/products/accessories-instruments" className="inline-flex items-center text-navy-900 font-medium hover:text-accent-500 transition-colors">
+          <div className="mt-4 sm:mt-6 text-center">
+            <Link href="/products/accessories-instruments" className="inline-flex items-center text-sm sm:text-base text-navy-900 font-medium hover:text-accent-500 transition-colors py-2">
               <svg className="w-5 h-5 mr-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
