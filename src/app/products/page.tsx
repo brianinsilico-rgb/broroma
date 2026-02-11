@@ -213,32 +213,6 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Need Help Choosing? CTA */}
-      <section className="py-16 md:py-20 bg-gray-100/80 border-y border-gray-200/80">
-        <div className="container-custom text-center">
-          <h2 className="text-xl md:text-2xl font-semibold text-navy-900 mb-3">
-            {t.products.pageCta.title}
-          </h2>
-          <p className="text-gray-600 max-w-xl mx-auto mb-8">
-            {t.products.pageCta.description}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-            <Link
-              href="/contact"
-              className="btn-secondary text-sm min-w-[140px]"
-            >
-              {t.products.pageCta.contactUs}
-            </Link>
-            <Link
-              href="/quote"
-              className="btn-primary text-sm min-w-[140px]"
-            >
-              {t.products.pageCta.getQuote}
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Custom Sourcing CTA */}
       <section className="py-10 md:py-16 bg-white">
         <div className="container-custom">
