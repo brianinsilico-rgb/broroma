@@ -134,35 +134,32 @@ export default function ServicesPage() {
 
       {/* Services Quick Nav Bar */}
       <section className="bg-white border-b border-gray-100">
-        <div className="container-custom">
-          {/* On small screens: scroll; on md+: 5 columns within container */}
-          <div className="flex overflow-x-auto md:overflow-visible md:grid md:grid-cols-5 md:gap-0 py-6 md:py-0">
-            {services.map((service, index) => (
-              <a
-                key={service.id}
-                href={`#${service.id}`}
-                className="group relative flex flex-shrink-0 flex-col items-center justify-center text-center py-6 px-4 min-w-[120px] sm:min-w-0 sm:flex-1 md:min-w-0 md:py-8 hover:bg-gray-50 transition-all duration-200 border-r border-gray-100 last:border-r-0"
-              >
-                {/* Number badge */}
-                <span className="absolute top-3 right-3 text-xs font-medium text-gray-300 group-hover:text-accent-400 transition-colors">
-                  0{index + 1}
-                </span>
-                
-                {/* Icon */}
-                <div className="w-11 h-11 rounded-xl bg-gray-100 group-hover:bg-accent-500 flex items-center justify-center text-gray-500 group-hover:text-white transition-all duration-200 mb-3">
-                  {serviceIcons[service.id]}
-                </div>
-                
-                {/* Title */}
-                <p className="font-medium text-navy-900 text-sm leading-tight px-1">
-                  {service.title}
-                </p>
-                
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
-              </a>
-            ))}
-          </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
+          {services.map((service, index) => (
+            <a
+              key={service.id}
+              href={`#${service.id}`}
+              className="group relative flex flex-col items-center justify-center text-center py-8 px-4 hover:bg-gray-50 transition-all duration-200 border-r border-gray-100 last:border-r-0"
+            >
+              {/* Number badge */}
+              <span className="absolute top-3 right-3 text-xs font-medium text-gray-300 group-hover:text-accent-400 transition-colors">
+                0{index + 1}
+              </span>
+              
+              {/* Icon */}
+              <div className="w-11 h-11 rounded-xl bg-gray-100 group-hover:bg-accent-500 flex items-center justify-center text-gray-500 group-hover:text-white transition-all duration-200 mb-3">
+                {serviceIcons[service.id]}
+              </div>
+              
+              {/* Title */}
+              <p className="font-medium text-navy-900 text-sm leading-tight">
+                {service.title}
+              </p>
+              
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+            </a>
+          ))}
         </div>
       </section>
 

@@ -53,8 +53,8 @@
     },
     "whyUs": {
       "label": "Why Choose Us",
-      "title": "The Broroma Advantage",
-      "description": "We combine industry expertise with uncompromising commitment to quality, making us your ideal partner for all industrial pipe needs.",
+      "title": "We Don't Just Sell Pipes",
+      "description": "We make sure the right product from the right manufacturer gets to you, on spec and on time, every time.",
       "iso": {
         "title": "ISO 9001:2015 Certified",
         "description": "Quality management systems meeting international standards"
@@ -73,8 +73,8 @@
       }
     },
     "cta": {
-      "title": "Ready to Streamline Your Pipe Supply Chain?",
-      "description": "Get in touch with our team to discuss your requirements. We'll provide customized solutions tailored to your specific needs.",
+      "title": "Let's Talk About What You Need",
+      "description": "Send us your specs and we'll come back with a quote within 24 hours. No fluff, no runaround.",
       "contact": "Contact Us Today",
       "browse": "Browse Products"
     },

@@ -175,13 +175,14 @@ export default function Home() {
       {/* Stats Bar */}
       <section className="bg-white border-b border-gray-100">
         <div className="container-custom">
-          <div className="py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="py-10 md:py-12 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 md:gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <p className="text-4xl md:text-5xl font-bold text-navy-900 mb-2">
+                <p className="text-3xl md:text-5xl font-bold text-navy-900 mb-1 md:mb-2">
                   <CountUp end={stat.end} suffix={stat.suffix} duration={1.75} />
                 </p>
-                <p className="text-gray-500">{stat.label}</p>
+                <div className="w-6 h-0.5 bg-accent-500 mx-auto mb-1.5 md:hidden" />
+                <p className="text-gray-500 text-xs md:text-base uppercase md:normal-case tracking-wider md:tracking-normal font-medium md:font-normal">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -459,16 +460,18 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-white">
+      <section className="py-10 md:py-16 bg-white">
         <div className="container-custom">
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 md:p-16 text-center border border-gray-200">
-            <h2 className="text-navy-900 mb-4">
+          <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 md:p-16 text-center border border-gray-200 shadow-lg">
+            {/* Subtle background pattern */}
+            <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #102a43 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+            <h2 className="text-xl md:text-4xl text-navy-900 mb-4">
               {t.home.cta.title}
             </h2>
             <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
               {t.home.cta.description}
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
               <Link href="/contact" className="btn-primary">
                 {t.home.cta.contact}
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

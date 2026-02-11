@@ -6,17 +6,18 @@ import { useLanguage } from "@/context/LanguageContext";
 interface Client {
   name: string;
   logo: string;
+  scale?: number; // 1 = default, 0.85 = 15% smaller, 1.2 = 20% larger
 }
 
 const clients: Client[] = [
   { name: "PTT", logo: "/logos/ptt.svg" },
-  { name: "Dok Bua", logo: "/logos/dokbua.svg" },
-  { name: "Gulf", logo: "/logos/gulf.svg" },
-  { name: "SCG", logo: "/logos/scg.svg" },
-  { name: "Lin", logo: "/logos/lin.svg" },
-  { name: "EGAT", logo: "/logos/egat.svg" },
-  { name: "TPIPL", logo: "/logos/tpipl.svg" },
-  { name: "Mitrphol", logo: "/logos/mitrphol.svg" },
+  { name: "EGAT", logo: "/logos/egat.svg", scale: 1.25 },
+  { name: "Gulf", logo: "/logos/gulf.svg", scale: 1.04 },        // 0.8 * 1.3 = 1.04 (30% bigger)
+  { name: "SCG", logo: "/logos/scg.svg", scale: 1.045 },         // 0.95 * 1.1 = 1.045 (10% bigger)
+  { name: "ACE", logo: "/logos/ace.svg", scale: 0.75 },
+  { name: "TPI Polene", logo: "/logos/tpi-polene.png", scale: 1.5 },
+  { name: "B.Grimm", logo: "/logos/bgrimm.png", scale: 1.09 },   // 0.95 * 1.15 = 1.09 (15% bigger)
+  { name: "TGE", logo: "/logos/tge.png", scale: 1.35 },
 ];
 
 interface TrustedByProps {
@@ -46,21 +47,33 @@ export default function TrustedBy({ className = "" }: TrustedByProps) {
         </div>
 
         {/* Logo Grid - 4 columns on desktop, 2 columns on mobile/tablet */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
-          {clients.map((client) => (
-            <div
-              key={client.name}
-              className="flex items-center justify-center h-14 md:h-16 lg:h-18"
-            >
-              <Image
-                src={client.logo}
-                alt={`${client.name} logo`}
-                width={112}
-                height={56}
-                className="w-20 h-10 md:w-24 md:h-12 lg:w-28 lg:h-14 object-contain opacity-70 hover:opacity-100 transition-all duration-300 ease-out brightness-0 invert"
-              />
-            </div>
-          ))}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-4 md:gap-5 lg:gap-6">
+          {clients.map((client) => {
+            const scale = client.scale || 1;
+            const mobileMaxW = Math.round(100 * scale);
+            const mobileMaxH = Math.round(40 * scale);
+            const desktopMaxW = Math.round(110 * scale);
+            const desktopMaxH = Math.round(44 * scale);
+            
+            return (
+              <div
+                key={client.name}
+                className="flex items-center justify-center h-14 md:h-16"
+              >
+                <Image
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  width={desktopMaxW}
+                  height={desktopMaxH}
+                  className="w-auto h-auto object-contain opacity-60 hover:opacity-80 transition-all duration-300 ease-out grayscale brightness-150"
+                  style={{
+                    maxWidth: `clamp(${mobileMaxW}px, 10vw, ${desktopMaxW}px)`,
+                    maxHeight: `clamp(${mobileMaxH}px, 5vw, ${desktopMaxH}px)`,
+                  }}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
