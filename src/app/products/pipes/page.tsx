@@ -217,12 +217,6 @@ export default function PipesPage() {
               </div>
             </div>
           </div>
-          <div className="mt-5">
-            <PdfDownloadLink
-              href={downloads?.seamlessPdf ?? "#"}
-              label={downloads?.seamlessCatalogLabel ?? "Download Seamless Pipes Catalog (PDF)"}
-            />
-          </div>
         </div>
       </section>
 
@@ -265,12 +259,6 @@ export default function PipesPage() {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="mt-5">
-            <PdfDownloadLink
-              href={downloads?.weldedPdf ?? "#"}
-              label={downloads?.weldedCatalogLabel ?? "Download Welded Pipes Catalog (PDF)"}
-            />
           </div>
         </div>
       </section>
@@ -359,23 +347,11 @@ export default function PipesPage() {
           <p className="text-gray-600 text-sm md:text-base mb-6 max-w-2xl">
             {downloads?.description ?? "Download our detailed product catalogs for specifications, dimensions, and technical data."}
           </p>
-          <div className="grid md:grid-cols-3 gap-4">
-            <DownloadCard
-              href={downloads?.seamlessPdf ?? "#"}
-              title={downloads?.seamlessCatalog ?? "Seamless Pipes Catalog"}
-              format="PDF"
-            />
-            <DownloadCard
-              href={downloads?.weldedPdf ?? "#"}
-              title={downloads?.weldedCatalog ?? "Welded Pipes Catalog"}
-              format="PDF"
-            />
-            <DownloadCard
-              href={downloads?.fullPdf ?? "#"}
-              title={downloads?.fullCatalog ?? "Full Pipes Catalog"}
-              format="PDF"
-            />
-          </div>
+          <DownloadCard
+            href={downloads?.fullPdf ?? "#"}
+            title="Pipes Catalog"
+            format="PDF"
+          />
         </div>
       </section>
 
