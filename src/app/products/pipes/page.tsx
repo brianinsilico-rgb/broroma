@@ -89,30 +89,6 @@ function SpecsTable({ rows }: { rows: typeof seamlessSpecs }) {
   );
 }
 
-function PdfDownloadLink({
-  href,
-  label,
-  className = "",
-}: {
-  href: string;
-  label: string;
-  className?: string;
-}) {
-  return (
-    <a
-      href={href}
-      className={`inline-flex items-center gap-2 text-accent-600 hover:text-accent-700 font-medium text-sm transition-colors ${className}`}
-    >
-      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      </svg>
-      <span>{label}</span>
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-      </svg>
-    </a>
-  );
-}
 
 function DownloadCard({
   href,
@@ -126,10 +102,10 @@ function DownloadCard({
   return (
     <a
       href={href}
-      className="flex items-center justify-between p-4 md:p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-elevated hover:border-navy-200 transition-all duration-200 group"
+      className="flex items-center justify-between p-4 md:p-5 bg-white rounded-xl border border-accent-200 shadow-sm hover:shadow-elevated hover:border-accent-400 transition-all duration-200 group"
     >
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-lg bg-navy-50 flex items-center justify-center text-navy-700 group-hover:text-accent-600 transition-colors">
+        <div className="w-10 h-10 rounded-lg bg-accent-500 flex items-center justify-center text-white">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
           </svg>
@@ -149,15 +125,18 @@ function DownloadCard({
 export default function PipesPage() {
   const { t } = useLanguage();
   const pipes = t.products?.pipes;
-  const applications = pipes?.applications ?? ["Power Generation", "Oil & Gas", "Petrochemical", "Water Treatment", "Construction"];
   const downloads = pipes?.downloads;
   const cta = pipes?.cta;
 
   return (
     <>
       {/* Hero */}
-      <section className="gradient-navy py-16 md:py-24">
-        <div className="container-custom">
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/products/pipes.png" alt="" fill className="object-cover" sizes="100vw" priority />
+          <div className="absolute inset-0 bg-navy-900/80" />
+        </div>
+        <div className="container-custom relative z-10">
           <div className="max-w-3xl">
             <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 md:mb-4">
               <Link href="/" className="hover:text-white transition-colors">{t.nav?.home ?? "Home"}</Link>
