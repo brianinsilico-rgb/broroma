@@ -95,21 +95,41 @@ export default function ServicesPage() {
       step: "01",
       title: t.services.process.steps.consultation.title,
       description: t.services.process.steps.consultation.description,
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+      ),
     },
     {
       step: "02",
       title: t.services.process.steps.sourcing.title,
       description: t.services.process.steps.sourcing.description,
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      ),
     },
     {
       step: "03",
       title: t.services.process.steps.testing.title,
       description: t.services.process.steps.testing.description,
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      ),
     },
     {
       step: "04",
       title: t.services.process.steps.delivery.title,
       description: t.services.process.steps.delivery.description,
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+        </svg>
+      ),
     },
   ];
 
@@ -134,13 +154,14 @@ export default function ServicesPage() {
 
       {/* Services Quick Nav Bar */}
       <section className="bg-white border-b border-gray-100">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
-          {services.map((service, index) => (
-            <a
-              key={service.id}
-              href={`#${service.id}`}
-              className="group relative flex flex-col items-center justify-center text-center py-8 px-4 hover:bg-gray-50 transition-all duration-200 border-r border-gray-100 last:border-r-0"
-            >
+        <div className="md:container-custom">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 md:border-l md:border-r md:border-gray-100">
+            {services.map((service, index) => (
+              <a
+                key={service.id}
+                href={`#${service.id}`}
+                className={`group relative flex flex-col items-center justify-center text-center py-9 md:py-10 px-4 hover:bg-gray-50 transition-all duration-200 border-r border-gray-100 md:border-b-0 ${index === services.length - 1 ? '' : 'border-b'}`}
+              >
               {/* Number badge */}
               <span className="absolute top-3 right-3 text-xs font-medium text-gray-300 group-hover:text-accent-400 transition-colors">
                 0{index + 1}
@@ -160,6 +181,7 @@ export default function ServicesPage() {
               <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
             </a>
           ))}
+          </div>
         </div>
       </section>
 
@@ -257,7 +279,7 @@ export default function ServicesPage() {
                 className="flex-shrink-0 w-[280px] md:w-auto"
                 style={{ scrollSnapAlign: "center" }}
               >
-                <div className="relative h-full bg-navy-800 rounded-xl p-6 border border-navy-700 hover:border-navy-600 transition-colors duration-200">
+                <div className="relative h-full bg-navy-800 rounded-xl px-6 py-9 md:px-8 md:py-14 border border-navy-700 hover:border-navy-600 transition-colors duration-200">
                   {/* Step Number */}
                   <div className="absolute top-4 right-4 text-6xl font-bold text-navy-700 select-none">
                     {step.step}
@@ -265,6 +287,9 @@ export default function ServicesPage() {
                   
                   {/* Content */}
                   <div className="relative z-10 pt-2">
+                    <div className="w-10 h-10 rounded-lg bg-accent-500/20 flex items-center justify-center text-accent-400 mb-3">
+                      {step.icon}
+                    </div>
                     <h3 className="text-lg font-semibold text-white mb-2">{step.title}</h3>
                     <p className="text-navy-300 text-sm leading-relaxed">{step.description}</p>
                   </div>
@@ -343,23 +368,23 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="py-10 md:py-16 bg-gray-50">
         <div className="container-custom">
-          <div className="bg-navy-900 rounded-2xl md:rounded-3xl p-6 md:p-16 text-center">
-            <h2 className="text-lg font-semibold text-white mb-2 md:text-3xl lg:text-4xl md:mb-4">
+          <div className="bg-navy-900 rounded-3xl p-8 md:p-16 text-center">
+            <h2 className="text-xl md:text-4xl text-white mb-4">
               {t.services.cta.title}
             </h2>
-            <p className="text-navy-300 text-sm mb-5 max-w-xl mx-auto md:text-lg md:mb-8 md:max-w-2xl">
+            <p className="text-navy-300 text-base md:text-lg mb-8 max-w-2xl mx-auto">
               {t.services.cta.description}
             </p>
-            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-              <Link href="/contact" className="btn-primary text-sm md:text-base">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+              <Link href="/contact" className="btn-primary">
                 {t.services.cta.contact}
-                <svg className="w-4 h-4 md:w-5 md:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900 text-sm md:text-base">
+              <Link href="/products" className="btn-outline border-white text-white hover:bg-white hover:text-navy-900">
                 {t.services.cta.products}
               </Link>
             </div>
