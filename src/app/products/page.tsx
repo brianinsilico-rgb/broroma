@@ -108,7 +108,7 @@ export default function ProductsPage() {
       {/* Hero Section — subtle gradient */}
       <section className="py-10 sm:py-16 md:py-24 bg-gradient-to-b from-navy-950 via-navy-900 to-navy-800">
         <div className="container-custom">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mb-8 md:mb-12">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 md:mb-4">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -124,19 +124,15 @@ export default function ProductsPage() {
               {t.products.hero.description}
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Features Bar - Below Hero (compact, refined) */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="container-custom py-3 md:py-4">
-          <div className="grid grid-cols-4 gap-2 md:gap-4">
+          {/* Trust Indicators */}
+          <div className="grid grid-cols-4 gap-2 md:gap-4 pt-6 md:pt-8 border-t border-white/10">
             {features.map((feature, index) => (
               <div key={index} className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-center md:text-left">
-                <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg flex items-center justify-center text-gray-500 [&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:h-5 md:[&>svg]:w-5 bg-gray-100">
+                <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg flex items-center justify-center text-white/80 [&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:h-5 md:[&>svg]:w-5 bg-white/10">
                   {feature.icon}
                 </div>
-                <p className="font-semibold text-navy-900 text-[11px] md:text-sm leading-tight">{feature.title}</p>
+                <p className="font-semibold text-white text-[11px] md:text-sm leading-tight">{feature.title}</p>
               </div>
             ))}
           </div>
@@ -144,19 +140,8 @@ export default function ProductsPage() {
       </section>
 
       {/* Products Grid */}
-      <section className="py-6 md:py-12 lg:py-20 bg-gray-50">
+      <section className="pt-6 md:pt-12 pb-6 md:pb-12 lg:pb-20 bg-gray-50">
         <div className="container-custom">
-          {/* Header - Hidden on mobile */}
-          <div className="hidden md:block text-center mb-16">
-            <span className="text-accent-500 font-semibold text-sm uppercase tracking-wider">{t.products.categories.label}</span>
-            <h2 className="text-navy-900 mt-2 mb-4">
-              {t.products.categories.title}
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              {t.products.categories.description}
-            </p>
-          </div>
-
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
             {categories.map((category) => (
               <Link
