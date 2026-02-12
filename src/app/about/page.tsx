@@ -74,13 +74,6 @@ export default function AboutPage() {
     },
   ];
 
-  const qualityPromiseItems: ("mtc" | "certifiedManufacturers" | "standardsCompliance" | "inspectionDocs")[] = [
-    "mtc",
-    "certifiedManufacturers",
-    "standardsCompliance",
-    "inspectionDocs",
-  ];
-
   const projectsScrollRef = useRef<HTMLDivElement>(null);
   const [projectsActiveIndex, setProjectsActiveIndex] = useState(0);
 
@@ -96,7 +89,7 @@ export default function AboutPage() {
       Math.round(el.scrollLeft / (cardWidth + gap))
     );
     setProjectsActiveIndex(index);
-  }, []);
+  }, [projectReferences.length]);
 
   useEffect(() => {
     const el = projectsScrollRef.current;
