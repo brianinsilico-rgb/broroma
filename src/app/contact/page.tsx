@@ -372,7 +372,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8 items-start">
                     {/* Phone */}
                     <a 
-                      href="tel:+17135550192" 
+                      href={`tel:${(t.contact?.info?.phoneValue ?? "+6621234567").replace(/\s/g, "")}`} 
                       className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6 bg-gray-50 rounded-xl hover:bg-navy-50 transition-colors group"
                     >
                       <div className="w-12 h-12 sm:w-14 sm:h-14 bg-navy-100 rounded-xl flex items-center justify-center group-hover:bg-navy-200 transition-colors flex-shrink-0">
@@ -382,7 +382,7 @@ export default function ContactPage() {
                       </div>
                       <div className="min-w-0">
                         <p className="text-xs sm:text-sm text-gray-500 mb-1">{t.contact.info.phone}</p>
-                        <p className="font-semibold text-navy-900 text-sm sm:text-base truncate">+1 (713) 555-0192</p>
+                        <p className="font-semibold text-navy-900 text-sm sm:text-base truncate">{t.contact?.info?.phoneValue ?? "+66 2 123 4567"}</p>
                       </div>
                     </a>
 
@@ -398,7 +398,7 @@ export default function ContactPage() {
                       </div>
                       <div className="min-w-0">
                         <p className="text-xs sm:text-sm text-gray-500 mb-1">{t.contact.info.email}</p>
-                        <p className="font-semibold text-navy-900 text-sm sm:text-base truncate">info@broroma.com</p>
+                        <p className="font-semibold text-navy-900 text-sm sm:text-base truncate">{t.contact?.info?.emailValue ?? "info@broroma.com"}</p>
                       </div>
                     </a>
 
@@ -485,10 +485,8 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="text-sm sm:text-base font-semibold text-navy-900 mb-1">{t.contact.location.office}</h3>
-                          <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                            11/88 Moo 20, Lam Luk Ka<br />
-                            Lam Luk Ka District<br />
-                            Pathum Thani 12150, Thailand
+                          <p className="text-gray-600 text-xs sm:text-sm leading-relaxed whitespace-pre-line">
+                            {t.contact.location.addressFull?.replace(/, /g, ",\n") ?? "11/88 Moo 20, Lam Luk Ka District, Pathum Thani 12150, Thailand"}
                           </p>
                           <a
                             href="https://maps.google.com/?q=13.9456,100.7234"
@@ -513,8 +511,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="text-sm sm:text-base font-semibold text-navy-900 mb-1">{t.contact.info.phone}</h3>
-                          <p className="text-gray-600 text-xs sm:text-sm">+1 (713) 555-0192</p>
-                          <p className="text-gray-600 text-xs sm:text-sm">+1 (713) 555-0193</p>
+                          <p className="text-gray-600 text-xs sm:text-sm">{t.contact?.info?.phoneValue ?? "+66 2 123 4567"}</p>
                         </div>
                       </div>
 

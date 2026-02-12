@@ -181,8 +181,8 @@ export default function Home() {
                 <p className="text-3xl md:text-5xl font-bold text-navy-900 mb-1 md:mb-2">
                   <CountUp end={stat.end} suffix={stat.suffix} duration={1.75} />
                 </p>
-                <div className="w-6 h-0.5 bg-accent-500 mx-auto mb-1.5 md:hidden" />
-                <p className="text-gray-500 text-xs md:text-base uppercase md:normal-case tracking-wider md:tracking-normal font-medium md:font-normal">{stat.label}</p>
+                <div className="w-6 h-0.5 bg-accent-500 mx-auto mb-1.5" />
+                <p className="text-gray-500 text-xs uppercase tracking-wider font-medium">{stat.label}</p>
               </div>
             ))}
           </div>

@@ -26,37 +26,37 @@ const fittingSections: FittingSection[] = [
         slug: "buttweld-elbow",
         nameKey: "buttweldElbow",
         descriptionKey: "buttweldElbow",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+        image: "/products/fittings-elbow.png",
       },
       {
         slug: "buttweld-tee",
         nameKey: "buttweldTee",
         descriptionKey: "buttweldTee",
-        image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+        image: "/products/fittings-tee.png",
       },
       {
         slug: "buttweld-reducer",
         nameKey: "buttweldReducer",
         descriptionKey: "buttweldReducer",
-        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",
+        image: "/products/fittings-reducer.png",
       },
       {
         slug: "buttweld-cap",
         nameKey: "buttweldCap",
         descriptionKey: "buttweldCap",
-        image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=800&q=80",
+        image: "/products/fittings-cap.png",
       },
       {
         slug: "buttweld-stub-end",
         nameKey: "buttweldStubEnd",
         descriptionKey: "buttweldStubEnd",
-        image: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=800&q=80",
+        image: "/products/fittings-stub-end.png",
       },
       {
         slug: "buttweld-cross",
         nameKey: "buttweldCross",
         descriptionKey: "buttweldCross",
-        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+        image: "/products/fittings-cross.png",
       },
     ],
   },
@@ -149,10 +149,16 @@ export default function FittingsCategoryPage() {
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                 {section.products.map((product) => {
                   const productData = fittings?.products?.[product.nameKey as keyof typeof fittings.products];
+                  const isLocalProductImage = product.image.startsWith("/");
                   return (
                     <Link key={product.slug} href={`/products/fittings/${product.slug}`} className="group">
-                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
-                        <Image src={product.image} alt={productData?.name || product.nameKey} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 bg-gray-100">
+                        <Image
+                          src={product.image}
+                          alt={productData?.name || product.nameKey}
+                          fill
+                          className={isLocalProductImage ? "object-contain p-4 group-hover:scale-105 transition-transform duration-300" : "object-cover group-hover:scale-105 transition-transform duration-300"}
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/30 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 flex items-center justify-between">
                           <h3 className="text-white font-semibold text-sm md:text-base">{productData?.name || product.nameKey}</h3>

@@ -1,17 +1,24 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Safety valve product data
 const safetyValveData: Record<string, {
   name: string;
+  nameTh: string;
   category: string;
+  categoryTh: string;
   description: string;
+  descriptionTh: string;
   longDescription: string;
+  longDescriptionTh: string;
   image: string;
   specifications: string[];
   applications: string[];
+  applicationsTh: string[];
   products: {
     name: string;
     grade: string;
@@ -21,100 +28,111 @@ const safetyValveData: Record<string, {
     standard: string;
   }[];
   tableNote?: string;
+  tableNoteTh?: string;
 }> = {
   "globe": {
     name: "Globe Safety Valves",
+    nameTh: "วาล์วนิรภัยแบบโกลบ",
     category: "Safety Valves",
+    categoryTh: "วาล์วนิรภัย",
     description: "Pressure relief valves with precise set pressure control for steam and gas applications.",
+    descriptionTh: "วาล์วระบายความดันที่มีการควบคุมความดันที่ตั้งไว้อย่างแม่นยำสำหรับการใช้งานไอน้ำและก๊าซ",
     longDescription: "Globe safety valves for overpressure protection. Carbon, stainless, and alloy steel. Sizes from 1/2\" to 8\". Spring-loaded design with precise set pressure accuracy. ASME and PED certified.",
+    longDescriptionTh: "วาล์วนิรภัยแบบโกลบสำหรับป้องกันความดันเกิน เหล็กกล้าคาร์บอน สแตนเลส และอัลลอย ขนาดตั้งแต่ 1/2\" ถึง 8\" ออกแบบแบบสปริงโหลดพร้อมความแม่นยำของความดันที่ตั้งไว้ ได้รับการรับรอง ASME และ PED",
     image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1200&q=80",
     specifications: ["API 520", "API 526", "ASME Section VIII", "PED 2014/68/EU", "EN ISO 4126"],
     applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    applicationsTh: ["โรงไฟฟ้า", "โรงกลั่น", "โรงงานเคมี", "น้ำมันและก๊าซ", "ปิโตรเคมี", "บำบัดน้ำ"],
     products: [
       { name: "Carbon Steel", grade: "ASTM A216 WCB", sizes: "1/2\" - 8\"", pressureClass: "150#, 300#, 600#, 900#, 1500#, 2500#", endConnection: "Flanged (RF/RTJ)", standard: "API 526" },
       { name: "Stainless Steel", grade: "ASTM A351 CF8/CF8M", sizes: "1/2\" - 6\"", pressureClass: "150#, 300#, 600#, 900#, 1500#", endConnection: "Flanged (RF/RTJ)", standard: "API 526" },
       { name: "Alloy Steel", grade: "ASTM A217 WC6/WC9/C5", sizes: "1/2\" - 6\"", pressureClass: "150#, 300#, 600#, 900#, 1500#", endConnection: "Flanged (RF/RTJ)", standard: "API 526" },
     ],
     tableNote: "Conventional, balanced bellows, and pilot-operated designs available.",
+    tableNoteTh: "มีแบบธรรมดา แบบเบลโลว์สมดุล และแบบไพล็อตให้เลือก",
   },
   "gate": {
     name: "Gate Safety Valves",
+    nameTh: "วาล์วนิรภัยแบบเกท",
     category: "Safety Valves",
+    categoryTh: "วาล์วนิรภัย",
     description: "High-capacity pressure relief valves for liquid service and large volume discharge.",
+    descriptionTh: "วาล์วระบายความดันความจุสูงสำหรับการใช้งานของเหลวและการปล่อยปริมาณมาก",
     longDescription: "Gate-style safety valves for high-capacity liquid relief. Carbon, stainless, and alloy steel. Sizes from 1\" to 12\". Full-lift design for maximum discharge capacity. Thermal relief capable.",
+    longDescriptionTh: "วาล์วนิรภัยแบบเกทสำหรับการระบายของเหลวความจุสูง เหล็กกล้าคาร์บอน สแตนเลส และอัลลอย ขนาดตั้งแต่ 1\" ถึง 12\" ออกแบบยกเต็มที่เพื่อความจุการปล่อยสูงสุด สามารถระบายความร้อนได้",
     image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
     specifications: ["API 520", "API 526", "ASME Section VIII", "PED 2014/68/EU", "EN ISO 4126"],
     applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    applicationsTh: ["โรงไฟฟ้า", "โรงกลั่น", "โรงงานเคมี", "น้ำมันและก๊าซ", "ปิโตรเคมี", "บำบัดน้ำ"],
     products: [
       { name: "Carbon Steel", grade: "ASTM A216 WCB", sizes: "1\" - 12\"", pressureClass: "150#, 300#, 600#, 900#, 1500#", endConnection: "Flanged (RF/RTJ)", standard: "API 526" },
       { name: "Stainless Steel", grade: "ASTM A351 CF8/CF8M", sizes: "1\" - 10\"", pressureClass: "150#, 300#, 600#, 900#, 1500#", endConnection: "Flanged (RF/RTJ)", standard: "API 526" },
       { name: "Alloy Steel", grade: "ASTM A217 WC6/WC9/C5", sizes: "1\" - 10\"", pressureClass: "150#, 300#, 600#, 900#, 1500#", endConnection: "Flanged (RF/RTJ)", standard: "API 526" },
     ],
     tableNote: "Suitable for liquid service and thermal relief applications.",
+    tableNoteTh: "เหมาะสำหรับการใช้งานของเหลวและการระบายความร้อน",
   },
   "ball": {
     name: "Ball Safety Valves",
+    nameTh: "วาล์วนิรภัยแบบบอล",
     category: "Safety Valves",
+    categoryTh: "วาล์วนิรภัย",
     description: "Quick-opening safety valves with full-bore relief capacity for critical applications.",
+    descriptionTh: "วาล์วนิรภัยเปิดเร็วพร้อมความจุระบายเต็มรูสำหรับการใช้งานที่สำคัญ",
     longDescription: "Ball-type safety valves for rapid pressure relief. Carbon, stainless, and alloy steel. Sizes from 1/2\" to 6\". Full-bore discharge with tight reseal capability. Fire-safe design available.",
+    longDescriptionTh: "วาล์วนิรภัยแบบบอลสำหรับการระบายความดันอย่างรวดเร็ว เหล็กกล้าคาร์บอน สแตนเลส และอัลลอย ขนาดตั้งแต่ 1/2\" ถึง 6\" การปล่อยเต็มรูพร้อมความสามารถในการปิดผนึกแน่น มีแบบทนไฟให้เลือก",
     image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&q=80",
     specifications: ["API 520", "API 526", "ASME Section VIII", "PED 2014/68/EU", "EN ISO 4126"],
     applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    applicationsTh: ["โรงไฟฟ้า", "โรงกลั่น", "โรงงานเคมี", "น้ำมันและก๊าซ", "ปิโตรเคมี", "บำบัดน้ำ"],
     products: [
       { name: "Carbon Steel", grade: "ASTM A216 WCB", sizes: "1/2\" - 6\"", pressureClass: "150#, 300#, 600#, 900#, 1500#, 2500#", endConnection: "Flanged (RF/RTJ)", standard: "API 526" },
       { name: "Stainless Steel", grade: "ASTM A351 CF8/CF8M", sizes: "1/2\" - 4\"", pressureClass: "150#, 300#, 600#, 900#, 1500#", endConnection: "Flanged (RF/RTJ)", standard: "API 526" },
       { name: "Alloy Steel", grade: "ASTM A217 WC6/WC9/C5", sizes: "1/2\" - 4\"", pressureClass: "150#, 300#, 600#, 900#, 1500#", endConnection: "Flanged (RF/RTJ)", standard: "API 526" },
     ],
     tableNote: "Quick-opening design for critical emergency relief applications.",
+    tableNoteTh: "ออกแบบเปิดเร็วสำหรับการใช้งานระบายฉุกเฉินที่สำคัญ",
   },
   "butterfly": {
     name: "Butterfly Safety Valves",
+    nameTh: "วาล์วนิรภัยแบบบัตเตอร์ฟลาย",
     category: "Safety Valves",
+    categoryTh: "วาล์วนิรภัย",
     description: "Large diameter pressure relief valves for low-pressure, high-volume applications.",
+    descriptionTh: "วาล์วระบายความดันขนาดใหญ่สำหรับการใช้งานความดันต่ำ ปริมาณสูง",
     longDescription: "Butterfly-style safety valves for large-diameter, low-pressure relief. Carbon and stainless steel. Sizes from 4\" to 48\". High-volume discharge for tank venting and atmospheric relief.",
+    longDescriptionTh: "วาล์วนิรภัยแบบบัตเตอร์ฟลายสำหรับการระบายขนาดใหญ่ ความดันต่ำ เหล็กกล้าคาร์บอนและสแตนเลส ขนาดตั้งแต่ 4\" ถึง 48\" การปล่อยปริมาณสูงสำหรับการระบายถังและการระบายบรรยากาศ",
     image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80",
     specifications: ["API 2000", "ASME Section VIII", "PED 2014/68/EU", "EN ISO 4126", "API 2521"],
     applications: ["Power Plants", "Refineries", "Chemical Plants", "Oil & Gas", "Petrochemical", "Water Treatment"],
+    applicationsTh: ["โรงไฟฟ้า", "โรงกลั่น", "โรงงานเคมี", "น้ำมันและก๊าซ", "ปิโตรเคมี", "บำบัดน้ำ"],
     products: [
       { name: "Carbon Steel", grade: "ASTM A216 WCB", sizes: "4\" - 48\"", pressureClass: "150#, 300#", endConnection: "Flanged (RF)", standard: "API 2000" },
       { name: "Stainless Steel", grade: "ASTM A351 CF8/CF8M", sizes: "4\" - 36\"", pressureClass: "150#, 300#", endConnection: "Flanged (RF)", standard: "API 2000" },
       { name: "Alloy Steel", grade: "ASTM A217 WC6/WC9", sizes: "4\" - 24\"", pressureClass: "150#, 300#", endConnection: "Flanged (RF)", standard: "API 2000" },
     ],
     tableNote: "Designed for tank venting and low-pressure atmospheric relief.",
+    tableNoteTh: "ออกแบบสำหรับการระบายถังและการระบายบรรยากาศความดันต่ำ",
   },
 };
 
-type Props = {
-  params: Promise<{ slug: string }>;
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const valve = safetyValveData[slug];
-  
-  if (!valve) {
-    return {
-      title: "Product Not Found",
-    };
-  }
-  
-  return {
-    title: `${valve.name} | Broroma Industrial Pipes`,
-    description: valve.description,
-  };
-}
-
-export async function generateStaticParams() {
-  return Object.keys(safetyValveData).map((slug) => ({ slug }));
-}
-
-export default async function SafetyValveDetailPage({ params }: Props) {
-  const { slug } = await params;
-  const valve = safetyValveData[slug];
+export default function SafetyValveDetailPage() {
+  const params = useParams();
+  const slug = params?.slug as string | undefined;
+  const valve = slug ? safetyValveData[slug] : undefined;
+  const { t, language } = useLanguage();
   
   if (!valve) {
     notFound();
   }
+
+  const isThaiLanguage = language === "th";
+  const displayName = isThaiLanguage ? valve.nameTh : valve.name;
+  const displayCategory = isThaiLanguage ? valve.categoryTh : valve.category;
+  const displayDescription = isThaiLanguage ? valve.longDescriptionTh : valve.longDescription;
+  const displayApplications = isThaiLanguage ? valve.applicationsTh : valve.applications;
+  const displayTableNote = isThaiLanguage ? valve.tableNoteTh : valve.tableNote;
+  const detail = t.products?.detail;
   
   return (
     <>
@@ -123,25 +141,25 @@ export default async function SafetyValveDetailPage({ params }: Props) {
         <div className="container-custom">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-navy-300 mb-2 flex-wrap">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t.nav.home}</Link>
             <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-            <Link href="/products" className="hover:text-white transition-colors">Products</Link>
+            <Link href="/products" className="hover:text-white transition-colors">{t.nav.products}</Link>
             <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-            <Link href="/products/safety-valves" className="hover:text-white transition-colors">Safety Valves</Link>
+            <Link href="/products/safety-valves" className="hover:text-white transition-colors">{displayCategory}</Link>
             <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-            <span className="text-white truncate max-w-[180px] sm:max-w-none">{valve.name}</span>
+            <span className="text-white truncate max-w-[180px] sm:max-w-none">{displayName}</span>
           </nav>
           
           <div className="max-w-3xl">
-            <h1 className="text-white text-2xl md:text-4xl font-bold mt-3 mb-4">{valve.name}</h1>
+            <h1 className="text-white text-2xl md:text-4xl font-bold mt-3 mb-4">{displayName}</h1>
             <p className="text-sm md:text-base text-navy-200 leading-relaxed">
-              {valve.longDescription}
+              {displayDescription}
             </p>
           </div>
         </div>
@@ -157,7 +175,7 @@ export default async function SafetyValveDetailPage({ params }: Props) {
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden mb-5 sm:mb-7 aspect-[5/2]">
                 <Image
                   src={valve.image}
-                  alt={valve.name}
+                  alt={displayName}
                   fill
                   className="object-cover"
                   priority
@@ -166,18 +184,18 @@ export default async function SafetyValveDetailPage({ params }: Props) {
 
               {/* Products Table */}
               <div className="mb-5 sm:mb-7">
-                <h2 className="text-xl sm:text-2xl font-semibold text-navy-900 mb-3 sm:mb-4">Available Products</h2>
+                <h2 className="text-xl sm:text-2xl font-semibold text-navy-900 mb-3 sm:mb-4">{detail?.availableProducts || "Available Products"}</h2>
                 <div className="overflow-x-auto -mx-4 sm:mx-0">
                   <div className="inline-block min-w-full align-middle px-4 sm:px-0">
                     <table className="w-full min-w-[700px]">
                       <thead>
                         <tr className="bg-navy-50">
-                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 rounded-l-lg whitespace-nowrap">Material</th>
-                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 whitespace-nowrap">Grade</th>
-                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 whitespace-nowrap">Sizes</th>
-                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 whitespace-nowrap">Pressure Class</th>
-                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 whitespace-nowrap">End Connection</th>
-                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 rounded-r-lg whitespace-nowrap">Standard</th>
+                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 rounded-l-lg whitespace-nowrap">{detail?.tableHeaders?.material || "Material"}</th>
+                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 whitespace-nowrap">{detail?.tableHeaders?.grade || "Grade"}</th>
+                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 whitespace-nowrap">{detail?.tableHeaders?.sizes || "Sizes"}</th>
+                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 whitespace-nowrap">{detail?.tableHeaders?.pressureClass || "Pressure Class"}</th>
+                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 whitespace-nowrap">{detail?.tableHeaders?.endConnection || "End Connection"}</th>
+                          <th className="px-3 py-2.5 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-semibold text-navy-900 rounded-r-lg whitespace-nowrap">{detail?.tableHeaders?.standard || "Standard"}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -199,8 +217,8 @@ export default async function SafetyValveDetailPage({ params }: Props) {
                     </table>
                   </div>
                 </div>
-                {valve.tableNote && (
-                  <p className="mt-2 sm:mt-3 px-4 sm:px-0 text-xs sm:text-sm text-gray-600 italic">{valve.tableNote}</p>
+                {displayTableNote && (
+                  <p className="mt-2 sm:mt-3 px-4 sm:px-0 text-xs sm:text-sm text-gray-600 italic">{displayTableNote}</p>
                 )}
               </div>
 
@@ -210,9 +228,9 @@ export default async function SafetyValveDetailPage({ params }: Props) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div className="min-w-0">
-                  <p className="text-xs sm:text-sm text-blue-900 font-medium mb-0.5 sm:mb-1">Pressure & Temperature Ratings</p>
+                  <p className="text-xs sm:text-sm text-blue-900 font-medium mb-0.5 sm:mb-1">{detail?.pressureRatings || "Pressure & Temperature Ratings"}</p>
                   <p className="text-xs sm:text-sm text-blue-800">
-                    All safety valves are rated per API 520/526 and ASME Section VIII pressure-temperature tables. Set pressure, relieving capacity, and back pressure tolerance are certified per applicable codes. For specific sizing and certification data, contact our team or refer to the product catalog.
+                    {detail?.pressureRatingsValves || "All safety valves are rated per API 520/526 and ASME Section VIII pressure-temperature tables. Set pressure, relieving capacity, and back pressure tolerance are certified per applicable codes. For specific sizing and certification data, contact our team or refer to the product catalog."}
                   </p>
                 </div>
               </div>
@@ -223,7 +241,7 @@ export default async function SafetyValveDetailPage({ params }: Props) {
               <div className="lg:sticky lg:top-28 space-y-4 sm:space-y-6">
                 {/* Specifications */}
                 <div className="card p-4 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">Specifications</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">{detail?.specifications || "Specifications"}</h3>
                   <div className="space-y-1.5 sm:space-y-2">
                     {valve.specifications.map((spec, index) => (
                       <div key={index} className="flex items-center gap-2">
@@ -236,9 +254,9 @@ export default async function SafetyValveDetailPage({ params }: Props) {
 
                 {/* Applications */}
                 <div className="card p-4 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">Applications</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">{detail?.applications || "Applications"}</h3>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {valve.applications.map((app, index) => (
+                    {displayApplications.map((app, index) => (
                       <span key={index} className="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-gray-100 text-gray-700 text-xs sm:text-sm rounded-full">
                         {app}
                       </span>
@@ -248,23 +266,23 @@ export default async function SafetyValveDetailPage({ params }: Props) {
 
                 {/* CTA Card */}
                 <div className="card p-4 sm:p-6 bg-navy-900 border-navy-800">
-                  <h3 className="text-base sm:text-lg font-semibold text-white mb-1.5 sm:mb-2">Need This Product?</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-white mb-1.5 sm:mb-2">{detail?.needThisProduct || "Need This Product?"}</h3>
                   <p className="text-navy-200 text-xs sm:text-sm mb-3 sm:mb-4">
-                    Contact our team for pricing, availability, and technical specifications.
+                    {detail?.contactTeam || "Contact our team for pricing, availability, and technical specifications."}
                   </p>
                   <Link href="/contact" className="btn-primary w-full justify-center text-sm sm:text-base py-2.5 sm:py-3">
-                    Request Quote
+                    {detail?.requestQuote || "Request Quote"}
                   </Link>
                 </div>
 
                 {/* Downloads */}
                 <div className="card p-4 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">Downloads</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-navy-900 mb-3 sm:mb-4">{detail?.downloads || "Downloads"}</h3>
                   <a href="#" className="flex items-center gap-2.5 sm:gap-3 text-gray-700 hover:text-navy-900 transition-colors text-sm sm:text-base py-1">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-accent-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    Valves Catalog (PDF)
+                    {detail?.valvesCatalog || "Valves Catalog (PDF)"}
                   </a>
                 </div>
               </div>
@@ -276,7 +294,7 @@ export default async function SafetyValveDetailPage({ params }: Props) {
       {/* Related Products */}
       <section className="py-6 sm:py-8 md:py-14 bg-gray-50">
         <div className="container-custom">
-          <h2 className="text-xl sm:text-2xl font-semibold text-navy-900 mb-4 sm:mb-5">Other Valve Products</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-navy-900 mb-4 sm:mb-5">{detail?.otherValveProducts || "Other Valve Products"}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {Object.entries(safetyValveData)
               .filter(([key]) => key !== slug)
@@ -286,14 +304,14 @@ export default async function SafetyValveDetailPage({ params }: Props) {
                   <div className="aspect-[16/10] relative rounded-lg overflow-hidden mb-3 sm:mb-4">
                     <Image
                       src={v.image}
-                      alt={v.name}
+                      alt={isThaiLanguage ? v.nameTh : v.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <span className="text-xs text-accent-500 font-medium">{v.category}</span>
-                  <h3 className="text-sm sm:text-base font-semibold text-navy-900 mb-1.5 sm:mb-2 line-clamp-1">{v.name}</h3>
-                  <p className="text-gray-600 text-xs sm:text-sm line-clamp-2">{v.description}</p>
+                  <span className="text-xs text-accent-500 font-medium">{isThaiLanguage ? v.categoryTh : v.category}</span>
+                  <h3 className="text-sm sm:text-base font-semibold text-navy-900 mb-1.5 sm:mb-2 line-clamp-1">{isThaiLanguage ? v.nameTh : v.name}</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm line-clamp-2">{isThaiLanguage ? v.descriptionTh : v.description}</p>
                 </Link>
               ))}
           </div>
@@ -304,7 +322,7 @@ export default async function SafetyValveDetailPage({ params }: Props) {
               <svg className="w-5 h-5 mr-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-              Back to All Safety Valves
+              {detail?.backToSafetyValves || "Back to All Safety Valves"}
             </Link>
           </div>
         </div>

@@ -7,6 +7,10 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function Footer() {
   const { t } = useLanguage();
 
+  const addressFull = t.contact?.location?.addressFull ?? "11/88 Moo 20, Lam Luk Ka District, Pathum Thani 12150, Thailand";
+  const phoneValue = t.contact?.info?.phoneValue ?? "+66 2 123 4567";
+  const emailValue = t.contact?.info?.emailValue ?? "info@broroma.com";
+
   const footerLinks = {
     company: [
       { name: t.footer.aboutUs, href: "/about" },
@@ -15,12 +19,12 @@ export default function Footer() {
       { name: t.footer.careers, href: "/contact" },
     ],
     products: [
-      { name: "Pipes", href: "/products/pipes" },
-      { name: "Fittings", href: "/products/fittings" },
-      { name: "Flanges", href: "/products/flanges" },
-      { name: "Tubes", href: "/products/boiler-tubes" },
-      { name: "Valves", href: "/products/manual-valves" },
-      { name: "Accessories", href: "/products/accessories-instruments" },
+      { name: t.footer.linkPipes ?? "Pipes", href: "/products/pipes" },
+      { name: t.footer.linkFittings ?? "Fittings", href: "/products/fittings" },
+      { name: t.footer.linkFlanges ?? "Flanges", href: "/products/flanges" },
+      { name: t.footer.linkTubes ?? "Tubes", href: "/products/boiler-tubes" },
+      { name: t.footer.linkValves ?? "Valves", href: "/products/manual-valves" },
+      { name: t.footer.linkAccessories ?? "Accessories", href: "/products/accessories-instruments" },
     ],
     services: [
       { name: t.footer.stockistSupply, href: "/services#stockist" },
@@ -128,8 +132,10 @@ export default function Footer() {
                 </svg>
               </div>
               <div className="min-w-0">
-                <p className="text-xs md:text-sm text-navy-300">{t.footer.address}</p>
-                <p className="text-white text-sm md:text-base">1234 Industrial Blvd, Houston, TX 77001</p>
+                <p className="text-xs md:text-sm text-navy-300 mb-1.5">{t.footer.address}</p>
+                <address className="text-white text-sm md:text-base leading-relaxed not-italic">
+                  {addressFull}
+                </address>
               </div>
             </div>
             <div className="flex items-center gap-2.5 md:gap-3">
@@ -140,7 +146,9 @@ export default function Footer() {
               </div>
               <div className="min-w-0">
                 <p className="text-xs md:text-sm text-navy-300">{t.footer.phone}</p>
-                <p className="text-white text-sm md:text-base">+1 (713) 555-0192</p>
+                <a href={`tel:${phoneValue.replace(/\s/g, "")}`} className="text-white text-sm md:text-base hover:text-navy-200 transition-colors block">
+                  {phoneValue}
+                </a>
               </div>
             </div>
             <div className="flex items-center gap-2.5 md:gap-3">
@@ -151,7 +159,9 @@ export default function Footer() {
               </div>
               <div className="min-w-0">
                 <p className="text-xs md:text-sm text-navy-300">{t.footer.email}</p>
-                <p className="text-white text-sm md:text-base">info@broroma.com</p>
+                <a href={`mailto:${emailValue}`} className="text-white text-sm md:text-base hover:text-navy-200 transition-colors block break-all">
+                  {emailValue}
+                </a>
               </div>
             </div>
           </div>

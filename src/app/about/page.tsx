@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
@@ -79,6 +80,45 @@ export default function AboutPage() {
     "standardsCompliance",
     "inspectionDocs",
   ];
+
+  const projectsScrollRef = useRef<HTMLDivElement>(null);
+  const [projectsActiveIndex, setProjectsActiveIndex] = useState(0);
+
+  const updateProjectsActiveIndex = useCallback(() => {
+    const el = projectsScrollRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-carousel-card]");
+    if (!card) return;
+    const cardWidth = card.offsetWidth;
+    const gap = 12;
+    const index = Math.min(
+      projectReferences.length - 1,
+      Math.round(el.scrollLeft / (cardWidth + gap))
+    );
+    setProjectsActiveIndex(index);
+  }, []);
+
+  useEffect(() => {
+    const el = projectsScrollRef.current;
+    if (!el) return;
+    updateProjectsActiveIndex();
+    el.addEventListener("scroll", updateProjectsActiveIndex);
+    window.addEventListener("resize", updateProjectsActiveIndex);
+    return () => {
+      el.removeEventListener("scroll", updateProjectsActiveIndex);
+      window.removeEventListener("resize", updateProjectsActiveIndex);
+    };
+  }, [updateProjectsActiveIndex]);
+
+  const scrollToProject = (index: number) => {
+    const el = projectsScrollRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-carousel-card]");
+    if (!card) return;
+    const cardWidth = card.offsetWidth;
+    const gap = 12;
+    el.scrollTo({ left: index * (cardWidth + gap), behavior: "smooth" });
+  };
 
   const industries = [
     {
@@ -228,16 +268,67 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {/* Mobile: horizontal swipe carousel + dots */}
+          <div className="md:hidden">
+            <div
+              ref={projectsScrollRef}
+              className="-mx-4 px-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide flex gap-3 pb-4"
+            >
+              {projectReferences.map((project, index) => (
+                <div
+                  key={index}
+                  data-carousel-card
+                  className="snap-start shrink-0 w-[80vw] max-w-[320px] bg-white border border-gray-200 rounded-xl overflow-hidden"
+                >
+                  <ImageSlider images={project.images} alt={project.name} aspectClass="aspect-[2/1]" />
+                  <div className="p-4 flex flex-col min-h-0">
+                    <h3 className="text-base font-bold text-navy-900 mb-1.5">{project.name}</h3>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-3">{project.description}</p>
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {project.products.map((product, i) => (
+                        <span
+                          key={i}
+                          className="inline-block px-2.5 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-md"
+                        >
+                          {product}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-auto text-gray-500 text-xs font-medium">
+                      {project.year} | {project.location}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center gap-2 pt-2">
+              {projectReferences.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  aria-label={`Go to project ${index + 1}`}
+                  onClick={() => scrollToProject(index)}
+                  className={`h-2 rounded-full transition-all duration-200 ${
+                    index === projectsActiveIndex
+                      ? "w-6 bg-accent-500"
+                      : "w-2 bg-gray-300 hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: grid layout */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectReferences.map((project, index) => (
               <div
                 key={index}
-                className="bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-card"
+                className="bg-white border border-gray-200 rounded-xl overflow-hidden"
               >
-                <ImageSlider images={project.images} alt={project.name} aspectClass="aspect-[2/1] sm:aspect-[16/9]" />
-                <div className="p-4 md:p-6 flex flex-col min-h-0">
-                  <h3 className="text-base md:text-lg font-bold text-navy-900 mb-1.5 md:mb-2">{project.name}</h3>
-                  <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-3 md:mb-4">{project.description}</p>
+                <ImageSlider images={project.images} alt={project.name} aspectClass="aspect-[16/9]" />
+                <div className="p-6 flex flex-col min-h-0">
+                  <h3 className="text-lg font-bold text-navy-900 mb-2">{project.name}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.products.map((product, i) => (
                       <span
@@ -258,30 +349,73 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Quality Assurance — full-width dark banner */}
-      <section className="py-8 md:py-16 gradient-navy" id="standards">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-accent-400 font-semibold text-xs md:text-sm uppercase tracking-wider">
+      {/* Quality Assurance */}
+      <section className="py-12 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden" id="standards">
+        {/* Subtle background decoration */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-500/[0.03] rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-navy-900/[0.03] rounded-full translate-y-1/2 -translate-x-1/3 pointer-events-none" />
+
+        <div className="container-custom relative">
+          {/* Header */}
+          <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent-500/10 text-accent-600 text-xs font-semibold uppercase tracking-wider rounded-full mb-4">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
               {t.about.qualityPromise.label}
             </span>
-            <h2 className="text-white mt-1.5 md:mt-2 mb-3 md:mb-4 text-xl md:text-3xl lg:text-4xl font-bold">
+            <h2 className="text-navy-900 text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">
               {t.about.qualityPromise.title}
             </h2>
-            <p className="text-navy-200 text-xs md:text-base leading-relaxed mb-6 md:mb-12">
+            <p className="text-gray-500 text-sm md:text-base lg:text-lg leading-relaxed">
               {t.about.qualityPromise.subtext}
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-6 lg:gap-x-16 lg:gap-y-6 justify-items-center">
-              {qualityPromiseItems.map((key) => (
-                <div key={key} className="flex items-center gap-3 text-left w-full sm:w-auto sm:min-w-[240px]">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent-500/20 flex items-center justify-center text-accent-400" aria-hidden>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </span>
-                  <span className="text-white font-medium text-sm md:text-base">{t.about.qualityPromise[key].title}</span>
-                </div>
-              ))}
+          </div>
+
+          {/* Cards grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {/* Mill Test Certificates */}
+            <div className="group bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-accent-200 transition-all duration-300 hover:-translate-y-1">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <h3 className="text-navy-900 font-bold text-base md:text-lg mb-2">{t.about.qualityPromise.mtc.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{t.about.qualityPromise.mtc.description}</p>
+            </div>
+
+            {/* Certified Manufacturers */}
+            <div className="group bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-accent-200 transition-all duration-300 hover:-translate-y-1">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-navy-900 font-bold text-base md:text-lg mb-2">{t.about.qualityPromise.certifiedManufacturers.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{t.about.qualityPromise.certifiedManufacturers.description}</p>
+            </div>
+
+            {/* Standards Compliance */}
+            <div className="group bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-accent-200 transition-all duration-300 hover:-translate-y-1">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </div>
+              <h3 className="text-navy-900 font-bold text-base md:text-lg mb-2">{t.about.qualityPromise.standardsCompliance.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{t.about.qualityPromise.standardsCompliance.description}</p>
+            </div>
+
+            {/* Inspection & Documentation */}
+            <div className="group bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-accent-200 transition-all duration-300 hover:-translate-y-1">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              </div>
+              <h3 className="text-navy-900 font-bold text-base md:text-lg mb-2">{t.about.qualityPromise.inspectionDocs.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{t.about.qualityPromise.inspectionDocs.description}</p>
             </div>
           </div>
         </div>

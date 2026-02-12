@@ -408,7 +408,7 @@
       "products": {
         "buttweldElbow": { "name": "Elbow (90° / 45°)", "description": "Buttweld elbows for changing pipe direction. Available in long radius and short radius configurations." },
         "buttweldTee": { "name": "Tee", "description": "Buttweld tees for creating branch connections. Available in equal and reducing configurations." },
-        "buttweldReducer": { "name": "Reducer (Concentric / Eccentric)", "description": "Buttweld reducers for transitioning between pipe sizes. Concentric and eccentric options available." },
+        "buttweldReducer": { "name": "Reducer", "description": "Buttweld reducers for transitioning between pipe sizes. Concentric and eccentric options available." },
         "buttweldCap": { "name": "Cap", "description": "Buttweld caps for sealing pipe ends. Used for system termination and pressure testing." },
         "buttweldStubEnd": { "name": "Stub End", "description": "Stub ends for use with lap joint flanges. Economical option for stainless and alloy systems." },
         "buttweldCross": { "name": "Cross", "description": "Buttweld crosses for four-way pipe connections. Available in equal and reducing configurations." },
@@ -515,6 +515,61 @@
         "needQuoteHeatExchanger": "Need a Quote for Heat Exchanger Tubes?",
         "tellUsGrade": "Tell us your grade, size, and quantity — we'll respond within 24 hours.",
         "tellUsOd": "Tell us your grade, OD, and quantity — we'll respond within 24 hours."
+      }
+    },
+    "detail": {
+      "availableProducts": "Available Products",
+      "specifications": "Specifications",
+      "applications": "Applications",
+      "needThisProduct": "Need This Product?",
+      "contactTeam": "Contact our team for pricing, availability, and technical specifications.",
+      "requestQuote": "Request Quote",
+      "downloads": "Downloads",
+      "valvesCatalog": "Valves Catalog (PDF)",
+      "fittingsCatalogButtweld": "Buttweld Fittings Catalog (PDF)",
+      "fittingsCatalogForged": "Forged Fittings Catalog (PDF)",
+      "flangesCatalog": "Flanges Catalog (PDF)",
+      "tubesCatalog": "Tubes Catalog (PDF)",
+      "accessoriesCatalog": "Accessories Catalog (PDF)",
+      "pressureRatings": "Pressure & Temperature Ratings",
+      "pressureRatingsValves": "All safety valves are rated per API 520/526 and ASME Section VIII pressure-temperature tables. Set pressure, relieving capacity, and back pressure tolerance are certified per applicable codes. For specific sizing and certification data, contact our team or refer to the product catalog.",
+      "pressureRatingsManualValves": "All valves are rated per ASME B16.34 pressure-temperature tables. Pressure class ratings define the maximum allowable working pressure at specified temperatures per material group. For specific pressure-temperature data, contact our team or refer to the product catalog.",
+      "pressureRatingsButtweld": "All buttweld fittings are rated per ASME B16.9 pressure-temperature tables. Pressure ratings match the corresponding pipe schedule — e.g., a SCH 80 fitting matches the pressure rating of SCH 80 pipe of the same material and size. For specific pressure-temperature data, contact our team or refer to the product catalog.",
+      "pressureRatingsForged": "All forged fittings are rated per ASME B16.11 pressure-temperature tables. Pressure class ratings (3000#, 6000#, 9000# for socket weld; 2000#, 3000#, 6000# for threaded) determine maximum working pressure at temperature. For specific pressure-temperature data, contact our team or refer to the product catalog.",
+      "pressureRatingsFlanges": "All flanges are rated per ASME B16.5 pressure-temperature tables. Pressure class ratings define the maximum allowable working pressure at specified temperatures per material group. For specific pressure-temperature data, contact our team or refer to the product catalog.",
+      "pressureRatingsTubes": "All tubes are rated per applicable ASME/ASTM specifications. Working pressure depends on tube OD, wall thickness, material grade, and operating temperature. For specific pressure-temperature data, contact our team or refer to the product catalog.",
+      "pressureRatingsAccessories": "All accessories are rated per applicable industry standards. For specific pressure-temperature data, contact our team or refer to the product catalog.",
+      "otherValveProducts": "Other Valve Products",
+      "otherFittingProducts": "Other Fitting Products",
+      "otherFlangeProducts": "Other Flange Products",
+      "otherTubeProducts": "Other Tube Products",
+      "otherAccessoryProducts": "Other Accessory Products",
+      "otherAccessories": "Other Accessories",
+      "selectionGuide": "Selection Guide",
+      "keyFeatures": "Key Features",
+      "productCatalog": "Product Catalog (PDF)",
+      "technicalSpecs": "Technical Specifications",
+      "technicalSpecifications": "Technical Specifications",
+      "otherBoilerTubeMaterials": "Other Boiler Tube Materials",
+      "otherHeatExchangerTubes": "Other Heat Exchanger Tube Materials",
+      "backToSafetyValves": "Back to All Safety Valves",
+      "backToManualValves": "Back to All Manual Valves",
+      "backToControlValves": "Back to All Control Valves",
+      "backToFittings": "Back to All Fittings",
+      "backToFlanges": "Back to All Flanges",
+      "backToBoilerTubes": "Back to All Boiler Tubes",
+      "backToHeatExchangerTubes": "Back to All Heat Exchanger Tubes",
+      "backToAccessories": "Back to All Accessories",
+      "tableHeaders": {
+        "material": "Material",
+        "grade": "Grade",
+        "sizes": "Sizes",
+        "pressureClass": "Pressure Class",
+        "endConnection": "End Connection",
+        "standard": "Standard",
+        "schedule": "Schedule",
+        "type": "Type",
+        "product": "Product"
       }
     }
   },
@@ -693,7 +748,7 @@
   "contact": {
     "hero": {
       "label": "Contact Us",
-      "title": "Get in Touch",
+      "title": "Let's have a conversation",
       "description": "Send us your specs and requirements. We respond within 24 hours."
     },
     "form": {
@@ -745,7 +800,9 @@
       "title": "Contact Information",
       "address": "Address",
       "phone": "Phone",
-      "email": "Email"
+      "email": "Email",
+      "phoneValue": "+66 2 123 4567",
+      "emailValue": "info@broroma.com"
     },
     "hours": {
       "title": "Business Hours",
@@ -782,6 +839,7 @@
       "title": "Find Us",
       "description": "Visit our office in Pathum Thani, Thailand.",
       "office": "Broroma Office",
+      "addressFull": "11/88 Moo 20, Lam Luk Ka District, Pathum Thani 12150, Thailand",
       "getDirections": "Get Directions"
     },
     "offices": {
@@ -808,6 +866,12 @@
     "address": "Address",
     "phone": "Phone",
     "email": "Email",
+    "linkPipes": "Pipes",
+    "linkFittings": "Fittings",
+    "linkFlanges": "Flanges",
+    "linkTubes": "Tubes",
+    "linkValves": "Valves",
+    "linkAccessories": "Accessories",
     "copyright": "Broroma. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"

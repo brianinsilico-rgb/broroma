@@ -41,7 +41,7 @@ export default function TrustedBy({ className = "" }: TrustedByProps) {
       <div className="container-custom relative">
         {/* Section Title */}
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-semibold">
+          <h2 className="text-white text-xl lg:text-2xl font-semibold">
             {trustedByTitle}
           </h2>
         </div>
