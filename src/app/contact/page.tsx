@@ -150,8 +150,8 @@ export default function ContactPage() {
             backgroundSize: '24px 24px',
           }}
         />
-        {/* Decorative gradient blobs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        {/* Decorative gradient blobs — stronger accent glow on mobile */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-500/10 md:bg-accent-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-navy-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         
         <div className="container-custom relative">

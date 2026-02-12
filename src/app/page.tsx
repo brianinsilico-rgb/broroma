@@ -260,8 +260,8 @@ export default function Home() {
 
       {/* Services Section */}
       <section className="section-padding bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl" />
+        {/* Decorative background elements — stronger accent glow on mobile */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-500/10 md:bg-accent-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-navy-500/5 rounded-full blur-3xl" />
         
         <div className="container-custom relative">

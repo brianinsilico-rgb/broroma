@@ -171,13 +171,13 @@ export default function AboutPage() {
 
       {/* All content sections — consistent gray-50 background */}
       <section className="bg-gray-50 relative overflow-hidden">
-        {/* Subtle background accents — softer on mobile, slightly stronger on desktop */}
-        <div className="absolute top-[10%] -left-40 w-[480px] h-[480px] bg-accent-500/[0.02] md:bg-accent-500/[0.04] lg:bg-accent-500/[0.055] rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-[50%] -left-48 w-[500px] h-[500px] bg-accent-500/[0.018] md:bg-accent-500/[0.035] lg:bg-accent-500/[0.05] rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-[20%] -left-32 w-[400px] h-[400px] bg-accent-500/[0.015] md:bg-accent-500/[0.03] lg:bg-accent-500/[0.04] rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-[15%] -right-48 w-[500px] h-[500px] bg-accent-500/[0.022] md:bg-accent-500/[0.045] lg:bg-accent-500/[0.06] rounded-full blur-3xl pointer-events-none" />
+        {/* Subtle background accents — a bit stronger on mobile, then md/lg */}
+        <div className="absolute top-[10%] -left-40 w-[480px] h-[480px] bg-accent-500/[0.032] md:bg-accent-500/[0.04] lg:bg-accent-500/[0.055] rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-[50%] -left-48 w-[500px] h-[500px] bg-accent-500/[0.028] md:bg-accent-500/[0.035] lg:bg-accent-500/[0.05] rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[20%] -left-32 w-[400px] h-[400px] bg-accent-500/[0.025] md:bg-accent-500/[0.03] lg:bg-accent-500/[0.04] rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-[15%] -right-48 w-[500px] h-[500px] bg-accent-500/[0.035] md:bg-accent-500/[0.045] lg:bg-accent-500/[0.06] rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-[55%] -right-40 w-[450px] h-[450px] bg-navy-500/[0.01] md:bg-navy-500/[0.02] lg:bg-navy-500/[0.025] rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-[15%] right-0 w-[400px] h-[400px] bg-accent-500/[0.018] md:bg-accent-500/[0.035] lg:bg-accent-500/[0.05] rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[15%] right-0 w-[400px] h-[400px] bg-accent-500/[0.028] md:bg-accent-500/[0.035] lg:bg-accent-500/[0.05] rounded-full blur-3xl pointer-events-none" />
 
         {/* Story Section */}
         <div className="py-10 md:py-12 lg:py-16">
