@@ -130,7 +130,7 @@ export default function ContactPage() {
             <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-navy-800/50 text-steel-400 text-xs sm:text-sm font-medium rounded-full mb-3 sm:mb-4 md:mb-5">
               {t.contact.hero.label}
             </span>
-            <h1 className="text-white text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-5">
+            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               {t.contact.hero.title}
             </h1>
             <p className="text-base md:text-base lg:text-lg text-navy-200 leading-relaxed">
