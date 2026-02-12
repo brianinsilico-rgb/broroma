@@ -3,7 +3,6 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { ImageSlider } from "@/components/ui/ImageSlider";
 
@@ -151,31 +150,19 @@ export default function AboutPage() {
     },
   ];
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.07, delayChildren: 0.05 },
-    },
-  };
-  const staggerItem = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="gradient-navy py-10 sm:py-14 md:py-20 lg:py-20">
+      {/* Hero Section — same size as suppliers (brands) page */}
+      <section className="gradient-navy py-10 sm:py-16 md:py-24">
         <div className="container-custom">
           <div className="max-w-3xl">
-            <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-navy-800/50 text-steel-400 text-xs sm:text-sm font-medium rounded-full mb-3 sm:mb-4 md:mb-5">
+            <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-navy-800/50 text-steel-400 text-xs sm:text-sm font-medium rounded-full mb-4 sm:mb-6">
               {t.about.hero.label}
             </span>
-            <h1 className="text-white text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-5">
+            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               {t.about.hero.title}
             </h1>
-            <p className="text-base md:text-base lg:text-lg text-navy-200 leading-relaxed">
+            <p className="text-base md:text-lg text-navy-200 leading-relaxed">
               {t.about.hero.description}
             </p>
           </div>
@@ -260,33 +247,25 @@ export default function AboutPage() {
             </div>
 
             {/* Industry cards */}
-            <motion.div
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-            >
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
               {industries.map((industry, index) => (
-                <motion.div
+                <div
                   key={index}
-                  variants={staggerItem}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="group relative aspect-square lg:aspect-[5/6] rounded-xl overflow-hidden shadow-sm"
+                  className="relative aspect-square lg:aspect-[5/6] rounded-xl overflow-hidden shadow-sm"
                 >
                   <Image
                     src={industry.image}
                     alt={industry.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/75 via-navy-900/30 to-transparent group-hover:from-navy-900/60 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/75 via-navy-900/30 to-transparent" />
                   <div className="absolute inset-0 flex flex-col items-center justify-end p-2 md:p-3 pb-3 md:pb-4 text-center">
                     <h3 className="text-white font-semibold text-xs md:text-sm leading-tight">{industry.name}</h3>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
 
@@ -348,7 +327,7 @@ export default function AboutPage() {
                   type="button"
                   aria-label={`Go to project ${index + 1}`}
                   onClick={() => scrollToProject(index)}
-                  className={`h-2 rounded-full transition-all duration-200 ${
+                  className={`h-2 rounded-full ${
                     index === projectsActiveIndex
                       ? "w-6 bg-accent-500"
                       : "w-2 bg-gray-300 hover:bg-gray-400"
@@ -359,18 +338,10 @@ export default function AboutPage() {
           </div>
 
           {/* Desktop: grid layout */}
-          <motion.div
-            className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-40px" }}
-          >
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectReferences.map((project, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={staggerItem}
-                transition={{ duration: 0.4, ease: "easeOut" }}
                 className="bg-white border border-gray-200 rounded-xl overflow-hidden"
               >
                 <ImageSlider images={project.images} alt={project.name} aspectClass="aspect-[16/9]" />
@@ -391,9 +362,9 @@ export default function AboutPage() {
                     {project.year} | {project.location}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
           </div>
 
           {/* Quality Assurance */}
@@ -414,57 +385,51 @@ export default function AboutPage() {
           </div>
 
           {/* Cards grid */}
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-40px" }}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {/* Mill Test Certificates */}
-            <motion.div variants={staggerItem} transition={{ duration: 0.4, ease: "easeOut" }} className="group bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-accent-200 transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-5 shadow-md">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
               <h3 className="text-navy-900 font-bold text-base md:text-lg mb-2">{t.about.qualityPromise.mtc.title}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">{t.about.qualityPromise.mtc.description}</p>
-            </motion.div>
+            </div>
 
             {/* Certified Manufacturers */}
-            <motion.div variants={staggerItem} transition={{ duration: 0.4, ease: "easeOut" }} className="group bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-accent-200 transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 flex items-center justify-center mb-5 shadow-md">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
               <h3 className="text-navy-900 font-bold text-base md:text-lg mb-2">{t.about.qualityPromise.certifiedManufacturers.title}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">{t.about.qualityPromise.certifiedManufacturers.description}</p>
-            </motion.div>
+            </div>
 
             {/* Standards Compliance */}
-            <motion.div variants={staggerItem} transition={{ duration: 0.4, ease: "easeOut" }} className="group bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-accent-200 transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center mb-5 shadow-md">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
               <h3 className="text-navy-900 font-bold text-base md:text-lg mb-2">{t.about.qualityPromise.standardsCompliance.title}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">{t.about.qualityPromise.standardsCompliance.description}</p>
-            </motion.div>
+            </div>
 
             {/* Inspection & Documentation */}
-            <motion.div variants={staggerItem} transition={{ duration: 0.4, ease: "easeOut" }} className="group bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-accent-200 transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-white rounded-2xl p-6 md:p-7 border border-gray-100 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 flex items-center justify-center mb-5 shadow-md">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                 </svg>
               </div>
               <h3 className="text-navy-900 font-bold text-base md:text-lg mb-2">{t.about.qualityPromise.inspectionDocs.title}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">{t.about.qualityPromise.inspectionDocs.description}</p>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
           </div>
 
           {/* CTA — inside same section so gray background runs through to bottom */}
