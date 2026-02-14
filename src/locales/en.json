@@ -807,9 +807,9 @@
     "hours": {
       "title": "Business Hours",
       "weekdays": "Monday - Friday",
-      "weekdaysTime": "8:00 AM - 6:00 PM ICT",
+      "weekdaysTime": "8:00 AM - 5:00 PM ICT",
       "saturday": "Saturday",
-      "saturdayTime": "9:00 AM - 1:00 PM ICT",
+      "saturdayTime": "Closed",
       "sunday": "Sunday",
       "sundayTime": "Closed"
     },

@@ -807,9 +807,9 @@
     "hours": {
       "title": "เวลาทำการ",
       "weekdays": "จันทร์ - ศุกร์",
-      "weekdaysTime": "8:00 - 18:00 น.",
+      "weekdaysTime": "8:00 - 17:00 น.",
       "saturday": "เสาร์",
-      "saturdayTime": "9:00 - 13:00 น.",
+      "saturdayTime": "ปิด",
       "sunday": "อาทิตย์",
       "sundayTime": "ปิดทำการ"
     },

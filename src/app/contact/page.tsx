@@ -361,9 +361,9 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Call Us Tab */}
-              <div className={`${activeTab === "call" ? "" : "hidden"}`}>
-                <div className="p-4 sm:p-6 md:p-8">
+              {/* Call Us Tab (Get in Touch) */}
+              <div className={`${activeTab === "call" ? "" : "hidden"} md:min-h-[568px]`}>
+                <div className="p-4 sm:p-6 md:p-8 h-full">
                   <div className="text-center mb-6 sm:mb-8">
                     <h2 className="text-xl sm:text-2xl font-semibold text-navy-900 mb-2">{t.contact.tabs?.callTitle || "Get in Touch"}</h2>
                     <p className="text-gray-600 text-sm sm:text-base">{t.contact.tabs?.callDescription || "Reach out to us directly via phone or email."}</p>
@@ -461,7 +461,7 @@ export default function ContactPage() {
                   {/* Google Maps Embed */}
                   <div className="h-[300px] sm:h-[400px] w-full rounded-t-2xl overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.8876!2d100.7234!3d13.9456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDU2JzQ0LjIiTiAxMDDCsDQzJzI0LjIiRQ!5e0!3m2!1sen!2sth!4v1234567890"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.8876!2d100.75898852136378!3d13.926552672862147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDU1JzM1LjYiTiAxMDDCsDQ1JzMyLjQiRQ!5e0!3m2!1sen!2sth!4v1234567890"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
@@ -472,62 +472,62 @@ export default function ContactPage() {
                     />
                   </div>
                   
-                  {/* Office Info */}
-                  <div className="p-4 sm:p-6 md:p-8">
-                    <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
-                      {/* Address */}
-                      <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {/* Office Info — 2 columns: left Broroma Office, right Phone + Hours */}
+                  <div className="p-5 sm:p-6 md:p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                      {/* Left: Broroma Office / Address */}
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-accent-500 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
                         </div>
-                        <div>
-                          <h3 className="text-sm sm:text-base font-semibold text-navy-900 mb-1">{t.contact.location.office}</h3>
-                          <p className="text-gray-600 text-xs sm:text-sm leading-relaxed whitespace-pre-line">
+                        <div className="min-w-0">
+                          <h3 className="text-sm font-semibold text-navy-900 mb-1.5">{t.contact.location.office}</h3>
+                          <p className="text-sm text-gray-600 whitespace-pre-line leading-relaxed">
                             {t.contact.location.addressFull?.replace(/, /g, ",\n") ?? "11/88 Moo 20, Lam Luk Ka District, Pathum Thani 12150, Thailand"}
                           </p>
                           <a
-                            href="https://maps.google.com/?q=13.9456,100.7234"
+                            href="https://maps.google.com/?q=13.926552672862147,100.75898852136378"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center text-accent-500 hover:text-accent-600 font-medium transition-colors text-xs sm:text-sm mt-2"
+                            className="inline-flex items-center gap-1 text-accent-500 hover:text-accent-600 font-medium text-sm mt-2"
                           >
                             {t.contact.location.getDirections}
-                            <svg className="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                           </a>
                         </div>
                       </div>
 
-                      {/* Phone */}
-                      <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-navy-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                          </svg>
+                      {/* Right: Phone + Business Hours stacked */}
+                      <div className="flex flex-col gap-5">
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-navy-100 flex items-center justify-center flex-shrink-0">
+                            <svg className="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                          </div>
+                          <div className="min-w-0">
+                            <h3 className="text-sm font-semibold text-navy-900 mb-1.5">{t.contact.info.phone}</h3>
+                            <p className="text-sm text-gray-600">{t.contact?.info?.phoneValue ?? "+66 2 123 4567"}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="text-sm sm:text-base font-semibold text-navy-900 mb-1">{t.contact.info.phone}</h3>
-                          <p className="text-gray-600 text-xs sm:text-sm">{t.contact?.info?.phoneValue ?? "+66 2 123 4567"}</p>
-                        </div>
-                      </div>
-
-                      {/* Business Hours */}
-                      <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-navy-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <h3 className="text-sm sm:text-base font-semibold text-navy-900 mb-1">{t.contact.hours.title}</h3>
-                          <div className="text-xs sm:text-sm space-y-0.5">
-                            <p className="text-gray-600">{t.contact.hours.weekdays}: <span className="text-navy-900 font-medium">{t.contact.hours.weekdaysTime}</span></p>
-                            <p className="text-gray-600">{t.contact.hours.saturday}: <span className="text-navy-900 font-medium">{t.contact.hours.saturdayTime}</span></p>
-                            <p className="text-gray-600">{t.contact.hours.sunday}: <span className="text-navy-900 font-medium">{t.contact.hours.sundayTime}</span></p>
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-navy-100 flex items-center justify-center flex-shrink-0">
+                            <svg className="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <div className="min-w-0">
+                            <h3 className="text-sm font-semibold text-navy-900 mb-1.5">{t.contact.hours.title}</h3>
+                            <div className="text-sm text-gray-600 space-y-1">
+                              <p>{t.contact.hours.weekdays}: <span className="font-medium text-navy-900">{t.contact.hours.weekdaysTime}</span></p>
+                              <p>{t.contact.hours.saturday}: <span className="font-medium text-navy-900">{t.contact.hours.saturdayTime}</span></p>
+                              <p>{t.contact.hours.sunday}: <span className="font-medium text-navy-900">{t.contact.hours.sundayTime}</span></p>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -547,8 +547,8 @@ export default function ContactPage() {
                   onClick={() => setActiveTab(tab)}
                   className={`w-2 h-2 rounded-full transition-all duration-200 ${
                     activeTab === tab 
-                      ? "bg-navy-900 w-6" 
-                      : "bg-gray-300 hover:bg-gray-400"
+                      ? "bg-red-500 w-6" 
+                      : "bg-red-200 hover:bg-red-300"
                   }`}
                   aria-label={`Go to ${tab} tab`}
                 />

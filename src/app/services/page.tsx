@@ -1,8 +1,18 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+
+/** Desktop-only images for the 5 service detail cards (left box) */
+const serviceCardImages: Record<string, string> = {
+  stockist: "/services/stockist.png",
+  sourcing: "/services/sourcing.png",
+  testing: "/services/testing.png",
+  fabrication: "/services/fabrication.png",
+  installation: "/services/installation.png",
+};
 
 const serviceIcons: { [key: string]: React.ReactNode } = {
   stockist: (
@@ -194,12 +204,17 @@ export default function ServicesPage() {
             className={`scroll-mt-28 rounded-xl border border-gray-100 bg-white shadow-sm overflow-hidden ${index % 2 === 1 ? "md:bg-gray-50/50" : ""}`}
           >
             <div className="flex flex-col md:flex-row min-h-0">
-              {/* Left column: desktop only — number over faded icon */}
-              <div className="hidden md:flex relative items-center justify-center md:w-[160px] md:min-w-[160px] md:flex-shrink-0 md:h-auto md:min-h-[200px] md:py-0 md:px-0 bg-navy-50/60 md:border-r border-gray-200/80">
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none [&>svg]:w-[150px] [&>svg]:h-[150px] text-navy-200/25" aria-hidden>
-                  {serviceIcons[service.id]}
-                </div>
-                <span className="relative z-10 text-5xl font-bold text-navy-200 tabular-nums select-none">
+              {/* Left column: desktop only — image + number overlay */}
+              <div className="hidden md:flex relative items-center justify-center md:w-[200px] md:min-w-[200px] md:flex-shrink-0 md:h-auto md:min-h-[200px] md:py-0 md:px-0 bg-navy-100 md:border-r border-gray-200/80 overflow-hidden">
+                <Image
+                  src={serviceCardImages[service.id] ?? "/services/stockist.png"}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="200px"
+                />
+                <div className="absolute inset-0 bg-navy-900/50" aria-hidden />
+                <span className="relative z-10 text-6xl font-bold text-navy-100 tabular-nums select-none">
                   0{index + 1}
                 </span>
               </div>
@@ -356,11 +371,12 @@ export default function ServicesPage() {
               ].map((faq, index) => (
                 <div 
                   key={index} 
-                  className="group bg-white rounded-lg border border-gray-100 p-5 hover:border-gray-200 transition-all duration-200 relative overflow-hidden"
+                  className="group bg-white rounded-xl border border-gray-100 p-5 pl-6 hover:border-accent-100 hover:shadow-sm transition-all duration-200 relative overflow-hidden"
                 >
-                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-accent-500/20 group-hover:bg-accent-500 transition-colors duration-200" />
-                  <h3 className="text-base font-semibold text-navy-900 mb-2">{faq.q}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+                  {/* Thin red accent bar — inset from edges, longer height */}
+                  <div className="absolute left-2 top-2 bottom-2 w-px rounded-full bg-accent-500/30 group-hover:bg-accent-500 group-hover:shadow-[0_0_8px_rgba(239,68,68,0.25)] transition-all duration-200" />
+                  <h3 className="text-base font-semibold text-navy-900 mb-2 pl-1">{faq.q}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed pl-1">{faq.a}</p>
                 </div>
               ))}
             </div>
