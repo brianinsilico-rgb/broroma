@@ -38,7 +38,7 @@ const ALL_WTS = [
   20.6, 22.2, 23.01, 25.4, 28.58,
 ];
 
-const UNIQUE_WTS = [...new Set(ALL_WTS)].sort((a, b) => a - b);
+const UNIQUE_WTS = Array.from(new Set(ALL_WTS)).sort((a, b) => a - b);
 
 const SMYS: Record<string, number> = {
   "Grade B": 241,
