@@ -169,7 +169,6 @@ export default function PipeCalculator({ externalValues }: PipeCalculatorProps) 
     }
   };
 
-  const currentOD = OD_LIST.find((o) => o.mm === selectedOD);
 
   return (
     <section id="pipe-calculator" className="relative bg-gray-50">
