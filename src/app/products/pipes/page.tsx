@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useCallback } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import SizeAvailabilityMatrix from "@/components/SizeAvailabilityMatrix";
+import PipeCalculator, { PipeCalculatorValues } from "@/components/PipeCalculator";
 
 const seamlessSpecs = [
   { material: "Carbon Steel / Low Temp", grades: "A106B, API 5L, A53B, A333, S355J2H", sizes: "1/2\" - 48\"", schedule: "SCH 40, 80, 160, XXS", standard: "ASTM A106, API 5L, ASTM A333" },
@@ -124,6 +127,14 @@ function DownloadCard({
 
 export default function PipesPage() {
   const { t } = useLanguage();
+  const [calcValues, setCalcValues] = useState<PipeCalculatorValues | null>(null);
+
+  const handleMatrixCellClick = useCallback((od: number, wt: number, grade: string | null) => {
+    if (window.innerWidth < 768) return;
+    setCalcValues({ od, wt, grade });
+    document.getElementById("pipe-calculator")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+
   const pipes = t.products?.pipes;
   const downloads = pipes?.downloads;
   const cta = pipes?.cta;
@@ -252,6 +263,14 @@ export default function PipesPage() {
         </div>
       </section>
 
+      {/* Size Availability Matrix */}
+      <SizeAvailabilityMatrix onCellClick={handleMatrixCellClick} />
+
+      {/* Pipe Calculator — desktop only */}
+      <div className="hidden md:block">
+        <PipeCalculator externalValues={calcValues} />
+      </div>
+
       {/* Applications */}
       <section className="py-10 md:py-16 bg-white">
         <div className="container-custom">
@@ -335,7 +354,7 @@ export default function PipesPage() {
             {downloads?.description ?? "Download our detailed product catalogs for specifications, dimensions, and technical data."}
           </p>
           <DownloadCard
-            href={downloads?.fullPdf ?? "#"}
+            href="/Broroma-Pipe-Catalog.pdf"
             title={common?.downloads?.pipesCatalog || "Pipes Catalog"}
             format="PDF"
           />
@@ -343,7 +362,7 @@ export default function PipesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-10 md:py-16 bg-gray-50">
+      <section className="py-10 md:py-16 bg-white">
         <div className="container-custom">
           {/* Mobile: simple card without image */}
           <div className="md:hidden bg-gradient-to-br from-navy-900 to-navy-950 rounded-2xl p-6 text-center">
