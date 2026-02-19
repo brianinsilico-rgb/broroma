@@ -105,6 +105,8 @@ function DownloadCard({
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex items-center justify-between p-4 md:p-5 bg-white rounded-xl border border-accent-200 shadow-sm hover:shadow-elevated hover:border-accent-400 transition-all duration-200 group"
     >
       <div className="flex items-center gap-3">

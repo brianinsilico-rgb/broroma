@@ -72,6 +72,15 @@ export default function SizeAvailabilityMatrix({ onCellClick }: SizeAvailability
     []
   );
 
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      setTooltip((prev) =>
+        prev ? { ...prev, clientX: e.clientX, clientY: e.clientY } : null
+      );
+    },
+    []
+  );
+
   const handleMouseLeave = useCallback(() => setTooltip(null), []);
 
   const handleCellClick = useCallback(
@@ -268,6 +277,7 @@ export default function SizeAvailabilityMatrix({ onCellClick }: SizeAvailability
                             onMouseEnter={(e) =>
                               handleMouseEnter(e, od.mm, od.nps, wt, status)
                             }
+                            onMouseMove={handleMouseMove}
                             onMouseLeave={handleMouseLeave}
                             onClick={() => handleCellClick(od.mm, wt)}
                           />
@@ -298,49 +308,35 @@ export default function SizeAvailabilityMatrix({ onCellClick }: SizeAvailability
         </p>
       </div>
 
-      {/* Tooltip via portal — renders on document.body to escape overflow clipping */}
-      {mounted && tooltip && createPortal(
+      {mounted && tooltip && typeof document !== "undefined" && createPortal(
         <div
-          className="fixed pointer-events-none"
+          id="matrix-tooltip"
           style={{
+            position: "fixed",
+            top: Math.max(8, tooltip.clientY - 80),
+            left: Math.min(tooltip.clientX, (typeof window !== "undefined" ? window.innerWidth : 9999) - 220),
             zIndex: 99999,
-            left: tooltip.clientX > window.innerWidth - 210
-              ? tooltip.clientX - 12
-              : tooltip.clientX + 12,
-            top: tooltip.clientY < 70
-              ? tooltip.clientY + 16
-              : tooltip.clientY - 16,
-            transform: [
-              tooltip.clientX > window.innerWidth - 210
-                ? "translateX(-100%)"
-                : "translateX(0)",
-              tooltip.clientY < 70
-                ? "translateY(0)"
-                : "translateY(-100%)",
-            ].join(" "),
+            pointerEvents: "none",
           }}
         >
           <div
-            className="rounded-lg px-3 md:px-3.5 py-2 md:py-2.5 whitespace-nowrap"
             style={{
               background: "#1e293b",
               border: "1px solid rgba(229,169,56,0.4)",
               boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+              borderRadius: 8,
+              padding: "8px 14px",
+              whiteSpace: "nowrap",
+              fontFamily: "monospace",
             }}
           >
-            <p
-              className="text-[10px] md:text-[11px] mb-1"
-              style={{ color: "#E5A938", fontFamily: "monospace" }}
-            >
+            <p style={{ color: "#E5A938", fontSize: 11, margin: "0 0 3px 0" }}>
               OD {tooltip.od}mm × WT {tooltip.wt}mm
               {selectedGrade !== "All Grades" && (
-                <span className="ml-2 opacity-70">({selectedGrade})</span>
+                <span style={{ marginLeft: 8, opacity: 0.7 }}>({selectedGrade})</span>
               )}
             </p>
-            <p
-              className="text-[12px] md:text-[13px] font-bold"
-              style={{ color: "#f1f5f9" }}
-            >
+            <p style={{ color: "#f1f5f9", fontSize: 13, fontWeight: 700, margin: 0 }}>
               {calcWeight(tooltip.od, tooltip.wt)} kg/m
             </p>
           </div>

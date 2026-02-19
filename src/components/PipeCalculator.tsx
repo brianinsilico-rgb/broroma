@@ -173,30 +173,26 @@ export default function PipeCalculator({ externalValues }: PipeCalculatorProps) 
 
   return (
     <section id="pipe-calculator" className="relative bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
-        {/* Title */}
-        <h2 className="text-xl md:text-2xl font-semibold text-navy-900 mb-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <h2 className="text-xl md:text-2xl font-semibold text-navy-900 mb-1.5">
           Weight &amp; Pressure Calculator
         </h2>
-
-        {/* Subtitle */}
-        <p className="text-gray-600 text-sm md:text-base max-w-3xl mb-8">
+        <p className="text-gray-600 text-sm md:text-base max-w-3xl mb-5">
           Calculate pipe weight and maximum working pressure based on your specifications.
         </p>
 
-        {/* Two-column layout */}
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid md:grid-cols-2 gap-5 md:gap-8 md:items-stretch">
           {/* Left — Inputs */}
-          <div className="flex flex-col gap-4">
-            {/* OD selector */}
+          <div className="flex flex-col justify-between">
             <div>
-              <label className="block mb-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+              <label className="block mb-1 text-[11px] font-semibold text-gray-500 uppercase tracking-wide">
                 Outside Diameter
               </label>
               <select
                 value={selectedOD}
                 onChange={(e) => handleODChange(Number(e.target.value))}
-                className="w-full rounded-lg px-4 py-3 text-sm text-navy-900 bg-white border border-gray-200 outline-none transition-colors appearance-none cursor-pointer focus:border-accent-500 focus:ring-1 focus:ring-accent-500"
+                className="w-full rounded-lg text-sm text-navy-900 bg-white border border-gray-200 outline-none transition-colors appearance-none cursor-pointer focus:border-navy-400 focus:ring-1 focus:ring-navy-300"
+                style={{ padding: "10px 14px" }}
               >
                 {OD_LIST.map((od) => (
                   <option key={od.mm} value={od.mm}>
@@ -206,15 +202,15 @@ export default function PipeCalculator({ externalValues }: PipeCalculatorProps) 
               </select>
             </div>
 
-            {/* WT selector */}
             <div>
-              <label className="block mb-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+              <label className="block mb-1 text-[11px] font-semibold text-gray-500 uppercase tracking-wide">
                 Wall Thickness
               </label>
               <select
                 value={selectedWT}
                 onChange={(e) => setSelectedWT(Number(e.target.value))}
-                className="w-full rounded-lg px-4 py-3 text-sm text-navy-900 bg-white border border-gray-200 outline-none transition-colors appearance-none cursor-pointer focus:border-accent-500 focus:ring-1 focus:ring-accent-500"
+                className="w-full rounded-lg text-sm text-navy-900 bg-white border border-gray-200 outline-none transition-colors appearance-none cursor-pointer focus:border-navy-400 focus:ring-1 focus:ring-navy-300"
+                style={{ padding: "10px 14px" }}
               >
                 {validWTs.map((wt) => {
                   const sch = getScheduleLabel(selectedOD, wt);
@@ -227,15 +223,15 @@ export default function PipeCalculator({ externalValues }: PipeCalculatorProps) 
               </select>
             </div>
 
-            {/* Grade selector */}
-            <div>
-              <label className="block mb-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+            <div className="mb-6">
+              <label className="block mb-1 text-[11px] font-semibold text-gray-500 uppercase tracking-wide">
                 Grade
               </label>
               <select
                 value={selectedGrade}
                 onChange={(e) => setSelectedGrade(e.target.value)}
-                className="w-full rounded-lg px-4 py-3 text-sm text-navy-900 bg-white border border-gray-200 outline-none transition-colors appearance-none cursor-pointer focus:border-accent-500 focus:ring-1 focus:ring-accent-500"
+                className="w-full rounded-lg text-sm text-navy-900 bg-white border border-gray-200 outline-none transition-colors appearance-none cursor-pointer focus:border-navy-400 focus:ring-1 focus:ring-navy-300"
+                style={{ padding: "10px 14px" }}
               >
                 {GRADES.map((g) => (
                   <option key={g} value={g}>
@@ -244,85 +240,82 @@ export default function PipeCalculator({ externalValues }: PipeCalculatorProps) 
                 ))}
               </select>
             </div>
-
-            {/* Selected pipe summary */}
-            <div className="mt-2 rounded-lg px-4 py-3 text-xs text-gray-500 bg-white border border-gray-100 font-mono">
-              {currentOD?.mm} mm OD × {selectedWT} mm WT — {selectedGrade}
-            </div>
           </div>
 
-          {/* Right — Results */}
-          <div>
+          {/* Right — Results Dashboard */}
+          <div className="flex flex-col">
             <div
               ref={resultsRef}
-              className={`rounded-xl p-6 md:p-8 bg-white border transition-all duration-500 ${
+              className={`rounded-xl bg-white border transition-all duration-500 overflow-hidden flex-1 flex flex-col ${
                 isFlashing
-                  ? "border-[#D4A853] shadow-[0_0_20px_rgba(212,168,83,0.25)]"
+                  ? "border-accent-500 shadow-[0_0_20px_rgba(239,68,68,0.25)]"
                   : "border-gray-200 shadow-none"
               }`}
             >
-              {/* Weight per meter */}
-              <div className="mb-6">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                  Weight per Meter
-                </p>
-                <p className="text-[28px] font-bold text-navy-900">
-                  {results.weightPerM.toFixed(2)}{" "}
-                  <span className="text-base font-normal text-gray-400">kg/m</span>
-                </p>
+              {/* Hero numbers */}
+              <div className="grid grid-cols-2">
+                <div className="p-4 md:p-5 relative">
+                  <p
+                    className="text-[9px] font-semibold uppercase tracking-[1.5px] mb-1.5 text-gray-400"
+                    style={{ fontFamily: "monospace" }}
+                  >
+                    WEIGHT / METER
+                  </p>
+                  <p className="text-[30px] md:text-[34px] font-bold text-navy-900 leading-none">
+                    {results.weightPerM.toFixed(2)}
+                  </p>
+                  <p className="text-sm text-gray-400 mt-0.5">kg/m</p>
+                </div>
+                <div className="p-4 md:p-5 relative border-l border-gray-100">
+                  <p
+                    className="text-[9px] font-semibold uppercase tracking-[1.5px] mb-1.5 text-gray-400"
+                    style={{ fontFamily: "monospace" }}
+                  >
+                    MAX PRESSURE
+                  </p>
+                  <p className="text-[30px] md:text-[34px] font-bold text-accent-500 leading-none">
+                    {results.pressureMPa.toFixed(1)}
+                  </p>
+                  <p className="text-sm text-gray-400 mt-0.5">MPa</p>
+                </div>
               </div>
 
-              {/* Weight per length */}
-              <div className="flex gap-6 mb-6 pb-6 border-b border-gray-100">
-                <div>
-                  <p className="text-xs text-gray-400 mb-0.5">Per 6m</p>
-                  <p className="text-base text-navy-800">{results.weight6m.toFixed(2)} kg</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-400 mb-0.5">Per 12m</p>
-                  <p className="text-base text-navy-800">{results.weight12m.toFixed(2)} kg</p>
-                </div>
-              </div>
-
-              {/* Max working pressure */}
-              <div className="mb-6">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                  Max Working Pressure
-                </p>
-                <p className="text-[28px] font-bold text-accent-500">
-                  {results.pressureMPa.toFixed(1)}{" "}
-                  <span className="text-base font-normal text-gray-400">MPa</span>
-                  <span className="text-base mx-2 text-gray-200">/</span>
-                  {results.pressurePsi.toFixed(0)}{" "}
-                  <span className="text-base font-normal text-gray-400">psi</span>
-                </p>
-              </div>
-
-              {/* Schedule, ID, Steel Area */}
-              <div className="flex flex-wrap gap-x-8 gap-y-3 pt-6 border-t border-gray-100">
-                <div>
-                  <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-0.5">Schedule</p>
-                  <p className="text-sm text-gray-600">{results.schedule}</p>
-                </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-0.5">Internal Diameter</p>
-                  <p className="text-sm text-gray-600">{results.id.toFixed(1)} mm</p>
-                </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-0.5">Steel Area</p>
-                  <p className="text-sm text-gray-600">{results.steelArea.toFixed(2)} cm²</p>
-                </div>
+              {/* Stat grid — 2×3 */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-[1px] bg-gray-100 border-t border-gray-100 flex-1">
+                {[
+                  { label: "PER 6M", value: `${results.weight6m.toFixed(1)} kg` },
+                  { label: "PER 12M", value: `${results.weight12m.toFixed(1)} kg` },
+                  { label: "PRESSURE (PSI)", value: `${results.pressurePsi.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} psi` },
+                  { label: "SCHEDULE", value: results.schedule },
+                  { label: "INTERNAL DIA.", value: `${results.id.toFixed(1)} mm` },
+                  { label: "STEEL AREA", value: `${results.steelArea.toFixed(2)} cm²` },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="bg-[#f8fafc] p-3"
+                  >
+                    <p
+                      className="text-[9px] font-semibold uppercase tracking-[1px] text-gray-400 mb-1"
+                      style={{ fontFamily: "monospace" }}
+                    >
+                      {stat.label}
+                    </p>
+                    <p className="text-[15px] font-semibold text-gray-900 leading-snug">
+                      {stat.value}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Disclaimer */}
-            <p className="mt-4 text-[11px] text-gray-400">
-              Calculations based on Barlow&apos;s formula with 0.72 design factor per
-              ASME B31.8. For reference only — verify with project engineering
-              specifications.
-            </p>
           </div>
         </div>
+
+        <p className="mt-2 text-[11px] text-gray-400 md:text-right">
+          Calculations based on Barlow&apos;s formula with 0.72 design factor per
+          ASME B31.8. For reference only — verify with project engineering
+          specifications.
+        </p>
       </div>
     </section>
   );
