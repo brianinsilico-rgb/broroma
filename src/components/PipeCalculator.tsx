@@ -310,11 +310,14 @@ export default function PipeCalculator({ externalValues }: PipeCalculatorProps) 
           </div>
         </div>
 
-        <p className="mt-2 text-[11px] text-gray-400 md:text-right">
-          Calculations based on Barlow&apos;s formula with 0.72 design factor per
-          ASME B31.8. For reference only — verify with project engineering
-          specifications.
-        </p>
+        <div className="grid md:grid-cols-2 gap-5 md:gap-8 mt-2">
+          <div className="hidden md:block" />
+          <p className="text-[11px] text-gray-400">
+            Calculations based on Barlow&apos;s formula with 0.72 design factor per
+            ASME B31.8. For reference only — verify with project engineering
+            specifications.
+          </p>
+        </div>
       </div>
     </section>
   );

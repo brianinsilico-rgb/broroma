@@ -271,6 +271,15 @@ export default function PipesPage() {
       {/* Pipe Calculator — desktop only */}
       <div className="hidden md:block">
         <PipeCalculator externalValues={calcValues} />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 mb-8">
+          <Link
+            href="/tools/pipe-weight-calculator"
+            className="text-sm text-accent-500 hover:text-accent-600 transition-colors inline-flex items-center gap-1"
+          >
+            Open calculator in full page
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
       </div>
 
       {/* Applications */}

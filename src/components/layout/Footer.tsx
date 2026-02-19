@@ -31,6 +31,7 @@ export default function Footer() {
       { name: t.footer.globalSourcing, href: "/services#sourcing" },
       { name: t.footer.testingInspection, href: "/services#testing" },
       { name: t.footer.fabrication, href: "/services#fabrication" },
+      { name: "Pipe Calculator", href: "/tools/pipe-weight-calculator" },
     ],
   };
 
