@@ -61,32 +61,34 @@ function SpecsTable({ rows, labels }: { rows: typeof seamlessSpecs; labels: { ma
         ))}
       </div>
       {/* Desktop: table */}
-      <div className="hidden md:block overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
-        <table className="w-full min-w-[700px] border-collapse text-sm md:text-base">
-          <thead>
-            <tr className="border-b-2 border-navy-200 bg-navy-50/50">
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.material}</th>
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.grades}</th>
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.sizes}</th>
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.schedule}</th>
-              <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.standard}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, i) => (
-              <tr
-                key={row.material}
-                className={i % 2 === 0 ? "bg-white" : "bg-gray-50/80"}
-              >
-                <td className="py-3 px-4 text-navy-800 font-medium">{row.material}</td>
-                <td className="py-3 px-4 text-gray-700">{row.grades}</td>
-                <td className="py-3 px-4 text-gray-700">{row.sizes}</td>
-                <td className="py-3 px-4 text-gray-700">{row.schedule}</td>
-                <td className="py-3 px-4 text-gray-700">{row.standard}</td>
+      <div className="hidden md:block rounded-xl overflow-hidden border border-gray-200">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[700px] border-collapse text-sm md:text-base">
+            <thead>
+              <tr className="bg-gray-50">
+                <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.material}</th>
+                <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.grades}</th>
+                <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.sizes}</th>
+                <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.schedule}</th>
+                <th className="text-left py-3 px-4 font-semibold text-navy-900">{labels.standard}</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {rows.map((row, i) => (
+                <tr
+                  key={row.material}
+                  className={`border-t border-gray-100 ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}
+                >
+                  <td className="py-3 px-4 text-navy-800 font-medium">{row.material}</td>
+                  <td className="py-3 px-4 text-gray-700">{row.grades}</td>
+                  <td className="py-3 px-4 text-gray-700">{row.sizes}</td>
+                  <td className="py-3 px-4 text-gray-700">{row.schedule}</td>
+                  <td className="py-3 px-4 text-gray-700">{row.standard}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );
